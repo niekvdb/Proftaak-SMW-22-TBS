@@ -8,6 +8,9 @@ namespace TramBeheerSysteem
 {
     enum TypeOnderhoud
     {
-
+        KleineSchoonmaak,
+        GroteSchoonmaak,
+        KleineReparatie,
+        GroteReparatie
     }
 }
