@@ -8,6 +8,10 @@ namespace TramBeheerSysteem
 {
     enum Functie
     {
-
+        Beheerder,
+        Wagenparkbeheerder,
+        Bestuurder,
+        Technicus,
+        Schoonmaker
     }
 }
