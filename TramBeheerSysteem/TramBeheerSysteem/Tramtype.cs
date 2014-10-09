@@ -10,6 +10,6 @@ namespace TramBeheerSysteem
     {
         Combino,
         DkCombino,
-        Opleidingstram,  
+        Opleidingstram 
     }
 }
