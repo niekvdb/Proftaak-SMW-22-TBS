@@ -34,5 +34,25 @@ namespace TramBeheerSysteem
             this.sector = sector;
             this.beschikbaar = beschikbaar;
         }
+
+        public void Verplaats(Sector sector)
+        {
+            //ToDo
+        }
+
+        public void Onderhoud(TypeOnderhoud typeOnderhoud)
+        {
+            //ToDo
+        }
+
+        public void IsVervuild()
+        {
+            //ToDO
+        }
+
+        public void IsDefect()
+        {
+            //ToDo
+        }
     }
 }
