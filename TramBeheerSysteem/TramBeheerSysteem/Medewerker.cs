@@ -15,7 +15,7 @@ namespace TramBeheerSysteem
         public Medewerker(int id, Functie functie, string naam)
         {
             Id = id;
-            Functie = functie;
+            Functie = functie; 
             Naam = naam;
         }
     }
