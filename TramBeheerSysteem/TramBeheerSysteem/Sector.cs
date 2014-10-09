@@ -8,21 +8,21 @@ namespace TramBeheerSysteem
 {
     class Sector
     {
-        public int ID { get; private set; }
-        public Spoor spoor { get; private set; }
-        public Tram tram { get; private set; }
-        public int nummer { get; private set; }
-        public bool beschikbaar { get; private set; }
-        public bool blokkade { get; private set; }
+        public int Id { get; private set; }
+        public Spoor Spoor { get; private set; }
+        public Tram Tram { get; private set; }
+        public int Nummer { get; private set; }
+        public bool Beschikbaar { get; private set; }
+        public bool Blokkade { get; private set; }
 
-        public Sector (int mID, Spoor mspoor, Tram mtram, int mnummer, bool mbeschikbaar, bool mblokkade)
+        public Sector(Spoor spoor, int id, int nummer, Tram tram, bool beschikbaar, bool blokkade)
         {
-            this.ID = mID;
-            this.spoor = mspoor;
-            this.tram = mtram;
-            this.nummer = mnummer;
-            this.beschikbaar = mbeschikbaar;
-            this.blokkade = mblokkade;
+            this.Spoor = spoor;
+            this.Id = id;
+            this.Nummer = nummer;
+            this.Tram = tram;
+            this.Beschikbaar = beschikbaar;
+            this.Blokkade = blokkade;
         }
 
         public void blokkeer()
