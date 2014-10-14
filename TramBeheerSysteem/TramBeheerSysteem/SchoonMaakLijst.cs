@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace TramBeheerSysteem
 {
-    public partial class Form1 : Form
+    public partial class SchoonMaakLijst : Form
     {
-        public Form1()
+        public SchoonMaakLijst()
         {
             InitializeComponent();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
