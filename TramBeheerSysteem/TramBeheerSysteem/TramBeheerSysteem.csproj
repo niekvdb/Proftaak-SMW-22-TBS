@@ -71,6 +71,12 @@
     <Compile Include="Tramtype.cs" />
     <Compile Include="TypeOnderhoud.cs" />
     <Compile Include="TypeSchoonmaak.cs" />
+    <Compile Include="Voeg Tram toe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Voeg Tram toe.Designer.cs">
+      <DependentUpon>Voeg Tram toe.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="SchoonMaakLijst.resx">
       <DependentUpon>SchoonMaakLijst.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +92,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Voeg Tram toe.resx">
+      <DependentUpon>Voeg Tram toe.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
