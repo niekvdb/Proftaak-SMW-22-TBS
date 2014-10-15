@@ -47,7 +47,7 @@ namespace TramBeheerSysteem
              string Status = cbStatus.Text;
              int NR;
 
-             // Check of textbox ID te converteren is naar Int32
+             // controleer of tekst te converteren is naar Int32
              try
              {
                  NR = Convert.ToInt32(NR_string);
@@ -124,9 +124,6 @@ namespace TramBeheerSysteem
 
         }
 
-        private void btnVoegToe_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

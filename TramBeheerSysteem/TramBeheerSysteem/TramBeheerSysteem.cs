@@ -29,8 +29,6 @@ namespace TramBeheerSysteem
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SchoonMaakLijst s = new SchoonMaakLijst();
-            s.Show();
         }
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
