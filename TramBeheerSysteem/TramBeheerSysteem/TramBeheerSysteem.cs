@@ -128,21 +128,48 @@ namespace TramBeheerSysteem
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SchoonMaakLijst s = new SchoonMaakLijst();
-            s.Show();
         }
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Voeg_Tram_toe v = new Voeg_Tram_toe();
+            Voeg_Tram_toe v = new Voeg_Tram_toe(0);
             v.Show();
             
         }
 
-        private void verwijderToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            Voeg_Tram_toe v = new Voeg_Tram_toe();
-            v.Show();
+
+        }
+
+        private void btnVerwijder_Click(object sender, EventArgs e)
+        {
+            string NR_string = cbTrams.Text;
+            int NR;
+            try
+            {
+                NR = Convert.ToInt32(NR_string);
+            }
+            catch
+            {
+                MessageBox.Show("Voer een tram-nummer in");
+                return;
+            }
+
+            // foreach (Tram t in DatabaseManager.HaalTramsOp)
+            //  {
+            //     if (t.nummer != NR)
+            //    {
+            //        MessageBox.Show("Tram-nummer bestaat niet");
+            //        return;
+            //    }
+            //      else
+            //    {
+            //      DatabaseManager.VerwijderTram(NR);
+            //     }
+            //}
+            
         }
 
         private void TramBeheerSysteem_Load(object sender, EventArgs e)
@@ -150,10 +177,10 @@ namespace TramBeheerSysteem
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void wijzigStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            voegSporenToeVoorbeeld();
-            //MessageBox.Show(this.Height.ToString());
+            Voeg_Tram_toe v = new Voeg_Tram_toe(1);
+            v.Show();
         }
     }
 }
