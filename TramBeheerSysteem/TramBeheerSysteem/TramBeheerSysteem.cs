@@ -182,5 +182,11 @@ namespace TramBeheerSysteem
             Voeg_Tram_toe v = new Voeg_Tram_toe(1);
             v.Show();
         }
+
+        private void statusVeranderenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SpoorBediening s = new SpoorBediening();
+            s.Show();
+        }
     }
 }
