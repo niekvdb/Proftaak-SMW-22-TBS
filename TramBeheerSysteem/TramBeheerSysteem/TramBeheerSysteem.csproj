@@ -45,6 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseManager.cs" />
+    <Compile Include="OnderhoudApplicatie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnderhoudApplicatie.Designer.cs">
+      <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
+    </Compile>
     <Compile Include="SchoonMaakLijst.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="Voeg Tram toe.Designer.cs">
       <DependentUpon>Voeg Tram toe.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="OnderhoudApplicatie.resx">
+      <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SchoonMaakLijst.resx">
       <DependentUpon>SchoonMaakLijst.cs</DependentUpon>
     </EmbeddedResource>
