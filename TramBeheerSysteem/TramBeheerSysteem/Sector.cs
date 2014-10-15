@@ -27,7 +27,7 @@ namespace TramBeheerSysteem
 
         public void blokkeer()
         {
-            //ToDo
+            this.Blokkade = true;
         }
     }
 }
