@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.TramsCbox = new System.Windows.Forms.ComboBox();
-            this.VerwijderBtn = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ResetBtn = new System.Windows.Forms.Button();
-            this.StopBtn = new System.Windows.Forms.Button();
-            this.StartBtn = new System.Windows.Forms.Button();
+            this.gbBediening = new System.Windows.Forms.GroupBox();
+            this.gbTram = new System.Windows.Forms.GroupBox();
+            this.cbTrams = new System.Windows.Forms.ComboBox();
+            this.btnVerwijder = new System.Windows.Forms.Button();
+            this.gbSimulatie = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.voegToeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,9 +47,9 @@
             this.spoorInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.schoonmaakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reparatieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gbBediening.SuspendLayout();
+            this.gbTram.SuspendLayout();
+            this.gbSimulatie.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,94 +62,95 @@
             this.panel1.Size = new System.Drawing.Size(1094, 444);
             this.panel1.TabIndex = 21;
             // 
-            // groupBox1
+            // gbBediening
             // 
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Location = new System.Drawing.Point(43, 59);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(221, 444);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Controls";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.gbBediening.Controls.Add(this.gbTram);
+            this.gbBediening.Controls.Add(this.gbSimulatie);
+            this.gbBediening.Location = new System.Drawing.Point(43, 59);
+            this.gbBediening.Margin = new System.Windows.Forms.Padding(4);
+            this.gbBediening.Name = "gbBediening";
+            this.gbBediening.Padding = new System.Windows.Forms.Padding(4);
+            this.gbBediening.Size = new System.Drawing.Size(221, 444);
+            this.gbBediening.TabIndex = 18;
+            this.gbBediening.TabStop = false;
+            this.gbBediening.Text = "Bediening";
+            this.gbBediening.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // groupBox2
+            // gbTram
             // 
-            this.groupBox2.Controls.Add(this.TramsCbox);
-            this.groupBox2.Controls.Add(this.VerwijderBtn);
-            this.groupBox2.Location = new System.Drawing.Point(8, 201);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(191, 125);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tram";
+            this.gbTram.Controls.Add(this.cbTrams);
+            this.gbTram.Controls.Add(this.btnVerwijder);
+            this.gbTram.Location = new System.Drawing.Point(8, 201);
+            this.gbTram.Margin = new System.Windows.Forms.Padding(4);
+            this.gbTram.Name = "gbTram";
+            this.gbTram.Padding = new System.Windows.Forms.Padding(4);
+            this.gbTram.Size = new System.Drawing.Size(191, 125);
+            this.gbTram.TabIndex = 3;
+            this.gbTram.TabStop = false;
+            this.gbTram.Text = "Tram";
             // 
-            // TramsCbox
+            // cbTrams
             // 
-            this.TramsCbox.FormattingEnabled = true;
-            this.TramsCbox.Location = new System.Drawing.Point(8, 37);
-            this.TramsCbox.Name = "TramsCbox";
-            this.TramsCbox.Size = new System.Drawing.Size(160, 24);
-            this.TramsCbox.TabIndex = 3;
+            this.cbTrams.FormattingEnabled = true;
+            this.cbTrams.Location = new System.Drawing.Point(8, 37);
+            this.cbTrams.Name = "cbTrams";
+            this.cbTrams.Size = new System.Drawing.Size(160, 24);
+            this.cbTrams.TabIndex = 3;
             // 
-            // VerwijderBtn
+            // btnVerwijder
             // 
-            this.VerwijderBtn.Location = new System.Drawing.Point(7, 68);
-            this.VerwijderBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.VerwijderBtn.Name = "VerwijderBtn";
-            this.VerwijderBtn.Size = new System.Drawing.Size(161, 28);
-            this.VerwijderBtn.TabIndex = 2;
-            this.VerwijderBtn.Text = "Verwijder";
-            this.VerwijderBtn.UseVisualStyleBackColor = true;
+            this.btnVerwijder.Location = new System.Drawing.Point(7, 68);
+            this.btnVerwijder.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVerwijder.Name = "btnVerwijder";
+            this.btnVerwijder.Size = new System.Drawing.Size(161, 28);
+            this.btnVerwijder.TabIndex = 2;
+            this.btnVerwijder.Text = "Verwijder";
+            this.btnVerwijder.UseVisualStyleBackColor = true;
+            this.btnVerwijder.Click += new System.EventHandler(this.btnVerwijder_Click);
             // 
-            // groupBox3
+            // gbSimulatie
             // 
-            this.groupBox3.Controls.Add(this.ResetBtn);
-            this.groupBox3.Controls.Add(this.StopBtn);
-            this.groupBox3.Controls.Add(this.StartBtn);
-            this.groupBox3.Location = new System.Drawing.Point(8, 42);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(191, 125);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Simulatie";
+            this.gbSimulatie.Controls.Add(this.btnReset);
+            this.gbSimulatie.Controls.Add(this.btnStop);
+            this.gbSimulatie.Controls.Add(this.btnStart);
+            this.gbSimulatie.Location = new System.Drawing.Point(8, 42);
+            this.gbSimulatie.Margin = new System.Windows.Forms.Padding(4);
+            this.gbSimulatie.Name = "gbSimulatie";
+            this.gbSimulatie.Padding = new System.Windows.Forms.Padding(4);
+            this.gbSimulatie.Size = new System.Drawing.Size(191, 125);
+            this.gbSimulatie.TabIndex = 2;
+            this.gbSimulatie.TabStop = false;
+            this.gbSimulatie.Text = "Simulatie";
             // 
-            // ResetBtn
+            // btnReset
             // 
-            this.ResetBtn.Location = new System.Drawing.Point(7, 97);
-            this.ResetBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.ResetBtn.Name = "ResetBtn";
-            this.ResetBtn.Size = new System.Drawing.Size(161, 28);
-            this.ResetBtn.TabIndex = 2;
-            this.ResetBtn.Text = "Reset";
-            this.ResetBtn.UseVisualStyleBackColor = true;
+            this.btnReset.Location = new System.Drawing.Point(7, 97);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(161, 28);
+            this.btnReset.TabIndex = 2;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
             // 
-            // StopBtn
+            // btnStop
             // 
-            this.StopBtn.Location = new System.Drawing.Point(8, 59);
-            this.StopBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.StopBtn.Name = "StopBtn";
-            this.StopBtn.Size = new System.Drawing.Size(161, 28);
-            this.StopBtn.TabIndex = 1;
-            this.StopBtn.Text = "Stop";
-            this.StopBtn.UseVisualStyleBackColor = true;
+            this.btnStop.Location = new System.Drawing.Point(8, 59);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(161, 28);
+            this.btnStop.TabIndex = 1;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
             // 
-            // StartBtn
+            // btnStart
             // 
-            this.StartBtn.Location = new System.Drawing.Point(8, 23);
-            this.StartBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.StartBtn.Name = "StartBtn";
-            this.StartBtn.Size = new System.Drawing.Size(161, 28);
-            this.StartBtn.TabIndex = 0;
-            this.StartBtn.Text = "Start";
-            this.StartBtn.UseVisualStyleBackColor = true;
+            this.btnStart.Location = new System.Drawing.Point(8, 23);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(161, 28);
+            this.btnStart.TabIndex = 0;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
@@ -178,20 +179,21 @@
             // voegToeToolStripMenuItem
             // 
             this.voegToeToolStripMenuItem.Name = "voegToeToolStripMenuItem";
-            this.voegToeToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.voegToeToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.voegToeToolStripMenuItem.Text = "Voeg Toe";
             this.voegToeToolStripMenuItem.Click += new System.EventHandler(this.voegToeToolStripMenuItem_Click);
             // 
             // wijzigStatusToolStripMenuItem
             // 
             this.wijzigStatusToolStripMenuItem.Name = "wijzigStatusToolStripMenuItem";
-            this.wijzigStatusToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.wijzigStatusToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.wijzigStatusToolStripMenuItem.Text = "Wijzig status";
+            this.wijzigStatusToolStripMenuItem.Click += new System.EventHandler(this.wijzigStatusToolStripMenuItem_Click);
             // 
             // tramInfoToolStripMenuItem
             // 
             this.tramInfoToolStripMenuItem.Name = "tramInfoToolStripMenuItem";
-            this.tramInfoToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.tramInfoToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.tramInfoToolStripMenuItem.Text = "Tram Info";
             // 
             // toolStripMenuItem2
@@ -209,6 +211,7 @@
             this.statusVeranderenToolStripMenuItem.Name = "statusVeranderenToolStripMenuItem";
             this.statusVeranderenToolStripMenuItem.Size = new System.Drawing.Size(198, 24);
             this.statusVeranderenToolStripMenuItem.Text = "Status Veranderen";
+            this.statusVeranderenToolStripMenuItem.Click += new System.EventHandler(this.statusVeranderenToolStripMenuItem_Click);
             // 
             // spoorInfoToolStripMenuItem
             // 
@@ -235,15 +238,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1464, 553);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbBediening);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TramBeheerSysteem";
             this.Text = "TramBeheerSysteem";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.TramBeheerSysteem_Load);
+            this.gbBediening.ResumeLayout(false);
+            this.gbTram.ResumeLayout(false);
+            this.gbSimulatie.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -254,11 +258,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button StopBtn;
-        private System.Windows.Forms.Button StartBtn;
-        private System.Windows.Forms.Button ResetBtn;
+        private System.Windows.Forms.GroupBox gbBediening;
+        private System.Windows.Forms.GroupBox gbSimulatie;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
@@ -269,9 +273,9 @@
         private System.Windows.Forms.ToolStripMenuItem spoorInfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem schoonmaakToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reparatieToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox TramsCbox;
-        private System.Windows.Forms.Button VerwijderBtn;
+        private System.Windows.Forms.GroupBox gbTram;
+        private System.Windows.Forms.ComboBox cbTrams;
+        private System.Windows.Forms.Button btnVerwijder;
 
     }
 }

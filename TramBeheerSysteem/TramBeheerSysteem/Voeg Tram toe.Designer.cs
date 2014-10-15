@@ -28,107 +28,106 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.StatusCb = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TramnummerTbox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.VoegToeBtn = new System.Windows.Forms.Button();
-            this.groupBox2.SuspendLayout();
+            this.gbTram = new System.Windows.Forms.GroupBox();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.lbStatus = new System.Windows.Forms.Label();
+            this.tbTramnummer = new System.Windows.Forms.TextBox();
+            this.lbTramnummer = new System.Windows.Forms.Label();
+            this.btnVoegToe = new System.Windows.Forms.Button();
+            this.gbTram.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox2
+            // gbTram
             // 
-            this.groupBox2.Controls.Add(this.StatusCb);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.TramnummerTbox);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.VoegToeBtn);
-            this.groupBox2.Location = new System.Drawing.Point(170, 28);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(218, 257);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "        Tram";
+            this.gbTram.Controls.Add(this.cbStatus);
+            this.gbTram.Controls.Add(this.lbStatus);
+            this.gbTram.Controls.Add(this.tbTramnummer);
+            this.gbTram.Controls.Add(this.lbTramnummer);
+            this.gbTram.Controls.Add(this.btnVoegToe);
+            this.gbTram.Location = new System.Drawing.Point(170, 28);
+            this.gbTram.Margin = new System.Windows.Forms.Padding(4);
+            this.gbTram.Name = "gbTram";
+            this.gbTram.Padding = new System.Windows.Forms.Padding(4);
+            this.gbTram.Size = new System.Drawing.Size(218, 257);
+            this.gbTram.TabIndex = 2;
+            this.gbTram.TabStop = false;
+            this.gbTram.Text = "        Tram";
             // 
-            // StatusCb
+            // cbStatus
             // 
-            this.StatusCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.StatusCb.FormattingEnabled = true;
-            this.StatusCb.Items.AddRange(new object[] {
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
             "Indienst",
             "Remise",
             "Schoonmaak",
             "Defect"});
-            this.StatusCb.Location = new System.Drawing.Point(12, 155);
-            this.StatusCb.Margin = new System.Windows.Forms.Padding(4);
-            this.StatusCb.Name = "StatusCb";
-            this.StatusCb.Size = new System.Drawing.Size(160, 24);
-            this.StatusCb.TabIndex = 13;
+            this.cbStatus.Location = new System.Drawing.Point(12, 155);
+            this.cbStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(160, 24);
+            this.cbStatus.TabIndex = 13;
             // 
-            // label4
+            // lbStatus
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 135);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 17);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Status";
+            this.lbStatus.AutoSize = true;
+            this.lbStatus.Location = new System.Drawing.Point(8, 135);
+            this.lbStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(48, 17);
+            this.lbStatus.TabIndex = 12;
+            this.lbStatus.Text = "Status";
             // 
-            // TramnummerTbox
+            // tbTramnummer
             // 
-            this.TramnummerTbox.Location = new System.Drawing.Point(13, 78);
-            this.TramnummerTbox.Margin = new System.Windows.Forms.Padding(4);
-            this.TramnummerTbox.Name = "TramnummerTbox";
-            this.TramnummerTbox.Size = new System.Drawing.Size(159, 22);
-            this.TramnummerTbox.TabIndex = 9;
+            this.tbTramnummer.Location = new System.Drawing.Point(13, 78);
+            this.tbTramnummer.Margin = new System.Windows.Forms.Padding(4);
+            this.tbTramnummer.Name = "tbTramnummer";
+            this.tbTramnummer.Size = new System.Drawing.Size(159, 22);
+            this.tbTramnummer.TabIndex = 9;
             // 
-            // label1
+            // lbTramnummer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 32);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 17);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nr";
+            this.lbTramnummer.AutoSize = true;
+            this.lbTramnummer.Location = new System.Drawing.Point(8, 32);
+            this.lbTramnummer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTramnummer.Name = "lbTramnummer";
+            this.lbTramnummer.Size = new System.Drawing.Size(23, 17);
+            this.lbTramnummer.TabIndex = 6;
+            this.lbTramnummer.Text = "Nr";
             // 
-            // VoegToeBtn
+            // btnVoegToe
             // 
-            this.VoegToeBtn.Location = new System.Drawing.Point(12, 196);
-            this.VoegToeBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.VoegToeBtn.Name = "VoegToeBtn";
-            this.VoegToeBtn.Size = new System.Drawing.Size(157, 28);
-            this.VoegToeBtn.TabIndex = 0;
-            this.VoegToeBtn.Text = "Voeg Toe";
-            this.VoegToeBtn.UseVisualStyleBackColor = true;
-            this.VoegToeBtn.Click += new System.EventHandler(this.button3_Click);
+            this.btnVoegToe.Location = new System.Drawing.Point(12, 196);
+            this.btnVoegToe.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoegToe.Name = "btnVoegToe";
+            this.btnVoegToe.Size = new System.Drawing.Size(157, 28);
+            this.btnVoegToe.TabIndex = 0;
+            this.btnVoegToe.Text = "Voeg Toe";
+            this.btnVoegToe.UseVisualStyleBackColor = true;
             // 
             // Voeg_Tram_toe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 331);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gbTram);
             this.Name = "Voeg_Tram_toe";
             this.Text = "Voeg tram toe";
             this.Load += new System.EventHandler(this.Voeg_Tram_toe_Load);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gbTram.ResumeLayout(false);
+            this.gbTram.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox StatusCb;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TramnummerTbox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button VoegToeBtn;
+        private System.Windows.Forms.GroupBox gbTram;
+        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.Label lbStatus;
+        private System.Windows.Forms.TextBox tbTramnummer;
+        private System.Windows.Forms.Label lbTramnummer;
+        private System.Windows.Forms.Button btnVoegToe;
     }
 }
