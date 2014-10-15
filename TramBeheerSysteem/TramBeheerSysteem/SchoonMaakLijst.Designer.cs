@@ -36,6 +36,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +67,8 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader4,
+            this.columnHeader6});
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.listView1.Location = new System.Drawing.Point(5, 11);
@@ -76,25 +78,32 @@
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Tram";
+            this.columnHeader1.Text = "Tramnummer";
+            this.columnHeader1.Width = 105;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Soort onderhoud";
-            this.columnHeader2.Width = 132;
+            this.columnHeader2.Text = "Lijn";
+            this.columnHeader2.Width = 58;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Datum aanmelding";
-            this.columnHeader3.Width = 160;
+            this.columnHeader3.Text = "Soort";
+            this.columnHeader3.Width = 59;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Locatie";
-            this.columnHeader4.Width = 160;
+            this.columnHeader4.Text = "Spoor";
+            this.columnHeader4.Width = 79;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Schoonmaak";
+            this.columnHeader6.Width = 105;
             // 
             // SchoonMaakLijst
             // 
@@ -120,6 +129,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
 
     }
 }
