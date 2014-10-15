@@ -45,11 +45,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseManager.cs" />
-    <Compile Include="SchoonMaakLijst.cs">
+    <Compile Include="OnderhoudApplicatie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SchoonMaakLijst.Designer.cs">
-      <DependentUpon>SchoonMaakLijst.cs</DependentUpon>
+    <Compile Include="OnderhoudApplicatie.Designer.cs">
+      <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpoorBediening.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpoorBediening.Designer.cs">
+      <DependentUpon>SpoorBediening.cs</DependentUpon>
     </Compile>
     <Compile Include="TramBeheerSysteem.cs">
       <SubType>Form</SubType>
@@ -77,8 +83,11 @@
     <Compile Include="Voeg Tram toe.Designer.cs">
       <DependentUpon>Voeg Tram toe.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SchoonMaakLijst.resx">
-      <DependentUpon>SchoonMaakLijst.cs</DependentUpon>
+    <EmbeddedResource Include="OnderhoudApplicatie.resx">
+      <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpoorBediening.resx">
+      <DependentUpon>SpoorBediening.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TramBeheerSysteem.resx">
       <DependentUpon>TramBeheerSysteem.cs</DependentUpon>
