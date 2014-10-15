@@ -35,20 +35,61 @@ namespace TramBeheerSysteem
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Voeg_Tram_toe v = new Voeg_Tram_toe();
+            Voeg_Tram_toe v = new Voeg_Tram_toe(0);
             v.Show();
             
         }
 
-        private void verwijderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Voeg_Tram_toe v = new Voeg_Tram_toe();
-            v.Show();
-        }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void btnVerwijder_Click(object sender, EventArgs e)
+        {
+            string NR_string = cbTrams.Text;
+            int NR;
+            try
+            {
+                NR = Convert.ToInt32(NR_string);
+            }
+            catch
+            {
+                MessageBox.Show("Voer een tram-nummer in");
+                return;
+            }
+
+            // foreach (Tram t in DatabaseManager.HaalTramsOp)
+            //  {
+            //     if (t.nummer != NR)
+            //    {
+            //        MessageBox.Show("Tram-nummer bestaat niet");
+            //        return;
+            //    }
+            //      else
+            //    {
+            //      DatabaseManager.VerwijderTram(NR);
+            //     }
+            //}
+            
+        }
+
+        private void TramBeheerSysteem_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void wijzigStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Voeg_Tram_toe v = new Voeg_Tram_toe(1);
+            v.Show();
+        }
+
+        private void statusVeranderenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SpoorBediening s = new SpoorBediening();
+            s.Show();
         }
     }
 }
