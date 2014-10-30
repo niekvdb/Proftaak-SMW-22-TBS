@@ -57,7 +57,7 @@ namespace TramBeheerSysteem
             //          }
             //      }
             //    }
-            //      else
+            //      else if (s.nummer == SectorNR && s.blokkade ==false)
             //    {
             //      MessageBox.Show("Sector is Geblokkeerd");
             //      s.blokkade==true;
