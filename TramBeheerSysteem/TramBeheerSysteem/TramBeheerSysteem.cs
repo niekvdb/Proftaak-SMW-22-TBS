@@ -167,6 +167,7 @@ namespace TramBeheerSysteem
             //      else
             //    {
             //      DatabaseManager.VerwijderTram(NR);
+            //      MessageBox.Show("Tram is succesvol verwijderd");
             //     }
             //}
             

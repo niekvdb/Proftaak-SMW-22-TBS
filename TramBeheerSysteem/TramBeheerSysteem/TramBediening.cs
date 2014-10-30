@@ -25,6 +25,8 @@ namespace TramBeheerSysteem
                  wijzig.Text = "Wijzig Status";
                  this.Text = "Wijzig Status";
                  wijzig.Click += new EventHandler(this.wijzig_onclick);
+                 //foreach(Tram t in DatabaseManager.HaalTramsOp())
+                 //cbTramnummer.Items.Add(t.nummer)
              }
              if (KnopNummer == 0)
              {
@@ -43,7 +45,7 @@ namespace TramBeheerSysteem
                  return;
              }
 
-             string NR_string = tbTramnummer.Text;
+             string NR_string = cbTramnummer.Text;
              string Status = cbStatus.Text;
              int NR;
 
@@ -58,7 +60,7 @@ namespace TramBeheerSysteem
                  return;
              }
 
-             // foreach (Tram t in db.HaalTramsOp)
+             // foreach (Tram t in DatabaseManager.HaalTramsOp())
              //  {
              //     if (t.nummer == NR)
              //    {
@@ -80,7 +82,7 @@ namespace TramBeheerSysteem
                  MessageBox.Show("Selecteer een status");
                  return;
              }
-             string NR_string = tbTramnummer.Text;
+             string NR_string = cbTramnummer.Text;
              string Status = cbStatus.Text;
              int NR;
 

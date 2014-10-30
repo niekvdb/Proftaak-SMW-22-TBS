@@ -31,17 +31,17 @@
             this.gbTram = new System.Windows.Forms.GroupBox();
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.lbStatus = new System.Windows.Forms.Label();
-            this.tbTramnummer = new System.Windows.Forms.TextBox();
             this.lbTramnummer = new System.Windows.Forms.Label();
             this.btnVoegToe = new System.Windows.Forms.Button();
+            this.cbTramnummer = new System.Windows.Forms.ComboBox();
             this.gbTram.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbTram
             // 
+            this.gbTram.Controls.Add(this.cbTramnummer);
             this.gbTram.Controls.Add(this.cbStatus);
             this.gbTram.Controls.Add(this.lbStatus);
-            this.gbTram.Controls.Add(this.tbTramnummer);
             this.gbTram.Controls.Add(this.lbTramnummer);
             this.gbTram.Controls.Add(this.btnVoegToe);
             this.gbTram.Location = new System.Drawing.Point(170, 28);
@@ -78,14 +78,6 @@
             this.lbStatus.TabIndex = 12;
             this.lbStatus.Text = "Status";
             // 
-            // tbTramnummer
-            // 
-            this.tbTramnummer.Location = new System.Drawing.Point(13, 78);
-            this.tbTramnummer.Margin = new System.Windows.Forms.Padding(4);
-            this.tbTramnummer.Name = "tbTramnummer";
-            this.tbTramnummer.Size = new System.Drawing.Size(159, 22);
-            this.tbTramnummer.TabIndex = 9;
-            // 
             // lbTramnummer
             // 
             this.lbTramnummer.AutoSize = true;
@@ -101,10 +93,18 @@
             this.btnVoegToe.Location = new System.Drawing.Point(12, 196);
             this.btnVoegToe.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoegToe.Name = "btnVoegToe";
-            this.btnVoegToe.Size = new System.Drawing.Size(157, 28);
+            this.btnVoegToe.Size = new System.Drawing.Size(160, 28);
             this.btnVoegToe.TabIndex = 0;
             this.btnVoegToe.Text = "Voeg Toe";
             this.btnVoegToe.UseVisualStyleBackColor = true;
+            // 
+            // cbTramnummer
+            // 
+            this.cbTramnummer.FormattingEnabled = true;
+            this.cbTramnummer.Location = new System.Drawing.Point(7, 76);
+            this.cbTramnummer.Name = "cbTramnummer";
+            this.cbTramnummer.Size = new System.Drawing.Size(160, 24);
+            this.cbTramnummer.TabIndex = 14;
             // 
             // Voeg_Tram_toe
             // 
@@ -126,8 +126,8 @@
         private System.Windows.Forms.GroupBox gbTram;
         private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label lbStatus;
-        private System.Windows.Forms.TextBox tbTramnummer;
         private System.Windows.Forms.Label lbTramnummer;
         private System.Windows.Forms.Button btnVoegToe;
+        private System.Windows.Forms.ComboBox cbTramnummer;
     }
 }
