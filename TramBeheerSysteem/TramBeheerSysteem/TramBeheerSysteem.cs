@@ -209,7 +209,11 @@ namespace TramBeheerSysteem
             SpoorBediening s = new SpoorBediening();
             s.Show();
         }
-
+        /// <summary>
+        /// Tijdelijk gebruikt om te debuggen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
             // Snel voorbeeld van controls zoeken d.m.v. Tag
@@ -244,6 +248,16 @@ namespace TramBeheerSysteem
             spoor = spoor.Substring(0, spoor.IndexOf("_"));
             sector = tag.Substring((tag.IndexOf("_")+1));
             MessageBox.Show("Spoor: "+spoor+System.Environment.NewLine + "Sector: "+sector);
+        }
+        /// <summary>
+        /// Tijdelijk gebruikt om te debuggen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            DatabaseManager dbManager = new DatabaseManager();
+            MessageBox.Show((dbManager.KrijgFunctie("Henk_Bestuurder")));
         }
 
     }

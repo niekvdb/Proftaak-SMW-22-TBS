@@ -89,7 +89,7 @@
             // 
             this.cbTrams.FormattingEnabled = true;
             this.cbTrams.Location = new System.Drawing.Point(6, 30);
-            this.cbTrams.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbTrams.Margin = new System.Windows.Forms.Padding(2);
             this.cbTrams.Name = "cbTrams";
             this.cbTrams.Size = new System.Drawing.Size(121, 21);
             this.cbTrams.TabIndex = 3;
@@ -133,6 +133,7 @@
             this.btnStop.TabIndex = 1;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnStart
             // 
