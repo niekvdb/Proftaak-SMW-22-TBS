@@ -253,15 +253,5 @@ namespace TramBeheerSysteem
             sector = tag.Substring((tag.IndexOf("_")+1));
             MessageBox.Show("Spoor: "+spoor+System.Environment.NewLine + "Sector: "+sector);
         }
-        /// <summary>
-        /// Tijdelijk gebruikt om te debuggen.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-         //   DatabaseManager dbManager = new DatabaseManager();
-         //   MessageBox.Show((dbManager.KrijgFunctie("Henk_Bestuurder")));
-        }
     }
 }
