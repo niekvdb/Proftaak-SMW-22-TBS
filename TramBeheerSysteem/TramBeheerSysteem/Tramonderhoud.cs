@@ -6,21 +6,33 @@ using System.Threading.Tasks;
 
 namespace TramBeheerSysteem
 {
-    class Tramonderhoud
+    public class Tramonderhoud
     {
         public int Id { get; private set; }
         public Medewerker Medewerker { get; private set; }
         public Tram Tram { get; private set; }
         public DateTime BeschikbaarDatum { get; private set; }
-        public string TypeOnderhoud { get; private set; }
+        public TypeOnderhoud TypeOnderhoud { get; private set; }
+        public string Opmerking { get; private set; }
 
-        public Tramonderhoud(int id, Medewerker medewerker, Tram tram, DateTime beschikbaarDatum, string typeOnderhoud)
+
+        public Tramonderhoud(int id, Medewerker medewerker, Tram tram, DateTime beschikbaarDatum, TypeOnderhoud typeOnderhoud, string opmerking)
         {
             Id = id;
             Medewerker = medewerker;
             Tram = tram;
             BeschikbaarDatum = beschikbaarDatum;
             TypeOnderhoud = typeOnderhoud;
+            Opmerking = opmerking;
+        }
+
+        public Tramonderhoud(Medewerker medewerker, Tram tram, DateTime beschikbaarDatum, TypeOnderhoud typeOnderhoud, string opmerking)
+        {
+            Medewerker = medewerker;
+            Tram = tram;
+            BeschikbaarDatum = beschikbaarDatum;
+            TypeOnderhoud = typeOnderhoud;
+            Opmerking = opmerking;
         }
 
         public void OnderhoudKlaar()
