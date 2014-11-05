@@ -206,7 +206,7 @@ namespace TramBeheerSysteem
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
-                        Medewerker medewerker = null;
+                        Medewerker medewerker = RemiseManager.medewerkerViaId(Convert.ToInt32(reader["Medewerker_ID"]));
                         Tram tram = TramManager.tramViaId(Convert.ToInt32(reader["Tram_ID"]));
                         DateTime beschikbaarDatum = Convert.ToDateTime(reader["DatumBeschikbaar"]);
                         DateTime datumTijd = Convert.ToDateTime(reader["DatumTijdStip"]);
@@ -226,6 +226,43 @@ namespace TramBeheerSysteem
                 connection.Close();
             }
             return onderhoudsBeurten;
+        }
+
+        public static List<Medewerker> LaadMedewerkers()
+        {
+            List<Medewerker> medewerkers = null;
+            try
+            {
+                connection.Open();
+                OracleCommand command = new OracleCommand("SELECT * FROM MEDEWERKER");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                OracleDataReader reader = command.ExecuteReader();
+
+                if (!reader.HasRows) return null;
+                else
+                {
+                    medewerkers = new List<Medewerker>();
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["ID"]);
+                        Functie functie = (Functie) Convert.ToInt32(reader["Functie_ID"]);
+                        string naam = Convert.ToString(reader["Naam"]);
+
+                        medewerkers.Add(new Medewerker(id, functie, naam));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return medewerkers;
         }
 
         public static void registreerOnderhoud(Tramonderhoud onderhoud)
