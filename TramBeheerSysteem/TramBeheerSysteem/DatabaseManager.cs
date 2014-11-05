@@ -221,6 +221,5 @@ namespace TramBeheerSysteem
                 connection.Close();
             }
         }
-        }
     }
 }

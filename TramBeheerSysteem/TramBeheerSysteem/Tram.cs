@@ -33,7 +33,11 @@ namespace TramBeheerSysteem
 
         public void Onderhoud(TypeOnderhoud typeOnderhoud, string opmerking)
         {
-            this.IsNietVervuild();
+            if (typeOnderhoud == TypeOnderhoud.GroteSchoonmaak || typeOnderhoud == TypeOnderhoud.KleineSchoonmaak)
+            {
+                this.IsNietVervuild();
+            }
+            else if (typeOnderhoud)
             Tramonderhoud onderhoud = new Tramonderhoud(null, this, DateTime.Now, typeOnderhoud, opmerking);
             DatabaseManager.registreerOnderhoud(onderhoud);
         }
