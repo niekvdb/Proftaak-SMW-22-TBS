@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TramBeheerSysteem
 {
-    enum Tramtype
+    public enum Tramtype
     {
         Combino,
         DkCombino,

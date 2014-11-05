@@ -98,6 +98,7 @@
     <Compile Include="Sector.cs" />
     <Compile Include="Spoor.cs" />
     <Compile Include="Tram.cs" />
+    <Compile Include="TramIndeling.cs" />
     <Compile Include="Tramonderhoud.cs" />
     <Compile Include="Tramtype.cs" />
     <Compile Include="TypeOnderhoud.cs" />
@@ -107,6 +108,12 @@
     </Compile>
     <Compile Include="TramBediening.Designer.cs">
       <DependentUpon>TramBediening.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoegTramToe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoegTramToe.Designer.cs">
+      <DependentUpon>VoegTramToe.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="OnderhoudApplicatie.resx">
       <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
@@ -128,6 +135,9 @@
     </Compile>
     <EmbeddedResource Include="TramBediening.resx">
       <DependentUpon>TramBediening.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoegTramToe.resx">
+      <DependentUpon>VoegTramToe.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

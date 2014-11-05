@@ -69,5 +69,87 @@ namespace TramBeheerSysteem
 
             return tram;
         }
+
+        public static List<Spoor> KrijgAlleSporen()
+        {
+            List<Spoor> alleSporenList = new List<Spoor>();
+            try
+            {
+                connection.Open();
+                OracleCommand command = new OracleCommand("SELECT * FROM SPOOR");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                OracleDataReader reader = command.ExecuteReader();
+
+                if (!reader.HasRows) return null;
+                else
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["ID"]);
+                        Remise remise = null;
+                        List<Sector> sectorList = null;
+                        int spoornummer = Convert.ToInt16(reader["Nummer"]);
+                        int lengte = Convert.ToInt16(reader["Lengte"]);
+                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
+                        bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
+                        Spoor spoor = new Spoor(id,remise,spoornummer,lengte,beschikbaar,blokkade,false,sectorList);
+                        alleSporenList.Add(spoor);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return alleSporenList;
+        }
+
+        public static List<Sector> krijgSectors(Spoor spoor)
+        {
+            List<Sector> spoorSectors = new List<Sector>();
+            try
+            {
+                connection.Open();
+                OracleCommand command = new OracleCommand("SELECT * FROM SPOOR");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                OracleDataReader reader = command.ExecuteReader();
+
+                if (!reader.HasRows) return null;
+                else
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["ID"]);
+                        int nummer = Convert.ToInt32(reader["Nummer"]);
+                        Tram tram = TramInformatie(Convert.ToInt16((reader["Tram_ID"])));
+                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
+                        bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
+                        Sector sector = new Sector(id,nummer,tram,beschikbaar,blokkade);
+                        spoorSectors.Add(sector);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return spoorSectors;
+        }
+
+       
     }
 }
