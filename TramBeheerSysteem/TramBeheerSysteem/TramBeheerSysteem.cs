@@ -180,7 +180,7 @@ namespace TramBeheerSysteem
                 return;
             }           
             int NR = Convert.ToInt32(cbTrams.Text);
-            foreach (Tram t in TramManager.LaadTrams())
+            foreach (Tram t in TramManager.Trams)
             {
                 if (t.id != NR)
                 {

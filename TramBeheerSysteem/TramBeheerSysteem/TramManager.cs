@@ -9,6 +9,7 @@ namespace TramBeheerSysteem
     public static class TramManager
     {
         public static List<Tram> Trams = new List<Tram>();
+        public static List<Tramonderhoud> onderhoudsBeurten = new List<Tramonderhoud>(); 
 
         static TramManager()
         {
