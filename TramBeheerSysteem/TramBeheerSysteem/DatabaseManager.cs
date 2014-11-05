@@ -147,17 +147,10 @@ namespace TramBeheerSysteem
         public static List<Tram> LaadTrams()
         {
             List<Tram> trams = null;
-
-            return trams;
-        }
-
-        public static Tram TramInformatie(int tramnummer)
-        {
-            Tram tram = null;
             try
             {
                 connection.Open();
-                OracleCommand command = new OracleCommand("SELECT * FROM TRAM WHERE Tram_ID = " + tramnummer);
+                OracleCommand command = new OracleCommand("SELECT * FROM TRAM");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
@@ -166,22 +159,20 @@ namespace TramBeheerSysteem
                 if (!reader.HasRows) return null;
                 else
                 {
+                    trams = new List<Tram>();
                     while (reader.Read())
                     {
-                        int id = Convert.ToInt32(reader["Tram_ID"]);
-                        Remise remise = null;
+                        int id = Convert.ToInt32(reader["ID"]);
                         Tramtype tramtype = (Tramtype) Convert.ToInt32(reader["Tramtype_ID"]);
                         int lengte = Convert.ToInt32(reader["Lengte"]);
                         string status = Convert.ToString(reader["Status"]);
+                        Remise remise = RemiseManager.remiseViaId(Convert.ToInt32(reader["Remise_ID"]));
                         bool vervuild = Convert.ToBoolean(reader["Vervuild"]);
                         bool defect = Convert.ToBoolean(reader["Defect"]);
                         bool conducteurGeschikt = Convert.ToBoolean(reader["ConducteurGeschikt"]);
                         bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
-                        Sector sector = null;
 
-                        tram = new Tram(id, tramtype, lengte, status,remise, vervuild, defect, conducteurGeschikt,
-                            beschikbaar);
-
+                        trams.Add(new Tram(id, tramtype, lengte, status, remise, vervuild, defect, conducteurGeschikt, beschikbaar));
                     }
                 }
             }
@@ -193,17 +184,16 @@ namespace TramBeheerSysteem
             {
                 connection.Close();
             }
-
-            return tram;
+            return trams;
         }
 
-        public static List<Spoor> KrijgAlleSporen()
+        public static List<Tramonderhoud> LaadTramonderhoud()
         {
-            List<Spoor> alleSporenList = new List<Spoor>();
+            List<Tramonderhoud> onderhoudsBeurten = null;
             try
             {
                 connection.Open();
-                OracleCommand command = new OracleCommand("SELECT * FROM SPOOR");
+                OracleCommand command = new OracleCommand("SELECT * FROM TRAM_ONDERHOUD");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
@@ -212,17 +202,18 @@ namespace TramBeheerSysteem
                 if (!reader.HasRows) return null;
                 else
                 {
+                    onderhoudsBeurten = new List<Tramonderhoud>();
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
-                        Remise remise = null;
-                        List<Sector> sectorList = KrijgSectors(new Spoor(1,null,0,0,false,false,null));
-                        int spoornummer = Convert.ToInt16(reader["Nummer"]);
-                        int lengte = sectorList.Count();
-                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
-                        bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
-                        Spoor spoor = new Spoor(id,remise,spoornummer,lengte,beschikbaar,blokkade,sectorList);
-                        alleSporenList.Add(spoor);
+                        Medewerker medewerker = null;
+                        Tram tram = TramManager.tramViaId(Convert.ToInt32(reader["Tram_ID"]));
+                        DateTime beschikbaarDatum = Convert.ToDateTime(reader["DatumBeschikbaar"]);
+                        DateTime datumTijd = Convert.ToDateTime(reader["DatumTijdStip"]);
+                        TypeOnderhoud typeOnderhoud = (TypeOnderhoud) Convert.ToInt32(reader["TypeOnderhoud"]);
+                        string opmerking = Convert.ToString(reader["Notitie"]);
+
+                        onderhoudsBeurten.Add(new Tramonderhoud(id, medewerker, tram, beschikbaarDatum, datumTijd, typeOnderhoud, opmerking));
                     }
                 }
             }
@@ -234,39 +225,30 @@ namespace TramBeheerSysteem
             {
                 connection.Close();
             }
-
-            return alleSporenList;
+            return onderhoudsBeurten;
         }
 
-        public static List<Sector> KrijgSectors(Spoor spoor)
+        public static void registreerOnderhoud(Tramonderhoud onderhoud)
         {
-            List<Sector> spoorSectors = new List<Sector>();
             try
             {
                 connection.Open();
-                OracleCommand command = new OracleCommand("SELECT * FROM SECTOR WHERE SPOOR_ID = " + spoor.Id);
+
+                OracleCommand command = new OracleCommand("INSERT INTO TRAM_ONDERHOUD(Medewerker_ID, Tram_ID, DatumTijdStip, DatumBeschikbaar, TypeOnderhoud, Notitie)" +
+                                                            "VALUES (:medewerker_ID, :tram_ID, :datumTijdstip, :datumBeschikbaar, :typeOnderhoud, :notitie)");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
-                OracleDataReader reader = command.ExecuteReader();
+                command.Parameters.Add(":medewerker_ID", onderhoud.Medewerker.Id);
+                command.Parameters.Add(":tram_ID", onderhoud.Tram.Id);
+                command.Parameters.Add(":datumTijdstip", onderhoud.DatumTijdstip);
+                command.Parameters.Add(":datumBeschikbaar", onderhoud.BeschikbaarDatum);
+                command.Parameters.Add(":typeOnderhoud", onderhoud.TypeOnderhoud);
+                command.Parameters.Add(":notitie", onderhoud.Opmerking);
 
-                if (!reader.HasRows) return null;
-                else
-                {
-                    while (reader.Read())
-                    {
-                        int id = Convert.ToInt32(reader["ID"]);
-                        int spoorID = Convert.ToInt32(reader["Spoor_ID"]);
-                        Tram tram = TramInformatie(Convert.ToInt16((reader["Tram_ID"])));
-                        int nummer = Convert.ToInt32(reader["Nummer"]);
-                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
-                        bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
-                        Sector sector = new Sector(id,spoorID,tram,nummer,beschikbaar,blokkade);
-                        spoorSectors.Add(sector);
-                    }
-                }
+                command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (OracleException)
             {
                 throw;
             }
@@ -274,10 +256,6 @@ namespace TramBeheerSysteem
             {
                 connection.Close();
             }
-
-            return spoorSectors;
         }
-
-       
     }
 }

@@ -33,8 +33,9 @@ namespace TramBeheerSysteem
                 //cbTrams.Items.Add(t.nummer);
             //}
 
-            TramManager.LaadTrams();
             RemiseManager.LaadRemises();
+            TramManager.LaadTrams();
+            RemiseManager.LaadSporen();
         }
 
         private List<Sector> GenerateSectorList(int Lengte)
@@ -179,13 +180,9 @@ namespace TramBeheerSysteem
                 return;
             }           
             int NR = Convert.ToInt32(cbTrams.Text);
-            foreach (Tram t in TramManager.LaadTrams())
+            foreach (Tram t in TramManager.Trams)
             {
-                if (t.id != NR)
-                {
-                    MessageBox.Show("Tram-nummer bestaat niet");
-                }
-                else
+                if (t.Id == NR)
                 {
                     //TramManager.VerwijderTram(NR);
                     MessageBox.Show("Tram is succesvol verwijderd");

@@ -9,6 +9,7 @@ namespace TramBeheerSysteem
     public static class TramManager
     {
         public static List<Tram> Trams = new List<Tram>();
+        public static List<Tramonderhoud> onderhoudsBeurten = new List<Tramonderhoud>(); 
 
         static TramManager()
         {
@@ -18,14 +19,14 @@ namespace TramBeheerSysteem
         public static List<Tram> LaadTrams()
         {
             Trams = DatabaseManager.LaadTrams();
-            return Trams;
+            onderhoudsBeurten = DatabaseManager.LaadTramonderhoud();
         }
 
         public static Tram tramViaId(int id)
         {
             foreach (Tram tram in Trams)
             {
-                if (tram.id == id) return tram;
+                if (tram.Id == id) return tram;
             }
 
             return null;

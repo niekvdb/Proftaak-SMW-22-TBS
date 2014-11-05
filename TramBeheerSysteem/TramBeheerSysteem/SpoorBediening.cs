@@ -44,6 +44,7 @@ namespace TramBeheerSysteem
                         if (sec.Id > SectorNR)
                         {
                             sec.Deblokkeer();
+                            RemiseManager.UpdateSectorStatus(sec.Id);
                         }
                     }
                 }
@@ -56,6 +57,7 @@ namespace TramBeheerSysteem
                         if (sec.Id > SectorNR)
                         {
                             sec.Blokkeer();
+                            RemiseManager.UpdateSectorStatus(sec.Id);
                         }
                     }
                 }

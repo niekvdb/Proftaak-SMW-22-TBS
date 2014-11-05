@@ -48,10 +48,6 @@ namespace TramBeheerSysteem
                         {
                             RemiseManager.VoegTramToeAanSector(NR2,NR);
                         }
-                        else
-                        {
-                            MessageBox.Show("Sector bestaat niet"); 
-                        }
                 }
                 else
                 {
