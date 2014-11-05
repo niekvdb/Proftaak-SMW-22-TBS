@@ -64,6 +64,46 @@ namespace TramBeheerSysteem
             return remises;
         }
 
+        public static List<Sector> LaadSectoren()
+        {
+            List<Sector> sectoren = null;
+            try
+            {
+                connection.Open();
+                OracleCommand command = new OracleCommand("SELECT * FROM REMISE");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                OracleDataReader reader = command.ExecuteReader();
+
+                if (!reader.HasRows) return null;
+                else
+                {
+                    sectoren = new List<Sector>();
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["ID"]);
+                        int spoorNummer = Convert.ToInt32(reader["Spoor_ID"]);
+                        Tram tram = null;
+                        int nummer = Convert.ToInt32(reader["Nummer"]);
+                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
+                        bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
+
+                        sectoren.Add(new Sector(id, spoorNummer, tram, nummer, beschikbaar, blokkade));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return sectoren;
+        }
+
         public static List<Spoor> LaadSporen()
         {
             List<Spoor> sporen = null;
@@ -84,12 +124,12 @@ namespace TramBeheerSysteem
                     {
                         int id = Convert.ToInt32(reader["ID"]);
                         Remise remise = RemiseManager.remiseViaId(Convert.ToInt32(reader["Remise_ID"]));
-                        int nummer = Convert.ToInt32(reader["GroteServiceBeurtenPerDag"]);
-                        int kleineServiceBeurtenPerDag = Convert.ToInt32(reader["KleineServiceBeurtenPerDag"]);
-                        int groteSchoonmaakBeurtenPerDag = Convert.ToInt32(reader["GroteSchoonmaakBeurtenPerDag"]);
-                        int kleineSchoonmaakBeurtenPerDag = Convert.ToInt32(reader["KleineSchoonmaakBeurtenPerDag"]);
+                        int nummer = Convert.ToInt32(reader["Nummer"]);
+                        int lengte = Convert.ToInt32(reader["Lengte"]);
+                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
+                        bool inUitrijSpoor = Convert.ToBoolean(reader["InUitRijspoor"]);
 
-                        sporen.Add(new Spoor());
+                        sporen.Add(new Spoor(id, remise, nummer, lengte, beschikbaar, inUitrijSpoor, RemiseManager.sectorenVanSpoor(id)));
                     }
                 }
             }
@@ -102,13 +142,6 @@ namespace TramBeheerSysteem
                 connection.Close();
             }
             return sporen;
-        }
-
-        public static List<Sector> LaadSectoren()
-        {
-            List<Sector> sectoren = null;
-
-            return sectoren;
         }
 
         public static List<Tram> LaadTrams()
