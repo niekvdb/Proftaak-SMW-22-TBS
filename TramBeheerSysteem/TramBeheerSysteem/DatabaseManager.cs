@@ -194,7 +194,33 @@ namespace TramBeheerSysteem
 
         public static void registreerOnderhoud(Tramonderhoud onderhoud)
         {
-            //ToDo
+            try
+            {
+                connection.Open();
+
+                OracleCommand command = new OracleCommand("INSERT INTO TRAM_ONDERHOUD(Medewerker_ID, Tram_ID, DatumTijdStip, DatumBeschikbaar, TypeOnderhoud, Notitie)" +
+                                                            "VALUES (:medewerker_ID, :tram_ID, :datumTijdstip, :datumBeschikbaar, :typeOnderhoud, :notitie)");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                command.Parameters.Add(":medewerker_ID", onderhoud.Medewerker.Id);
+                command.Parameters.Add(":tram_ID", onderhoud.Tram.Id);
+                command.Parameters.Add(":datumTijdstip", onderhoud.DatumTijdstip);
+                command.Parameters.Add(":datumBeschikbaar", null);
+                command.Parameters.Add(":typeOnderhoud", onderhoud.TypeOnderhoud);
+                command.Parameters.Add(":notitie", onderhoud.Opmerking);
+
+                command.ExecuteNonQuery();
+            }
+            catch (OracleException)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
         }
     }
 }
