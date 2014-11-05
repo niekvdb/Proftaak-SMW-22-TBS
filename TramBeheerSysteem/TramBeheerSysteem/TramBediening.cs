@@ -43,7 +43,7 @@ namespace TramBeheerSysteem
 
             foreach (Tram t in DatabaseManager.HaalTramsOp)
             {
-                if (t.nummer == NR && t.status == StatusCb.text)
+                if (t.nummer == NR && t.status == cbStatus.Text)
                 {
                     MessageBox.Show("Tram heeft deze status al!");
                 }

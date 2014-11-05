@@ -121,6 +121,7 @@
             this.Controls.Add(this.tbTramnummer);
             this.Name = "VoegTramToe";
             this.Text = "VoegTramToe";
+            this.Load += new System.EventHandler(this.VoegTramToe_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

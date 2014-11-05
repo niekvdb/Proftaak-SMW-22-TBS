@@ -15,25 +15,15 @@ namespace TramBeheerSysteem
         public SpoorBediening()
         {
             InitializeComponent();
-            //foreach(spoor s in Database.HaalSporenOp())
-            //cbSpoor.Items.Add(s.nummer);
+            foreach(Spoor s in DatabaseManager.KrijgAlleSporen())
+            cbSpoor.Items.Add(Convert.ToString(s.Nummer));
         }
 
         private void btnSpoorstatus_Click(object sender, EventArgs e)
         {
-            string SpoorNR_string = cbSpoor.Text;
             string SectorNR_string = cbSector.Text;
             int SectorNR;
-            int SpoorNR;
-            try
-            {
-                SpoorNR = Convert.ToInt32(SpoorNR_string);
-            }
-            catch
-            {
-                MessageBox.Show("Voer een spoornummer in");
-                return;
-            }
+            int SpoorNR = Convert.ToInt32(cbSpoor.Text);
             try
             {
                 SectorNR = Convert.ToInt32(SectorNR_string);
@@ -43,34 +33,34 @@ namespace TramBeheerSysteem
                 MessageBox.Show("Voer een sectornummer in");
                 return;
             }
-            // foreach (Sector s in DatabaseManager.HaalSectorenOp(SpoorNR))
-            //  {
-            //     if (s.nummer == SectorNR && s.blokkade ==true)
-            //    {
-            //        MessageBox.Show("Sector is vrijgemaakt");
-            //        s.blokkade==false;      
-            //      foreach (Sector sec in DatabaseManager.HaalSectorenOp(SpoorNR))
-            //      {
-            //          if(sec.nummer>SectorNR)
-            //          {
-            //              sec.blokkade=false;
-            //          }
-            //      }
-            //    }
-            //      else if (s.nummer == SectorNR && s.blokkade ==false)
-            //    {
-            //      MessageBox.Show("Sector is Geblokkeerd");
-            //      s.blokkade==true;
-            //      foreach (Sector sec in DatabaseManager.HaalSectorenOp(SpoorNR))
-            //      {
-            //          if(sec.nummer>SectorNR)
-            //          {
-            //              sec.blokkeer();
-            //          }
-            //      }
-            //     }
-            //}
-            // DatabaseManager.UpdateSpoorStatus(NR);
+            foreach (Sector s in DatabaseManager.HaalSectorenOp(SpoorNR))
+            {
+                if (s.Id == SectorNR && s.Blokkade == true)
+                {
+                    MessageBox.Show("Sector is vrijgemaakt");
+                    s.Deblokkeer();
+                    foreach (Sector sec in DatabaseManager.HaalSectorenOp(SpoorNR))
+                    {
+                        if (sec.Id > SectorNR)
+                        {
+                            sec.Deblokkeer();
+                        }
+                    }
+                }
+                else if (s.Id == SectorNR && s.Blokkade == false)
+                {
+                    MessageBox.Show("Sector is Geblokkeerd");
+                    s.Blokkeer();
+                    foreach (Sector sec in DatabaseManager.HaalSectorenOp(SpoorNR))
+                    {
+                        if (sec.Id > SectorNR)
+                        {
+                            sec.Blokkeer();
+                        }
+                    }
+                }
+            }
+            DatabaseManager.UpdateSpoorStatus(NR);
         }
 
         private void SpoorBediening_Load(object sender, EventArgs e)
@@ -81,8 +71,8 @@ namespace TramBeheerSysteem
         private void cbSpoor_SelectedIndexChanged(object sender, EventArgs e)
         {
             int SpoorNummer = Convert.ToInt32(cbSpoor.Text);
-            //foreach(sector sec in Database.HaalSectorenOp(SpoorNummer))
-            //cbSector.Items.Add(sec.nummer);
+            foreach(Sector sec in Database.HaalSectorenOp(SpoorNummer))
+            cbSector.Items.Add(sec.Id);
         }
     }
 }

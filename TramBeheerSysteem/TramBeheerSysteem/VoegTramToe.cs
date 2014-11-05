@@ -43,8 +43,8 @@ namespace TramBeheerSysteem
             {
                 if (DatabaseManager.HaalSpoorOp(NR1))
                 {
-                    foreach (Sector sec in HaalSectorenOp(NR1))
-                        if (sec.Nummer = NR2)
+                    foreach (Sector sec in DatabaseManager.HaalSectorenOp(NR1))
+                        if (sec.Id == NR2)
                         {
                             DatabaseManager.VoegTramToeAanSector(NR);
                         }
@@ -68,6 +68,11 @@ namespace TramBeheerSysteem
         private void btnAnnuleer_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void VoegTramToe_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
