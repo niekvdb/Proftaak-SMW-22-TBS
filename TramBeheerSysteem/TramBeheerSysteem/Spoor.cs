@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TramBeheerSysteem
 {
-    class Spoor
+    public class Spoor
     {
         public int Id { get; private set; }
         public Remise Remise { get; private set; }
