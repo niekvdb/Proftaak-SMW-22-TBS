@@ -32,9 +32,6 @@
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.tabOnderhoud = new System.Windows.Forms.TabControl();
             this.tabSchoonmaak = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblSchoonmaak = new System.Windows.Forms.Label();
             this.pnlSchoonmaak = new System.Windows.Forms.Panel();
             this.lvwSchoonmaak = new System.Windows.Forms.ListView();
@@ -43,6 +40,7 @@
             this.clmSchoonmaakSoort = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSchoonmaakSpoor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSchoonmaakSchoonmaak = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblReparatie = new System.Windows.Forms.Label();
             this.pnlReparatie = new System.Windows.Forms.Panel();
             this.lvwReparatie = new System.Windows.Forms.ListView();
@@ -51,10 +49,20 @@
             this.clmReparatieSoort = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmReparatieSpoor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmReparatieReparatie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chkSchoonmaak = new System.Windows.Forms.CheckBox();
+            this.btnSchoonmaakBevestiging = new System.Windows.Forms.Button();
+            this.tbxSchoonmaakBevestiging = new System.Windows.Forms.TextBox();
+            this.lblSchoonmaakBevestiging = new System.Windows.Forms.Label();
+            this.lblReparatieBevestiging = new System.Windows.Forms.Label();
+            this.tbxReparatieBevestiging = new System.Windows.Forms.TextBox();
+            this.btnReparatieBevestiging = new System.Windows.Forms.Button();
+            this.chkReparatieBevestiging = new System.Windows.Forms.CheckBox();
             this.tabOnderhoud.SuspendLayout();
             this.tabSchoonmaak.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.pnlSchoonmaak.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.pnlReparatie.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +78,10 @@
             // 
             // tabSchoonmaak
             // 
+            this.tabSchoonmaak.Controls.Add(this.lblSchoonmaakBevestiging);
+            this.tabSchoonmaak.Controls.Add(this.tbxSchoonmaakBevestiging);
+            this.tabSchoonmaak.Controls.Add(this.btnSchoonmaakBevestiging);
+            this.tabSchoonmaak.Controls.Add(this.chkSchoonmaak);
             this.tabSchoonmaak.Controls.Add(this.lblSchoonmaak);
             this.tabSchoonmaak.Controls.Add(this.pnlSchoonmaak);
             this.tabSchoonmaak.Location = new System.Drawing.Point(4, 25);
@@ -78,37 +90,6 @@
             this.tabSchoonmaak.TabIndex = 0;
             this.tabSchoonmaak.Text = "Schoonmaak";
             this.tabSchoonmaak.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.lblReparatie);
-            this.tabPage3.Controls.Add(this.pnlReparatie);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1213, 507);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "Reparatie";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(631, 432);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(631, 432);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // lblSchoonmaak
             // 
@@ -173,6 +154,21 @@
             // 
             this.clmSchoonmaakSchoonmaak.Text = "Schoonmaak";
             this.clmSchoonmaakSchoonmaak.Width = 105;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.lblReparatieBevestiging);
+            this.tabPage3.Controls.Add(this.tbxReparatieBevestiging);
+            this.tabPage3.Controls.Add(this.btnReparatieBevestiging);
+            this.tabPage3.Controls.Add(this.chkReparatieBevestiging);
+            this.tabPage3.Controls.Add(this.lblReparatie);
+            this.tabPage3.Controls.Add(this.pnlReparatie);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1213, 507);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "Reparatie";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // lblReparatie
             // 
@@ -239,6 +235,98 @@
             this.clmReparatieReparatie.Text = "Reparatie";
             this.clmReparatieReparatie.Width = 105;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(631, 432);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(631, 432);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // chkSchoonmaak
+            // 
+            this.chkSchoonmaak.AutoSize = true;
+            this.chkSchoonmaak.Location = new System.Drawing.Point(724, 52);
+            this.chkSchoonmaak.Name = "chkSchoonmaak";
+            this.chkSchoonmaak.Size = new System.Drawing.Size(167, 21);
+            this.chkSchoonmaak.TabIndex = 11;
+            this.chkSchoonmaak.Text = "Schoonmaak Voltooid";
+            this.chkSchoonmaak.UseVisualStyleBackColor = true;
+            // 
+            // btnSchoonmaakBevestiging
+            // 
+            this.btnSchoonmaakBevestiging.Location = new System.Drawing.Point(724, 251);
+            this.btnSchoonmaakBevestiging.Name = "btnSchoonmaakBevestiging";
+            this.btnSchoonmaakBevestiging.Size = new System.Drawing.Size(81, 31);
+            this.btnSchoonmaakBevestiging.TabIndex = 12;
+            this.btnSchoonmaakBevestiging.Text = "Bevestig";
+            this.btnSchoonmaakBevestiging.UseVisualStyleBackColor = true;
+            // 
+            // tbxSchoonmaakBevestiging
+            // 
+            this.tbxSchoonmaakBevestiging.Location = new System.Drawing.Point(724, 88);
+            this.tbxSchoonmaakBevestiging.Multiline = true;
+            this.tbxSchoonmaakBevestiging.Name = "tbxSchoonmaakBevestiging";
+            this.tbxSchoonmaakBevestiging.Size = new System.Drawing.Size(286, 147);
+            this.tbxSchoonmaakBevestiging.TabIndex = 13;
+            // 
+            // lblSchoonmaakBevestiging
+            // 
+            this.lblSchoonmaakBevestiging.AutoSize = true;
+            this.lblSchoonmaakBevestiging.Location = new System.Drawing.Point(721, 17);
+            this.lblSchoonmaakBevestiging.Name = "lblSchoonmaakBevestiging";
+            this.lblSchoonmaakBevestiging.Size = new System.Drawing.Size(148, 17);
+            this.lblSchoonmaakBevestiging.TabIndex = 14;
+            this.lblSchoonmaakBevestiging.Text = "Bevestig Schoonmaak";
+            // 
+            // lblReparatieBevestiging
+            // 
+            this.lblReparatieBevestiging.AutoSize = true;
+            this.lblReparatieBevestiging.Location = new System.Drawing.Point(721, 17);
+            this.lblReparatieBevestiging.Name = "lblReparatieBevestiging";
+            this.lblReparatieBevestiging.Size = new System.Drawing.Size(128, 17);
+            this.lblReparatieBevestiging.TabIndex = 18;
+            this.lblReparatieBevestiging.Text = "Bevestig Reparatie";
+            // 
+            // tbxReparatieBevestiging
+            // 
+            this.tbxReparatieBevestiging.Location = new System.Drawing.Point(724, 88);
+            this.tbxReparatieBevestiging.Multiline = true;
+            this.tbxReparatieBevestiging.Name = "tbxReparatieBevestiging";
+            this.tbxReparatieBevestiging.Size = new System.Drawing.Size(286, 147);
+            this.tbxReparatieBevestiging.TabIndex = 17;
+            // 
+            // btnReparatieBevestiging
+            // 
+            this.btnReparatieBevestiging.Location = new System.Drawing.Point(724, 251);
+            this.btnReparatieBevestiging.Name = "btnReparatieBevestiging";
+            this.btnReparatieBevestiging.Size = new System.Drawing.Size(81, 31);
+            this.btnReparatieBevestiging.TabIndex = 16;
+            this.btnReparatieBevestiging.Text = "Bevestig";
+            this.btnReparatieBevestiging.UseVisualStyleBackColor = true;
+            // 
+            // chkReparatieBevestiging
+            // 
+            this.chkReparatieBevestiging.AutoSize = true;
+            this.chkReparatieBevestiging.Location = new System.Drawing.Point(724, 52);
+            this.chkReparatieBevestiging.Name = "chkReparatieBevestiging";
+            this.chkReparatieBevestiging.Size = new System.Drawing.Size(147, 21);
+            this.chkReparatieBevestiging.TabIndex = 15;
+            this.chkReparatieBevestiging.Text = "Reparatie Voltooid";
+            this.chkReparatieBevestiging.UseVisualStyleBackColor = true;
+            // 
             // OnderhoudApplicatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -250,9 +338,9 @@
             this.tabOnderhoud.ResumeLayout(false);
             this.tabSchoonmaak.ResumeLayout(false);
             this.tabSchoonmaak.PerformLayout();
+            this.pnlSchoonmaak.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.pnlSchoonmaak.ResumeLayout(false);
             this.pnlReparatie.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -281,5 +369,13 @@
         private System.Windows.Forms.ColumnHeader clmReparatieSoort;
         private System.Windows.Forms.ColumnHeader clmReparatieSpoor;
         private System.Windows.Forms.ColumnHeader clmReparatieReparatie;
+        private System.Windows.Forms.Label lblSchoonmaakBevestiging;
+        private System.Windows.Forms.TextBox tbxSchoonmaakBevestiging;
+        private System.Windows.Forms.Button btnSchoonmaakBevestiging;
+        private System.Windows.Forms.CheckBox chkSchoonmaak;
+        private System.Windows.Forms.Label lblReparatieBevestiging;
+        private System.Windows.Forms.TextBox tbxReparatieBevestiging;
+        private System.Windows.Forms.Button btnReparatieBevestiging;
+        private System.Windows.Forms.CheckBox chkReparatieBevestiging;
     }
 }
