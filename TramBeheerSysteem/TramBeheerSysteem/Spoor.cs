@@ -30,12 +30,18 @@ namespace TramBeheerSysteem
 
         public void Blokkeer()
         {
-            
+            foreach (Sector sector in SectorList)
+            {
+                sector.Blokkeer();
+            }
         }
 
         public void Deblokkeer()
         {
-            
+            foreach (Sector sector in SectorList)
+            {
+                sector.Deblokkeer();
+            }
         }
     }
 }
