@@ -173,7 +173,7 @@ namespace TramBeheerSysteem
                 MessageBox.Show("Selecteer een tram");
                 return;
             }           
-            int NR = Convert.ToInt32(cbTramnummer.Text);
+            int NR = Convert.ToInt32(cbTrams.Text);
             foreach (Tram t in DatabaseManager.HaalTramsOp)
             {
                 if (t.nummer != NR)
@@ -186,7 +186,6 @@ namespace TramBeheerSysteem
                     MessageBox.Show("Tram is succesvol verwijderd");
                 }
             }
-
         }
 
         private void TramBeheerSysteem_Load(object sender, EventArgs e)
