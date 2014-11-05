@@ -16,8 +16,8 @@ namespace TramBeheerSysteem
 
         static RemiseManager()
         {
-            LaadRemises();
-            LaadSporen();
+            //LaadRemises();
+            //LaadSporen();
         }
 
         public static void LaadRemises()

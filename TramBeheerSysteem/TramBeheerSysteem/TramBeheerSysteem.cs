@@ -27,7 +27,7 @@ namespace TramBeheerSysteem
         {
             this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
-            VoegSporenToeVoorbeeld();
+            
             //foreach (Tram t in DatabaseManager.HaalTramsOp())
             //{
                 //cbTrams.Items.Add(t.nummer);
@@ -36,6 +36,7 @@ namespace TramBeheerSysteem
             RemiseManager.LaadRemises();
             TramManager.LaadTrams();
             RemiseManager.LaadSporen();
+            VoegSporenToeVoorbeeld();
         }
 
         private List<Sector> GenerateSectorList(int Lengte)
