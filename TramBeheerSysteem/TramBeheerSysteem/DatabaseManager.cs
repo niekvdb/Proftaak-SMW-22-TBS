@@ -147,7 +147,43 @@ namespace TramBeheerSysteem
         public static List<Tram> LaadTrams()
         {
             List<Tram> trams = null;
+            try
+            {
+                connection.Open();
+                OracleCommand command = new OracleCommand("SELECT * FROM SPOOR");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
 
+                OracleDataReader reader = command.ExecuteReader();
+
+                if (!reader.HasRows) return null;
+                else
+                {
+                    trams = new List<Tram>();
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["ID"]);
+                        Tramtype tramtype = (Tramtype) Convert.ToInt32(reader["Tramtype_ID"]);
+                        int lengte = Convert.ToInt32(reader["Lengte"]);
+                        string status = Convert.ToString(reader["Status"]);
+                        Remise remise = RemiseManager.remiseViaId(Convert.ToInt32(reader["Remise_ID"]));
+                        bool vervuild = Convert.ToBoolean(reader["Vervuild"]);
+                        bool defect = Convert.ToBoolean(reader["Defect"]);
+                        bool conducteurGeschikt = Convert.ToBoolean(reader["ConducteurGeschikt"]);
+                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
+
+                        trams.Add(new Tram(id, tramtype, lengte, status, remise, vervuild, defect, conducteurGeschikt, beschikbaar));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
             return trams;
         }
 

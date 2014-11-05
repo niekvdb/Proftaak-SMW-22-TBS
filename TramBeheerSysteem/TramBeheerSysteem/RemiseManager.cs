@@ -19,9 +19,14 @@ namespace TramBeheerSysteem
         public static void LaadRemises()
         {
             Remises = DatabaseManager.LaadRemises();
+        }
+
+        public static void LaadSporen()
+        {
             Sectors = DatabaseManager.LaadSectoren();
             Sporen = DatabaseManager.LaadSporen();
         }
+
         public static Remise remiseViaId(int id)
         {
             foreach (Remise remise in Remises)

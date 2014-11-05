@@ -33,8 +33,9 @@ namespace TramBeheerSysteem
                 //cbTrams.Items.Add(t.nummer);
             //}
 
-            TramManager.LaadTrams();
             RemiseManager.LaadRemises();
+            TramManager.LaadTrams();
+            RemiseManager.LaadSporen();
         }
 
         private List<Sector> GenerateSectorList(int Lengte)
