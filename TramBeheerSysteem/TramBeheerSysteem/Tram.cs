@@ -34,9 +34,11 @@ namespace TramBeheerSysteem
             this.sector = sector;
         }
 
-        public void Verplaats(Sector sector)
+        public void Verplaats(Sector newSector)
         {
-            //ToDo
+            Sector oldSector = this.sector;
+            oldSector.ClearSector();
+            this.sector = newSector;
         }
 
         public void Onderhoud(TypeOnderhoud typeOnderhoud)
