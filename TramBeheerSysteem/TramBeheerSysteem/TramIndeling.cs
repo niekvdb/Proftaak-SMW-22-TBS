@@ -11,37 +11,47 @@ namespace TramBeheerSysteem
     {
         private List<Spoor> alleSporen = RemiseManager.Sporen;
         private int spoorTeller = 0;
+        private bool sporenOp = false;
 
         public List<Sector> DeelTramIn(Tram tram)
         {
-            Spoor ingedeeldSpoor = krijgEerstVolgendeSpoor();
-            if (krijgEerstVolgendeSpoor() != null)
+            
+            List<Sector> ingedeeldeSectors = null;
+            bool sectorFound = false;
+            if (sporenOp) return null;
+            while (!sectorFound)
             {
-                if (isSpoorBeschikbaar(ingedeeldSpoor))
+                Spoor ingedeeldSpoor = krijgEerstVolgendeSpoor();
+                if (ingedeeldSpoor != null)
                 {
-                    if (isSpoorLangGenoeg(ingedeeldSpoor, tram.lengte))
+                    if (1 == 1) //isSpoorBeschikbaar(ingedeeldSpoor))
                     {
-                        List<Sector> ingedeeldeSectors = vrijeSectoren(ingedeeldSpoor, tram);
-                        if (ingedeeldeSectors != null)
+                        if (isSpoorLangGenoeg(ingedeeldSpoor, tram.lengte))
                         {
-                            return ingedeeldeSectors;
+                            ingedeeldeSectors = vrijeSectoren(ingedeeldSpoor, tram);
+                            if (ingedeeldeSectors != null)
+                            {
+                                sectorFound = true;
+                            }
+                        
                         }
                     }
                 }
             }
-            return null;
+            return ingedeeldeSectors;
         }
 
         private Spoor krijgEerstVolgendeSpoor()
         {
             Spoor[] sporenArray = alleSporen.ToArray();
             spoorTeller++;
-            if (sporenArray.Count() <= spoorTeller)
+            if (spoorTeller < sporenArray.Count())
             {
                 return sporenArray[spoorTeller];
             }
             else
             {
+                sporenOp = true;
                 return null;
             }
         }
@@ -53,7 +63,9 @@ namespace TramBeheerSysteem
 
         private bool isSpoorLangGenoeg(Spoor spoor,int lengte)
         {
-            return (spoor.Lengte <= lengte);
+
+            Console.WriteLine("lengte: " + lengte + " SpoorLengte: " + spoor.Lengte);
+            return (lengte <= spoor.SectorList.Count);
         }
 
         private List<Sector> vrijeSectoren(Spoor spoor, Tram tram)
@@ -75,7 +87,7 @@ namespace TramBeheerSysteem
                 }
             }
             
-            return null;
+            return sectors;
         }
     }
 }
