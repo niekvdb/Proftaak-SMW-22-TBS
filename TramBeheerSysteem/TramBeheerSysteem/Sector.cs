@@ -15,7 +15,7 @@ namespace TramBeheerSysteem
         public bool Beschikbaar { get; private set; }
         public bool Blokkade { get; private set; }
 
-        public Sector(int id, int spoorNummer, int nummer, Tram tram, bool beschikbaar, bool blokkade)
+        public Sector(int id, int spoorNummer, Tram tram, int nummer, bool beschikbaar, bool blokkade)
         {
             this.Id = id;
             this.SpoorNummer = spoorNummer;
