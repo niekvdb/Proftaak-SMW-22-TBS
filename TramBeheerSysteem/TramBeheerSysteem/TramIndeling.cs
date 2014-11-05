@@ -41,10 +41,7 @@ namespace TramBeheerSysteem
                     DeelTramIn(tram);
                 }
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
         private Spoor krijgEerstVolgendeSpoor()
@@ -74,6 +71,7 @@ namespace TramBeheerSysteem
 
         private List<Sector> vrijeSectoren(Spoor spoor, Tram tram)
         {
+            return null;
         }
     }
 }
