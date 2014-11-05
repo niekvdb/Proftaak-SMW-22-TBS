@@ -48,12 +48,22 @@ namespace TramBeheerSysteem
 
         public void IsVervuild()
         {
-            //ToDO
+            this.vervuild = true;
         }
 
         public void IsDefect()
         {
-            //ToDo
+            this.defect = true;
+        }
+
+        public void IsNietVervuild()
+        {
+            this.vervuild = false;
+        }
+
+        public void IsNietDefect()
+        {
+            this.defect = false;
         }
     }
 }
