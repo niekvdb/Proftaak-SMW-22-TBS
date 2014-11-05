@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TramBeheerSysteem
 {
-    class Medewerker
+    public class Medewerker
     {
         public int Id { get; private set; }
         public Functie Functie { get; private set; }
