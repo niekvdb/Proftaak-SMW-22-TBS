@@ -179,8 +179,8 @@ namespace TramBeheerSysteem
                         bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
                         Sector sector = null;
 
-                        tram = new Tram(id, remise, tramtype, lengte, status, vervuild, defect, conducteurGeschikt,
-                            beschikbaar, sector);
+                        tram = new Tram(id, tramtype, lengte, status,remise, vervuild, defect, conducteurGeschikt,
+                            beschikbaar);
 
                     }
                 }
