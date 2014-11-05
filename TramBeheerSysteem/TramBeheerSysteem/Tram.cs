@@ -37,7 +37,10 @@ namespace TramBeheerSysteem
             {
                 this.IsNietVervuild();
             }
-            else if (typeOnderhoud)
+            else if (typeOnderhoud == TypeOnderhoud.GroteReparatie || typeOnderhoud == TypeOnderhoud.KleineReparatie)
+            {
+                this.IsNietDefect();
+            }
             Tramonderhoud onderhoud = new Tramonderhoud(null, this, DateTime.Now, typeOnderhoud, opmerking);
             DatabaseManager.registreerOnderhoud(onderhoud);
         }
