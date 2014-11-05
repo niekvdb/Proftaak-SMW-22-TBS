@@ -187,7 +187,7 @@ namespace TramBeheerSysteem
                 }
                 else
                 {
-                    TramManager.VerwijderTram(NR);
+                    //TramManager.VerwijderTram(NR);
                     MessageBox.Show("Tram is succesvol verwijderd");
                 }
             }
