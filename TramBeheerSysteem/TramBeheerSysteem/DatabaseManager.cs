@@ -38,7 +38,7 @@ namespace TramBeheerSysteem
 
                 OracleDataReader reader = command.ExecuteReader();
 
-                if (!reader.HasRows) return;
+                if (!reader.HasRows) return null;
                 else
                 {
                     while (reader.Read())
