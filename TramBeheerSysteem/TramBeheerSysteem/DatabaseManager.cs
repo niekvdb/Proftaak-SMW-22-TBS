@@ -183,9 +183,9 @@ namespace TramBeheerSysteem
                     {
                         int id = Convert.ToInt32(reader["ID"]);
                         Remise remise = null;
-                        List<Sector> sectorList = null;
+                        List<Sector> sectorList = KrijgSectors(new Spoor(1,null,0,0,false,false,false,null));
                         int spoornummer = Convert.ToInt16(reader["Nummer"]);
-                        int lengte = Convert.ToInt16(reader["Lengte"]);
+                        int lengte = sectorList.Count();
                         bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
                         bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
                         Spoor spoor = new Spoor(id,remise,spoornummer,lengte,beschikbaar,blokkade,false,sectorList);
@@ -205,13 +205,13 @@ namespace TramBeheerSysteem
             return alleSporenList;
         }
 
-        public static List<Sector> krijgSectors(Spoor spoor)
+        public static List<Sector> KrijgSectors(Spoor spoor)
         {
             List<Sector> spoorSectors = new List<Sector>();
             try
             {
                 connection.Open();
-                OracleCommand command = new OracleCommand("SELECT * FROM SPOOR");
+                OracleCommand command = new OracleCommand("SELECT * FROM SECTOR WHERE SPOOR_ID = " + spoor.Id);
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
