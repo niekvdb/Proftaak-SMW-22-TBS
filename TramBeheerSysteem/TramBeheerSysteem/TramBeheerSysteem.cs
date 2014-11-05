@@ -182,11 +182,7 @@ namespace TramBeheerSysteem
             int NR = Convert.ToInt32(cbTrams.Text);
             foreach (Tram t in TramManager.Trams)
             {
-                if (t.Id != NR)
-                {
-                    MessageBox.Show("Tram-nummer bestaat niet");
-                }
-                else
+                if (t.Id == NR)
                 {
                     TramManager.VerwijderTram(NR);
                     MessageBox.Show("Tram is succesvol verwijderd");
