@@ -41,13 +41,15 @@ namespace TramBeheerSysteem
 
            if (TramManager.tramViaId(NR) != null)
             {
-                if (RemiseManager.HaalSpoorOp(NR1))
+                if (RemiseManager.spoorViaId(NR1) != null)
                 {
                     foreach (Sector sec in RemiseManager.sectorenVanSpoor(NR1))
+                    {
                         if (sec.Id == NR2)
                         {
-                            RemiseManager.VoegTramToeAanSector(NR2,NR);
+                            //ToDo RemiseManager.VoegTramToeAanSector(NR2, NR);
                         }
+                    }
                 }
                 else
                 {

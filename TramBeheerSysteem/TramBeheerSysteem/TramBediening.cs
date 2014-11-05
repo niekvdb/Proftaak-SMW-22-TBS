@@ -51,7 +51,7 @@ namespace TramBeheerSysteem
                     else 
                     {
                         MessageBox.Show("Tramstatus is gewijzigd");
-                        //DatabaseManager.WijzigTramStatus(NR,Status);
+                        //ToDo DatabaseManager.WijzigTramStatus(NR,Status);
                     }
                 }
             }
