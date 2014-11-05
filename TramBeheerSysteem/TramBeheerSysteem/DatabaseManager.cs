@@ -216,12 +216,12 @@ namespace TramBeheerSysteem
                     {
                         int id = Convert.ToInt32(reader["ID"]);
                         Remise remise = null;
-                        List<Sector> sectorList = KrijgSectors(new Spoor(1,null,0,0,false,false,false,null));
+                        List<Sector> sectorList = KrijgSectors(new Spoor(1,null,0,0,false,false,null));
                         int spoornummer = Convert.ToInt16(reader["Nummer"]);
                         int lengte = sectorList.Count();
                         bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
                         bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
-                        Spoor spoor = new Spoor(id,remise,spoornummer,lengte,beschikbaar,blokkade,false,sectorList);
+                        Spoor spoor = new Spoor(id,remise,spoornummer,lengte,beschikbaar,blokkade,sectorList);
                         alleSporenList.Add(spoor);
                     }
                 }
@@ -256,11 +256,12 @@ namespace TramBeheerSysteem
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
-                        int nummer = Convert.ToInt32(reader["Nummer"]);
+                        int spoorID = Convert.ToInt32(reader["Spoor_ID"]);
                         Tram tram = TramInformatie(Convert.ToInt16((reader["Tram_ID"])));
+                        int nummer = Convert.ToInt32(reader["Nummer"]);
                         bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
                         bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
-                        Sector sector = new Sector(id,nummer,tram,beschikbaar,blokkade);
+                        Sector sector = new Sector(id,spoorID,tram,nummer,beschikbaar,blokkade);
                         spoorSectors.Add(sector);
                     }
                 }

@@ -257,7 +257,7 @@ namespace TramBeheerSysteem
         private void btnStop_Click(object sender, EventArgs e)
         {
             TramIndeling indeling = new TramIndeling();
-            Tram tram = new Tram(1,null,Tramtype.Combino,4,string.Empty,false,false,true,true,null);
+            Tram tram = new Tram(1,Tramtype.Combino,4,string.Empty,null,false,false,true,true);
             foreach (Sector s in indeling.DeelTramIn(tram))
             {
                 MessageBox.Show(s.Id.ToString());
