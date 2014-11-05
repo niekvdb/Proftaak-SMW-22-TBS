@@ -24,8 +24,6 @@ namespace TramBeheerSysteem
             #endregion
         }
 
-
-
         public static Tram TramInformatie(int tramnummer)
         {
             Tram tram = null;
