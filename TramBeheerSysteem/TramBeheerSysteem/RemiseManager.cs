@@ -34,10 +34,25 @@ namespace TramBeheerSysteem
         {
             foreach (Remise remise in Remises)
             {
-                if (remise.Id == id)
-                {
-                    return remise;
-                }
+                if (remise.Id == id) return remise;
+            }
+            return null;
+        }
+
+        public static Spoor spoorViaId(int id)
+        {
+            foreach (Spoor spoor in Sporen)
+            {
+                if (spoor.Id == id) return spoor;
+            }
+            return null;
+        }
+
+        public static Sector sectorViaId(int id)
+        {
+            foreach (Sector sector in Sectors)
+            {
+                if (sector.Id == id) return sector;
             }
             return null;
         }
@@ -46,10 +61,16 @@ namespace TramBeheerSysteem
         {
             foreach (Medewerker medewerker in Medewerkers)
             {
-                if (medewerker.Id == id)
-                {
-                    return medewerker;
-                }
+                if (medewerker.Id == id)return medewerker;
+            }
+            return null;
+        }
+
+        public static Medewerker medewerkerViaNaam(string naam)
+        {
+            foreach (Medewerker medewerker in Medewerkers)
+            {
+                if (medewerker.Naam == naam) return medewerker;
             }
             return null;
         }

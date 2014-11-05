@@ -39,7 +39,7 @@ namespace TramBeheerSysteem
                 return;
             }
 
-           if (TramManager.HaalTramOp(NR))
+           if (TramManager.tramViaId(NR) != null)
             {
                 if (RemiseManager.HaalSpoorOp(NR1))
                 {
