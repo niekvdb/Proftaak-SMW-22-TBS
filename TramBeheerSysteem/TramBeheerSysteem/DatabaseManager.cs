@@ -86,8 +86,8 @@ namespace TramBeheerSysteem
                         int spoorNummer = Convert.ToInt32(reader["Spoor_ID"]);
                         Tram tram = TramManager.tramViaId(Convert.ToInt32(reader["Tram_ID"]));
                         int nummer = Convert.ToInt32(reader["Nummer"]);
-                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
-                        bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
+                        bool beschikbaar = convertBool(Convert.ToString(reader["Beschikbaar"]));
+                        bool blokkade = convertBool(Convert.ToString(reader["Blokkade"]));
 
                         sectoren.Add(new Sector(id, spoorNummer, tram, nummer, beschikbaar, blokkade));
                     }
@@ -126,8 +126,8 @@ namespace TramBeheerSysteem
                         Remise remise = RemiseManager.remiseViaId(Convert.ToInt32(reader["Remise_ID"]));
                         int nummer = Convert.ToInt32(reader["Nummer"]);
                         int lengte = Convert.ToInt32(reader["Lengte"]);
-                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
-                        bool inUitrijSpoor = Convert.ToBoolean(reader["InUitRijspoor"]);
+                        bool beschikbaar = convertBool(Convert.ToString(reader["Beschikbaar"]));
+                        bool inUitrijSpoor = convertBool(Convert.ToString(reader["InUitRijspoor"]));
 
                         sporen.Add(new Spoor(id, remise, nummer, lengte, beschikbaar, inUitrijSpoor, RemiseManager.sectorenVanSpoor(id)));
                     }
@@ -166,11 +166,11 @@ namespace TramBeheerSysteem
                         Tramtype tramtype = (Tramtype) Convert.ToInt32(reader["Tramtype_ID"]);
                         int lengte = Convert.ToInt32(reader["Lengte"]);
                         string status = Convert.ToString(reader["Status"]);
-                        Remise remise = RemiseManager.remiseViaId(Convert.ToInt32(reader["Remise_ID"]));
-                        bool vervuild = Convert.ToBoolean(reader["Vervuild"]);
-                        bool defect = Convert.ToBoolean(reader["Defect"]);
-                        bool conducteurGeschikt = Convert.ToBoolean(reader["ConducteurGeschikt"]);
-                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
+                        Remise remise = RemiseManager.remiseViaId(Convert.ToInt32(reader["Remise_ID_Standplaats"]));
+                        bool vervuild = convertBool(Convert.ToString(reader["Vervuild"]));
+                        bool defect = convertBool(Convert.ToString(reader["Defect"]));
+                        bool conducteurGeschikt = convertBool(Convert.ToString(reader["ConducteurGeschikt"]));
+                        bool beschikbaar = convertBool(Convert.ToString(reader["Beschikbaar"]));
 
                         trams.Add(new Tram(id, tramtype, lengte, status, remise, vervuild, defect, conducteurGeschikt, beschikbaar));
                     }
@@ -293,6 +293,18 @@ namespace TramBeheerSysteem
             {
                 connection.Close();
             }
+        }
+
+        public static bool convertBool(string value)
+        {
+            if (value == "Y") return true;
+            return false;
+        }
+
+        public static string convertBool(bool value)
+        {
+            if (value) return "Y";
+            return "N";
         }
     }
 }
