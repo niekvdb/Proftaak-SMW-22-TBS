@@ -19,17 +19,26 @@ namespace TramBeheerSysteem
 
         private void btnSchoonmaakBevestiging_Click(object sender, EventArgs e)
         {
-            Tram selectedTram = DatabaseManager.TramInformatie(Convert.ToInt32(lvwSchoonmaak.Items[lvwSchoonmaak.FocusedItem.Index].SubItems[0].Text));
+            Tram selectedTram = TramManager.tramViaId(Convert.ToInt32(lvwSchoonmaak.Items[lvwSchoonmaak.FocusedItem.Index].SubItems[0].Text));
             string opmerking = tbxSchoonmaakBevestiging.Text;
-            bool schoongemaakt = chkSchoonmaak.Checked;
-            //DatabaseManager.TramSchoongemaakt(selectedTram, opmerking, schoongemaakt);
+            TypeOnderhoud Schoonmaak;
+            if (rbtSchoonmaakGroot.Checked)
+            {
+                Schoonmaak = TypeOnderhoud.GroteSchoonmaak;
+                selectedTram.Onderhoud(Schoonmaak, opmerking);
+            }
+            else if (rbtSchoonmaakKlein.Checked)
+            {
+                Schoonmaak = TypeOnderhoud.KleineSchoonmaak;
+                selectedTram.Onderhoud(Schoonmaak, opmerking);
+            }
+            else MessageBox.Show("Selecteer een schoonmaaktype");
         }
 
         private void btnReparatieBevestiging_Click(object sender, EventArgs e)
         {
             Tram selectedTram = DatabaseManager.TramInformatie(Convert.ToInt32(lvwReparatie.Items[lvwReparatie.FocusedItem.Index].SubItems[0].Text));
             string opmerking = tbxReparatieBevestiging.Text;
-            bool gerepareerd = chkReparatie.Checked;
             //DatabaseManager.TramGerepareerd(selectedTram, opmerking, gerepareerd);
         }
     }

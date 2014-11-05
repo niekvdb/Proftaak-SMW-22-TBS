@@ -44,7 +44,7 @@ namespace TramBeheerSysteem
             List<Sector> SctrList = new List<Sector>();
             for (int i = 1; i <= Lengte; i++)
             {
-                Sector sector = new Sector(id,i,null,true,false);
+                Sector sector = new Sector(id,i,null,1,true,false);
                 id++;
                 SctrList.Add((sector));
             }
@@ -56,48 +56,50 @@ namespace TramBeheerSysteem
             //Deze lijst wordt uit de database gehaald
             List<Spoor> spoorList = new List<Spoor>
             {
-                new Spoor(1, null, 38, 4, true, false, false, GenerateSectorList((4))),
-                new Spoor(2, null, 37, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(2, null, 36, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(2, null, 35, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(2, null, 34, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(2, null, 33, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(2, null, 32, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(2, null, 31, 3, true, false, false, GenerateSectorList(3)),
-                new Spoor(2, null, 30, 3, true, false, false, GenerateSectorList(3)),
-                new Spoor(3, null, 40, 7, true, false, false, GenerateSectorList(7)),
-                new Spoor(3, null, 41, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(3, null, 42, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(3, null, 43, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(3, null, 44, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(3, null, 45, 9, true, false, false, GenerateSectorList(9)),
-                new Spoor(3, null, 58, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(3, null, 57, 8, true, false, false, GenerateSectorList(8)),
-                new Spoor(3, null, 56, 8, true, false, false, GenerateSectorList(8)),
-                new Spoor(3, null, 55, 8, true, false, false, GenerateSectorList(8)),
-                new Spoor(3, null, 54, 7, true, false, false, GenerateSectorList(7)),
-                new Spoor(3, null, 53, 7, true, false, false, GenerateSectorList(7)),
-                new Spoor(3, null, 52, 7, true, false, false, GenerateSectorList(7)),
-                new Spoor(3, null, 51, 6, true, false, false, GenerateSectorList(6)),
-                new Spoor(3, null, 64, 5, true, false, false, GenerateSectorList(5)),
-                new Spoor(3, null, 63, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(3, null, 62, 3, true, false, false, GenerateSectorList(3)),
-                new Spoor(3, null, 61, 3, true, false, false, GenerateSectorList(3)),
-                new Spoor(3, null, 74, 5, true, false, false, GenerateSectorList(5)),
-                new Spoor(3, null, 75, 4, true, false, false, GenerateSectorList(4)),
-                new Spoor(3, null, 76, 5, true, false, false, GenerateSectorList(5)),
-                new Spoor(3, null, 77, 6, true, false, false, GenerateSectorList(6)),
-                new Spoor(3, null, 12, 1, true, false, false, GenerateSectorList(1)),
-                new Spoor(3, null, 13, 1, true, false, false, GenerateSectorList(1)),
-                new Spoor(3, null, 14, 1, true, false, false, GenerateSectorList(1)),
-                new Spoor(3, null, 15, 1, true, false, false, GenerateSectorList(1)),
-                new Spoor(3, null, 16, 1, true, false, false, GenerateSectorList(1)),
-                new Spoor(3, null, 17, 1, true, false, false, GenerateSectorList(1)),
-                new Spoor(3, null, 18, 1, true, false, false, GenerateSectorList(1)),
-                new Spoor(3, null, 19, 1, true, false, false, GenerateSectorList(1)),
-                new Spoor(3, null, 20, 1, true, false, false, GenerateSectorList(1)),
-                new Spoor(3, null, 21, 1, true, false, false, GenerateSectorList(1))
+                new Spoor(1, null, 38, 4, true, false, GenerateSectorList((4))),
+                new Spoor(2, null, 37, 4, true, false, GenerateSectorList(4)),
+                new Spoor(2, null, 36, 4, true, false, GenerateSectorList(4)),
+                new Spoor(2, null, 35, 4, true, false, GenerateSectorList(4)),
+                new Spoor(2, null, 34, 4, true, false, GenerateSectorList(4)),
+                new Spoor(2, null, 33, 4, true, false, GenerateSectorList(4)),
+                new Spoor(2, null, 32, 4, true, false, GenerateSectorList(4)),
+                new Spoor(2, null, 31, 3, true, false, GenerateSectorList(3)),
+                new Spoor(2, null, 30, 3, true, false, GenerateSectorList(3)),
+                new Spoor(3, null, 40, 7, true, false, GenerateSectorList(7)),
+                new Spoor(3, null, 41, 4, true, false, GenerateSectorList(4)),
+                new Spoor(3, null, 42, 4, true, false, GenerateSectorList(4)),
+                new Spoor(3, null, 43, 4, true, false, GenerateSectorList(4)),
+                new Spoor(3, null, 44, 4, true, false, GenerateSectorList(4)),
+                new Spoor(3, null, 45, 9, true, false, GenerateSectorList(9)),
+                new Spoor(3, null, 58, 4, true, false, GenerateSectorList(4)),
+                new Spoor(3, null, 57, 8, true, false, GenerateSectorList(8)),
+                new Spoor(3, null, 56, 8, true, false, GenerateSectorList(8)),
+                new Spoor(3, null, 55, 8, true, false, GenerateSectorList(8)),
+                new Spoor(3, null, 54, 7, true, false, GenerateSectorList(7)),
+                new Spoor(3, null, 53, 7, true, false, GenerateSectorList(7)),
+                new Spoor(3, null, 52, 7, true, false, GenerateSectorList(7)),
+                new Spoor(3, null, 51, 6, true, false, GenerateSectorList(6)),
+                new Spoor(3, null, 64, 5, true, false, GenerateSectorList(5)),
+                new Spoor(3, null, 63, 4, true, false, GenerateSectorList(4)),
+                new Spoor(3, null, 62, 3, true, false, GenerateSectorList(3)),
+                new Spoor(3, null, 61, 3, true, false, GenerateSectorList(3)),
+                new Spoor(3, null, 74, 5, true, false, GenerateSectorList(5)),
+                new Spoor(3, null, 75, 4, true, false, GenerateSectorList(4)),
+                new Spoor(3, null, 76, 5, true, false, GenerateSectorList(5)),
+                new Spoor(3, null, 77, 6, true, false, GenerateSectorList(6)),
+                new Spoor(3, null, 12, 1, true, false, GenerateSectorList(1)),
+                new Spoor(3, null, 13, 1, true, false, GenerateSectorList(1)),
+                new Spoor(3, null, 14, 1, true, false, GenerateSectorList(1)),
+                new Spoor(3, null, 15, 1, true, false, GenerateSectorList(1)),
+                new Spoor(3, null, 16, 1, true, false, GenerateSectorList(1)),
+                new Spoor(3, null, 17, 1, true, false, GenerateSectorList(1)),
+                new Spoor(3, null, 18, 1, true, false, GenerateSectorList(1)),
+                new Spoor(3, null, 19, 1, true, false, GenerateSectorList(1)),
+                new Spoor(3, null, 20, 1, true, false, GenerateSectorList(1)),
+                new Spoor(3, null, 21, 1, true, false, GenerateSectorList(1))
             };
+            //spoorList.Clear();
+           // spoorList = DatabaseManager.KrijgAlleSporen();
             AddTextBoxes((spoorList));
         }
 
@@ -177,20 +179,19 @@ namespace TramBeheerSysteem
                 MessageBox.Show("Selecteer een tram");
                 return;
             }           
-            int NR = Convert.ToInt32(cbTramnummer.Text);
-            foreach (Tram t in DatabaseManager.HaalTramsOp)
+            int NR = Convert.ToInt32(cbTrams.Text);
+            foreach (Tram t in TramManager.LaadTrams())
             {
-                if (t.nummer != NR)
+                if (t.id != NR)
                 {
                     MessageBox.Show("Tram-nummer bestaat niet");
                 }
                 else
                 {
-                    DatabaseManager.VerwijderTram(NR);
+                    TramManager.VerwijderTram(NR);
                     MessageBox.Show("Tram is succesvol verwijderd");
                 }
             }
-
         }
 
         private void TramBeheerSysteem_Load(object sender, EventArgs e)
@@ -257,7 +258,7 @@ namespace TramBeheerSysteem
         private void btnStop_Click(object sender, EventArgs e)
         {
             TramIndeling indeling = new TramIndeling();
-            Tram tram = new Tram(1,null,Tramtype.Combino,4,string.Empty,false,false,true,true,null);
+            Tram tram = new Tram(1,Tramtype.Combino,4,string.Empty,null,false,false,true,true);
             foreach (Sector s in indeling.DeelTramIn(tram))
             {
                 MessageBox.Show(s.Id.ToString());

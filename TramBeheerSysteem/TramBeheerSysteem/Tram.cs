@@ -31,16 +31,9 @@ namespace TramBeheerSysteem
             this.beschikbaar = beschikbaar;
         }
 
-        public void Verplaats(Sector newSector)
+        public void Onderhoud(TypeOnderhoud typeOnderhoud, string opmerking)
         {
-            //Sector oldSector = this.sector;
-            //oldSector.ClearSector();
-            //this.sector = newSector;
-        }
-
-        public void Onderhoud(TypeOnderhoud typeOnderhoud)
-        {
-            //ToDo
+            
         }
 
         public void IsVervuild()
