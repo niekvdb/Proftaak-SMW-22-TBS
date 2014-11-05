@@ -97,6 +97,8 @@ namespace TramBeheerSysteem
                 new Spoor(3, null, 20, 1, true, false, false, GenerateSectorList(1)),
                 new Spoor(3, null, 21, 1, true, false, false, GenerateSectorList(1))
             };
+            //spoorList.Clear();
+           // spoorList = DatabaseManager.KrijgAlleSporen();
             AddTextBoxes((spoorList));
         }
 
