@@ -33,13 +33,13 @@ namespace TramBeheerSysteem
                 MessageBox.Show("Voer een sectornummer in");
                 return;
             }
-            foreach (Sector s in DatabaseManager.HaalSectorenOp(SpoorNR))
+            foreach (Sector s in RemiseManager.sectorenVanSpoor(SpoorNR))
             {
                 if (s.Id == SectorNR && s.Blokkade == true)
                 {
                     MessageBox.Show("Sector is vrijgemaakt");
                     s.Deblokkeer();
-                    foreach (Sector sec in DatabaseManager.HaalSectorenOp(SpoorNR))
+                    foreach (Sector sec in RemiseManager.sectorenVanSpoor(SpoorNR))
                     {
                         if (sec.Id > SectorNR)
                         {
@@ -51,7 +51,7 @@ namespace TramBeheerSysteem
                 {
                     MessageBox.Show("Sector is Geblokkeerd");
                     s.Blokkeer();
-                    foreach (Sector sec in DatabaseManager.HaalSectorenOp(SpoorNR))
+                    foreach (Sector sec in RemiseManager.sectorenVanSpoor(SpoorNR))
                     {
                         if (sec.Id > SectorNR)
                         {
@@ -60,7 +60,7 @@ namespace TramBeheerSysteem
                     }
                 }
             }
-            DatabaseManager.UpdateSpoorStatus(NR);
+            RemiseManager.UpdateSectorStatus(SectorNR);
         }
 
         private void SpoorBediening_Load(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace TramBeheerSysteem
         private void cbSpoor_SelectedIndexChanged(object sender, EventArgs e)
         {
             int SpoorNummer = Convert.ToInt32(cbSpoor.Text);
-            foreach(Sector sec in Database.HaalSectorenOp(SpoorNummer))
+            foreach (Sector sec in RemiseManager.sectorenVanSpoor(SpoorNummer))
             cbSector.Items.Add(sec.Id);
         }
     }

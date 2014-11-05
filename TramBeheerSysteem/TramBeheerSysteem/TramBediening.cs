@@ -15,9 +15,9 @@ namespace TramBeheerSysteem
         public WijzigTramStatus()
         {
             InitializeComponent();
-            foreach (Tram t in DatabaseManager.HaalTramsOp())
+            foreach (Tram t in TramManager.LaadTrams())
             {
-                cbTramnummer.Items.Add(t.nummer);
+                cbTramnummer.Items.Add(Convert.ToString(t.id));
             }
         }
 
@@ -30,30 +30,35 @@ namespace TramBeheerSysteem
         {
             if (cbStatus.SelectedItem == null)
             {
-                MessageBox.Show("Selecteer een status");
-                if (cbTramnummer.SelectedItem == null)
-                {
-                    MessageBox.Show("Selecteer een tram");
-                    return;
-                }                
+                MessageBox.Show("Selecteer een status");               
                 return;
             }
+            if (cbTramnummer.SelectedItem == null)
+            {
+                MessageBox.Show("Selecteer een tram");
+                return;
+            } 
             string Status = cbStatus.Text;
             int NR = Convert.ToInt32(cbTramnummer.Text);
-
-            foreach (Tram t in DatabaseManager.HaalTramsOp)
+            foreach (Tram t in TramManager.LaadTrams())
             {
-                if (t.nummer == NR && t.status == cbStatus.Text)
+                if (t.id == NR)
                 {
-                    MessageBox.Show("Tram heeft deze status al!");
+                    if (t.status == cbStatus.Text)
+                    {
+                        MessageBox.Show("Tram heeft deze status al!");
+                    }
+                    else 
+                    {
+                        MessageBox.Show("Tramstatus is gewijzigd");
+                        DatabaseManager.WijzigTramStatus(NR,Status);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Tramstatus is gewijzigd");
-                    DatabaseManager.WijzigTramStatus(NR);
+                    MessageBox.Show("Tramnummer bestaat niet");
                 }
             }
-            MessageBox.Show("Tramstatus is gewijzigd");
             this.Close();
         }
 

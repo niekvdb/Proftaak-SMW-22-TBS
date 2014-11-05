@@ -15,9 +15,10 @@ namespace TramBeheerSysteem
 
         }
 
-        public static void LaadTrams()
+        public static List<Tram> LaadTrams()
         {
             Trams = DatabaseManager.LaadTrams();
+            return Trams;
         }
 
         public static Tram tramViaId(int id)
