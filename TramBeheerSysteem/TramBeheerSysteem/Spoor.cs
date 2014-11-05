@@ -29,9 +29,14 @@ namespace TramBeheerSysteem
             this.SectorList = sectorList;
         }
 
-        public void blokkeer()
+        public void Blokkeer()
         {
             this.Blokkade = true;
+        }
+
+        public void Deblokkeer()
+        {
+            this.Blokkade = false;
         }
     }
 }

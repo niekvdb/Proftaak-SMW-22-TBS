@@ -23,7 +23,12 @@ namespace TramBeheerSysteem
             this.Blokkade = blokkade;
         }
 
-        public void blokkeer()
+        public void Blokkeer()
+        {
+            this.Blokkade = true;
+        }
+
+        public void Deblokkeer()
         {
             this.Blokkade = true;
         }
