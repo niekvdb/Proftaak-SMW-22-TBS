@@ -16,6 +16,8 @@ namespace TramBeheerSysteem
 
         static RemiseManager()
         {
+            LaadRemises();
+            LaadSporen();
         }
 
         public static void LaadRemises()
@@ -78,12 +80,22 @@ namespace TramBeheerSysteem
         public static List<Sector> sectorenVanSpoor(int id)
         {
             List<Sector> sectorenVanSpoor = new List<Sector>();
-
+            if (id >= 44)
+            {
+                //breakpoint
+            }
             foreach (Sector sector in Sectors)
             {
-                if(sector.SpoorNummer == id) sectorenVanSpoor.Add(sector);
+                if (sector.SpoorNummer == id)
+                {
+                    sectorenVanSpoor.Add(sector);
+                    if (sector.SpoorNummer == 45)
+                    {
+                        //breakpoint
+                    }
+                }
             }
-
+            System.Console.WriteLine("Spoornummer: "+id+" Sectoren: "+sectorenVanSpoor.Count());
             return sectorenVanSpoor;
         }
     }

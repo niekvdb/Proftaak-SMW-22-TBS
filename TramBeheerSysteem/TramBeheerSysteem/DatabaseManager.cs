@@ -29,7 +29,10 @@ namespace TramBeheerSysteem
             List<Remise> remises = new List<Remise>();
             try
             {
-                connection.Open();
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
                 OracleCommand command = new OracleCommand("SELECT * FROM REMISE");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
@@ -68,7 +71,10 @@ namespace TramBeheerSysteem
             List<Sector> sectoren = null;
             try
             {
-                connection.Open();
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
                 OracleCommand command = new OracleCommand("SELECT * FROM SECTOR");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
@@ -82,7 +88,7 @@ namespace TramBeheerSysteem
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
-                        int spoorNummer = Convert.ToInt32(reader["Spoor_ID"]);
+                        int spoorNummer = Convert.ToInt32(reader["Spoor_ID"]);//Spoor-ID != spoor-nummer
                         Tram tram = TramManager.tramViaId(Convert.ToInt32(reader["Tram_ID"]));
                         int nummer = Convert.ToInt32(reader["Nummer"]);
                         bool beschikbaar = convertBool(Convert.ToString(reader["Beschikbaar"]));
@@ -108,7 +114,10 @@ namespace TramBeheerSysteem
             List<Spoor> sporen = null;
             try
             {
-                connection.Open();
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
                 OracleCommand command = new OracleCommand("SELECT * FROM SPOOR");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;

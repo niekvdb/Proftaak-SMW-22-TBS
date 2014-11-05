@@ -27,7 +27,7 @@ namespace TramBeheerSysteem
         {
             this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
-            //VoegSporenToeVoorbeeld();
+            VoegSporenToeVoorbeeld();
             //foreach (Tram t in DatabaseManager.HaalTramsOp())
             //{
                 //cbTrams.Items.Add(t.nummer);
@@ -54,52 +54,9 @@ namespace TramBeheerSysteem
         private void VoegSporenToeVoorbeeld()
         {
             //Deze lijst wordt uit de database gehaald
-            List<Spoor> spoorList = new List<Spoor>
-            {
-                new Spoor(1, null, 38, 4, true, false, GenerateSectorList((4))),
-                new Spoor(2, null, 37, 4, true, false, GenerateSectorList(4)),
-                new Spoor(2, null, 36, 4, true, false, GenerateSectorList(4)),
-                new Spoor(2, null, 35, 4, true, false, GenerateSectorList(4)),
-                new Spoor(2, null, 34, 4, true, false, GenerateSectorList(4)),
-                new Spoor(2, null, 33, 4, true, false, GenerateSectorList(4)),
-                new Spoor(2, null, 32, 4, true, false, GenerateSectorList(4)),
-                new Spoor(2, null, 31, 3, true, false, GenerateSectorList(3)),
-                new Spoor(2, null, 30, 3, true, false, GenerateSectorList(3)),
-                new Spoor(3, null, 40, 7, true, false, GenerateSectorList(7)),
-                new Spoor(3, null, 41, 4, true, false, GenerateSectorList(4)),
-                new Spoor(3, null, 42, 4, true, false, GenerateSectorList(4)),
-                new Spoor(3, null, 43, 4, true, false, GenerateSectorList(4)),
-                new Spoor(3, null, 44, 4, true, false, GenerateSectorList(4)),
-                new Spoor(3, null, 45, 9, true, false, GenerateSectorList(9)),
-                new Spoor(3, null, 58, 4, true, false, GenerateSectorList(4)),
-                new Spoor(3, null, 57, 8, true, false, GenerateSectorList(8)),
-                new Spoor(3, null, 56, 8, true, false, GenerateSectorList(8)),
-                new Spoor(3, null, 55, 8, true, false, GenerateSectorList(8)),
-                new Spoor(3, null, 54, 7, true, false, GenerateSectorList(7)),
-                new Spoor(3, null, 53, 7, true, false, GenerateSectorList(7)),
-                new Spoor(3, null, 52, 7, true, false, GenerateSectorList(7)),
-                new Spoor(3, null, 51, 6, true, false, GenerateSectorList(6)),
-                new Spoor(3, null, 64, 5, true, false, GenerateSectorList(5)),
-                new Spoor(3, null, 63, 4, true, false, GenerateSectorList(4)),
-                new Spoor(3, null, 62, 3, true, false, GenerateSectorList(3)),
-                new Spoor(3, null, 61, 3, true, false, GenerateSectorList(3)),
-                new Spoor(3, null, 74, 5, true, false, GenerateSectorList(5)),
-                new Spoor(3, null, 75, 4, true, false, GenerateSectorList(4)),
-                new Spoor(3, null, 76, 5, true, false, GenerateSectorList(5)),
-                new Spoor(3, null, 77, 6, true, false, GenerateSectorList(6)),
-                new Spoor(3, null, 12, 1, true, false, GenerateSectorList(1)),
-                new Spoor(3, null, 13, 1, true, false, GenerateSectorList(1)),
-                new Spoor(3, null, 14, 1, true, false, GenerateSectorList(1)),
-                new Spoor(3, null, 15, 1, true, false, GenerateSectorList(1)),
-                new Spoor(3, null, 16, 1, true, false, GenerateSectorList(1)),
-                new Spoor(3, null, 17, 1, true, false, GenerateSectorList(1)),
-                new Spoor(3, null, 18, 1, true, false, GenerateSectorList(1)),
-                new Spoor(3, null, 19, 1, true, false, GenerateSectorList(1)),
-                new Spoor(3, null, 20, 1, true, false, GenerateSectorList(1)),
-                new Spoor(3, null, 21, 1, true, false, GenerateSectorList(1))
-            };
+            List<Spoor> spoorList = new List<Spoor>();
             //spoorList.Clear();
-           // spoorList = DatabaseManager.KrijgAlleSporen();
+            spoorList = RemiseManager.Sporen;
             AddTextBoxes((spoorList));
         }
 
