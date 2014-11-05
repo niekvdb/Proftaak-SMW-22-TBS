@@ -95,6 +95,7 @@
     <Compile Include="Sector.cs" />
     <Compile Include="Spoor.cs" />
     <Compile Include="Tram.cs" />
+    <Compile Include="TramIndeling.cs" />
     <Compile Include="Tramonderhoud.cs" />
     <Compile Include="Tramtype.cs" />
     <Compile Include="TypeOnderhoud.cs" />
