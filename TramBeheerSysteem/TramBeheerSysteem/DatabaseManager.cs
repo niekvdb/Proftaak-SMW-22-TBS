@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace TramBeheerSysteem
 {
-    class DatabaseManager
+    public static class DatabaseManager
     {
+        private static OracleConnection connection;
     }
 }
