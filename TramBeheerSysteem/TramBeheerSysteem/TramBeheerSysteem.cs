@@ -232,7 +232,11 @@ namespace TramBeheerSysteem
         {
             this.OnBlockSector(sender,EventArgs.Empty);
         }
-
+        /// <summary>
+        /// Functie om spoor te blokkeren. Laat op dit moment alleen nog een textbox zien.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected virtual void OnBlockSector(object sender,EventArgs e)
         {
             EventHandler handler = this.BlockSector;
@@ -259,6 +263,5 @@ namespace TramBeheerSysteem
          //   DatabaseManager dbManager = new DatabaseManager();
          //   MessageBox.Show((dbManager.KrijgFunctie("Henk_Bestuurder")));
         }
-
     }
 }
