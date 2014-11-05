@@ -51,6 +51,14 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -76,6 +84,7 @@
     <Compile Include="OnderhoudApplicatie.Designer.cs">
       <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
     </Compile>
+    <Compile Include="RemiseManager.cs" />
     <Compile Include="SpoorBediening.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +108,7 @@
     <Compile Include="Spoor.cs" />
     <Compile Include="Tram.cs" />
     <Compile Include="TramIndeling.cs" />
+    <Compile Include="TramManager.cs" />
     <Compile Include="Tramonderhoud.cs" />
     <Compile Include="Tramtype.cs" />
     <Compile Include="TypeOnderhoud.cs" />

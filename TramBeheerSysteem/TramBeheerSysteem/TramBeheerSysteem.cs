@@ -252,7 +252,12 @@ namespace TramBeheerSysteem
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-
+            TramIndeling indeling = new TramIndeling();
+            Tram tram = new Tram(1,null,Tramtype.Combino,4,string.Empty,false,false,true,true,null);
+            foreach (Sector s in indeling.DeelTramIn(tram))
+            {
+                MessageBox.Show(s.Id.ToString());
+            }
         }
     }
 }
