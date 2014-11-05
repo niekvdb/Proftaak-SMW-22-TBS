@@ -31,9 +31,9 @@ namespace TramBeheerSysteem
             this.beschikbaar = beschikbaar;
         }
 
-        public void Onderhoud(TypeOnderhoud typeOnderhoud)
+        public void Onderhoud(TypeOnderhoud typeOnderhoud, string opmerking)
         {
-            //ToDo
+            
         }
 
         public void IsVervuild()
