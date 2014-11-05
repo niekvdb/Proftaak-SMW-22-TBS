@@ -104,6 +104,7 @@
             this.btnAnnuleer.TabIndex = 7;
             this.btnAnnuleer.Text = "Annuleer";
             this.btnAnnuleer.UseVisualStyleBackColor = true;
+            this.btnAnnuleer.Click += new System.EventHandler(this.btnAnnuleer_Click);
             // 
             // VoegTramToe
             // 
@@ -120,6 +121,7 @@
             this.Controls.Add(this.tbTramnummer);
             this.Name = "VoegTramToe";
             this.Text = "VoegTramToe";
+            this.Load += new System.EventHandler(this.VoegTramToe_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

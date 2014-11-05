@@ -15,10 +15,10 @@ namespace TramBeheerSysteem
         public int GroteSchoonmaakbeurtenPerDag { get; private set; }
         public int KleineSchoonmaakbeurtenPerDag { get; private set; }
 
-        public Remise(string naam, int id, int groteServicebeurtenPerDag, int kleineServicebeurtenPerDag, int kleineSchoonmaakbeurtenPerDag, int groteSchoonmaakbeurtenPerDag)
+        public Remise(int id, string naam, int groteServicebeurtenPerDag, int kleineServicebeurtenPerDag, int kleineSchoonmaakbeurtenPerDag, int groteSchoonmaakbeurtenPerDag)
         {
-            Naam = naam;
             Id = id;
+            Naam = naam;
             GroteServicebeurtenPerDag = groteServicebeurtenPerDag;
             KleineServicebeurtenPerDag = kleineServicebeurtenPerDag;
             KleineSchoonmaakbeurtenPerDag = kleineSchoonmaakbeurtenPerDag;

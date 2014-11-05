@@ -24,6 +24,133 @@ namespace TramBeheerSysteem
             #endregion
         }
 
+        public static List<Remise> LaadRemises()
+        {
+            List<Remise> remises = null;
+            try
+            {
+                connection.Open();
+                OracleCommand command = new OracleCommand("SELECT * FROM REMISE");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                OracleDataReader reader = command.ExecuteReader();
+
+                if (!reader.HasRows) return null;
+                else
+                {
+                    remises = new List<Remise>();
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["ID"]);
+                        string naam = Convert.ToString(reader["Naam"]);
+                        int groteServiceBeurtenPerDag = Convert.ToInt32(reader["GroteServiceBeurtenPerDag"]);
+                        int kleineServiceBeurtenPerDag = Convert.ToInt32(reader["KleineServiceBeurtenPerDag"]);
+                        int groteSchoonmaakBeurtenPerDag = Convert.ToInt32(reader["GroteSchoonmaakBeurtenPerDag"]);
+                        int kleineSchoonmaakBeurtenPerDag = Convert.ToInt32(reader["KleineSchoonmaakBeurtenPerDag"]);
+
+                        remises.Add(new Remise(id,naam,groteServiceBeurtenPerDag,kleineServiceBeurtenPerDag,groteSchoonmaakBeurtenPerDag,kleineSchoonmaakBeurtenPerDag));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return remises;
+        }
+
+        public static List<Sector> LaadSectoren()
+        {
+            List<Sector> sectoren = null;
+            try
+            {
+                connection.Open();
+                OracleCommand command = new OracleCommand("SELECT * FROM SECTOR");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                OracleDataReader reader = command.ExecuteReader();
+
+                if (!reader.HasRows) return null;
+                else
+                {
+                    sectoren = new List<Sector>();
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["ID"]);
+                        int spoorNummer = Convert.ToInt32(reader["Spoor_ID"]);
+                        Tram tram = TramManager.tramViaId(Convert.ToInt32(reader["Tram_ID"]));
+                        int nummer = Convert.ToInt32(reader["Nummer"]);
+                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
+                        bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
+
+                        sectoren.Add(new Sector(id, spoorNummer, tram, nummer, beschikbaar, blokkade));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return sectoren;
+        }
+
+        public static List<Spoor> LaadSporen()
+        {
+            List<Spoor> sporen = null;
+            try
+            {
+                connection.Open();
+                OracleCommand command = new OracleCommand("SELECT * FROM SPOOR");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                OracleDataReader reader = command.ExecuteReader();
+
+                if (!reader.HasRows) return null;
+                else
+                {
+                    sporen = new List<Spoor>();
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["ID"]);
+                        Remise remise = RemiseManager.remiseViaId(Convert.ToInt32(reader["Remise_ID"]));
+                        int nummer = Convert.ToInt32(reader["Nummer"]);
+                        int lengte = Convert.ToInt32(reader["Lengte"]);
+                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
+                        bool inUitrijSpoor = Convert.ToBoolean(reader["InUitRijspoor"]);
+
+                        sporen.Add(new Spoor(id, remise, nummer, lengte, beschikbaar, inUitrijSpoor, RemiseManager.sectorenVanSpoor(id)));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return sporen;
+        }
+
+        public static List<Tram> LaadTrams()
+        {
+            List<Tram> trams = null;
+
+            return trams;
+        }
+
         public static Tram TramInformatie(int tramnummer)
         {
             Tram tram = null;

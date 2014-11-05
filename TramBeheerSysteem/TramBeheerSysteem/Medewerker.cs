@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TramBeheerSysteem
 {
@@ -17,6 +18,12 @@ namespace TramBeheerSysteem
             Id = id;
             Functie = functie; 
             Naam = naam;
+        }
+
+        public void DestroySpecimin(string DeathDescription)
+        {
+            DateTime Now = DateTime.Now;
+            MessageBox.Show("Specimin has been terminated under the following conditions" + DeathDescription + "At" + Now);
         }
     }
 }

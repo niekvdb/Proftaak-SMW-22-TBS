@@ -15,13 +15,10 @@ namespace TramBeheerSysteem
         public WijzigTramStatus()
         {
             InitializeComponent();
-        }
-         public WijzigTramStatus(int KnopNummer)
-        {
-            InitializeComponent();
-                 //foreach(Tram t in DatabaseManager.HaalTramsOp())
-                 //cbTramnummer.Items.Add(t.nummer)
-
+            foreach (Tram t in TramManager.LaadTrams())
+            {
+                cbTramnummer.Items.Add(Convert.ToString(t.id));
+            }
         }
 
         private void Voeg_Tram_toe_Load(object sender, EventArgs e)
@@ -33,37 +30,35 @@ namespace TramBeheerSysteem
         {
             if (cbStatus.SelectedItem == null)
             {
-                MessageBox.Show("Selecteer een status");
+                MessageBox.Show("Selecteer een status");               
                 return;
             }
-            string NR_string = cbTramnummer.Text;
+            if (cbTramnummer.SelectedItem == null)
+            {
+                MessageBox.Show("Selecteer een tram");
+                return;
+            } 
             string Status = cbStatus.Text;
-            int NR;
-
-            // Check of textbox ID te converteren is naar Int32
-            try
+            int NR = Convert.ToInt32(cbTramnummer.Text);
+            foreach (Tram t in TramManager.LaadTrams())
             {
-                NR = Convert.ToInt32(NR_string);
+                if (t.id == NR)
+                {
+                    if (t.status == cbStatus.Text)
+                    {
+                        MessageBox.Show("Tram heeft deze status al!");
+                    }
+                    else 
+                    {
+                        MessageBox.Show("Tramstatus is gewijzigd");
+                        DatabaseManager.WijzigTramStatus(NR,Status);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Tramnummer bestaat niet");
+                }
             }
-            catch
-            {
-                MessageBox.Show("Voer een tram-nummer in");
-                return;
-            }
-            // foreach (Tram t in DatabaseManager.HaalTramsOp)
-            //  {
-            //     if (t.nummer == NR && t.status== StatusCb.text)
-            //    {
-            //        MessageBox.Show("Tram heeft deze status al!");
-            //    }
-            //     else 
-            //    {
-            //      MessageBox.Show("Tramstatus is gewijzigd");
-            //      DatabaseManager.WijzigTramStatus(NR);
-            //    }
-            //}
-
-            MessageBox.Show("Tramstatus is gewijzigd");
             this.Close();
         }
 

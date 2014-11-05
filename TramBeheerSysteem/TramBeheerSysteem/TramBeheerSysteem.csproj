@@ -84,6 +84,7 @@
     <Compile Include="OnderhoudApplicatie.Designer.cs">
       <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
     </Compile>
+    <Compile Include="RemiseManager.cs" />
     <Compile Include="SpoorBediening.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +108,7 @@
     <Compile Include="Spoor.cs" />
     <Compile Include="Tram.cs" />
     <Compile Include="TramIndeling.cs" />
+    <Compile Include="TramManager.cs" />
     <Compile Include="Tramonderhoud.cs" />
     <Compile Include="Tramtype.cs" />
     <Compile Include="TypeOnderhoud.cs" />
