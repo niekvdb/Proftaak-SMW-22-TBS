@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace TramBeheerSysteem
 {
-    class TramIndeling
+    internal class TramIndeling
     {
         private DatabaseManager dbManager = new DatabaseManager();
-        List<Spoor> alleSporen = null;//dbManager.AlleSporen();
+        private List<Spoor> alleSporen = null; //dbManager.AlleSporen();
         private int spoorTeller = 0;
+
         public List<Sector> DeelTramIn(Tram tram)
         {
             Spoor ingedeeldSpoor = krijgEerstVolgendeSpoor();
@@ -66,15 +67,9 @@ namespace TramBeheerSysteem
             return (spoor.Beschikbaar);
         }
 
-        private bool isSpoorLangGenoeg(Spoor spoor,int lengte)
+        private bool isSpoorLangGenoeg(Spoor spoor, int lengte)
         {
             return (spoor.Lengte <= lengte);
-            }
-        }
-
-        private List<Sector> vrijeSectoren(Spoor spoor, Tram tram)
-        {
-            
         }
     }
 }
