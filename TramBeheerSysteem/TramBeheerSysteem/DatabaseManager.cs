@@ -70,7 +70,7 @@ namespace TramBeheerSysteem
             try
             {
                 connection.Open();
-                OracleCommand command = new OracleCommand("SELECT * FROM REMISE");
+                OracleCommand command = new OracleCommand("SELECT * FROM SECTOR");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
@@ -84,7 +84,7 @@ namespace TramBeheerSysteem
                     {
                         int id = Convert.ToInt32(reader["ID"]);
                         int spoorNummer = Convert.ToInt32(reader["Spoor_ID"]);
-                        Tram tram = null;
+                        Tram tram = TramManager.tramViaId(Convert.ToInt32(reader["Tram_ID"]));
                         int nummer = Convert.ToInt32(reader["Nummer"]);
                         bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
                         bool blokkade = Convert.ToBoolean(reader["Blokkade"]);
@@ -110,7 +110,7 @@ namespace TramBeheerSysteem
             try
             {
                 connection.Open();
-                OracleCommand command = new OracleCommand("SELECT * FROM REMISE");
+                OracleCommand command = new OracleCommand("SELECT * FROM SPOOR");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
