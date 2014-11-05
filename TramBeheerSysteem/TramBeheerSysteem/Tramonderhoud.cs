@@ -22,5 +22,10 @@ namespace TramBeheerSysteem
             BeschikbaarDatum = beschikbaarDatum;
             TypeOnderhoud = typeOnderhoud;
         }
+
+        public void OnderhoudKlaar()
+        {
+            //ToDo
+        }
     }
 }

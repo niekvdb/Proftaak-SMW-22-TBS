@@ -8,6 +8,8 @@ namespace TramBeheerSysteem
 {
     enum Tramtype
     {
-
+        Combino,
+        DkCombino,
+        Opleidingstram 
     }
 }
