@@ -206,7 +206,7 @@ namespace TramBeheerSysteem
                 command.Parameters.Add(":medewerker_ID", onderhoud.Medewerker.Id);
                 command.Parameters.Add(":tram_ID", onderhoud.Tram.Id);
                 command.Parameters.Add(":datumTijdstip", onderhoud.DatumTijdstip);
-                command.Parameters.Add(":datumBeschikbaar", null);
+                command.Parameters.Add(":datumBeschikbaar", onderhoud.BeschikbaarDatum);
                 command.Parameters.Add(":typeOnderhoud", onderhoud.TypeOnderhoud);
                 command.Parameters.Add(":notitie", onderhoud.Opmerking);
 

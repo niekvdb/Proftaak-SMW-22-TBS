@@ -22,15 +22,16 @@ namespace TramBeheerSysteem
             Tram selectedTram = TramManager.tramViaId(Convert.ToInt32(lvwSchoonmaak.Items[lvwSchoonmaak.FocusedItem.Index].SubItems[0].Text));
             string opmerking = tbxSchoonmaakBevestiging.Text;
             TypeOnderhoud Schoonmaak;
+            DateTime beschikbaarDatum = dtpSchoonmaak.Value;
             if (rbtSchoonmaakGroot.Checked)
             {
                 Schoonmaak = TypeOnderhoud.GroteSchoonmaak;
-                selectedTram.Onderhoud(Schoonmaak, opmerking);
+                selectedTram.Onderhoud(Schoonmaak, opmerking, beschikbaarDatum);
             }
             else if (rbtSchoonmaakKlein.Checked)
             {
                 Schoonmaak = TypeOnderhoud.KleineSchoonmaak;
-                selectedTram.Onderhoud(Schoonmaak, opmerking);
+                selectedTram.Onderhoud(Schoonmaak, opmerking, beschikbaarDatum);
             }
             else MessageBox.Show("Selecteer een schoonmaaktype");
         }
