@@ -84,12 +84,12 @@ namespace TramBeheerSysteem
                     {
                         int id = Convert.ToInt32(reader["ID"]);
                         Remise remise = RemiseManager.remiseViaId(Convert.ToInt32(reader["Remise_ID"]));
-                        int nummer = Convert.ToInt32(reader["GroteServiceBeurtenPerDag"]);
-                        int kleineServiceBeurtenPerDag = Convert.ToInt32(reader["KleineServiceBeurtenPerDag"]);
-                        int groteSchoonmaakBeurtenPerDag = Convert.ToInt32(reader["GroteSchoonmaakBeurtenPerDag"]);
-                        int kleineSchoonmaakBeurtenPerDag = Convert.ToInt32(reader["KleineSchoonmaakBeurtenPerDag"]);
+                        int nummer = Convert.ToInt32(reader["Nummer"]);
+                        int lengte = Convert.ToInt32(reader["Lengte"]);
+                        bool beschikbaar = Convert.ToBoolean(reader["Beschikbaar"]);
+                        bool inUitrijSpoor = Convert.ToBoolean(reader["InUitRijspoor"]);
 
-                        sporen.Add(new Spoor());
+                        sporen.Add(new Spoor(id, remise, nummer, lengte, beschikbaar, blokkade, inUitrijSpoor))
                     }
                 }
             }
