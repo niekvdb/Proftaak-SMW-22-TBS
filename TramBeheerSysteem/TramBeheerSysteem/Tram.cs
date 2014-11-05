@@ -35,7 +35,7 @@ namespace TramBeheerSysteem
         {
             this.IsNietVervuild();
             Tramonderhoud onderhoud = new Tramonderhoud(null, this, DateTime.Now, typeOnderhoud, opmerking);
-            TramManager.registreerOnderhoud(onderhoud);
+            DatabaseManager.registreerOnderhoud(onderhoud);
         }
 
         public void IsVervuild()
