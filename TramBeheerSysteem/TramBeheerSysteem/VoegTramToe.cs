@@ -19,6 +19,8 @@ namespace TramBeheerSysteem
 
         private void btnBevestig_Click(object sender, EventArgs e)
         {
+            /* WHY ZO
+             
             string NR_tram = tbTramnummer.Text;
             string NR_spoor = tbSpoornummer.Text;
             string NR_sector = tbSectornummer.Text;
@@ -38,14 +40,25 @@ namespace TramBeheerSysteem
                 MessageBox.Show("Voer geldige nummers in");
                 return;
             }
+            
+            IF YOU CAN DO IT ZO */
 
-           if (TramManager.tramViaId(NR) != null)
+            int tramNr;
+            int spoorNr;
+            int sectorNr;
+            if (!int.TryParse(tbTramnummer.Text, out tramNr) || !int.TryParse(tbSpoornummer.Text, out spoorNr) || !int.TryParse(tbSectornummer.Text, out sectorNr))
             {
-                if (RemiseManager.spoorViaId(NR1) != null)
+                MessageBox.Show("Voer geldige nummers in");
+                return;
+            }
+
+           if (TramManager.tramViaId(tramNr) != null)
+            {
+                if (RemiseManager.spoorViaId(spoorNr) != null)
                 {
-                    foreach (Sector sec in RemiseManager.sectorenVanSpoor(NR1))
+                    foreach (Sector sector in RemiseManager.sectorenVanSpoor(spoorNr))
                     {
-                        if (sec.Id == NR2)
+                        if (sector.Id == sectorNr)
                         {
                             //ToDo RemiseManager.VoegTramToeAanSector(NR2, NR);
                         }
