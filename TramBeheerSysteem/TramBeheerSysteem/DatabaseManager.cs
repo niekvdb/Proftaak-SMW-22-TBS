@@ -187,5 +187,14 @@ namespace TramBeheerSysteem
             return trams;
         }
 
+        public static List<Tramonderhoud> laadTramonderhoud()
+        {
+            return null;
+        }
+
+        public static void registreerOnderhoud(Tramonderhoud onderhoud)
+        {
+            //ToDo
+        }
     }
 }
