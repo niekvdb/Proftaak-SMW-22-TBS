@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TramBeheerSysteem
 {
-    class Tram
+    public class Tram
     {
         public int id { get; private set; }
         public Remise remise { get; private set; }

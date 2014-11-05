@@ -26,7 +26,7 @@ namespace TramBeheerSysteem
 
 
 
-        static Tram TramInformatie(int tramnummer)
+        public static Tram TramInformatie(int tramnummer)
         {
             Tram tram = null;
             try
