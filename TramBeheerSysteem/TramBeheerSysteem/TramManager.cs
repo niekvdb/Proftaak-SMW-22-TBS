@@ -8,8 +8,8 @@ namespace TramBeheerSysteem
 {
     public static class TramManager
     {
-        public static List<Tram> Trams = new List<Tram>();
-        public static List<Tramonderhoud> onderhoudsBeurten = new List<Tramonderhoud>(); 
+        public static List<Tram> Trams;
+        public static List<Tramonderhoud> onderhoudsBeurten; 
 
         static TramManager()
         {
@@ -18,6 +18,9 @@ namespace TramBeheerSysteem
 
         public static void LaadTrams()
         {
+            Trams = new List<Tram>();
+            onderhoudsBeurten = new List<Tramonderhoud>();
+
             Trams = DatabaseManager.LaadTrams();
             onderhoudsBeurten = DatabaseManager.LaadTramonderhoud();
         }
