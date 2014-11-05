@@ -177,15 +177,15 @@ namespace TramBeheerSysteem
                 return;
             }           
             int NR = Convert.ToInt32(cbTrams.Text);
-            foreach (Tram t in DatabaseManager.HaalTramsOp)
+            foreach (Tram t in TramManager.LaadTrams())
             {
-                if (t.nummer != NR)
+                if (t.id != NR)
                 {
                     MessageBox.Show("Tram-nummer bestaat niet");
                 }
                 else
                 {
-                    DatabaseManager.VerwijderTram(NR);
+                    TramManager.VerwijderTram(NR);
                     MessageBox.Show("Tram is succesvol verwijderd");
                 }
             }
