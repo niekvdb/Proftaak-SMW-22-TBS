@@ -31,7 +31,7 @@ namespace TramBeheerSysteem
             this.beschikbaar = beschikbaar;
         }
 
-        public void Onderhoud(TypeOnderhoud typeOnderhoud, string opmerking, DateTime beschikbaar)
+        public void Onderhoud(TypeOnderhoud typeOnderhoud, string opmerking, DateTime beschikbaar, Medewerker medewerker)
         {
             if (typeOnderhoud == TypeOnderhoud.GroteSchoonmaak || typeOnderhoud == TypeOnderhoud.KleineSchoonmaak)
             {
@@ -41,7 +41,7 @@ namespace TramBeheerSysteem
             {
                 this.IsNietDefect();
             }
-            Tramonderhoud onderhoud = new Tramonderhoud(null, this, beschikbaar, DateTime.Now, typeOnderhoud, opmerking);
+            Tramonderhoud onderhoud = new Tramonderhoud(medewerker, this, beschikbaar, DateTime.Now, typeOnderhoud, opmerking);
             DatabaseManager.registreerOnderhoud(onderhoud);
         }
 

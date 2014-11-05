@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TramBeheerSysteem
 {
-    class TramIndeling
+    public class TramIndeling
     {
         private List<Spoor> alleSporen = RemiseManager.Sporen;
         private int spoorTeller = 0;
