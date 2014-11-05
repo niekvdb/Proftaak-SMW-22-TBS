@@ -44,7 +44,7 @@ namespace TramBeheerSysteem
                         if (sec.Id > SectorNR)
                         {
                             sec.Deblokkeer();
-                            RemiseManager.UpdateSectorStatus(sec.Id);
+                            //RemiseManager.UpdateSectorStatus(sec.Id);
                         }
                     }
                 }
@@ -57,12 +57,12 @@ namespace TramBeheerSysteem
                         if (sec.Id > SectorNR)
                         {
                             sec.Blokkeer();
-                            RemiseManager.UpdateSectorStatus(sec.Id);
+                            //RemiseManager.UpdateSectorStatus(sec.Id);
                         }
                     }
                 }
             }
-            RemiseManager.UpdateSectorStatus(SectorNR);
+            //RemiseManager.UpdateSectorStatus(SectorNR);
         }
 
         private void SpoorBediening_Load(object sender, EventArgs e)
