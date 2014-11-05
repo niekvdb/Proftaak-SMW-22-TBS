@@ -152,7 +152,7 @@ namespace TramBeheerSysteem
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Voeg_Tram_toe v = new Voeg_Tram_toe();
+            VoegTramToe v = new VoegTramToe();
             v.Show();
             
         }
@@ -200,7 +200,7 @@ namespace TramBeheerSysteem
 
         private void wijzigStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Voeg_Tram_toe v = new Voeg_Tram_toe(1);
+            WijzigTramStatus v = new WijzigTramStatus();
             v.Show();
         }
 
@@ -260,8 +260,8 @@ namespace TramBeheerSysteem
         /// <param name="e"></param>
         private void btnStop_Click(object sender, EventArgs e)
         {
-            DatabaseManager dbManager = new DatabaseManager();
-            MessageBox.Show((dbManager.KrijgFunctie("Henk_Bestuurder")));
+         //   DatabaseManager dbManager = new DatabaseManager();
+         //   MessageBox.Show((dbManager.KrijgFunctie("Henk_Bestuurder")));
         }
     }
 }
