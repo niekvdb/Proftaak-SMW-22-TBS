@@ -54,10 +54,6 @@ namespace TramBeheerSysteem
                         DatabaseManager.WijzigTramStatus(NR,Status);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Tramnummer bestaat niet");
-                }
             }
             this.Close();
         }
