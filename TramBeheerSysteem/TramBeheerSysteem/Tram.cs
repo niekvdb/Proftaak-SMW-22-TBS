@@ -8,7 +8,7 @@ namespace TramBeheerSysteem
 {
     class Tram
     {
-        public int Id { get; private set; }
+        public int id { get; private set; }
         public Remise remise { get; private set; }
         public Tramtype tramtype { get; private set; }
         public int nummer { get; private set; }
@@ -17,22 +17,21 @@ namespace TramBeheerSysteem
         public bool vervuild { get; private set; }
         public bool defect { get; private set; }
         public bool conducteurGeschikt { get; private set; }
-        public bool beschikbaar { get; private set; }
         public Sector sector { get; private set; }
+        public bool beschikbaar { get; private set; }
 
-        public Tram(int id, Remise remise, Tramtype tramtype, int nummer, int lengte, string status, bool vervuild, bool defect, bool conducteurGeschikt, Sector sector, bool beschikbaar)
+        public Tram(int id, Remise remise, Tramtype tramtype, int lengte, string status, bool vervuild, bool defect, bool conducteurGeschikt, bool beschikbaar, Sector sector)
         {
-            this.Id = id;
+            this.id = id;
             this.remise = remise;
             this.tramtype = tramtype;
-            this.nummer = nummer;
             this.lengte = lengte;
             this.status = status;
             this.vervuild = vervuild;
             this.defect = defect;
             this.conducteurGeschikt = conducteurGeschikt;
-            this.sector = sector;
             this.beschikbaar = beschikbaar;
+            this.sector = sector;
         }
 
         public void Verplaats(Sector sector)
