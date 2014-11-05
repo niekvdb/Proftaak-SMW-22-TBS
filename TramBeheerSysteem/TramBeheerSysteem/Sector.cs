@@ -34,5 +34,10 @@ namespace TramBeheerSysteem
         {
             this.Blokkade = true;
         }
+
+        public void ClearSector()
+        {
+            this.Tram = null;
+        }
     }
 }
