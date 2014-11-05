@@ -150,7 +150,7 @@ namespace TramBeheerSysteem
             try
             {
                 connection.Open();
-                OracleCommand command = new OracleCommand("SELECT * FROM SPOOR");
+                OracleCommand command = new OracleCommand("SELECT * FROM TRAM");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
@@ -187,9 +187,45 @@ namespace TramBeheerSysteem
             return trams;
         }
 
-        public static List<Tramonderhoud> laadTramonderhoud()
+        public static List<Tramonderhoud> LaadTramonderhoud()
         {
-            return null;
+            List<Tramonderhoud> onderhoudsBeurten = null;
+            try
+            {
+                connection.Open();
+                OracleCommand command = new OracleCommand("SELECT * FROM TRAM_ONDERHOUD");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                OracleDataReader reader = command.ExecuteReader();
+
+                if (!reader.HasRows) return null;
+                else
+                {
+                    onderhoudsBeurten = new List<Tramonderhoud>();
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["ID"]);
+                        Medewerker medewerker = null;
+                        Tram tram = TramManager.tramViaId(Convert.ToInt32(reader["Tram_ID"]));
+                        DateTime beschikbaarDatum = Convert.ToDateTime(reader["DatumBeschikbaar"]);
+                        DateTime datumTijd = Convert.ToDateTime(reader["DatumTijdStip"]);
+                        TypeOnderhoud typeOnderhoud = (TypeOnderhoud) Convert.ToInt32(reader["TypeOnderhoud"]);
+                        string opmerking = Convert.ToString(reader["Notitie"]);
+
+                        onderhoudsBeurten.Add(new Tramonderhoud(id, medewerker, tram, beschikbaarDatum, datumTijd, typeOnderhoud, opmerking));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return onderhoudsBeurten;
         }
 
         public static void registreerOnderhoud(Tramonderhoud onderhoud)
@@ -206,7 +242,7 @@ namespace TramBeheerSysteem
                 command.Parameters.Add(":medewerker_ID", onderhoud.Medewerker.Id);
                 command.Parameters.Add(":tram_ID", onderhoud.Tram.Id);
                 command.Parameters.Add(":datumTijdstip", onderhoud.DatumTijdstip);
-                command.Parameters.Add(":datumBeschikbaar", null);
+                command.Parameters.Add(":datumBeschikbaar", onderhoud.BeschikbaarDatum);
                 command.Parameters.Add(":typeOnderhoud", onderhoud.TypeOnderhoud);
                 command.Parameters.Add(":notitie", onderhoud.Opmerking);
 

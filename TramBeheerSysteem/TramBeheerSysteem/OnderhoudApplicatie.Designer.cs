@@ -32,6 +32,8 @@
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.tabOnderhoud = new System.Windows.Forms.TabControl();
             this.tabSchoonmaak = new System.Windows.Forms.TabPage();
+            this.rbtSchoonmaakGroot = new System.Windows.Forms.RadioButton();
+            this.rbtSchoonmaakKlein = new System.Windows.Forms.RadioButton();
             this.lblSchoonmaakBevestiging = new System.Windows.Forms.Label();
             this.tbxSchoonmaakBevestiging = new System.Windows.Forms.TextBox();
             this.btnSchoonmaakBevestiging = new System.Windows.Forms.Button();
@@ -59,8 +61,8 @@
             this.clmReparatieReparatie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.rbtSchoonmaakGroot = new System.Windows.Forms.RadioButton();
-            this.rbtSchoonmaakKlein = new System.Windows.Forms.RadioButton();
+            this.dtpSchoonmaak = new System.Windows.Forms.DateTimePicker();
+            this.dtpReparatie = new System.Windows.Forms.DateTimePicker();
             this.tabOnderhoud.SuspendLayout();
             this.tabSchoonmaak.SuspendLayout();
             this.pnlSchoonmaak.SuspendLayout();
@@ -80,6 +82,7 @@
             // 
             // tabSchoonmaak
             // 
+            this.tabSchoonmaak.Controls.Add(this.dtpSchoonmaak);
             this.tabSchoonmaak.Controls.Add(this.rbtSchoonmaakGroot);
             this.tabSchoonmaak.Controls.Add(this.rbtSchoonmaakKlein);
             this.tabSchoonmaak.Controls.Add(this.lblSchoonmaakBevestiging);
@@ -93,6 +96,28 @@
             this.tabSchoonmaak.TabIndex = 0;
             this.tabSchoonmaak.Text = "Schoonmaak";
             this.tabSchoonmaak.UseVisualStyleBackColor = true;
+            // 
+            // rbtSchoonmaakGroot
+            // 
+            this.rbtSchoonmaakGroot.AutoSize = true;
+            this.rbtSchoonmaakGroot.Location = new System.Drawing.Point(884, 48);
+            this.rbtSchoonmaakGroot.Name = "rbtSchoonmaakGroot";
+            this.rbtSchoonmaakGroot.Size = new System.Drawing.Size(151, 21);
+            this.rbtSchoonmaakGroot.TabIndex = 22;
+            this.rbtSchoonmaakGroot.TabStop = true;
+            this.rbtSchoonmaakGroot.Text = "Grote Schoonmaak";
+            this.rbtSchoonmaakGroot.UseVisualStyleBackColor = true;
+            // 
+            // rbtSchoonmaakKlein
+            // 
+            this.rbtSchoonmaakKlein.AutoSize = true;
+            this.rbtSchoonmaakKlein.Location = new System.Drawing.Point(724, 48);
+            this.rbtSchoonmaakKlein.Name = "rbtSchoonmaakKlein";
+            this.rbtSchoonmaakKlein.Size = new System.Drawing.Size(154, 21);
+            this.rbtSchoonmaakKlein.TabIndex = 21;
+            this.rbtSchoonmaakKlein.TabStop = true;
+            this.rbtSchoonmaakKlein.Text = "Kleine Schoonmaak";
+            this.rbtSchoonmaakKlein.UseVisualStyleBackColor = true;
             // 
             // lblSchoonmaakBevestiging
             // 
@@ -113,7 +138,7 @@
             // 
             // btnSchoonmaakBevestiging
             // 
-            this.btnSchoonmaakBevestiging.Location = new System.Drawing.Point(724, 251);
+            this.btnSchoonmaakBevestiging.Location = new System.Drawing.Point(724, 269);
             this.btnSchoonmaakBevestiging.Name = "btnSchoonmaakBevestiging";
             this.btnSchoonmaakBevestiging.Size = new System.Drawing.Size(81, 31);
             this.btnSchoonmaakBevestiging.TabIndex = 12;
@@ -187,6 +212,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dtpReparatie);
             this.tabPage3.Controls.Add(this.rbtReparatieGroot);
             this.tabPage3.Controls.Add(this.rbtReparatieKlein);
             this.tabPage3.Controls.Add(this.lblReparatieBevestiging);
@@ -242,7 +268,7 @@
             // 
             // btnReparatieBevestiging
             // 
-            this.btnReparatieBevestiging.Location = new System.Drawing.Point(724, 251);
+            this.btnReparatieBevestiging.Location = new System.Drawing.Point(724, 269);
             this.btnReparatieBevestiging.Name = "btnReparatieBevestiging";
             this.btnReparatieBevestiging.Size = new System.Drawing.Size(81, 31);
             this.btnReparatieBevestiging.TabIndex = 16;
@@ -335,27 +361,19 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // rbtSchoonmaakGroot
+            // dtpSchoonmaak
             // 
-            this.rbtSchoonmaakGroot.AutoSize = true;
-            this.rbtSchoonmaakGroot.Location = new System.Drawing.Point(884, 48);
-            this.rbtSchoonmaakGroot.Name = "rbtSchoonmaakGroot";
-            this.rbtSchoonmaakGroot.Size = new System.Drawing.Size(151, 21);
-            this.rbtSchoonmaakGroot.TabIndex = 22;
-            this.rbtSchoonmaakGroot.TabStop = true;
-            this.rbtSchoonmaakGroot.Text = "Grote Schoonmaak";
-            this.rbtSchoonmaakGroot.UseVisualStyleBackColor = true;
+            this.dtpSchoonmaak.Location = new System.Drawing.Point(724, 241);
+            this.dtpSchoonmaak.Name = "dtpSchoonmaak";
+            this.dtpSchoonmaak.Size = new System.Drawing.Size(246, 22);
+            this.dtpSchoonmaak.TabIndex = 23;
             // 
-            // rbtSchoonmaakKlein
+            // dtpReparatie
             // 
-            this.rbtSchoonmaakKlein.AutoSize = true;
-            this.rbtSchoonmaakKlein.Location = new System.Drawing.Point(724, 48);
-            this.rbtSchoonmaakKlein.Name = "rbtSchoonmaakKlein";
-            this.rbtSchoonmaakKlein.Size = new System.Drawing.Size(154, 21);
-            this.rbtSchoonmaakKlein.TabIndex = 21;
-            this.rbtSchoonmaakKlein.TabStop = true;
-            this.rbtSchoonmaakKlein.Text = "Kleine Schoonmaak";
-            this.rbtSchoonmaakKlein.UseVisualStyleBackColor = true;
+            this.dtpReparatie.Location = new System.Drawing.Point(724, 241);
+            this.dtpReparatie.Name = "dtpReparatie";
+            this.dtpReparatie.Size = new System.Drawing.Size(246, 22);
+            this.dtpReparatie.TabIndex = 24;
             // 
             // OnderhoudApplicatie
             // 
@@ -409,5 +427,7 @@
         private System.Windows.Forms.RadioButton rbtReparatieKlein;
         private System.Windows.Forms.RadioButton rbtSchoonmaakGroot;
         private System.Windows.Forms.RadioButton rbtSchoonmaakKlein;
+        private System.Windows.Forms.DateTimePicker dtpSchoonmaak;
+        private System.Windows.Forms.DateTimePicker dtpReparatie;
     }
 }
