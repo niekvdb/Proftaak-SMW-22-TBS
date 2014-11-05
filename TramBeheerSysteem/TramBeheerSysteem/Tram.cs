@@ -8,7 +8,7 @@ namespace TramBeheerSysteem
 {
     public class Tram
     {
-        public int id { get; private set; }
+        public int Id { get; private set; }
         public Tramtype tramtype { get; private set; }
         public int lengte { get; private set; }
         public string status { get; private set; }
@@ -20,7 +20,7 @@ namespace TramBeheerSysteem
 
         public Tram(int id, Tramtype tramtype, int lengte, string status, Remise remise, bool vervuild, bool defect, bool conducteurGeschikt, bool beschikbaar)
         {
-            this.id = id;
+            this.Id = id;
             this.tramtype = tramtype;
             this.lengte = lengte;
             this.status = status;

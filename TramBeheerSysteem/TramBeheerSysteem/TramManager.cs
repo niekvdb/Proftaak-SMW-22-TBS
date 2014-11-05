@@ -26,7 +26,7 @@ namespace TramBeheerSysteem
         {
             foreach (Tram tram in Trams)
             {
-                if (tram.id == id) return tram;
+                if (tram.Id == id) return tram;
             }
 
             return null;

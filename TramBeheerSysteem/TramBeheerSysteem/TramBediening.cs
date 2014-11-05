@@ -17,7 +17,7 @@ namespace TramBeheerSysteem
             InitializeComponent();
             foreach (Tram t in TramManager.Trams)
             {
-                cbTramnummer.Items.Add(Convert.ToString(t.id));
+                cbTramnummer.Items.Add(Convert.ToString(t.Id));
             }
         }
 
@@ -42,7 +42,7 @@ namespace TramBeheerSysteem
             int NR = Convert.ToInt32(cbTramnummer.Text);
             foreach (Tram t in TramManager.Trams)
             {
-                if (t.id == NR)
+                if (t.Id == NR)
                 {
                     if (t.status == cbStatus.Text)
                     {

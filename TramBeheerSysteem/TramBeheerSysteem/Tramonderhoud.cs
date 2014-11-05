@@ -11,7 +11,7 @@ namespace TramBeheerSysteem
         public int Id { get; private set; }
         public Medewerker Medewerker { get; private set; }
         public Tram Tram { get; private set; }
-        public DateTime BeschikbaarDatum { get; private set; }
+        public DateTime DatumTijdstip { get; private set; }
         public TypeOnderhoud TypeOnderhoud { get; private set; }
         public string Opmerking { get; private set; }
 
@@ -21,7 +21,7 @@ namespace TramBeheerSysteem
             Id = id;
             Medewerker = medewerker;
             Tram = tram;
-            BeschikbaarDatum = beschikbaarDatum;
+            DatumTijdstip = beschikbaarDatum;
             TypeOnderhoud = typeOnderhoud;
             Opmerking = opmerking;
         }
@@ -30,7 +30,7 @@ namespace TramBeheerSysteem
         {
             Medewerker = medewerker;
             Tram = tram;
-            BeschikbaarDatum = beschikbaarDatum;
+            DatumTijdstip = beschikbaarDatum;
             TypeOnderhoud = typeOnderhoud;
             Opmerking = opmerking;
         }
