@@ -17,8 +17,8 @@ namespace TramBeheerSysteem
             InitializeComponent();
             foreach (Medewerker medewerker in RemiseManager.Medewerkers)
             {
-                cbReparatieMedewerker.Items.Add(medewerker);
-                cbSchoonmaakMedewerker.Items.Add(medewerker);
+                cbReparatieMedewerker.Items.Add(medewerker.Naam);
+                cbSchoonmaakMedewerker.Items.Add(medewerker.Naam);
             }
         }
 
@@ -27,16 +27,17 @@ namespace TramBeheerSysteem
             Tram selectedTram = TramManager.tramViaId(Convert.ToInt32(lvwSchoonmaak.Items[lvwSchoonmaak.FocusedItem.Index].SubItems[0].Text));
             string opmerking = tbxSchoonmaakBevestiging.Text;
             TypeOnderhoud Schoonmaak;
+            Medewerker medewerker = RemiseManager.medewerkerViaNaam(Convert.ToString(cbSchoonmaakMedewerker.SelectedItem));
             DateTime beschikbaarDatum = dtpSchoonmaak.Value;
             if (rbtSchoonmaakGroot.Checked)
             {
                 Schoonmaak = TypeOnderhoud.GroteSchoonmaak;
-                selectedTram.Onderhoud(Schoonmaak, opmerking, beschikbaarDatum);
+                selectedTram.Onderhoud(Schoonmaak, opmerking, beschikbaarDatum, medewerker);
             }
             else if (rbtSchoonmaakKlein.Checked)
             {
                 Schoonmaak = TypeOnderhoud.KleineSchoonmaak;
-                selectedTram.Onderhoud(Schoonmaak, opmerking, beschikbaarDatum);
+                selectedTram.Onderhoud(Schoonmaak, opmerking, beschikbaarDatum, medewerker);
             }
             else MessageBox.Show("Selecteer een schoonmaaktype");
         }
@@ -46,16 +47,17 @@ namespace TramBeheerSysteem
             Tram selectedTram = TramManager.tramViaId(Convert.ToInt32(lvwReparatie.Items[lvwSchoonmaak.FocusedItem.Index].SubItems[0].Text));
             string opmerking = tbxReparatieBevestiging.Text;
             TypeOnderhoud reparatie;
+            Medewerker medewerker = RemiseManager.medewerkerViaNaam(Convert.ToString(cbSchoonmaakMedewerker.SelectedItem));
             DateTime beschikbaarDatum = dtpReparatie.Value;
             if (rbtReparatieGroot.Checked)
             {
                 reparatie = TypeOnderhoud.GroteReparatie;
-                selectedTram.Onderhoud(reparatie, opmerking, beschikbaarDatum);
+                selectedTram.Onderhoud(reparatie, opmerking, beschikbaarDatum, medewerker);
             }
             else if (rbtReparatieKlein.Checked)
             {
                 reparatie = TypeOnderhoud.KleineReparatie;
-                selectedTram.Onderhoud(reparatie, opmerking, beschikbaarDatum);
+                selectedTram.Onderhoud(reparatie, opmerking, beschikbaarDatum, medewerker);
             }
             else MessageBox.Show("Selecteer een reparatietype");
         }

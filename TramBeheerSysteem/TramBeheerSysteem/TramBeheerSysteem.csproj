@@ -127,7 +127,6 @@
     <Compile Include="Tramonderhoud.cs" />
     <Compile Include="Tramtype.cs" />
     <Compile Include="TypeOnderhoud.cs" />
-    <Compile Include="TypeSchoonmaak.cs" />
     <Compile Include="TramBediening.cs">
       <SubType>Form</SubType>
     </Compile>
