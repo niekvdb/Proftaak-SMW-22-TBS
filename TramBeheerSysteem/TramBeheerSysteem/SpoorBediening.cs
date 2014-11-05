@@ -15,7 +15,7 @@ namespace TramBeheerSysteem
         public SpoorBediening()
         {
             InitializeComponent();
-            foreach(Spoor s in DatabaseManager.KrijgAlleSporen())
+            foreach(Spoor s in RemiseManager.Sporen)
             cbSpoor.Items.Add(Convert.ToString(s.Nummer));
         }
 
