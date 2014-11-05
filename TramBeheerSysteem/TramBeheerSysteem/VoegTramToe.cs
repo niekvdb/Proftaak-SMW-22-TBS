@@ -19,17 +19,19 @@ namespace TramBeheerSysteem
 
         private void btnBevestig_Click(object sender, EventArgs e)
         {
-
-            int NR_tram;
-            int NR_spoor;
-            int NR_sector;
+            string NR_tram = tbTramnummer.Text;
+            string NR_spoor = tbSpoornummer.Text;
+            string NR_sector = tbSectornummer.Text;
+            int NR;
+            int NR1;
+            int NR2;
 
             // Check of textbox ID te converteren is naar Int32
             try
             {
-                NR_tram = Convert.ToInt32(tbTramnummer.Text);
-                NR_spoor = Convert.ToInt32(tbSpoornummer.Text);
-                NR_sector = Convert.ToInt32(tbSectornummer.Text);
+                NR = Convert.ToInt32(NR_tram);
+                NR1 = Convert.ToInt32(NR_spoor);
+                NR2 = Convert.ToInt32(NR_sector);
             }
             catch
             {
@@ -37,14 +39,14 @@ namespace TramBeheerSysteem
                 return;
             }
 
-            if (TramManager.HaalTramOp(NR_tram))
+           if (TramManager.HaalTramOp(NR))
             {
-                if (RemiseManager.HaalSpoorOp(NR_spoor))
+                if (RemiseManager.HaalSpoorOp(NR1))
                 {
-                    foreach (Sector sec in RemiseManager.sectorenVanSpoor(NR_spoor))
-                        if (sec.Id == NR_sector)
+                    foreach (Sector sec in RemiseManager.sectorenVanSpoor(NR1))
+                        if (sec.Id == NR2)
                         {
-                            RemiseManager.VoegTramToeAanSector(NR_sector, NR_tram);
+                            RemiseManager.VoegTramToeAanSector(NR2,NR);
                         }
                 }
                 else
@@ -56,6 +58,7 @@ namespace TramBeheerSysteem
             {
                 MessageBox.Show("Tram bestaat niet");
             }
+             
 
         }
 
