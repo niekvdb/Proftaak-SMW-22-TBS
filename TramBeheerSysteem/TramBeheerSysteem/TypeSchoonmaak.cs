@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TramBeheerSysteem
 {
-    enum TypeSchoonmaak
+    public enum TypeSchoonmaak
     {
 
     }
