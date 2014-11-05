@@ -39,14 +39,14 @@ namespace TramBeheerSysteem
                 return;
             }
 
-            if (DatabaseManager.HaalTramOp(NR))
+            if (TramManager.HaalTramOp(NR))
             {
-                if (DatabaseManager.HaalSpoorOp(NR1))
+                if (RemiseManager.HaalSpoorOp(NR1))
                 {
-                    foreach (Sector sec in DatabaseManager.HaalSectorenOp(NR1))
+                    foreach (Sector sec in RemiseManager.sectorenVanSpoor(NR1))
                         if (sec.Id == NR2)
                         {
-                            DatabaseManager.VoegTramToeAanSector(NR);
+                            RemiseManager.VoegTramToeAanSector(NR2,NR);
                         }
                         else
                         {
