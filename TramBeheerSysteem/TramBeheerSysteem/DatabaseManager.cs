@@ -83,13 +83,13 @@ namespace TramBeheerSysteem
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
-                        string naam = Convert.ToString(reader["Naam"]);
-                        int groteServiceBeurtenPerDag = Convert.ToInt32(reader["GroteServiceBeurtenPerDag"]);
+                        Remise remise = RemiseManager.remiseViaId(Convert.ToInt32(reader["Remise_ID"]));
+                        int nummer = Convert.ToInt32(reader["GroteServiceBeurtenPerDag"]);
                         int kleineServiceBeurtenPerDag = Convert.ToInt32(reader["KleineServiceBeurtenPerDag"]);
                         int groteSchoonmaakBeurtenPerDag = Convert.ToInt32(reader["GroteSchoonmaakBeurtenPerDag"]);
                         int kleineSchoonmaakBeurtenPerDag = Convert.ToInt32(reader["KleineSchoonmaakBeurtenPerDag"]);
 
-                        
+                        sporen.Add(new Spoor());
                     }
                 }
             }
