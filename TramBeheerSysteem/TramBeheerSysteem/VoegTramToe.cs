@@ -39,7 +39,7 @@ namespace TramBeheerSysteem
                 return;
             }
 
-            if (TramManager.HaalTramOp(NR))
+           if (TramManager.HaalTramOp(NR))
             {
                 if (RemiseManager.HaalSpoorOp(NR1))
                 {
@@ -58,6 +58,7 @@ namespace TramBeheerSysteem
             {
                 MessageBox.Show("Tram bestaat niet");
             }
+             
 
         }
 

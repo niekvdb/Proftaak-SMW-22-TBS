@@ -15,7 +15,7 @@ namespace TramBeheerSysteem
         public SpoorBediening()
         {
             InitializeComponent();
-            foreach(Spoor s in DatabaseManager.KrijgAlleSporen())
+            foreach(Spoor s in RemiseManager.Sporen)
             cbSpoor.Items.Add(Convert.ToString(s.Nummer));
         }
 
@@ -44,6 +44,7 @@ namespace TramBeheerSysteem
                         if (sec.Id > SectorNR)
                         {
                             sec.Deblokkeer();
+                            RemiseManager.UpdateSectorStatus(sec.Id);
                         }
                     }
                 }
@@ -56,6 +57,7 @@ namespace TramBeheerSysteem
                         if (sec.Id > SectorNR)
                         {
                             sec.Blokkeer();
+                            RemiseManager.UpdateSectorStatus(sec.Id);
                         }
                     }
                 }

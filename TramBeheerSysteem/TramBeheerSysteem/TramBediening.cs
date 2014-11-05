@@ -57,7 +57,5 @@ namespace TramBeheerSysteem
             }
             this.Close();
         }
-
-
     }
 }

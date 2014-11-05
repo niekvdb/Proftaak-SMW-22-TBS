@@ -9,7 +9,7 @@ namespace TramBeheerSysteem
 {
     class TramIndeling
     {
-        private List<Spoor> alleSporen = DatabaseManager.KrijgAlleSporen();
+        private List<Spoor> alleSporen = RemiseManager.Sporen;
         private int spoorTeller = 0;
 
         public List<Sector> DeelTramIn(Tram tram)
@@ -58,7 +58,7 @@ namespace TramBeheerSysteem
 
         private List<Sector> vrijeSectoren(Spoor spoor, Tram tram)
         {
-            List<Sector> spoorSectors = DatabaseManager.KrijgSectors(spoor);
+            List<Sector> spoorSectors = RemiseManager.sectorenVanSpoor(spoor.Id);
             List<Sector> sectors = new List<Sector>();
             foreach (Sector s in spoorSectors)
             {

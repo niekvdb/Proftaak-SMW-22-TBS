@@ -12,6 +12,8 @@ namespace TramBeheerSysteem
         public static List<Sector> Sectors = new List<Sector>(); 
         public static List<Spoor> Sporen = new List<Spoor>();
 
+        public static List<Medewerker> Medewerkers = new List<Medewerker>(); 
+
         static RemiseManager()
         {
         }
@@ -19,6 +21,7 @@ namespace TramBeheerSysteem
         public static void LaadRemises()
         {
             Remises = DatabaseManager.LaadRemises();
+            Medewerkers = DatabaseManager.LaadMedewerkers();
         }
 
         public static void LaadSporen()
@@ -36,7 +39,18 @@ namespace TramBeheerSysteem
                     return remise;
                 }
             }
+            return null;
+        }
 
+        public static Medewerker medewerkerViaId(int id)
+        {
+            foreach (Medewerker medewerker in Medewerkers)
+            {
+                if (medewerker.Id == id)
+                {
+                    return medewerker;
+                }
+            }
             return null;
         }
 

@@ -16,7 +16,7 @@ namespace TramBeheerSysteem
 
         }
 
-        public static List<Tram> LaadTrams()
+        public static void LaadTrams()
         {
             Trams = DatabaseManager.LaadTrams();
             onderhoudsBeurten = DatabaseManager.LaadTramonderhoud();
