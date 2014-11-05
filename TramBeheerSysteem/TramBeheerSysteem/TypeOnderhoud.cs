@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TramBeheerSysteem
 {
-    enum TypeOnderhoud
+    public enum TypeOnderhoud
     {
         KleineSchoonmaak,
         GroteSchoonmaak,

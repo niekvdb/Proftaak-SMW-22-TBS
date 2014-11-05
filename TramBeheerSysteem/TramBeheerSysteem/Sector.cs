@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TramBeheerSysteem
 {
-    class Sector
+    public class Sector
     {
         public int Id { get; private set; }
         public Tram Tram { get; private set; }
-        public int Nummer { get; private set; }
+        public int Nummer { get; private set; } // Id als spoornummer?
         public bool Beschikbaar { get; private set; }
         public bool Blokkade { get; private set; }
 

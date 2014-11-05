@@ -28,6 +28,10 @@ namespace TramBeheerSysteem
             this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
             VoegSporenToeVoorbeeld();
+            foreach (Tram t in DatabaseManager.HaalTramsOp())
+            {
+                cbTrams.Items.Add(t.nummer);
+            }
         }
 
         private List<Sector> GenerateSectorList(int Lengte)
@@ -152,9 +156,8 @@ namespace TramBeheerSysteem
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Voeg_Tram_toe v = new Voeg_Tram_toe();
-            v.Show();
-            
+            VoegTramToe v = new VoegTramToe();
+            v.Show();         
         }
 
 
@@ -165,32 +168,25 @@ namespace TramBeheerSysteem
 
         private void btnVerwijder_Click(object sender, EventArgs e)
         {
-            string NR_string = cbTrams.Text;
-            int NR;
-            try
+            if (cbTrams.SelectedItem == null)
             {
-                NR = Convert.ToInt32(NR_string);
-            }
-            catch
-            {
-                MessageBox.Show("Voer een tram-nummer in");
+                MessageBox.Show("Selecteer een tram");
                 return;
+            }           
+            int NR = Convert.ToInt32(cbTramnummer.Text);
+            foreach (Tram t in DatabaseManager.HaalTramsOp)
+            {
+                if (t.nummer != NR)
+                {
+                    MessageBox.Show("Tram-nummer bestaat niet");
+                }
+                else
+                {
+                    DatabaseManager.VerwijderTram(NR);
+                    MessageBox.Show("Tram is succesvol verwijderd");
+                }
             }
 
-            // foreach (Tram t in DatabaseManager.HaalTramsOp)
-            //  {
-            //     if (t.nummer != NR)
-            //    {
-            //        MessageBox.Show("Tram-nummer bestaat niet");
-            //        return;
-            //    }
-            //      else
-            //    {
-            //      DatabaseManager.VerwijderTram(NR);
-            //      MessageBox.Show("Tram is succesvol verwijderd");
-            //     }
-            //}
-            
         }
 
         private void TramBeheerSysteem_Load(object sender, EventArgs e)
@@ -200,7 +196,7 @@ namespace TramBeheerSysteem
 
         private void wijzigStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Voeg_Tram_toe v = new Voeg_Tram_toe(1);
+            WijzigTramStatus v = new WijzigTramStatus();
             v.Show();
         }
 
@@ -232,7 +228,11 @@ namespace TramBeheerSysteem
         {
             this.OnBlockSector(sender,EventArgs.Empty);
         }
-
+        /// <summary>
+        /// Functie om spoor te blokkeren. Laat op dit moment alleen nog een textbox zien.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected virtual void OnBlockSector(object sender,EventArgs e)
         {
             EventHandler handler = this.BlockSector;
@@ -249,16 +249,15 @@ namespace TramBeheerSysteem
             sector = tag.Substring((tag.IndexOf("_")+1));
             MessageBox.Show("Spoor: "+spoor+System.Environment.NewLine + "Sector: "+sector);
         }
-        /// <summary>
-        /// Tijdelijk gebruikt om te debuggen.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void btnStop_Click(object sender, EventArgs e)
         {
-            DatabaseManager dbManager = new DatabaseManager();
-            MessageBox.Show((dbManager.KrijgFunctie("Henk_Bestuurder")));
+            TramIndeling indeling = new TramIndeling();
+            Tram tram = new Tram(1,null,Tramtype.Combino,4,string.Empty,false,false,true,true,null);
+            foreach (Sector s in indeling.DeelTramIn(tram))
+            {
+                MessageBox.Show(s.Id.ToString());
+            }
         }
-
     }
 }
