@@ -9,7 +9,7 @@ namespace TramBeheerSysteem
 {
     class TramIndeling
     {
-        List<Spoor> alleSporen = null;//dbManager.AlleSporen();
+        private List<Spoor> alleSporen = DatabaseManager.KrijgAlleSporen();
         private int spoorTeller = 0;
 
         public List<Sector> DeelTramIn(Tram tram)
@@ -26,19 +26,7 @@ namespace TramBeheerSysteem
                         {
                             return ingedeeldeSectors;
                         }
-                        else
-                        {
-                            DeelTramIn(tram);
-                        }
                     }
-                    else
-                    {
-                        DeelTramIn(tram);
-                    }
-                }
-                else
-                {
-                    DeelTramIn(tram);
                 }
             }
             return null;
@@ -66,11 +54,27 @@ namespace TramBeheerSysteem
         private bool isSpoorLangGenoeg(Spoor spoor,int lengte)
         {
             return (spoor.Lengte <= lengte);
-            
         }
 
         private List<Sector> vrijeSectoren(Spoor spoor, Tram tram)
         {
+            List<Sector> spoorSectors = DatabaseManager.KrijgSectors(spoor);
+            List<Sector> sectors = new List<Sector>();
+            foreach (Sector s in spoorSectors)
+            {
+                if (sectors.Count <= tram.lengte)
+                {
+                    if (s.Beschikbaar && !s.Blokkade)
+                    {
+                        sectors.Add(s);
+                    }
+                    else
+                    {
+                        sectors.Clear();
+                    }
+                }
+            }
+            
             return null;
         }
     }
