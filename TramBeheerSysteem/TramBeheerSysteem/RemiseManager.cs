@@ -8,11 +8,11 @@ namespace TramBeheerSysteem
 {
     public static class RemiseManager
     {
-        public static List<Remise> Remises = new List<Remise>();
-        public static List<Sector> Sectors = new List<Sector>(); 
-        public static List<Spoor> Sporen = new List<Spoor>();
+        public static List<Remise> Remises;
+        public static List<Sector> Sectors; 
+        public static List<Spoor> Sporen;
 
-        public static List<Medewerker> Medewerkers = new List<Medewerker>(); 
+        public static List<Medewerker> Medewerkers; 
 
         static RemiseManager()
         {
@@ -22,12 +22,18 @@ namespace TramBeheerSysteem
 
         public static void LaadRemises()
         {
+            Remises = new List<Remise>();
+            Medewerkers = new List<Medewerker>();
+
             Remises = DatabaseManager.LaadRemises();
             Medewerkers = DatabaseManager.LaadMedewerkers();
         }
 
         public static void LaadSporen()
         {
+            Sectors = new List<Sector>();
+            Sporen = new List<Spoor>();
+
             Sectors = DatabaseManager.LaadSectoren();
             Sporen = DatabaseManager.LaadSporen();
         }
