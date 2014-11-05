@@ -9,14 +9,19 @@ namespace TramBeheerSysteem
     public static class RemiseManager
     {
         public static List<Remise> Remises = new List<Remise>();
-        public static List<Spoor> Sporen = new List<Spoor>();
         public static List<Sector> Sectors = new List<Sector>(); 
+        public static List<Spoor> Sporen = new List<Spoor>();
 
         static RemiseManager()
         {
-            Remises = DatabaseManager.LaadRemises();
         }
 
+        public static void LaadRemises()
+        {
+            Remises = DatabaseManager.LaadRemises();
+            Sectors = DatabaseManager.LaadSectoren();
+            Sporen = DatabaseManager.LaadSporen();
+        }
         public static Remise remiseViaId(int id)
         {
             foreach (Remise remise in Remises)
@@ -26,6 +31,8 @@ namespace TramBeheerSysteem
                     return remise;
                 }
             }
+
+            return null;
         }
 
         public static List<Sector> sectorenVanSpoor(int id)
