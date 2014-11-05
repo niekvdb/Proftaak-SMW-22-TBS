@@ -28,6 +28,10 @@ namespace TramBeheerSysteem
             this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
             VoegSporenToeVoorbeeld();
+            foreach (Tram t in DatabaseManager.HaalTramsOp())
+            {
+                cbTrams.Items.Add(t.nummer);
+            }
         }
 
         private List<Sector> GenerateSectorList(int Lengte)
@@ -153,8 +157,7 @@ namespace TramBeheerSysteem
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             VoegTramToe v = new VoegTramToe();
-            v.Show();
-            
+            v.Show();         
         }
 
 
@@ -165,32 +168,25 @@ namespace TramBeheerSysteem
 
         private void btnVerwijder_Click(object sender, EventArgs e)
         {
-            string NR_string = cbTrams.Text;
-            int NR;
-            try
+            if (cbTrams.SelectedItem == null)
             {
-                NR = Convert.ToInt32(NR_string);
-            }
-            catch
-            {
-                MessageBox.Show("Voer een tram-nummer in");
+                MessageBox.Show("Selecteer een tram");
                 return;
+            }           
+            int NR = Convert.ToInt32(cbTramnummer.Text);
+            foreach (Tram t in DatabaseManager.HaalTramsOp)
+            {
+                if (t.nummer != NR)
+                {
+                    MessageBox.Show("Tram-nummer bestaat niet");
+                }
+                else
+                {
+                    DatabaseManager.VerwijderTram(NR);
+                    MessageBox.Show("Tram is succesvol verwijderd");
+                }
             }
 
-            // foreach (Tram t in DatabaseManager.HaalTramsOp)
-            //  {
-            //     if (t.nummer != NR)
-            //    {
-            //        MessageBox.Show("Tram-nummer bestaat niet");
-            //        return;
-            //    }
-            //      else
-            //    {
-            //      DatabaseManager.VerwijderTram(NR);
-            //      MessageBox.Show("Tram is succesvol verwijderd");
-            //     }
-            //}
-            
         }
 
         private void TramBeheerSysteem_Load(object sender, EventArgs e)

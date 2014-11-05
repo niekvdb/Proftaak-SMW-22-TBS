@@ -104,6 +104,7 @@
             this.btnAnnuleer.TabIndex = 7;
             this.btnAnnuleer.Text = "Annuleer";
             this.btnAnnuleer.UseVisualStyleBackColor = true;
+            this.btnAnnuleer.Click += new System.EventHandler(this.btnAnnuleer_Click);
             // 
             // VoegTramToe
             // 
