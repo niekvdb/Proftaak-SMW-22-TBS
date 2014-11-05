@@ -27,16 +27,14 @@ namespace TramBeheerSysteem
         {
             this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
-            
-            //foreach (Tram t in DatabaseManager.HaalTramsOp())
-            //{
-                //cbTrams.Items.Add(t.nummer);
-            //}
-
             RemiseManager.LaadRemises();
             TramManager.LaadTrams();
             RemiseManager.LaadSporen();
             VoegSporenToeVoorbeeld();
+            foreach (Tram t in TramManager.Trams)
+            {
+                cbTrams.Items.Add(Convert.ToString(t.Id));
+            }
         }
 
         private List<Sector> GenerateSectorList(int Lengte)
@@ -136,10 +134,10 @@ namespace TramBeheerSysteem
                 MessageBox.Show("Selecteer een tram");
                 return;
             }           
-            int NR = Convert.ToInt32(cbTrams.Text);
+            int TramNr = Convert.ToInt32(cbTrams.Text);
             foreach (Tram t in TramManager.Trams)
             {
-                if (t.Id == NR)
+                if (t.Id == TramNr)
                 {
                     //TramManager.VerwijderTram(NR);
                     MessageBox.Show("Tram is succesvol verwijderd");

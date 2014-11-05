@@ -11,7 +11,6 @@ namespace TramBeheerSysteem
         public static List<Remise> Remises;
         public static List<Sector> Sectors; 
         public static List<Spoor> Sporen;
-
         public static List<Medewerker> Medewerkers; 
 
         static RemiseManager()

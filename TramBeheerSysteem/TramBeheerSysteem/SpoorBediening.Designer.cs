@@ -47,6 +47,7 @@
             // 
             // cbSpoor
             // 
+            this.cbSpoor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSpoor.FormattingEnabled = true;
             this.cbSpoor.Location = new System.Drawing.Point(125, 45);
             this.cbSpoor.Name = "cbSpoor";
@@ -56,6 +57,7 @@
             // 
             // cbSector
             // 
+            this.cbSector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSector.FormattingEnabled = true;
             this.cbSector.Location = new System.Drawing.Point(125, 85);
             this.cbSector.Name = "cbSector";

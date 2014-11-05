@@ -55,6 +55,7 @@
             // 
             // cbTramnummer
             // 
+            this.cbTramnummer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTramnummer.FormattingEnabled = true;
             this.cbTramnummer.Location = new System.Drawing.Point(7, 76);
             this.cbTramnummer.Name = "cbTramnummer";
