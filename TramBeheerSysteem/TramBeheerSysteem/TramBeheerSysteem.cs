@@ -253,5 +253,10 @@ namespace TramBeheerSysteem
             sector = tag.Substring((tag.IndexOf("_")+1));
             MessageBox.Show("Spoor: "+spoor+System.Environment.NewLine + "Sector: "+sector);
         }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
