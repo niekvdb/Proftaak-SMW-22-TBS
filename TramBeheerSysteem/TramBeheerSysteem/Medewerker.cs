@@ -20,10 +20,10 @@ namespace TramBeheerSysteem
             Naam = naam;
         }
 
-        public void DestroySpecimin(string DeathDescription)
+        public void DestroySpecimen(string DeathDescription)
         {
             DateTime Now = DateTime.Now;
-            MessageBox.Show("Specimin has been terminated under the following conditions" + DeathDescription + "At" + Now);
+            MessageBox.Show("Specimen has been terminated under the following conditions" + DeathDescription + "At" + Now);
         }
     }
 }

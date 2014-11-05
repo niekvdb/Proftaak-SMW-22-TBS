@@ -38,9 +38,21 @@ namespace TramBeheerSysteem
 
         private void btnReparatieBevestiging_Click(object sender, EventArgs e)
         {
-            Tram selectedTram = DatabaseManager.TramInformatie(Convert.ToInt32(lvwReparatie.Items[lvwReparatie.FocusedItem.Index].SubItems[0].Text));
+            Tram selectedTram = TramManager.tramViaId(Convert.ToInt32(lvwReparatie.Items[lvwSchoonmaak.FocusedItem.Index].SubItems[0].Text));
             string opmerking = tbxReparatieBevestiging.Text;
-            //DatabaseManager.TramGerepareerd(selectedTram, opmerking, gerepareerd);
+            TypeOnderhoud reparatie;
+            DateTime beschikbaarDatum = dtpReparatie.Value;
+            if (rbtReparatieGroot.Checked)
+            {
+                reparatie = TypeOnderhoud.GroteReparatie;
+                selectedTram.Onderhoud(reparatie, opmerking, beschikbaarDatum);
+            }
+            else if (rbtReparatieKlein.Checked)
+            {
+                reparatie = TypeOnderhoud.KleineReparatie;
+                selectedTram.Onderhoud(reparatie, opmerking, beschikbaarDatum);
+            }
+            else MessageBox.Show("Selecteer een reparatietype");
         }
     }
 }
