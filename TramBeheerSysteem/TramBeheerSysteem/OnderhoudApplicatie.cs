@@ -15,6 +15,11 @@ namespace TramBeheerSysteem
         public OnderhoudApplicatie()
         {
             InitializeComponent();
+            foreach (Medewerker medewerker in RemiseManager.Medewerkers)
+            {
+                cbReparatieMedewerker.Items.Add(medewerker);
+                cbSchoonmaakMedewerker.Items.Add(medewerker);
+            }
         }
 
         private void btnSchoonmaakBevestiging_Click(object sender, EventArgs e)
