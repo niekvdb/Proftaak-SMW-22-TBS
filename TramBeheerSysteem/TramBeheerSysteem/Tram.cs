@@ -67,6 +67,11 @@ namespace TramBeheerSysteem
             this.defect = false;
         }
 
+        public void VeranderTramstatus(string statuss)
+        {
+            this.status = statuss;
+        }
+
         public override string ToString()
         {
             return Convert.ToString(this.nummer) + " "
