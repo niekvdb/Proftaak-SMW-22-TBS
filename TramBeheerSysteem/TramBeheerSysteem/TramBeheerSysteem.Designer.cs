@@ -38,7 +38,7 @@
             this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmTram = new System.Windows.Forms.ToolStripMenuItem();
             this.voegToeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wijzigStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tramInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +47,7 @@
             this.spoorInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.schoonmaakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reparatieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gebruikerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbBediening.SuspendLayout();
             this.gbTram.SuspendLayout();
             this.gbSimulatie.SuspendLayout();
@@ -160,7 +161,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
+            this.gebruikerToolStripMenuItem,
+            this.tsmTram,
             this.toolStripMenuItem2,
             this.schoonmaakToolStripMenuItem,
             this.reparatieToolStripMenuItem});
@@ -172,34 +174,34 @@
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
-            // toolStripMenuItem1
+            // tsmTram
             // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmTram.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.voegToeToolStripMenuItem,
             this.wijzigStatusToolStripMenuItem,
             this.tramInfoToolStripMenuItem});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(55, 24);
-            this.toolStripMenuItem1.Text = "Tram";
+            this.tsmTram.Name = "tsmTram";
+            this.tsmTram.Size = new System.Drawing.Size(55, 24);
+            this.tsmTram.Text = "Tram";
             // 
             // voegToeToolStripMenuItem
             // 
             this.voegToeToolStripMenuItem.Name = "voegToeToolStripMenuItem";
-            this.voegToeToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.voegToeToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.voegToeToolStripMenuItem.Text = "Voeg Toe";
             this.voegToeToolStripMenuItem.Click += new System.EventHandler(this.voegToeToolStripMenuItem_Click);
             // 
             // wijzigStatusToolStripMenuItem
             // 
             this.wijzigStatusToolStripMenuItem.Name = "wijzigStatusToolStripMenuItem";
-            this.wijzigStatusToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.wijzigStatusToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.wijzigStatusToolStripMenuItem.Text = "Wijzig status";
             this.wijzigStatusToolStripMenuItem.Click += new System.EventHandler(this.wijzigStatusToolStripMenuItem_Click);
             // 
             // tramInfoToolStripMenuItem
             // 
             this.tramInfoToolStripMenuItem.Name = "tramInfoToolStripMenuItem";
-            this.tramInfoToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.tramInfoToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.tramInfoToolStripMenuItem.Text = "Tram Info";
             // 
             // toolStripMenuItem2
@@ -228,16 +230,21 @@
             // schoonmaakToolStripMenuItem
             // 
             this.schoonmaakToolStripMenuItem.Name = "schoonmaakToolStripMenuItem";
-            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
-            this.schoonmaakToolStripMenuItem.Text = "Schoonmaak";
+            this.schoonmaakToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
+            this.schoonmaakToolStripMenuItem.Text = "Onderhoud";
             this.schoonmaakToolStripMenuItem.Click += new System.EventHandler(this.schoonmaakToolStripMenuItem_Click);
             // 
             // reparatieToolStripMenuItem
             // 
             this.reparatieToolStripMenuItem.Name = "reparatieToolStripMenuItem";
-            this.reparatieToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
-            this.reparatieToolStripMenuItem.Text = "Reparatie";
+            this.reparatieToolStripMenuItem.Size = new System.Drawing.Size(12, 24);
             this.reparatieToolStripMenuItem.Click += new System.EventHandler(this.reparatieToolStripMenuItem_Click);
+            // 
+            // gebruikerToolStripMenuItem
+            // 
+            this.gebruikerToolStripMenuItem.Name = "gebruikerToolStripMenuItem";
+            this.gebruikerToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.gebruikerToolStripMenuItem.Text = "Gebruiker";
             // 
             // TramBeheerSysteem
             // 
@@ -272,7 +279,7 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmTram;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem voegToeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wijzigStatusToolStripMenuItem;
@@ -284,6 +291,7 @@
         private System.Windows.Forms.GroupBox gbTram;
         private System.Windows.Forms.ComboBox cbTrams;
         private System.Windows.Forms.Button btnVerwijder;
+        private System.Windows.Forms.ToolStripMenuItem gebruikerToolStripMenuItem;
 
     }
 }
