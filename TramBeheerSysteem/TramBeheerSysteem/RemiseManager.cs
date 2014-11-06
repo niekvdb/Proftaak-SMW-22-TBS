@@ -93,7 +93,6 @@ namespace TramBeheerSysteem
             {
                 if (sector.SpoorNummer == id) sectorenVanSpoor.Add(sector);
             }
-            System.Console.WriteLine("Spoor Id: "+id+" Sectoren: "+sectorenVanSpoor.Count());
             return sectorenVanSpoor;
         }
     }
