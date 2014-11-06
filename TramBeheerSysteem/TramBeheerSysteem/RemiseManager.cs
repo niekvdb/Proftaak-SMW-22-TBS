@@ -78,9 +78,9 @@ namespace TramBeheerSysteem
             return null;
         }
 
-        public static Sector sectorViaNummer(int nummer)
+        public static Sector sectorViaNummer(int nummer, Spoor spoor)
         {
-            foreach (Sector sector in Sectors)
+            foreach (Sector sector in spoor.SectorList)
             {
                 if (sector.Nummer == nummer) return sector;
             }
