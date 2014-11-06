@@ -42,5 +42,11 @@ namespace TramBeheerSysteem
         {
             //ToDo
         }
+
+        public override string ToString()
+        {
+            string onderhoud = Convert.ToString(Id) + Medewerker.Naam + Convert.ToString(Tram.nummer) + Convert.ToString(TypeOnderhoud);
+            return onderhoud;
+        }
     }
 }
