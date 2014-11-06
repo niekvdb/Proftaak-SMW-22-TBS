@@ -20,7 +20,6 @@ namespace TramBeheerSysteem
     public partial class TramBeheerSysteem : Form
     {
         public event EventHandler BlockSector;
-        private bool continueSimulation = true;
         int xPosTb = 5;
         int yPosTb = 5;
         int horizontalRows = 1;
@@ -45,20 +44,9 @@ namespace TramBeheerSysteem
                 gebruikerToolStripMenuItem.DropDownItems.Add(Convert.ToString(medewerker.Functie));
             }
         }
-
-        private List<Sector> GenerateSectorList(int Lengte)
-        {
-            int id = 1;
-            List<Sector> SctrList = new List<Sector>();
-            for (int i = 1; i <= Lengte; i++)
-            {
-                Sector sector = new Sector(id,i,null,1,true,false);
-                id++;
-                SctrList.Add((sector));
-            }
-            return SctrList;
-        }
-
+        /// <summary>
+        /// methode om de interface te refreshen.
+        /// </summary>
         private void RefreshSporen()
         {
             PanelTBS.Controls.Clear();
@@ -71,6 +59,10 @@ namespace TramBeheerSysteem
             spoorList = RemiseManager.Sporen;
             AddTextBoxes((spoorList));
         }
+        /// <summary>
+        /// Functie om op dynamische wijze textboxen die de sporen en sectoren voorstellen toe te voegen.
+        /// </summary>
+        /// <param name="SpoorList">Lijst met sporen die toegevoegd worden</param>
         private void AddTextBoxes(List<Spoor> SpoorList)
         {
             foreach (Spoor sp in SpoorList)
@@ -92,7 +84,7 @@ namespace TramBeheerSysteem
                         Size = tbSize,
                         Location = new System.Drawing.Point(xPosTb, yPosTb + (5*se.Nummer) + (tbSize.Height*se.Nummer)),
                         TextAlign = HorizontalAlignment.Center,
-                        Tag = Convert.ToString(se.Id)
+                        Tag = Convert.ToString(se.Id)+"_"+Convert.ToString(se.SpoorNummer)+"-"+Convert.ToString(se.Nummer)
                     };
                     if (se.Tram != null)
                     {
@@ -180,62 +172,56 @@ namespace TramBeheerSysteem
             s.Show();
         }
         /// <summary>
-        /// Tijdelijk gebruikt om te debuggen
+        /// Start de simulatie
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
-          /*  BackgroundWorker bw = new BackgroundWorker();
-            bw.WorkerReportsProgress = true;
-            bw.DoWork += new DoWorkEventHandler(delegate(object o, DoWorkEventArgs args)
-            {
-                Simulatie();
-            }
-                );
-
-            bw.RunWorkerAsync();
-           * */
             Simulatie();
         }
+        /// <summary>
+        /// Simulatie, simuleert het binnenkomen van de trams. De trams worden ingedeeld naar de sporen/sectoren.
+        /// </summary>
         public void Simulatie()
         {
             TramIndeling indeling = new TramIndeling();
             List<Tram> tramList = TramManager.Trams;
             foreach (Tram t in tramList)
             {
-                if (continueSimulation)
-                {
                     List<Sector> ingedeeldeSectors = indeling.DeelTramIn(t);
-                    if (ingedeeldeSectors == null)
+                if (ingedeeldeSectors == null)
+                {
+                    System.Console.WriteLine("Niet ingedeeld: " + t.Id);
+                }
+                else
+                {
+                    Control.ControlCollection controls = PanelTBS.Controls;
+                    foreach (Control c in controls)
                     {
-                        System.Console.WriteLine("Niet ingedeeld: " + t.Id);
-                    }
-                    else
-                    {
-                        Control.ControlCollection controls = PanelTBS.Controls;
-                        foreach (Control c in controls)
+                        foreach (Sector s in ingedeeldeSectors)
                         {
-                            foreach (Sector s in ingedeeldeSectors)
+                            if ((String)c.Tag == Convert.ToString(s.Id) + "_" + Convert.ToString(s.SpoorNummer) + "-" + Convert.ToString(s.Nummer))
                             {
-                                if ((String) c.Tag == s.Id.ToString())
-                                {
-                                    c.Text = t.nummer.ToString();
-                                    Refresh();
-                                }
+                                c.Text = t.nummer.ToString();
+                                Refresh();
                             }
                         }
                     }
                 }
             }
         }
-
+        /// <summary>
+        /// Handler als er op een textbox geklikt wordt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HandleBlockSector(object sender, EventArgs e)
         {
             this.OnBlockSector(sender,EventArgs.Empty);
         }
         /// <summary>
-        /// Functie om spoor te blokkeren. Laat op dit moment alleen nog een textbox zien.
+        /// Functie om spoor te blokkeren. Past ook de textboxes aan zodat ze disabled zijn.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -248,22 +234,40 @@ namespace TramBeheerSysteem
             }
             TextBox clickedTextBox = (TextBox) sender;
             string tag = clickedTextBox.Tag.ToString();
-            /*
-             * string spoor = string.Empty;
-            string sector = string.Empty;
-            spoor = tag.Substring(5);
-            spoor = spoor.Substring(0, spoor.IndexOf("_"));
-            sector = tag.Substring((tag.IndexOf("_")+1));
-             * */
             MessageBox.Show("Sector id: " + tag); 
             List<Sector> sectorList = new List<Sector>();
             sectorList = RemiseManager.Sectors;
-            foreach (Sector s in sectorList)
+            int aantal = 99;
+            string sAantal = tag.Substring(tag.IndexOf("-")+1);
+            string spId = tag.Substring(tag.IndexOf("_")+1, tag.IndexOf("-")-tag.IndexOf("_")-1);
+            string secId = tag.Substring(0,tag.IndexOf("-")+1);
+            Int32.TryParse(sAantal,out aantal);
+            //id_spoornummer-aantal
+            if (clickedTextBox.Text == string.Empty)
             {
-                if (s.Id.ToString() == tag)
+                foreach (Sector s in sectorList)
                 {
-                    s.Blokkeer();
+                    if (s.SpoorNummer.ToString() == spId && s.Nummer >= aantal)
+                    {
+                        s.Blokkeer();
+                        foreach (Control c in PanelTBS.Controls)
+                        {
+                            if (c.Tag != null)
+                            {
+                                if (c.Tag.ToString() ==
+                                    Convert.ToString(s.Id) + "_" + Convert.ToString(s.SpoorNummer) + "-" +
+                                    Convert.ToString(s.Nummer))
+                                {
+                                    c.Enabled = false;
+                                }
+                            }
+                        }
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Kan sector niet blokkeren als er een tram op staat.");
             }
         }
 

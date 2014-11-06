@@ -13,6 +13,11 @@ namespace TramBeheerSysteem
         private bool sporenOp = false;
         int spoorTeller = 0;
 
+        /// <summary>
+        /// Functie met algoritme waarmee de tram ingedeeld wordt op een spoor(/op sectoren)
+        /// </summary>
+        /// <param name="tram">tram die ingedeeld moet worden</param>
+        /// <returns>Lijst met sectoren waarop de tram is ingedeeld</returns>
         public List<Sector> DeelTramIn(Tram tram)
         {
             
@@ -45,7 +50,10 @@ namespace TramBeheerSysteem
             }
             return ingedeeldeSectors;
         }
-
+        /// <summary>
+        /// Functie om het (eerst)volgende spoor te krijgen.
+        /// </summary>
+        /// <returns>(eerst)volgende spoor</returns>
         private Spoor krijgEerstVolgendeSpoor()
         {
             Spoor[] sporenArray = alleSporen.ToArray();
@@ -77,30 +85,49 @@ namespace TramBeheerSysteem
                 return null;
             }
         }
-
+        /// <summary>
+        /// Controleert of het spoor beschikbaar is
+        /// </summary>
+        /// <param name="spoor">spoor dat gecontroleerd moet worden</param>
+        /// <returns>true als het spoor beschikbaar is</returns>
         private bool isSpoorBeschikbaar(Spoor spoor)
         {
             return (spoor.Beschikbaar);
         }
-
+        /// <summary>
+        /// Kijkt of het spoor lang genoeg is voor de tram
+        /// </summary>
+        /// <param name="spoor">spoor dat gecontroleerd moet worden</param>
+        /// <param name="lengte">lengte van de tram</param>
+        /// <returns>true als het spoor lang genoeg is</returns>
         private bool isSpoorLangGenoeg(Spoor spoor,int lengte)
         {
 
             Console.WriteLine("lengte: " + lengte + " SpoorLengte: " + spoor.SectorList.Count());
             return (lengte <= spoor.SectorList.Count);
         }
-
+        /// <summary>
+        /// Zoekt vrije sectors waar de tram (qua lengte) op kan staan
+        /// </summary>
+        /// <param name="spoor">spoor waarin sectoren gezocht moeten worden</param>
+        /// <param name="tram">tram die geplaatst moet worden</param>
+        /// <returns></returns>
         private List<Sector> vrijeSectoren(Spoor spoor, Tram tram)
         {
             List<Sector> spoorSectors = RemiseManager.sectorenVanSpoor(spoor.Id);
             List<Sector> sectors = new List<Sector>();
+            bool blockedSector = false;
             spoorSectors.Reverse(); // Reverse list, zodat de tram eerst op de achterste sectoren v/h spoor komt te staan
             foreach (Sector s in spoorSectors)
             {
                 if (s.Blokkade)
                 {
                     sectors.Clear();
-                    spoorTeller++;
+                    if (!blockedSector)
+                    {
+                        spoorTeller++;
+                        blockedSector = true;
+                    }
                 }
                 if (sectors.Count < tram.lengte)
                 {
@@ -117,7 +144,11 @@ namespace TramBeheerSysteem
             
             return sectors;
         }
-
+        /// <summary>
+        /// Functie om een tram toe te voegen aan sectoren.
+        /// </summary>
+        /// <param name="sectorlist">lijst met sectoren waarop de tram komt te staan</param>
+        /// <param name="tram">tram die aan de sectoren wordt toegevoegd</param>
         private void voegTramAanSectorsToe(List<Sector> sectorlist, Tram tram)
         {
             foreach (Sector s in RemiseManager.Sectors)
