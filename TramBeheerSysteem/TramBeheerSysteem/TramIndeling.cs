@@ -18,13 +18,13 @@ namespace TramBeheerSysteem
             
             List<Sector> ingedeeldeSectors = null;
             bool sectorFound = false;
-            if (sporenOp) return null;
             while (!sectorFound)
             {
+                if (sporenOp) return null; // anders ingedeeldesectors = null en sectorFound = true;
                 Spoor ingedeeldSpoor = krijgEerstVolgendeSpoor();
                 if (ingedeeldSpoor != null)
                 {
-                    if (1 == 1) //isSpoorBeschikbaar(ingedeeldSpoor))
+                    if (isSpoorBeschikbaar(ingedeeldSpoor))
                     {
                         if (isSpoorLangGenoeg(ingedeeldSpoor, tram.lengte))
                         {
@@ -64,7 +64,7 @@ namespace TramBeheerSysteem
         private bool isSpoorLangGenoeg(Spoor spoor,int lengte)
         {
 
-            Console.WriteLine("lengte: " + lengte + " SpoorLengte: " + spoor.Lengte);
+            Console.WriteLine("lengte: " + lengte + " SpoorLengte: " + spoor.SectorList.Count());
             return (lengte <= spoor.SectorList.Count);
         }
 

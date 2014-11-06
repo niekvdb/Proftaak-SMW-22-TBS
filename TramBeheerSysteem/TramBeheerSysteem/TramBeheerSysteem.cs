@@ -30,7 +30,7 @@ namespace TramBeheerSysteem
             RemiseManager.LaadRemises();
             TramManager.LaadTrams();
             RemiseManager.LaadSporen();
-            VoegSporenToeVoorbeeld();
+            RefreshSporen();
             foreach (Tram t in TramManager.Trams)
             {
                 cbTrams.Items.Add(Convert.ToString(t.Id));
@@ -48,15 +48,6 @@ namespace TramBeheerSysteem
                 SctrList.Add((sector));
             }
             return SctrList;
-        }
-
-        private void VoegSporenToeVoorbeeld()
-        {
-            //Deze lijst wordt uit de database gehaald
-            List<Spoor> spoorList = new List<Spoor>();
-            //spoorList.Clear();
-            spoorList = RemiseManager.Sporen;
-            AddTextBoxes((spoorList));
         }
 
         private void AddTextBoxes(List<Spoor> SpoorList)
@@ -81,7 +72,7 @@ namespace TramBeheerSysteem
                         Size = tbSize,
                         Location = new System.Drawing.Point(xPosTb, yPosTb + (5*se.Nummer) + (tbSize.Height*se.Nummer)),
                         TextAlign = HorizontalAlignment.Center,
-                        Tag = "Spoor" + sp.Nummer + "_" + se.Nummer
+                        Tag = /* "Spoor" + sp.Nummer + "_" + se.Nummer+"_"+*/ Convert.ToString(se.Id)
                     };
                     sectorTb.Click += this.HandleBlockSector;
                     PanelTBS.Controls.Add(sectorTb);
@@ -198,12 +189,14 @@ namespace TramBeheerSysteem
             }
             TextBox clickedTextBox = (TextBox) sender;
             string tag = clickedTextBox.Tag.ToString();
-            string spoor = string.Empty;
+            /*
+             * string spoor = string.Empty;
             string sector = string.Empty;
             spoor = tag.Substring(5);
             spoor = spoor.Substring(0, spoor.IndexOf("_"));
             sector = tag.Substring((tag.IndexOf("_")+1));
-            MessageBox.Show("Spoor: "+spoor+System.Environment.NewLine + "Sector: "+sector);
+             * */
+            MessageBox.Show("Sector id: " + tag); //"Spoor: "+spoor+System.Environment.NewLine + "Sector: "+sector);
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -223,5 +216,14 @@ namespace TramBeheerSysteem
                 MessageBox.Show("Geen vrije sectoren gevonden.");
             }
     }
+
+        private void RefreshSporen()
+        {
+            PanelTBS.Controls.Clear();
+            //Deze lijst wordt uit de database gehaald
+            List<Spoor> spoorList = new List<Spoor>();
+            spoorList = RemiseManager.Sporen;
+            AddTextBoxes((spoorList));
+        }
     }
 }
