@@ -38,7 +38,7 @@ namespace TramBeheerSysteem
             foreach (Medewerker medewerker in RemiseManager.Medewerkers)
             {
                 gebruikerToolStripMenuItem.DropDownItems.Add(Convert.ToString(medewerker.Functie));
-            }
+        }
         }
 
         private List<Sector> GenerateSectorList(int Lengte)
@@ -62,8 +62,6 @@ namespace TramBeheerSysteem
             horizontalRows = 1;
             verticalRows = 1;
             maxSectors = 0;
-            RemiseManager.LaadRemises();
-            RemiseManager.LaadSporen();
             List<Spoor> spoorList = new List<Spoor>();
             spoorList = RemiseManager.Sporen;
             AddTextBoxes((spoorList));
