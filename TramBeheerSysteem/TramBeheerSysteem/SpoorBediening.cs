@@ -21,42 +21,43 @@ namespace TramBeheerSysteem
 
         private void btnSpoorstatus_Click(object sender, EventArgs e)
         {
-            string SectorNR_string = cbSector.Text;
             int SectorNR;
-            int SpoorNR = Convert.ToInt32(cbSpoor.Text);
-            try
+            int SpoorNR;
+            if (!int.TryParse(cbSector.Text, out SectorNR) || !int.TryParse(cbSpoor.Text, out SpoorNR))
             {
-                SectorNR = Convert.ToInt32(SectorNR_string);
-            }
-            catch
-            {
-                MessageBox.Show("Voer een sectornummer in");
+                MessageBox.Show("Voer geldige nummers in");
                 return;
             }
-            foreach (Sector s in RemiseManager.sectorenVanSpoor(SpoorNR))
+            Spoor spoor = RemiseManager.spoorViaNummer(SpoorNR);
+            foreach (Sector sector in spoor.SectorList)
             {
-                if (s.Id == SectorNR && s.Blokkade == true)
+                if (sector.Nummer == SectorNR && sector.Blokkade == true)
                 {
                     MessageBox.Show("Sector is vrijgemaakt");
-                    s.Deblokkeer();
-                    foreach (Sector sec in RemiseManager.sectorenVanSpoor(SpoorNR))
+                    sector.Deblokkeer();
+                    foreach (Sector sector1 in spoor.SectorList)
                     {
-                        if (sec.Id > SectorNR)
+                        if (sector1.Nummer > SectorNR && sector1.Blokkade == true)
                         {
-                            sec.Deblokkeer();
+                            sector1.Deblokkeer();
+                            //RemiseManager.UpdateSectorStatus(sec.Id);
+                        }
+                        else if (sector1.Nummer > SectorNR && sector1.Blokkade == false)
+                        {
+                            sector1.Blokkeer();
                             //RemiseManager.UpdateSectorStatus(sec.Id);
                         }
                     }
                 }
-                else if (s.Id == SectorNR && s.Blokkade == false)
+                else if (sector.Nummer == SectorNR && sector.Blokkade == false)
                 {
                     MessageBox.Show("Sector is Geblokkeerd");
-                    s.Blokkeer();
-                    foreach (Sector sec in RemiseManager.sectorenVanSpoor(SpoorNR))
+                    sector.Blokkeer();
+                    foreach (Sector sector1 in RemiseManager.sectorenVanSpoor(spoor.Id))
                     {
-                        if (sec.Id > SectorNR)
+                        if (sector1.Nummer > SectorNR)
                         {
-                            sec.Blokkeer();
+                            sector1.Blokkeer();
                             //RemiseManager.UpdateSectorStatus(sec.Id);
                         }
                     }
@@ -73,8 +74,10 @@ namespace TramBeheerSysteem
         private void cbSpoor_SelectedIndexChanged(object sender, EventArgs e)
         {
             int SpoorNummer = Convert.ToInt32(cbSpoor.Text);
-            foreach (Sector sec in RemiseManager.sectorenVanSpoor(SpoorNummer))
-            cbSector.Items.Add(sec.Id);
+            Spoor s = RemiseManager.spoorViaNummer(SpoorNummer);
+            cbSector.Items.Clear();
+            foreach (Sector sec in RemiseManager.sectorenVanSpoor(s.Id))
+            cbSector.Items.Add(sec.Nummer);
         }
     }
 }

@@ -66,5 +66,13 @@ namespace TramBeheerSysteem
         {
             this.defect = false;
         }
+
+        public override string ToString()
+        {
+            return Convert.ToString(this.nummer) + " "
+                   + this.tramtype + " "
+                   + this.status + " "
+                   + this.remise.ToString() + " ";
+        }
     }
 }
