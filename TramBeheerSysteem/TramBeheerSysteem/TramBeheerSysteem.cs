@@ -30,7 +30,7 @@ namespace TramBeheerSysteem
             RemiseManager.LaadRemises();
             TramManager.LaadTrams();
             RemiseManager.LaadSporen();
-            VoegSporenToeVoorbeeld();
+            RefreshSporen();
             foreach (Tram t in TramManager.Trams)
             {
                 cbTrams.Items.Add(Convert.ToString(t.Id));
@@ -50,15 +50,20 @@ namespace TramBeheerSysteem
             return SctrList;
         }
 
-        private void VoegSporenToeVoorbeeld()
+        private void RefreshSporen()
         {
-            //Deze lijst wordt uit de database gehaald
+            PanelTBS.Controls.Clear();
+            xPosTb = 5;
+            yPosTb = 5;
+            horizontalRows = 1;
+            verticalRows = 1;
+            maxSectors = 0;
+            RemiseManager.LaadRemises();
+            RemiseManager.LaadSporen();
             List<Spoor> spoorList = new List<Spoor>();
-            //spoorList.Clear();
             spoorList = RemiseManager.Sporen;
             AddTextBoxes((spoorList));
         }
-
         private void AddTextBoxes(List<Spoor> SpoorList)
         {
             foreach (Spoor sp in SpoorList)
@@ -73,7 +78,6 @@ namespace TramBeheerSysteem
                     Location = new System.Drawing.Point(xPosTb, yPosTb)
                 };
                 PanelTBS.Controls.Add(spoorTb);
-                //for (int i = 1; i <= spoor.Lengte; i++)
                 foreach(Sector se in sp.SectorList)
                 {
                     TextBox sectorTb = new TextBox
@@ -81,8 +85,16 @@ namespace TramBeheerSysteem
                         Size = tbSize,
                         Location = new System.Drawing.Point(xPosTb, yPosTb + (5*se.Nummer) + (tbSize.Height*se.Nummer)),
                         TextAlign = HorizontalAlignment.Center,
-                        Tag = "Spoor" + sp.Nummer + "_" + se.Nummer
+                        Tag = Convert.ToString(se.Id)
                     };
+                    if (se.SpoorNummer == 13)
+                    {
+                        //breakpoint
+                    }
+                    if (se.Tram != null)
+                    {
+                        sectorTb.Text = se.Tram.Id.ToString();
+                    }
                     sectorTb.Click += this.HandleBlockSector;
                     PanelTBS.Controls.Add(sectorTb);
                 }
@@ -114,6 +126,7 @@ namespace TramBeheerSysteem
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
         }
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -198,12 +211,14 @@ namespace TramBeheerSysteem
             }
             TextBox clickedTextBox = (TextBox) sender;
             string tag = clickedTextBox.Tag.ToString();
-            string spoor = string.Empty;
+            /*
+             * string spoor = string.Empty;
             string sector = string.Empty;
             spoor = tag.Substring(5);
             spoor = spoor.Substring(0, spoor.IndexOf("_"));
             sector = tag.Substring((tag.IndexOf("_")+1));
-            MessageBox.Show("Spoor: "+spoor+System.Environment.NewLine + "Sector: "+sector);
+             * */
+            MessageBox.Show("Sector id: " + tag); //"Spoor: "+spoor+System.Environment.NewLine + "Sector: "+sector);
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -223,5 +238,14 @@ namespace TramBeheerSysteem
                 MessageBox.Show("Geen vrije sectoren gevonden.");
             }
     }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            RefreshSporen();
+        }
+
+        private void reparatieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

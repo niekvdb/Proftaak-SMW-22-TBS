@@ -18,13 +18,13 @@ namespace TramBeheerSysteem
             
             List<Sector> ingedeeldeSectors = null;
             bool sectorFound = false;
-            if (sporenOp) return null;
             while (!sectorFound)
             {
+                if (sporenOp) return null; // anders ingedeeldesectors = null en sectorFound = true;
                 Spoor ingedeeldSpoor = krijgEerstVolgendeSpoor();
                 if (ingedeeldSpoor != null)
                 {
-                    if (1 == 1) //isSpoorBeschikbaar(ingedeeldSpoor))
+                    if (isSpoorBeschikbaar(ingedeeldSpoor))
                     {
                         if (isSpoorLangGenoeg(ingedeeldSpoor, tram.lengte))
                         {
@@ -32,6 +32,7 @@ namespace TramBeheerSysteem
                             if (ingedeeldeSectors != null)
                             {
                                 sectorFound = true;
+                                voegTramAanSectorsToe(ingedeeldeSectors,tram);
                             }
                         
                         }
@@ -64,7 +65,7 @@ namespace TramBeheerSysteem
         private bool isSpoorLangGenoeg(Spoor spoor,int lengte)
         {
 
-            Console.WriteLine("lengte: " + lengte + " SpoorLengte: " + spoor.Lengte);
+            Console.WriteLine("lengte: " + lengte + " SpoorLengte: " + spoor.SectorList.Count());
             return (lengte <= spoor.SectorList.Count);
         }
 
@@ -76,7 +77,7 @@ namespace TramBeheerSysteem
             {
                 if (sectors.Count <= tram.lengte)
                 {
-                    if (s.Beschikbaar && !s.Blokkade)
+                    if (s.Beschikbaar && !s.Blokkade && s.Tram == null)
                     {
                         sectors.Add(s);
                     }
@@ -88,6 +89,20 @@ namespace TramBeheerSysteem
             }
             
             return sectors;
+        }
+
+        private void voegTramAanSectorsToe(List<Sector> sectorlist, Tram tram)
+        {
+            foreach (Sector s in RemiseManager.Sectors)
+            {
+                foreach (Sector se in sectorlist)
+                {
+                    if (s.Id == se.Id)
+                    {
+                        s.VoegTramToe(tram);
+                    }
+                }
+            }
         }
     }
 }
