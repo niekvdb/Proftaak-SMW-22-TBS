@@ -32,7 +32,7 @@ namespace TramBeheerSysteem
 
         public void Deblokkeer()
         {
-            this.Blokkade = true;
+            this.Blokkade = false;
         }
 
         public void ClearSector()
