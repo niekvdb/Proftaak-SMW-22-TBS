@@ -50,6 +50,11 @@ namespace TramBeheerSysteem
             return null;
         }
 
+        public static void voegOnderhoudToe(Tramonderhoud onderhoud)
+        {
+            onderhoudsBeurten.Add(onderhoud);
+        }
+
         public static Tramonderhoud OnderhoudFromString(string onderhoudString)
         {
             int index = onderhoudString.IndexOf(":");
