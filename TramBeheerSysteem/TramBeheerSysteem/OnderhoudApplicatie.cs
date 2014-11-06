@@ -54,11 +54,13 @@ namespace TramBeheerSysteem
             {
                 Schoonmaak = TypeOnderhoud.GroteSchoonmaak;
                 selectedTram.Onderhoud(Schoonmaak, opmerking, beschikbaarDatum, medewerker);
+                MessageBox.Show("toegevoegd!");
             }
             else if (rbtSchoonmaakKlein.Checked)
             {
                 Schoonmaak = TypeOnderhoud.KleineSchoonmaak;
                 selectedTram.Onderhoud(Schoonmaak, opmerking, beschikbaarDatum, medewerker);
+                MessageBox.Show("toegevoegd!");
             }
             else MessageBox.Show("Selecteer een schoonmaaktype");
         }
@@ -74,11 +76,13 @@ namespace TramBeheerSysteem
             {
                 reparatie = TypeOnderhoud.GroteReparatie;
                 selectedTram.Onderhoud(reparatie, opmerking, beschikbaarDatum, medewerker);
+                MessageBox.Show("toegevoegd!");
             }
             else if (rbtReparatieKlein.Checked)
             {
                 reparatie = TypeOnderhoud.KleineReparatie;
                 selectedTram.Onderhoud(reparatie, opmerking, beschikbaarDatum, medewerker);
+                MessageBox.Show("toegevoegd!");
             }
             else MessageBox.Show("Selecteer een reparatietype");
         }

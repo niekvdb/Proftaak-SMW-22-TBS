@@ -28,15 +28,18 @@ namespace TramBeheerSysteem
                 return;
             }
 
-           if (TramManager.tramViaId(tramNr) != null)
+           if (TramManager.tramViaNummer(tramNr) != null)
             {
-                if (RemiseManager.spoorViaId(spoorNr) != null)
+                if (RemiseManager.spoorViaNummer(spoorNr) != null)
                 {
                     foreach (Sector sector in RemiseManager.sectorenVanSpoor(spoorNr))
                     {
-                        if (sector.Id == sectorNr)
+                        if (sector.Nummer == sectorNr)
                         {
-                            //ToDo RemiseManager.VoegTramToeAanSector(NR2, NR);
+                            Tram trammetje = TramManager.tramViaNummer(tramNr);
+                            sector.VoegTramToe(trammetje);
+                            DatabaseManager.registreerSectorStatus(sector);
+                            MessageBox.Show("Tram is toegevoegd");
                         }
                     }
                 }
