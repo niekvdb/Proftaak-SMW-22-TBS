@@ -39,7 +39,7 @@ namespace TramBeheerSysteem
 
                 OracleDataReader reader = command.ExecuteReader();
 
-                if (!reader.HasRows) return null;
+                if (!reader.HasRows) return remises;
                 else
                 {
                     while (reader.Read())
@@ -68,7 +68,7 @@ namespace TramBeheerSysteem
 
         public static List<Sector> LaadSectoren()
         {
-            List<Sector> sectoren = null;
+            List<Sector> sectoren = new List<Sector>();
             try
             {
                 if (connection.State != ConnectionState.Open)
@@ -81,10 +81,9 @@ namespace TramBeheerSysteem
 
                 OracleDataReader reader = command.ExecuteReader();
 
-                if (!reader.HasRows) return null;
+                if (!reader.HasRows) return sectoren;
                 else
                 {
-                    sectoren = new List<Sector>();
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
@@ -111,7 +110,7 @@ namespace TramBeheerSysteem
 
         public static List<Spoor> LaadSporen()
         {
-            List<Spoor> sporen = null;
+            List<Spoor> sporen = new List<Spoor>();
             try
             {
                 if (connection.State != ConnectionState.Open)
@@ -124,10 +123,9 @@ namespace TramBeheerSysteem
 
                 OracleDataReader reader = command.ExecuteReader();
 
-                if (!reader.HasRows) return null;
+                if (!reader.HasRows) return sporen;
                 else
                 {
-                    sporen = new List<Spoor>();
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
@@ -154,7 +152,7 @@ namespace TramBeheerSysteem
 
         public static List<Tram> LaadTrams()
         {
-            List<Tram> trams = null;
+            List<Tram> trams = new List<Tram>();
             try
             {
                 connection.Open();
@@ -164,10 +162,9 @@ namespace TramBeheerSysteem
 
                 OracleDataReader reader = command.ExecuteReader();
 
-                if (!reader.HasRows) return null;
+                if (!reader.HasRows) return trams;
                 else
                 {
-                    trams = new List<Tram>();
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
@@ -198,7 +195,7 @@ namespace TramBeheerSysteem
 
         public static List<Tramonderhoud> LaadTramonderhoud()
         {
-            List<Tramonderhoud> onderhoudsBeurten = null;
+            List<Tramonderhoud> onderhoudsBeurten = new List<Tramonderhoud>();
             try
             {
                 connection.Open();
@@ -208,10 +205,9 @@ namespace TramBeheerSysteem
 
                 OracleDataReader reader = command.ExecuteReader();
 
-                if (!reader.HasRows) return null;
+                if (!reader.HasRows) return onderhoudsBeurten;
                 else
                 {
-                    onderhoudsBeurten = new List<Tramonderhoud>();
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
@@ -239,7 +235,7 @@ namespace TramBeheerSysteem
 
         public static List<Medewerker> LaadMedewerkers()
         {
-            List<Medewerker> medewerkers = null;
+            List<Medewerker> medewerkers = new List<Medewerker>();
             try
             {
                 connection.Open();
@@ -249,10 +245,9 @@ namespace TramBeheerSysteem
 
                 OracleDataReader reader = command.ExecuteReader();
 
-                if (!reader.HasRows) return null;
+                if (!reader.HasRows) return medewerkers;
                 else
                 {
-                    medewerkers = new List<Medewerker>();
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
