@@ -12,8 +12,8 @@ namespace TramBeheerSysteem
 {
     public partial class OnderhoudLijsten : Form
     {
-        private List<Tramonderhoud> Schoonmaken;
-        private List<Tramonderhoud> Reparaties;
+        private List<Tramonderhoud> Schoonmaken = new List<Tramonderhoud>();
+        private List<Tramonderhoud> Reparaties = new List<Tramonderhoud>();
 
         public OnderhoudLijsten()
         {
@@ -47,11 +47,21 @@ namespace TramBeheerSysteem
 
         private void cbSchoonmaak_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string onderhoudString = cbSchoonmaak.SelectedText;
+            string onderhoudString = Convert.ToString(cbSchoonmaak.SelectedItem);
             Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
             tbxSchoonmaak.Text = selectedOnderhoud.Opmerking;
-            tbxSchoonmaakSector.Text = Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).Nummer);
-            tbxSchoonmaakSpoor.Text = Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).SpoorNummer);
+            if (RemiseManager.sectorViaTram(selectedOnderhoud.Tram) != null)
+            {
+                tbxSchoonmaakSector.Text = Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).Nummer);
+            }
+            else tbxSchoonmaakSector.Text = "--";
+
+            if (RemiseManager.sectorViaTram(selectedOnderhoud.Tram) != null)
+            {
+                tbxSchoonmaakSpoor.Text =
+                    Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).SpoorNummer);
+            }
+            else tbxSchoonmaakSpoor.Text = "--";
         }
 
         private void btnSchoonmaak_Click(object sender, EventArgs e)

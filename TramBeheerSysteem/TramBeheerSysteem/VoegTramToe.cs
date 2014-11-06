@@ -32,14 +32,22 @@ namespace TramBeheerSysteem
             {
                 if (RemiseManager.spoorViaNummer(spoorNr) != null)
                 {
-                    foreach (Sector sector in RemiseManager.sectorenVanSpoor(spoorNr))
+                    Spoor spoor = RemiseManager.spoorViaNummer(spoorNr);
+                    foreach (Sector sector in spoor.SectorList)
                     {
                         if (sector.Nummer == sectorNr)
                         {
                             Tram trammetje = TramManager.tramViaNummer(tramNr);
-                            sector.VoegTramToe(trammetje);
-                            DatabaseManager.registreerSectorStatus(sector);
-                            MessageBox.Show("Tram is toegevoegd");
+                            Sector sectorCheck = RemiseManager.sectorViaTram(trammetje);
+                            if (sectorCheck != null)
+                            {
+                                sectorCheck.ClearSector();
+                                DatabaseManager.registreerSectorStatus(sectorCheck);
+                            }
+                                sector.VoegTramToe(trammetje);
+                                DatabaseManager.registreerSectorStatus(sector);
+                                MessageBox.Show("Tram is toegevoegd");
+                                return;                            
                         }
                     }
                 }
