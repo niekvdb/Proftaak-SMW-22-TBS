@@ -32,5 +32,14 @@ namespace TramBeheerSysteem
 
             return null;
         }
+
+        public static Tram tramViaNummer(int nummer)
+        {
+            foreach (Tram tram in Trams)
+            {
+                if (tram.nummer == nummer) return tram;
+            }
+            return null;
+        }
     }
 }
