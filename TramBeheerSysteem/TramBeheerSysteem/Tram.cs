@@ -10,6 +10,7 @@ namespace TramBeheerSysteem
     {
         public int Id { get; private set; }
         public Tramtype tramtype { get; private set; }
+        public int nummer { get; private set; }
         public int lengte { get; private set; }
         public string status { get; private set; }
         public Remise remise { get; private set; }
@@ -18,10 +19,11 @@ namespace TramBeheerSysteem
         public bool conducteurGeschikt { get; private set; }
         public bool beschikbaar { get; private set; }
 
-        public Tram(int id, Tramtype tramtype, int lengte, string status, Remise remise, bool vervuild, bool defect, bool conducteurGeschikt, bool beschikbaar)
+        public Tram(int id, Tramtype tramtype, int nummer, int lengte, string status, Remise remise, bool vervuild, bool defect, bool conducteurGeschikt, bool beschikbaar)
         {
             this.Id = id;
             this.tramtype = tramtype;
+            this.nummer = nummer;
             this.lengte = lengte;
             this.status = status;
             this.remise = remise;

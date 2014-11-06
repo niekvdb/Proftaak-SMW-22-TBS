@@ -35,6 +35,10 @@ namespace TramBeheerSysteem
             {
                 cbTrams.Items.Add(Convert.ToString(t.Id));
             }
+            foreach (Medewerker medewerker in RemiseManager.Medewerkers)
+            {
+                gebruikerToolStripMenuItem.DropDownItems.Add(Convert.ToString(medewerker.Functie));
+            }
         }
 
         private List<Sector> GenerateSectorList(int Lengte)
@@ -126,7 +130,8 @@ namespace TramBeheerSysteem
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OnderhoudApplicatie o = new OnderhoudApplicatie();
+            o.Show();
         }
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
