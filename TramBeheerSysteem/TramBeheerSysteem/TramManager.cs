@@ -41,6 +41,15 @@ namespace TramBeheerSysteem
             return null;
         }
 
+        public static Tramonderhoud onderhoudViaId(int id)
+        {
+            foreach (Tramonderhoud onderhoud in onderhoudsBeurten)
+            {
+                if (onderhoud.Id == id) return onderhoud;
+            }
+            return null;
+        }
+
         public static Tramonderhoud OnderhoudFromString(string onderhoudString)
         {
             int index = onderhoudString.IndexOf(":");

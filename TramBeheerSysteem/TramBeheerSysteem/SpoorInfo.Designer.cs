@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.btnBevestig = new System.Windows.Forms.Button();
             this.lblSpoor = new System.Windows.Forms.Label();
             this.cbSporen = new System.Windows.Forms.ComboBox();
@@ -74,10 +74,13 @@
             this.clmSpoorInfoRemise,
             this.clmSpoorInfoLengte,
             this.clmSpoorInfoBeschikbaar});
+            this.lvwTrams.FullRowSelect = true;
+            this.lvwTrams.HideSelection = false;
             this.lvwTrams.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.lvwTrams.Location = new System.Drawing.Point(248, 38);
             this.lvwTrams.Margin = new System.Windows.Forms.Padding(4);
+            this.lvwTrams.MultiSelect = false;
             this.lvwTrams.Name = "lvwTrams";
             this.lvwTrams.Size = new System.Drawing.Size(465, 230);
             this.lvwTrams.TabIndex = 11;

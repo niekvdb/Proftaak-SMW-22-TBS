@@ -98,6 +98,7 @@ namespace TramBeheerSysteem
                     {
                         sectorTb.Text = se.Tram.Id.ToString();
                     }
+                    if (se.Blokkade) sectorTb.Enabled = false;
                     sectorTb.Click += this.HandleBlockSector;
                     PanelTBS.Controls.Add(sectorTb);
                 }
@@ -254,7 +255,16 @@ namespace TramBeheerSysteem
             spoor = spoor.Substring(0, spoor.IndexOf("_"));
             sector = tag.Substring((tag.IndexOf("_")+1));
              * */
-            MessageBox.Show("Sector id: " + tag); //"Spoor: "+spoor+System.Environment.NewLine + "Sector: "+sector);
+            MessageBox.Show("Sector id: " + tag); 
+            List<Sector> sectorList = new List<Sector>();
+            sectorList = RemiseManager.Sectors;
+            foreach (Sector s in sectorList)
+            {
+                if (s.Id.ToString() == tag)
+                {
+                    s.Blokkeer();
+                }
+            }
         }
 
         private void btnStop_Click(object sender, EventArgs e)

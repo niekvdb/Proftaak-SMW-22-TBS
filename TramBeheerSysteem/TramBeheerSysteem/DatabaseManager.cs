@@ -274,23 +274,23 @@ namespace TramBeheerSysteem
             return medewerkers;
         }
 
-        /*public static void registreerSectorStatus(Sector sector)
+        public static void registreerSectorStatus(Sector sector)
         {
             try
             {
                 connection.Open();
 
-                OracleCommand command = new OracleCommand("INSERT INTO TRAM_ONDERHOUD(Medewerker_ID, Tram_ID, DatumTijdStip, DatumBeschikbaar, TypeOnderhoud, Notitie)" +
-                                                            "VALUES (:medewerker_ID, :tram_ID, :datumTijdstip, :datumBeschikbaar, :typeOnderhoud, :notitie)");
+                OracleCommand command = new OracleCommand("UPDATE SECTOR SET Tram_ID = :tram_ID, Beschikbaar = :beschikbaar, Blokkade = :blokkade");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
-                command.Parameters.Add(":medewerker_ID", onderhoud.Medewerker.Id);
-                command.Parameters.Add(":tram_ID", onderhoud.Tram.Id);
-                command.Parameters.Add(":datumTijdstip", onderhoud.DatumTijdstip);
-                command.Parameters.Add(":datumBeschikbaar", onderhoud.BeschikbaarDatum);
-                command.Parameters.Add(":typeOnderhoud", onderhoud.TypeOnderhoud);
-                command.Parameters.Add(":notitie", onderhoud.Opmerking);
+                int tramId = 0;
+
+                if (sector.Tram != null) tramId = sector.Tram.Id;
+
+                command.Parameters.Add(":tram_ID", tramId);
+                command.Parameters.Add(":beschikbaar", convertBool(sector.Beschikbaar));
+                command.Parameters.Add(":blokkade", convertBool(sector.Blokkade));
 
                 command.ExecuteNonQuery();
             }
@@ -303,7 +303,7 @@ namespace TramBeheerSysteem
             {
                 connection.Close();
             }
-        }*/
+        }
         public static void registreerOnderhoud(Tramonderhoud onderhoud)
         {
             try
