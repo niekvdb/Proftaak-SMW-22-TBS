@@ -318,5 +318,58 @@ namespace TramBeheerSysteem
             OnderhoudLijsten o = new OnderhoudLijsten();
             o.Show();
         }
+
+        private void FunctiesPerGebruiker(string gebruiker)
+        {
+            if (gebruiker == "Beheerder")
+            {
+                PanelTBS.Enabled = true;
+                foreach (Control c in gbBediening.Controls)
+                {
+                    c.Enabled = true;
+                    if (c.Name == "gbSimulatie")
+                    {
+                        foreach (Control con in c.Controls)
+                        {
+                            con.Enabled = true;
+                        }
+                    }
+                }
+            }
+            else if (gebruiker == "Bestuurder")
+            {
+                PanelTBS.Enabled = false;
+                //gbBediening.Enabled = false;
+                foreach (Control c in gbBediening.Controls)
+                {
+                    if (c.Name == "gbSimulatie")
+                    {
+                        foreach (Control con in c.Controls)
+                        {
+                            if (con.Name != "btnReset")
+                            {
+                                con.Enabled = false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        c.Enabled = false;
+                    }
+                }
+                foreach (ToolStripItem i in this.menuStrip1.Items)
+                {
+                    if (  i.Text != "Tram" && i.Text != "Gebruiker") i.Enabled = false;
+                    Console.WriteLine(i.Text);
+                }
+            }
+        }
+
+        private void gebruikerToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string functie = e.ClickedItem.Text;
+            FunctiesPerGebruiker(functie);
+        }
+
     }
 }
