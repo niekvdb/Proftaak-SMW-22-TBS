@@ -297,7 +297,6 @@ namespace TramBeheerSysteem
             }
             catch (Exception)
             {
-                
                 throw;
             }
             finally
@@ -320,7 +319,7 @@ namespace TramBeheerSysteem
                 command.Parameters.Add(":tram_ID", onderhoud.Tram.Id);
                 command.Parameters.Add(":datumTijdstip", onderhoud.DatumTijdstip);
                 command.Parameters.Add(":datumBeschikbaar", onderhoud.BeschikbaarDatum);
-                command.Parameters.Add(":typeOnderhoud", onderhoud.TypeOnderhoud.GetTypeCode()+1);
+                command.Parameters.Add(":typeOnderhoud", (int)onderhoud.TypeOnderhoud +1);
                 command.Parameters.Add(":notitie", onderhoud.Opmerking);
 
                 command.ExecuteNonQuery();
