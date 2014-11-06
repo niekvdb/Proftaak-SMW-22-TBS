@@ -57,7 +57,7 @@ namespace TramBeheerSysteem
                 return null;
             }
 
-                foreach (Sector s in sporenArray[spoorTeller].SectorList)
+            foreach (Sector s in sporenArray[spoorTeller].SectorList)
             {
                 if (s.Tram == null)
                 {
@@ -97,6 +97,11 @@ namespace TramBeheerSysteem
             spoorSectors.Reverse(); // Reverse list, zodat de tram eerst op de achterste sectoren v/h spoor komt te staan
             foreach (Sector s in spoorSectors)
             {
+                if (s.Blokkade)
+                {
+                    sectors.Clear();
+                    spoorTeller++;
+                }
                 if (sectors.Count < tram.lengte)
                 {
                     if (s.Beschikbaar && !s.Blokkade && s.Tram == null)
