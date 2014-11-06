@@ -19,30 +19,6 @@ namespace TramBeheerSysteem
 
         private void btnBevestig_Click(object sender, EventArgs e)
         {
-            /* WHY ZO
-             
-            string NR_tram = tbTramnummer.Text;
-            string NR_spoor = tbSpoornummer.Text;
-            string NR_sector = tbSectornummer.Text;
-            int NR;
-            int NR1;
-            int NR2;
-
-            // Check of textbox ID te converteren is naar Int32
-            try
-            {
-                NR = Convert.ToInt32(NR_tram);
-                NR1 = Convert.ToInt32(NR_spoor);
-                NR2 = Convert.ToInt32(NR_sector);
-            }
-            catch
-            {
-                MessageBox.Show("Voer geldige nummers in");
-                return;
-            }
-            
-            IF YOU CAN DO IT ZO */
-
             int tramNr;
             int spoorNr;
             int sectorNr;

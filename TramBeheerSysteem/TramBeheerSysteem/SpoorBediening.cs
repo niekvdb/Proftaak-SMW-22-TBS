@@ -35,16 +35,12 @@ namespace TramBeheerSysteem
                 {
                     MessageBox.Show("Sector is vrijgemaakt");
                     sector.Deblokkeer();
+                    DatabaseManager.registreerSectorStatus(sector);
                     foreach (Sector sector1 in spoor.SectorList)
                     {
                         if (sector1.Nummer > SectorNR && sector1.Blokkade == true)
                         {
                             sector1.Deblokkeer();
-                            DatabaseManager.registreerSectorStatus(sector1);
-                        }
-                        else if (sector1.Nummer > SectorNR && sector1.Blokkade == false)
-                        {
-                            sector1.Blokkeer();
                             DatabaseManager.registreerSectorStatus(sector1);
                         }
                     }
@@ -53,7 +49,7 @@ namespace TramBeheerSysteem
                 {
                     MessageBox.Show("Sector is Geblokkeerd");
                     sector.Blokkeer();
-                    foreach (Sector sector1 in RemiseManager.sectorenVanSpoor(spoor.Id))
+                    foreach (Sector sector1 in spoor.SectorList)
                     {
                         if (sector1.Nummer > SectorNR)
                         {
@@ -63,7 +59,6 @@ namespace TramBeheerSysteem
                     }
                 }
             }
-            DatabaseManager.registreerSectorStatus(RemiseManager.sectorViaNummer(SectorNR));
             
         }
 
@@ -75,9 +70,9 @@ namespace TramBeheerSysteem
         private void cbSpoor_SelectedIndexChanged(object sender, EventArgs e)
         {
             int SpoorNummer = Convert.ToInt32(cbSpoor.Text);
-            Spoor s = RemiseManager.spoorViaNummer(SpoorNummer);
+            Spoor spoor = RemiseManager.spoorViaNummer(SpoorNummer);
             cbSector.Items.Clear();
-            foreach (Sector sec in RemiseManager.sectorenVanSpoor(s.Id))
+            foreach (Sector sec in spoor.SectorList)
             cbSector.Items.Add(sec.Nummer);
         }
     }
