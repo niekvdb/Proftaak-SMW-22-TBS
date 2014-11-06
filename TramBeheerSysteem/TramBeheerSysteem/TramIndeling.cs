@@ -10,8 +10,8 @@ namespace TramBeheerSysteem
     public class TramIndeling
     {
         private List<Spoor> alleSporen = RemiseManager.Sporen;
-        private int spoorTeller = 0;
         private bool sporenOp = false;
+        int spoorTeller = 0;
 
         public List<Sector> DeelTramIn(Tram tram)
         {
@@ -29,7 +29,11 @@ namespace TramBeheerSysteem
                         if (isSpoorLangGenoeg(ingedeeldSpoor, tram.lengte))
                         {
                             ingedeeldeSectors = vrijeSectoren(ingedeeldSpoor, tram);
-                            if (ingedeeldeSectors != null)
+                            if (ingedeeldeSectors.Count() < tram.lengte)
+                            {
+                                ingedeeldeSectors = null;
+                            }
+                            if (ingedeeldeSectors != null && ingedeeldeSectors.Any())
                             {
                                 sectorFound = true;
                                 voegTramAanSectorsToe(ingedeeldeSectors,tram);
@@ -45,14 +49,31 @@ namespace TramBeheerSysteem
         private Spoor krijgEerstVolgendeSpoor()
         {
             Spoor[] sporenArray = alleSporen.ToArray();
-            spoorTeller++;
+            bool sectorsleft = false;
+            if (spoorTeller >= sporenArray.Count())
+            {
+                Console.WriteLine("Sporen vol");
+                sporenOp = true;
+                return null;
+            }
+
+                foreach (Sector s in sporenArray[spoorTeller].SectorList)
+            {
+                if (s.Tram == null)
+                {
+                    sectorsleft = true;
+                }
+            }
+            if (!sectorsleft)
+            {
+                spoorTeller++;
+            }
             if (spoorTeller < sporenArray.Count())
             {
                 return sporenArray[spoorTeller];
             }
             else
             {
-                sporenOp = true;
                 return null;
             }
         }
@@ -73,9 +94,10 @@ namespace TramBeheerSysteem
         {
             List<Sector> spoorSectors = RemiseManager.sectorenVanSpoor(spoor.Id);
             List<Sector> sectors = new List<Sector>();
+            spoorSectors.Reverse(); // Reverse list, zodat de tram eerst op de achterste sectoren v/h spoor komt te staan
             foreach (Sector s in spoorSectors)
             {
-                if (sectors.Count <= tram.lengte)
+                if (sectors.Count < tram.lengte)
                 {
                     if (s.Beschikbaar && !s.Blokkade && s.Tram == null)
                     {

@@ -7,16 +7,20 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Security.AccessControl;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Threading;
 
 namespace TramBeheerSysteem
 {
+    
+    
     public partial class TramBeheerSysteem : Form
     {
         public event EventHandler BlockSector;
-
+        private bool continueSimulation = true;
         int xPosTb = 5;
         int yPosTb = 5;
         int horizontalRows = 1;
@@ -33,8 +37,9 @@ namespace TramBeheerSysteem
             RefreshSporen();
             foreach (Tram t in TramManager.Trams)
             {
-                cbTrams.Items.Add(Convert.ToString(t.Id));
+                cbTrams.Items.Add(Convert.ToString(t.nummer));
             }
+            cbTrams.Sorted = true;
             foreach (Medewerker medewerker in RemiseManager.Medewerkers)
             {
                 gebruikerToolStripMenuItem.DropDownItems.Add(Convert.ToString(medewerker.Functie));
@@ -62,8 +67,6 @@ namespace TramBeheerSysteem
             horizontalRows = 1;
             verticalRows = 1;
             maxSectors = 0;
-            RemiseManager.LaadRemises();
-            RemiseManager.LaadSporen();
             List<Spoor> spoorList = new List<Spoor>();
             spoorList = RemiseManager.Sporen;
             AddTextBoxes((spoorList));
@@ -91,10 +94,6 @@ namespace TramBeheerSysteem
                         TextAlign = HorizontalAlignment.Center,
                         Tag = Convert.ToString(se.Id)
                     };
-                    if (se.SpoorNummer == 13)
-                    {
-                        //breakpoint
-                    }
                     if (se.Tram != null)
                     {
                         sectorTb.Text = se.Tram.Id.ToString();
@@ -186,14 +185,46 @@ namespace TramBeheerSysteem
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
-            // Snel voorbeeld van controls zoeken d.m.v. Tag
-            Control.ControlCollection controls = PanelTBS.Controls;
-            foreach (Control c in controls)
+          /*  BackgroundWorker bw = new BackgroundWorker();
+            bw.WorkerReportsProgress = true;
+            bw.DoWork += new DoWorkEventHandler(delegate(object o, DoWorkEventArgs args)
             {
+                Simulatie();
+            }
+                );
 
-                if ((String)c.Tag == "Spoor34_3")
+            bw.RunWorkerAsync();
+           * */
+            Simulatie();
+        }
+        public void Simulatie()
+        {
+            TramIndeling indeling = new TramIndeling();
+            List<Tram> tramList = TramManager.Trams;
+            foreach (Tram t in tramList)
+            {
+                if (continueSimulation)
                 {
-                    c.Text = "found";
+                    List<Sector> ingedeeldeSectors = indeling.DeelTramIn(t);
+                    if (ingedeeldeSectors == null)
+                    {
+                        System.Console.WriteLine("Niet ingedeeld: " + t.Id);
+                    }
+                    else
+                    {
+                        Control.ControlCollection controls = PanelTBS.Controls;
+                        foreach (Control c in controls)
+                        {
+                            foreach (Sector s in ingedeeldeSectors)
+                            {
+                                if ((String) c.Tag == s.Id.ToString())
+                                {
+                                    c.Text = t.nummer.ToString();
+                                    Refresh();
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -228,21 +259,8 @@ namespace TramBeheerSysteem
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            TramIndeling indeling = new TramIndeling();
-            Tram tram = new Tram(1, Tramtype.Combino, 9999, 4, string.Empty, null, false, false, true, true);
-            List<Sector> ingedeeldeSectors = indeling.DeelTramIn(tram);
-            if (ingedeeldeSectors != null)
-            {
-                foreach (Sector s in ingedeeldeSectors)
-                {
-                    MessageBox.Show(s.Id.ToString());
-                }
-            }
-            else
-            {
-                MessageBox.Show("Geen vrije sectoren gevonden.");
-            }
-    }
+            // Mogelijk?
+        }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
@@ -251,6 +269,18 @@ namespace TramBeheerSysteem
 
         private void reparatieToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        }
+
+        private void tramInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TramInfo traminfo=new TramInfo();
+            traminfo.Show();
+        }
+
+        private void spoorInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SpoorInfo spoorinfo = new SpoorInfo();
+            spoorinfo.Show();
         }
     }
 }

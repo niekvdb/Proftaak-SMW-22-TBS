@@ -171,7 +171,7 @@ namespace TramBeheerSysteem
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
-                        Tramtype tramtype = (Tramtype) Convert.ToInt32(reader["Tramtype_ID"]);
+                        Tramtype tramtype = (Tramtype) Convert.ToInt32(reader["Tramtype_ID"]) -1;
                         int nummer = Convert.ToInt32(reader["Nummer"]);
                         int lengte = Convert.ToInt32(reader["Lengte"]);
                         string status = Convert.ToString(reader["Status"]);
@@ -219,7 +219,7 @@ namespace TramBeheerSysteem
                         Tram tram = TramManager.tramViaId(Convert.ToInt32(reader["Tram_ID"]));
                         DateTime beschikbaarDatum = Convert.ToDateTime(reader["DatumBeschikbaar"]);
                         DateTime datumTijd = Convert.ToDateTime(reader["DatumTijdStip"]);
-                        TypeOnderhoud typeOnderhoud = (TypeOnderhoud) Convert.ToInt32(reader["TypeOnderhoud"]);
+                        TypeOnderhoud typeOnderhoud = (TypeOnderhoud) Convert.ToInt32(reader["TypeOnderhoud"]) - 1;
                         string opmerking = Convert.ToString(reader["Notitie"]);
 
                         onderhoudsBeurten.Add(new Tramonderhoud(id, medewerker, tram, beschikbaarDatum, datumTijd, typeOnderhoud, opmerking));
@@ -256,7 +256,7 @@ namespace TramBeheerSysteem
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
-                        Functie functie = (Functie) Convert.ToInt32(reader["Functie_ID"]);
+                        Functie functie = (Functie) Convert.ToInt32(reader["Functie_ID"]) -1;
                         string naam = Convert.ToString(reader["Naam"]);
 
                         medewerkers.Add(new Medewerker(id, functie, naam));
@@ -274,7 +274,7 @@ namespace TramBeheerSysteem
             return medewerkers;
         }
 
-        public static void registreerOnderhoud(Tramonderhoud onderhoud)
+        /*public static void registreerSectorStatus(Sector sector)
         {
             try
             {
@@ -290,6 +290,36 @@ namespace TramBeheerSysteem
                 command.Parameters.Add(":datumTijdstip", onderhoud.DatumTijdstip);
                 command.Parameters.Add(":datumBeschikbaar", onderhoud.BeschikbaarDatum);
                 command.Parameters.Add(":typeOnderhoud", onderhoud.TypeOnderhoud);
+                command.Parameters.Add(":notitie", onderhoud.Opmerking);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }*/
+        public static void registreerOnderhoud(Tramonderhoud onderhoud)
+        {
+            try
+            {
+                connection.Open();
+
+                OracleCommand command = new OracleCommand("INSERT INTO TRAM_ONDERHOUD(Medewerker_ID, Tram_ID, DatumTijdStip, DatumBeschikbaar, TypeOnderhoud, Notitie)" +
+                                                            "VALUES (:medewerker_ID, :tram_ID, :datumTijdstip, :datumBeschikbaar, :typeOnderhoud, :notitie)");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                command.Parameters.Add(":medewerker_ID", onderhoud.Medewerker.Id);
+                command.Parameters.Add(":tram_ID", onderhoud.Tram.Id);
+                command.Parameters.Add(":datumTijdstip", onderhoud.DatumTijdstip);
+                command.Parameters.Add(":datumBeschikbaar", onderhoud.BeschikbaarDatum);
+                command.Parameters.Add(":typeOnderhoud", onderhoud.TypeOnderhoud.GetTypeCode()+1);
                 command.Parameters.Add(":notitie", onderhoud.Opmerking);
 
                 command.ExecuteNonQuery();
