@@ -35,6 +35,10 @@ namespace TramBeheerSysteem
             {
                 cbTrams.Items.Add(Convert.ToString(t.Id));
             }
+            foreach (Medewerker medewerker in RemiseManager.Medewerkers)
+            {
+                gebruikerToolStripMenuItem.DropDownItems.Add(Convert.ToString(medewerker.Functie));
+            }
         }
 
         private List<Sector> GenerateSectorList(int Lengte)
