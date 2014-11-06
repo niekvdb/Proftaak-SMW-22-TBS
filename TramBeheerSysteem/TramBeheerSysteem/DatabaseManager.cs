@@ -172,6 +172,7 @@ namespace TramBeheerSysteem
                     {
                         int id = Convert.ToInt32(reader["ID"]);
                         Tramtype tramtype = (Tramtype) Convert.ToInt32(reader["Tramtype_ID"]);
+                        int nummer = Convert.ToInt32(reader["Nummer"]);
                         int lengte = Convert.ToInt32(reader["Lengte"]);
                         string status = Convert.ToString(reader["Status"]);
                         Remise remise = RemiseManager.remiseViaId(Convert.ToInt32(reader["Remise_ID_Standplaats"]));
@@ -180,7 +181,7 @@ namespace TramBeheerSysteem
                         bool conducteurGeschikt = convertBool(Convert.ToString(reader["ConducteurGeschikt"]));
                         bool beschikbaar = convertBool(Convert.ToString(reader["Beschikbaar"]));
 
-                        trams.Add(new Tram(id, tramtype, lengte, status, remise, vervuild, defect, conducteurGeschikt, beschikbaar));
+                        trams.Add(new Tram(id, tramtype, nummer, lengte, status, remise, vervuild, defect, conducteurGeschikt, beschikbaar));
                     }
                 }
             }
