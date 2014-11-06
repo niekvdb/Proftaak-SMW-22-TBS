@@ -13,14 +13,12 @@ namespace TramBeheerSysteem
 
         static TramManager()
         {
-
+            Trams = new List<Tram>();
+            onderhoudsBeurten = new List<Tramonderhoud>();
         }
 
         public static void LaadTrams()
         {
-            Trams = new List<Tram>();
-            onderhoudsBeurten = new List<Tramonderhoud>();
-
             Trams = DatabaseManager.LaadTrams();
             onderhoudsBeurten = DatabaseManager.LaadTramonderhoud();
         }
