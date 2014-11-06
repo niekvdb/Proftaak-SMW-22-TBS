@@ -217,7 +217,7 @@ namespace TramBeheerSysteem
                         int id = Convert.ToInt32(reader["ID"]);
                         Medewerker medewerker = RemiseManager.medewerkerViaId(Convert.ToInt32(reader["Medewerker_ID"]));
                         Tram tram = TramManager.tramViaId(Convert.ToInt32(reader["Tram_ID"]));
-                        DateTime beschikbaarDatum = Convert.ToDateTime(reader["DatumBeschikbaar"]);
+                        DateTime beschikbaarDatum = Convert.ToDateTime(reader["BeschikbaarDatum"]);
                         DateTime datumTijd = Convert.ToDateTime(reader["DatumTijdStip"]);
                         TypeOnderhoud typeOnderhoud = (TypeOnderhoud) Convert.ToInt32(reader["TypeOnderhoud"]) - 1;
                         string opmerking = Convert.ToString(reader["Notitie"]);
