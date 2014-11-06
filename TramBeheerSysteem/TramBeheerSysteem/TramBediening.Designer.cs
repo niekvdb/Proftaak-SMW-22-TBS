@@ -115,7 +115,7 @@
             this.ClientSize = new System.Drawing.Size(576, 331);
             this.Controls.Add(this.gbTram);
             this.Name = "WijzigTramStatus";
-            this.Text = "Voeg tram toe";
+            this.Text = "Wijzig Tram Status";
             this.Load += new System.EventHandler(this.Voeg_Tram_toe_Load);
             this.gbTram.ResumeLayout(false);
             this.gbTram.PerformLayout();
