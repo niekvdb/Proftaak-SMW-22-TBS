@@ -199,7 +199,7 @@ namespace TramBeheerSysteem
             try
             {
                 connection.Open();
-                OracleCommand command = new OracleCommand("SELECT * FROM TRAM_ONDERHOUD");
+                OracleCommand command = new OracleCommand("SELECT * FROM TRAM_ONDERHOUD WHERE Voltooid = 0");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
