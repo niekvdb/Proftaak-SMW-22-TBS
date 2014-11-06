@@ -38,7 +38,10 @@ namespace TramBeheerSysteem
 
         private void cbReparatie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //todo
+            string onderhoudString = cbReparatie.SelectedText;
+            Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
+            tbxReparatie.Text = selectedOnderhoud.Opmerking;
+            //tbxReparatieSector.Text = 
         }
 
         private void cbSchoonmaak_SelectedIndexChanged(object sender, EventArgs e)

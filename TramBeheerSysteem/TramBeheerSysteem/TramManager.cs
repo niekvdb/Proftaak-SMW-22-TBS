@@ -40,5 +40,18 @@ namespace TramBeheerSysteem
             }
             return null;
         }
+
+        public static Tramonderhoud OnderhoudFromString(string onderhoudString)
+        {
+            int index = onderhoudString.IndexOf(":");
+            string onderhoudNr = "";
+
+            if (index > 0)
+            {
+                onderhoudNr = onderhoudString.Substring(0, index);
+            }
+
+            return TramManager.onderhoudViaId(Convert.ToInt32(onderhoudNr));
+        }
     }
 }

@@ -32,21 +32,21 @@
             this.lblSchoonmaak = new System.Windows.Forms.Label();
             this.tbcLijsten = new System.Windows.Forms.TabControl();
             this.tabSchoonmaak = new System.Windows.Forms.TabPage();
+            this.lblSchoonmaakSector = new System.Windows.Forms.Label();
+            this.lblSchoonmaakSpoor = new System.Windows.Forms.Label();
+            this.tbxSchoonmaakSector = new System.Windows.Forms.TextBox();
+            this.tbxSchoonmaakSpoor = new System.Windows.Forms.TextBox();
+            this.tbxSchoonmaak = new System.Windows.Forms.TextBox();
             this.btnSchoonmaak = new System.Windows.Forms.Button();
             this.tabReparatie = new System.Windows.Forms.TabPage();
-            this.btnReparatie = new System.Windows.Forms.Button();
-            this.cbReparatie = new System.Windows.Forms.ComboBox();
-            this.lblReparatie = new System.Windows.Forms.Label();
-            this.tbxSchoonmaak = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tbxSchoonmaakSpoor = new System.Windows.Forms.TextBox();
-            this.tbxSchoonmaakSector = new System.Windows.Forms.TextBox();
-            this.lblSchoonmaakSpoor = new System.Windows.Forms.Label();
-            this.lblSchoonmaakSector = new System.Windows.Forms.Label();
             this.lblReparatieSector = new System.Windows.Forms.Label();
             this.lblReparatieSpoor = new System.Windows.Forms.Label();
             this.tbxReparatieSector = new System.Windows.Forms.TextBox();
             this.tbxReparatieSpoor = new System.Windows.Forms.TextBox();
+            this.tbxReparatie = new System.Windows.Forms.TextBox();
+            this.btnReparatie = new System.Windows.Forms.Button();
+            this.cbReparatie = new System.Windows.Forms.ComboBox();
+            this.lblReparatie = new System.Windows.Forms.Label();
             this.tbcLijsten.SuspendLayout();
             this.tabSchoonmaak.SuspendLayout();
             this.tabReparatie.SuspendLayout();
@@ -98,6 +98,46 @@
             this.tabSchoonmaak.Text = "Schoonmaak";
             this.tabSchoonmaak.UseVisualStyleBackColor = true;
             // 
+            // lblSchoonmaakSector
+            // 
+            this.lblSchoonmaakSector.AutoSize = true;
+            this.lblSchoonmaakSector.Location = new System.Drawing.Point(420, 179);
+            this.lblSchoonmaakSector.Name = "lblSchoonmaakSector";
+            this.lblSchoonmaakSector.Size = new System.Drawing.Size(49, 17);
+            this.lblSchoonmaakSector.TabIndex = 7;
+            this.lblSchoonmaakSector.Text = "Sector";
+            // 
+            // lblSchoonmaakSpoor
+            // 
+            this.lblSchoonmaakSpoor.AutoSize = true;
+            this.lblSchoonmaakSpoor.Location = new System.Drawing.Point(420, 114);
+            this.lblSchoonmaakSpoor.Name = "lblSchoonmaakSpoor";
+            this.lblSchoonmaakSpoor.Size = new System.Drawing.Size(46, 17);
+            this.lblSchoonmaakSpoor.TabIndex = 6;
+            this.lblSchoonmaakSpoor.Text = "Spoor";
+            // 
+            // tbxSchoonmaakSector
+            // 
+            this.tbxSchoonmaakSector.Location = new System.Drawing.Point(420, 199);
+            this.tbxSchoonmaakSector.Name = "tbxSchoonmaakSector";
+            this.tbxSchoonmaakSector.Size = new System.Drawing.Size(100, 22);
+            this.tbxSchoonmaakSector.TabIndex = 5;
+            // 
+            // tbxSchoonmaakSpoor
+            // 
+            this.tbxSchoonmaakSpoor.Location = new System.Drawing.Point(420, 134);
+            this.tbxSchoonmaakSpoor.Name = "tbxSchoonmaakSpoor";
+            this.tbxSchoonmaakSpoor.Size = new System.Drawing.Size(100, 22);
+            this.tbxSchoonmaakSpoor.TabIndex = 4;
+            // 
+            // tbxSchoonmaak
+            // 
+            this.tbxSchoonmaak.Location = new System.Drawing.Point(9, 102);
+            this.tbxSchoonmaak.Multiline = true;
+            this.tbxSchoonmaak.Name = "tbxSchoonmaak";
+            this.tbxSchoonmaak.Size = new System.Drawing.Size(385, 220);
+            this.tbxSchoonmaak.TabIndex = 3;
+            // 
             // btnSchoonmaak
             // 
             this.btnSchoonmaak.Location = new System.Drawing.Point(9, 328);
@@ -114,7 +154,7 @@
             this.tabReparatie.Controls.Add(this.lblReparatieSpoor);
             this.tabReparatie.Controls.Add(this.tbxReparatieSector);
             this.tabReparatie.Controls.Add(this.tbxReparatieSpoor);
-            this.tabReparatie.Controls.Add(this.textBox1);
+            this.tabReparatie.Controls.Add(this.tbxReparatie);
             this.tabReparatie.Controls.Add(this.btnReparatie);
             this.tabReparatie.Controls.Add(this.cbReparatie);
             this.tabReparatie.Controls.Add(this.lblReparatie);
@@ -125,82 +165,6 @@
             this.tabReparatie.TabIndex = 1;
             this.tabReparatie.Text = "Reparatie";
             this.tabReparatie.UseVisualStyleBackColor = true;
-            // 
-            // btnReparatie
-            // 
-            this.btnReparatie.Location = new System.Drawing.Point(9, 328);
-            this.btnReparatie.Name = "btnReparatie";
-            this.btnReparatie.Size = new System.Drawing.Size(135, 58);
-            this.btnReparatie.TabIndex = 5;
-            this.btnReparatie.Text = "Reparatie Voltooien";
-            this.btnReparatie.UseVisualStyleBackColor = true;
-            this.btnReparatie.Click += new System.EventHandler(this.btnReparatie_Click);
-            // 
-            // cbReparatie
-            // 
-            this.cbReparatie.FormattingEnabled = true;
-            this.cbReparatie.Location = new System.Drawing.Point(6, 54);
-            this.cbReparatie.Name = "cbReparatie";
-            this.cbReparatie.Size = new System.Drawing.Size(514, 24);
-            this.cbReparatie.TabIndex = 3;
-            this.cbReparatie.SelectedIndexChanged += new System.EventHandler(this.cbReparatie_SelectedIndexChanged);
-            // 
-            // lblReparatie
-            // 
-            this.lblReparatie.AutoSize = true;
-            this.lblReparatie.Location = new System.Drawing.Point(6, 20);
-            this.lblReparatie.Name = "lblReparatie";
-            this.lblReparatie.Size = new System.Drawing.Size(190, 17);
-            this.lblReparatie.TabIndex = 4;
-            this.lblReparatie.Text = "Nog niet voltooide reparaties";
-            // 
-            // tbxSchoonmaak
-            // 
-            this.tbxSchoonmaak.Location = new System.Drawing.Point(9, 102);
-            this.tbxSchoonmaak.Multiline = true;
-            this.tbxSchoonmaak.Name = "tbxSchoonmaak";
-            this.tbxSchoonmaak.Size = new System.Drawing.Size(385, 220);
-            this.tbxSchoonmaak.TabIndex = 3;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(9, 102);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(384, 220);
-            this.textBox1.TabIndex = 6;
-            // 
-            // tbxSchoonmaakSpoor
-            // 
-            this.tbxSchoonmaakSpoor.Location = new System.Drawing.Point(420, 134);
-            this.tbxSchoonmaakSpoor.Name = "tbxSchoonmaakSpoor";
-            this.tbxSchoonmaakSpoor.Size = new System.Drawing.Size(100, 22);
-            this.tbxSchoonmaakSpoor.TabIndex = 4;
-            // 
-            // tbxSchoonmaakSector
-            // 
-            this.tbxSchoonmaakSector.Location = new System.Drawing.Point(420, 199);
-            this.tbxSchoonmaakSector.Name = "tbxSchoonmaakSector";
-            this.tbxSchoonmaakSector.Size = new System.Drawing.Size(100, 22);
-            this.tbxSchoonmaakSector.TabIndex = 5;
-            // 
-            // lblSchoonmaakSpoor
-            // 
-            this.lblSchoonmaakSpoor.AutoSize = true;
-            this.lblSchoonmaakSpoor.Location = new System.Drawing.Point(420, 114);
-            this.lblSchoonmaakSpoor.Name = "lblSchoonmaakSpoor";
-            this.lblSchoonmaakSpoor.Size = new System.Drawing.Size(46, 17);
-            this.lblSchoonmaakSpoor.TabIndex = 6;
-            this.lblSchoonmaakSpoor.Text = "Spoor";
-            // 
-            // lblSchoonmaakSector
-            // 
-            this.lblSchoonmaakSector.AutoSize = true;
-            this.lblSchoonmaakSector.Location = new System.Drawing.Point(420, 179);
-            this.lblSchoonmaakSector.Name = "lblSchoonmaakSector";
-            this.lblSchoonmaakSector.Size = new System.Drawing.Size(49, 17);
-            this.lblSchoonmaakSector.TabIndex = 7;
-            this.lblSchoonmaakSector.Text = "Sector";
             // 
             // lblReparatieSector
             // 
@@ -234,6 +198,42 @@
             this.tbxReparatieSpoor.Size = new System.Drawing.Size(100, 22);
             this.tbxReparatieSpoor.TabIndex = 8;
             // 
+            // tbxReparatie
+            // 
+            this.tbxReparatie.Location = new System.Drawing.Point(9, 102);
+            this.tbxReparatie.Multiline = true;
+            this.tbxReparatie.Name = "tbxReparatie";
+            this.tbxReparatie.Size = new System.Drawing.Size(384, 220);
+            this.tbxReparatie.TabIndex = 6;
+            // 
+            // btnReparatie
+            // 
+            this.btnReparatie.Location = new System.Drawing.Point(9, 328);
+            this.btnReparatie.Name = "btnReparatie";
+            this.btnReparatie.Size = new System.Drawing.Size(135, 58);
+            this.btnReparatie.TabIndex = 5;
+            this.btnReparatie.Text = "Reparatie Voltooien";
+            this.btnReparatie.UseVisualStyleBackColor = true;
+            this.btnReparatie.Click += new System.EventHandler(this.btnReparatie_Click);
+            // 
+            // cbReparatie
+            // 
+            this.cbReparatie.FormattingEnabled = true;
+            this.cbReparatie.Location = new System.Drawing.Point(6, 54);
+            this.cbReparatie.Name = "cbReparatie";
+            this.cbReparatie.Size = new System.Drawing.Size(514, 24);
+            this.cbReparatie.TabIndex = 3;
+            this.cbReparatie.SelectedIndexChanged += new System.EventHandler(this.cbReparatie_SelectedIndexChanged);
+            // 
+            // lblReparatie
+            // 
+            this.lblReparatie.AutoSize = true;
+            this.lblReparatie.Location = new System.Drawing.Point(6, 20);
+            this.lblReparatie.Name = "lblReparatie";
+            this.lblReparatie.Size = new System.Drawing.Size(190, 17);
+            this.lblReparatie.TabIndex = 4;
+            this.lblReparatie.Text = "Nog niet voltooide reparaties";
+            // 
             // OnderhoudLijsten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -263,7 +263,7 @@
         private System.Windows.Forms.ComboBox cbReparatie;
         private System.Windows.Forms.Label lblReparatie;
         private System.Windows.Forms.TextBox tbxSchoonmaak;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxReparatie;
         private System.Windows.Forms.Label lblSchoonmaakSector;
         private System.Windows.Forms.Label lblSchoonmaakSpoor;
         private System.Windows.Forms.TextBox tbxSchoonmaakSector;
