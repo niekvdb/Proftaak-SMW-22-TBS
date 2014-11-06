@@ -25,6 +25,8 @@ namespace TramBeheerSysteem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string spoornummer;
+            string sectornummer;
             if (cbTrams.SelectedItem == null)
             {
                 MessageBox.Show("Selecteer eerst een tram!");
@@ -34,7 +36,17 @@ namespace TramBeheerSysteem
             {
                 if (tram.nummer == Convert.ToInt32(cbTrams.Text))
                 {
-                    var tram1 = new ListViewItem(new[] { Convert.ToString(tram.nummer), Convert.ToString(tram.tramtype), "test", Convert.ToString(tram.vervuild), Convert.ToString(tram.vervuild), Convert.ToString(tram.defect), Convert.ToString(tram.beschikbaar) });
+                    if (RemiseManager.sectorViaTram(tram) == null)
+                    {
+                        spoornummer = "geen";
+                        sectornummer = "geen";
+                    }
+                    else
+                    {
+                        spoornummer = Convert.ToString(RemiseManager.sectorViaTram(tram).SpoorNummer);
+                        sectornummer = Convert.ToString(RemiseManager.sectorViaTram(tram).Nummer);
+                    }
+                    var tram1 = new ListViewItem(new[] { Convert.ToString(tram.nummer), Convert.ToString(tram.tramtype), spoornummer, sectornummer, Convert.ToString(tram.vervuild), Convert.ToString(tram.vervuild), Convert.ToString(tram.defect), Convert.ToString(tram.beschikbaar) });
                     lvwTrams.Items.Add(tram1);
                 }
             }
