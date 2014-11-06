@@ -34,12 +34,12 @@
             this.clmTramInfoTramnummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTramInfoTramType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSchoonmaakSpoor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmTramInfoSector = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTramInfoVervuild = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTramInfoDefect = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTramInfoBeschikbaar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblTram = new System.Windows.Forms.Label();
             this.btnBevestig = new System.Windows.Forms.Button();
-            this.clmTramInfoSector = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // cbTrams
@@ -61,10 +61,13 @@
             this.clmTramInfoVervuild,
             this.clmTramInfoDefect,
             this.clmTramInfoBeschikbaar});
+            this.lvwTrams.FullRowSelect = true;
+            this.lvwTrams.HideSelection = false;
             this.lvwTrams.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.lvwTrams.Location = new System.Drawing.Point(210, 49);
             this.lvwTrams.Margin = new System.Windows.Forms.Padding(4);
+            this.lvwTrams.MultiSelect = false;
             this.lvwTrams.Name = "lvwTrams";
             this.lvwTrams.Size = new System.Drawing.Size(656, 292);
             this.lvwTrams.TabIndex = 5;
@@ -85,6 +88,10 @@
             // 
             this.clmSchoonmaakSpoor.Text = "Spoor";
             this.clmSchoonmaakSpoor.Width = 79;
+            // 
+            // clmTramInfoSector
+            // 
+            this.clmTramInfoSector.Text = "Sector";
             // 
             // clmTramInfoVervuild
             // 
@@ -119,10 +126,6 @@
             this.btnBevestig.Text = "Bevestig";
             this.btnBevestig.UseVisualStyleBackColor = true;
             this.btnBevestig.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // clmTramInfoSector
-            // 
-            this.clmTramInfoSector.Text = "Sector";
             // 
             // TramInfo
             // 
