@@ -126,7 +126,8 @@ namespace TramBeheerSysteem
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            OnderhoudApplicatie o = new OnderhoudApplicatie();
+            o.Show();
         }
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)

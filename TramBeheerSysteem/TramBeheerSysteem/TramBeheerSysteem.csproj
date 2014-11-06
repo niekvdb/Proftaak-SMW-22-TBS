@@ -95,6 +95,12 @@
     <Compile Include="OnderhoudApplicatie.Designer.cs">
       <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
     </Compile>
+    <Compile Include="OnderhoudLijsten.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnderhoudLijsten.Designer.cs">
+      <DependentUpon>OnderhoudLijsten.cs</DependentUpon>
+    </Compile>
     <Compile Include="RemiseManager.cs" />
     <Compile Include="SpoorBediening.cs">
       <SubType>Form</SubType>
