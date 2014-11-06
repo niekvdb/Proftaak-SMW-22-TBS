@@ -54,6 +54,14 @@ namespace TramBeheerSysteem
             }
             return null;
         }
+        public static Spoor spoorViaNummer(int nummer)
+        {
+            foreach (Spoor spoor in Sporen)
+            {
+                if (spoor.Nummer == nummer) return spoor;
+            }
+            return null;
+        }
 
         public static Sector sectorViaId(int id)
         {
