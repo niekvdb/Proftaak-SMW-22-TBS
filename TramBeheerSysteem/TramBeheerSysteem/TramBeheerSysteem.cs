@@ -56,6 +56,13 @@ namespace TramBeheerSysteem
             verticalRows = 1;
             maxSectors = 0;
             List<Spoor> spoorList = new List<Spoor>();
+            RemiseManager.Sectors = null;
+            RemiseManager.Medewerkers = null;
+            RemiseManager.Remises = null;
+            RemiseManager.Sporen = null;
+            RemiseManager.LaadRemises();
+            RemiseManager.LaadSporen();
+            // Memoryleak opgelost?
             spoorList = RemiseManager.Sporen;
             AddTextBoxes((spoorList));
         }
@@ -88,7 +95,7 @@ namespace TramBeheerSysteem
                     };
                     if (se.Tram != null)
                     {
-                        sectorTb.Text = se.Tram.Id.ToString();
+                        sectorTb.Text = se.Tram.nummer.ToString();
                     }
                     if (se.Blokkade) sectorTb.Enabled = false;
                     sectorTb.Click += this.HandleBlockSector;

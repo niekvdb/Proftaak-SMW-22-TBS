@@ -12,6 +12,7 @@ namespace TramBeheerSysteem
         private List<Spoor> alleSporen = RemiseManager.Sporen;
         private bool sporenOp = false;
         int spoorTeller = 0;
+        private bool increaseTeller = false;
 
         /// <summary>
         /// Functie met algoritme waarmee de tram ingedeeld wordt op een spoor(/op sectoren)
@@ -20,7 +21,10 @@ namespace TramBeheerSysteem
         /// <returns>Lijst met sectoren waarop de tram is ingedeeld</returns>
         public List<Sector> DeelTramIn(Tram tram)
         {
-            
+           /* if (tram.nummer == 834)
+            {
+                //breakpoint
+            } */
             List<Sector> ingedeeldeSectors = null;
             bool sectorFound = false;
             while (!sectorFound)
@@ -45,9 +49,15 @@ namespace TramBeheerSysteem
                             }
                         
                         }
+                        else
+                        {
+                            spoorTeller++;
+                            increaseTeller = true;
+                        }
                     }
                 }
             }
+            if (increaseTeller) spoorTeller = 0;
             return ingedeeldeSectors;
         }
         /// <summary>
@@ -67,12 +77,12 @@ namespace TramBeheerSysteem
 
             foreach (Sector s in sporenArray[spoorTeller].SectorList)
             {
-                if (s.Tram == null)
+                if (s.Tram == null&&!s.Blokkade)
                 {
                     sectorsleft = true;
                 }
             }
-            if (!sectorsleft)
+            if (!sectorsleft)// && !increaseTeller)
             {
                 spoorTeller++;
             }
@@ -116,21 +126,18 @@ namespace TramBeheerSysteem
         {
             List<Sector> spoorSectors = RemiseManager.sectorenVanSpoor(spoor.Id);
             List<Sector> sectors = new List<Sector>();
-            bool blockedSector = false;
             spoorSectors.Reverse(); // Reverse list, zodat de tram eerst op de achterste sectoren v/h spoor komt te staan
             foreach (Sector s in spoorSectors)
             {
                 if (s.Blokkade)
                 {
                     sectors.Clear();
-                    if (!blockedSector)
+                    /*if (!blockedSector)
                     {
-                        if (s.Nummer == 1)
-                        {
                             spoorTeller++;
-                        }
-                        blockedSector = true;
-                    }
+                            blockedSector = true;
+                            increaseTeller = true;
+                    }*/
                 }
                 if (sectors.Count < tram.lengte)
                 {
