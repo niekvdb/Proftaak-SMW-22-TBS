@@ -33,7 +33,8 @@ namespace TramBeheerSysteem
             {
                 if (spoor.Nummer == Convert.ToInt32(cbSporen.Text))
                 {
-                    var spoor1 = new ListViewItem(new[] { Convert.ToString(spoor.Nummer), Convert.ToString(spoor.Remise), "test", Convert.ToString(spoor.Beschikbaar) });
+                    int lengte = RemiseManager.sectorenVanSpoor(spoor.Id).Count;
+                    var spoor1 = new ListViewItem(new[] { Convert.ToString(spoor.Nummer), Convert.ToString(spoor.Remise), Convert.ToString(lengte), Convert.ToString(spoor.Beschikbaar) });
                     lvwTrams.Items.Add(spoor1);
                 }
             }
