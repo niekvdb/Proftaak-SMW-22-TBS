@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Threading;
 
 namespace TramBeheerSysteem
 {
@@ -18,9 +19,8 @@ namespace TramBeheerSysteem
     
     public partial class TramBeheerSysteem : Form
     {
-
         public event EventHandler BlockSector;
-
+        private bool continueSimulation = true;
         int xPosTb = 5;
         int yPosTb = 5;
         int horizontalRows = 1;
@@ -43,7 +43,7 @@ namespace TramBeheerSysteem
             foreach (Medewerker medewerker in RemiseManager.Medewerkers)
             {
                 gebruikerToolStripMenuItem.DropDownItems.Add(Convert.ToString(medewerker.Functie));
-        }
+            }
         }
 
         private List<Sector> GenerateSectorList(int Lengte)
@@ -98,6 +98,7 @@ namespace TramBeheerSysteem
                     {
                         sectorTb.Text = se.Tram.Id.ToString();
                     }
+                    if (se.Blokkade) sectorTb.Enabled = false;
                     sectorTb.Click += this.HandleBlockSector;
                     PanelTBS.Controls.Add(sectorTb);
                 }
@@ -185,26 +186,43 @@ namespace TramBeheerSysteem
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
+          /*  BackgroundWorker bw = new BackgroundWorker();
+            bw.WorkerReportsProgress = true;
+            bw.DoWork += new DoWorkEventHandler(delegate(object o, DoWorkEventArgs args)
+            {
+                Simulatie();
+            }
+                );
+
+            bw.RunWorkerAsync();
+           * */
+            Simulatie();
+        }
+        public void Simulatie()
+        {
             TramIndeling indeling = new TramIndeling();
             List<Tram> tramList = TramManager.Trams;
             foreach (Tram t in tramList)
             {
-                List<Sector> ingedeeldeSectors = indeling.DeelTramIn(t);
-                if (ingedeeldeSectors == null)
+                if (continueSimulation)
                 {
-                    System.Console.WriteLine("Niet ingedeeld: " + t.Id);
-                }
-                else
-                {
-                    Control.ControlCollection controls = PanelTBS.Controls;
-                    foreach (Control c in controls)
+                    List<Sector> ingedeeldeSectors = indeling.DeelTramIn(t);
+                    if (ingedeeldeSectors == null)
                     {
-                        foreach (Sector s in ingedeeldeSectors)
+                        System.Console.WriteLine("Niet ingedeeld: " + t.Id);
+                    }
+                    else
+                    {
+                        Control.ControlCollection controls = PanelTBS.Controls;
+                        foreach (Control c in controls)
                         {
-                            if ((String)c.Tag == s.Id.ToString())
+                            foreach (Sector s in ingedeeldeSectors)
                             {
-                                c.Text = t.Id.ToString();
-                                this.Refresh();
+                                if ((String) c.Tag == s.Id.ToString())
+                                {
+                                    c.Text = t.nummer.ToString();
+                                    Refresh();
+                                }
                             }
                         }
                     }
@@ -237,7 +255,16 @@ namespace TramBeheerSysteem
             spoor = spoor.Substring(0, spoor.IndexOf("_"));
             sector = tag.Substring((tag.IndexOf("_")+1));
              * */
-            MessageBox.Show("Sector id: " + tag); //"Spoor: "+spoor+System.Environment.NewLine + "Sector: "+sector);
+            MessageBox.Show("Sector id: " + tag); 
+            List<Sector> sectorList = new List<Sector>();
+            sectorList = RemiseManager.Sectors;
+            foreach (Sector s in sectorList)
+            {
+                if (s.Id.ToString() == tag)
+                {
+                    s.Blokkeer();
+                }
+            }
         }
 
         private void btnStop_Click(object sender, EventArgs e)
