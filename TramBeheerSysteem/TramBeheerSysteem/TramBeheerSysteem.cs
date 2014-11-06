@@ -62,8 +62,6 @@ namespace TramBeheerSysteem
             horizontalRows = 1;
             verticalRows = 1;
             maxSectors = 0;
-           // RemiseManager.LaadRemises();
-            //RemiseManager.LaadSporen();
             List<Spoor> spoorList = new List<Spoor>();
             spoorList = RemiseManager.Sporen;
             AddTextBoxes((spoorList));
