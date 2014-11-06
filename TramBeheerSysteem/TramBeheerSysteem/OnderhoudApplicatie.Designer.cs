@@ -32,6 +32,7 @@
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.tabOnderhoud = new System.Windows.Forms.TabControl();
             this.tabSchoonmaak = new System.Windows.Forms.TabPage();
+            this.cbSchoonmaakMedewerker = new System.Windows.Forms.ComboBox();
             this.dtpSchoonmaak = new System.Windows.Forms.DateTimePicker();
             this.rbtSchoonmaakGroot = new System.Windows.Forms.RadioButton();
             this.rbtSchoonmaakKlein = new System.Windows.Forms.RadioButton();
@@ -46,7 +47,8 @@
             this.clmSchoonmaakSoort = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSchoonmaakSpoor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSchoonmaakSchoonmaak = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.v = new System.Windows.Forms.TabPage();
+            this.tabReparatie = new System.Windows.Forms.TabPage();
+            this.cbReparatieMedewerker = new System.Windows.Forms.ComboBox();
             this.dtpReparatie = new System.Windows.Forms.DateTimePicker();
             this.rbtReparatieGroot = new System.Windows.Forms.RadioButton();
             this.rbtReparatieKlein = new System.Windows.Forms.RadioButton();
@@ -63,19 +65,17 @@
             this.clmReparatieReparatie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cbSchoonmaakMedewerker = new System.Windows.Forms.ComboBox();
-            this.cbReparatieMedewerker = new System.Windows.Forms.ComboBox();
             this.tabOnderhoud.SuspendLayout();
             this.tabSchoonmaak.SuspendLayout();
             this.pnlSchoonmaak.SuspendLayout();
-            this.v.SuspendLayout();
+            this.tabReparatie.SuspendLayout();
             this.pnlReparatie.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabOnderhoud
             // 
             this.tabOnderhoud.Controls.Add(this.tabSchoonmaak);
-            this.tabOnderhoud.Controls.Add(this.v);
+            this.tabOnderhoud.Controls.Add(this.tabReparatie);
             this.tabOnderhoud.Location = new System.Drawing.Point(0, 0);
             this.tabOnderhoud.Name = "tabOnderhoud";
             this.tabOnderhoud.SelectedIndex = 0;
@@ -99,6 +99,14 @@
             this.tabSchoonmaak.TabIndex = 0;
             this.tabSchoonmaak.Text = "Schoonmaak";
             this.tabSchoonmaak.UseVisualStyleBackColor = true;
+            // 
+            // cbSchoonmaakMedewerker
+            // 
+            this.cbSchoonmaakMedewerker.FormattingEnabled = true;
+            this.cbSchoonmaakMedewerker.Location = new System.Drawing.Point(724, 269);
+            this.cbSchoonmaakMedewerker.Name = "cbSchoonmaakMedewerker";
+            this.cbSchoonmaakMedewerker.Size = new System.Drawing.Size(246, 24);
+            this.cbSchoonmaakMedewerker.TabIndex = 24;
             // 
             // dtpSchoonmaak
             // 
@@ -220,23 +228,31 @@
             this.clmSchoonmaakSchoonmaak.Text = "Schoonmaak";
             this.clmSchoonmaakSchoonmaak.Width = 105;
             // 
-            // v
+            // tabReparatie
             // 
-            this.v.Controls.Add(this.cbReparatieMedewerker);
-            this.v.Controls.Add(this.dtpReparatie);
-            this.v.Controls.Add(this.rbtReparatieGroot);
-            this.v.Controls.Add(this.rbtReparatieKlein);
-            this.v.Controls.Add(this.lblReparatieBevestiging);
-            this.v.Controls.Add(this.tbxReparatieBevestiging);
-            this.v.Controls.Add(this.btnReparatieBevestiging);
-            this.v.Controls.Add(this.lblReparatie);
-            this.v.Controls.Add(this.pnlReparatie);
-            this.v.Location = new System.Drawing.Point(4, 25);
-            this.v.Name = "v";
-            this.v.Size = new System.Drawing.Size(1213, 507);
-            this.v.TabIndex = 1;
-            this.v.Text = "Reparatie";
-            this.v.UseVisualStyleBackColor = true;
+            this.tabReparatie.Controls.Add(this.cbReparatieMedewerker);
+            this.tabReparatie.Controls.Add(this.dtpReparatie);
+            this.tabReparatie.Controls.Add(this.rbtReparatieGroot);
+            this.tabReparatie.Controls.Add(this.rbtReparatieKlein);
+            this.tabReparatie.Controls.Add(this.lblReparatieBevestiging);
+            this.tabReparatie.Controls.Add(this.tbxReparatieBevestiging);
+            this.tabReparatie.Controls.Add(this.btnReparatieBevestiging);
+            this.tabReparatie.Controls.Add(this.lblReparatie);
+            this.tabReparatie.Controls.Add(this.pnlReparatie);
+            this.tabReparatie.Location = new System.Drawing.Point(4, 25);
+            this.tabReparatie.Name = "tabReparatie";
+            this.tabReparatie.Size = new System.Drawing.Size(1213, 507);
+            this.tabReparatie.TabIndex = 1;
+            this.tabReparatie.Text = "Reparatie";
+            this.tabReparatie.UseVisualStyleBackColor = true;
+            // 
+            // cbReparatieMedewerker
+            // 
+            this.cbReparatieMedewerker.FormattingEnabled = true;
+            this.cbReparatieMedewerker.Location = new System.Drawing.Point(724, 269);
+            this.cbReparatieMedewerker.Name = "cbReparatieMedewerker";
+            this.cbReparatieMedewerker.Size = new System.Drawing.Size(246, 24);
+            this.cbReparatieMedewerker.TabIndex = 25;
             // 
             // dtpReparatie
             // 
@@ -379,22 +395,6 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // cbSchoonmaakMedewerker
-            // 
-            this.cbSchoonmaakMedewerker.FormattingEnabled = true;
-            this.cbSchoonmaakMedewerker.Location = new System.Drawing.Point(724, 269);
-            this.cbSchoonmaakMedewerker.Name = "cbSchoonmaakMedewerker";
-            this.cbSchoonmaakMedewerker.Size = new System.Drawing.Size(246, 24);
-            this.cbSchoonmaakMedewerker.TabIndex = 24;
-            // 
-            // cbReparatieMedewerker
-            // 
-            this.cbReparatieMedewerker.FormattingEnabled = true;
-            this.cbReparatieMedewerker.Location = new System.Drawing.Point(724, 269);
-            this.cbReparatieMedewerker.Name = "cbReparatieMedewerker";
-            this.cbReparatieMedewerker.Size = new System.Drawing.Size(246, 24);
-            this.cbReparatieMedewerker.TabIndex = 25;
-            // 
             // OnderhoudApplicatie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -407,8 +407,8 @@
             this.tabSchoonmaak.ResumeLayout(false);
             this.tabSchoonmaak.PerformLayout();
             this.pnlSchoonmaak.ResumeLayout(false);
-            this.v.ResumeLayout(false);
-            this.v.PerformLayout();
+            this.tabReparatie.ResumeLayout(false);
+            this.tabReparatie.PerformLayout();
             this.pnlReparatie.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -418,7 +418,7 @@
 
         private System.Windows.Forms.TabControl tabOnderhoud;
         private System.Windows.Forms.TabPage tabSchoonmaak;
-        private System.Windows.Forms.TabPage v;
+        private System.Windows.Forms.TabPage tabReparatie;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label lblSchoonmaak;

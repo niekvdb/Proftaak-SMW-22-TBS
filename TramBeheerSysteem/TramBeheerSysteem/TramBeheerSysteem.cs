@@ -114,6 +114,7 @@ namespace TramBeheerSysteem
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
         }
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -223,5 +224,9 @@ namespace TramBeheerSysteem
                 MessageBox.Show("Geen vrije sectoren gevonden.");
             }
     }
+
+        private void reparatieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
