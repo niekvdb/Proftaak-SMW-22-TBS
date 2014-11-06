@@ -33,7 +33,7 @@ namespace TramBeheerSysteem
             RefreshSporen();
             foreach (Tram t in TramManager.Trams)
             {
-                cbTrams.Items.Add(Convert.ToString(t.Id));
+                cbTrams.Items.Add(Convert.ToString(t.nummer));
             }
             foreach (Medewerker medewerker in RemiseManager.Medewerkers)
             {
