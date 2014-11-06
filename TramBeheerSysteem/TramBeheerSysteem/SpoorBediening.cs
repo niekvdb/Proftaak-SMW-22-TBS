@@ -35,35 +35,32 @@ namespace TramBeheerSysteem
                 {
                     MessageBox.Show("Sector is vrijgemaakt");
                     sector.Deblokkeer();
+                    DatabaseManager.registreerSectorStatus(sector);
                     foreach (Sector sector1 in spoor.SectorList)
                     {
                         if (sector1.Nummer > SectorNR && sector1.Blokkade == true)
                         {
                             sector1.Deblokkeer();
-                            //RemiseManager.UpdateSectorStatus(sec.Id);
+                            DatabaseManager.registreerSectorStatus(sector1);
                         }
-                        else if (sector1.Nummer > SectorNR && sector1.Blokkade == false)
-                        {
-                            sector1.Blokkeer();
-                            //RemiseManager.UpdateSectorStatus(sec.Id);
                         }
                     }
-                }
                 else if (sector.Nummer == SectorNR && sector.Blokkade == false)
                 {
                     MessageBox.Show("Sector is Geblokkeerd");
                     sector.Blokkeer();
-                    foreach (Sector sector1 in RemiseManager.sectorenVanSpoor(spoor.Id))
+                    DatabaseManager.registreerSectorStatus(sector);
+                    foreach (Sector sector1 in spoor.SectorList)
                     {
                         if (sector1.Nummer > SectorNR)
                         {
                             sector1.Blokkeer();
-                            //RemiseManager.UpdateSectorStatus(sec.Id);
+                            DatabaseManager.registreerSectorStatus(sector1);
                         }
                     }
                 }
             }
-            //RemiseManager.UpdateSectorStatus(SectorNR);
+            
         }
 
         private void SpoorBediening_Load(object sender, EventArgs e)
@@ -74,9 +71,9 @@ namespace TramBeheerSysteem
         private void cbSpoor_SelectedIndexChanged(object sender, EventArgs e)
         {
             int SpoorNummer = Convert.ToInt32(cbSpoor.Text);
-            Spoor s = RemiseManager.spoorViaNummer(SpoorNummer);
+            Spoor spoor = RemiseManager.spoorViaNummer(SpoorNummer);
             cbSector.Items.Clear();
-            foreach (Sector sec in RemiseManager.sectorenVanSpoor(s.Id))
+            foreach (Sector sec in spoor.SectorList)
             cbSector.Items.Add(sec.Nummer);
         }
     }

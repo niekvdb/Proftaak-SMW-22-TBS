@@ -296,5 +296,11 @@ namespace TramBeheerSysteem
             SpoorInfo spoorinfo = new SpoorInfo();
             spoorinfo.Show();
         }
+
+        private void onderhoudlijstenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OnderhoudLijsten o = new OnderhoudLijsten();
+            o.Show();
+        }
     }
 }

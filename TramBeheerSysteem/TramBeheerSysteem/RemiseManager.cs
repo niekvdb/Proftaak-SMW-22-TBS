@@ -59,11 +59,30 @@ namespace TramBeheerSysteem
             return null;
         }
 
+        public static List<Sector> sectorenVanSpoor(int id)
+        {
+            List<Sector> sectorenVanSpoor = new List<Sector>();
+            foreach (Sector sector in Sectors)
+            {
+                if (sector.SpoorNummer == id) sectorenVanSpoor.Add(sector);
+            }
+            return sectorenVanSpoor;
+        }
+
         public static Sector sectorViaId(int id)
         {
             foreach (Sector sector in Sectors)
             {
                 if (sector.Id == id) return sector;
+            }
+            return null;
+        }
+
+        public static Sector sectorViaNummer(int nummer, Spoor spoor)
+        {
+            foreach (Sector sector in spoor.SectorList)
+            {
+                if (sector.Nummer == nummer) return sector;
             }
             return null;
         }
@@ -93,16 +112,6 @@ namespace TramBeheerSysteem
                 if (medewerker.Naam == naam) return medewerker;
             }
             return null;
-        }
-
-        public static List<Sector> sectorenVanSpoor(int id)
-        {
-            List<Sector> sectorenVanSpoor = new List<Sector>();
-            foreach (Sector sector in Sectors)
-            {
-                if (sector.SpoorNummer == id) sectorenVanSpoor.Add(sector);
-            }
-            return sectorenVanSpoor;
         }
     }
 }

@@ -42,11 +42,11 @@
             this.lblSchoonmaak = new System.Windows.Forms.Label();
             this.pnlSchoonmaak = new System.Windows.Forms.Panel();
             this.lvwSchoonmaak = new System.Windows.Forms.ListView();
-            this.clmSchoonmaakTramnummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmSchoonmaakLijn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmSchoonmaakSoort = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmSchoonmaakSpoor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmSchoonmaakSchoonmaak = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabReparatie = new System.Windows.Forms.TabPage();
             this.cbReparatieMedewerker = new System.Windows.Forms.ComboBox();
             this.dtpReparatie = new System.Windows.Forms.DateTimePicker();
@@ -58,11 +58,13 @@
             this.lblReparatie = new System.Windows.Forms.Label();
             this.pnlReparatie = new System.Windows.Forms.Panel();
             this.lvwReparatie = new System.Windows.Forms.ListView();
-            this.clmReparatieTramnummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmReparatieLijn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmReparatieSoort = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmReparatieSpoor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmReparatieReparatie = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmTramnummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmTramType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmSpoor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmSector = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDefect = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmSchoonmaakInfoTramId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmTramId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabOnderhoud.SuspendLayout();
@@ -102,6 +104,7 @@
             // 
             // cbSchoonmaakMedewerker
             // 
+            this.cbSchoonmaakMedewerker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSchoonmaakMedewerker.FormattingEnabled = true;
             this.cbSchoonmaakMedewerker.Location = new System.Drawing.Point(724, 269);
             this.cbSchoonmaakMedewerker.Name = "cbSchoonmaakMedewerker";
@@ -188,45 +191,49 @@
             // lvwSchoonmaak
             // 
             this.lvwSchoonmaak.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmSchoonmaakTramnummer,
-            this.clmSchoonmaakLijn,
-            this.clmSchoonmaakSoort,
-            this.clmSchoonmaakSpoor,
-            this.clmSchoonmaakSchoonmaak});
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.lvwSchoonmaak.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lvwSchoonmaak.FullRowSelect = true;
+            this.lvwSchoonmaak.HideSelection = false;
+            listViewItem1.StateImageIndex = 0;
             this.lvwSchoonmaak.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
-            this.lvwSchoonmaak.Location = new System.Drawing.Point(5, 11);
+            this.lvwSchoonmaak.Location = new System.Drawing.Point(10, 11);
             this.lvwSchoonmaak.Margin = new System.Windows.Forms.Padding(4);
+            this.lvwSchoonmaak.MultiSelect = false;
             this.lvwSchoonmaak.Name = "lvwSchoonmaak";
             this.lvwSchoonmaak.Size = new System.Drawing.Size(656, 292);
-            this.lvwSchoonmaak.TabIndex = 4;
+            this.lvwSchoonmaak.TabIndex = 7;
             this.lvwSchoonmaak.UseCompatibleStateImageBehavior = false;
             this.lvwSchoonmaak.View = System.Windows.Forms.View.Details;
             // 
-            // clmSchoonmaakTramnummer
+            // columnHeader1
             // 
-            this.clmSchoonmaakTramnummer.Text = "Tramnummer";
-            this.clmSchoonmaakTramnummer.Width = 105;
+            this.columnHeader1.Text = "Tramnummer";
+            this.columnHeader1.Width = 105;
             // 
-            // clmSchoonmaakLijn
+            // columnHeader2
             // 
-            this.clmSchoonmaakLijn.Text = "Lijn";
-            this.clmSchoonmaakLijn.Width = 58;
+            this.columnHeader2.Text = "TramType";
+            this.columnHeader2.Width = 100;
             // 
-            // clmSchoonmaakSoort
+            // columnHeader3
             // 
-            this.clmSchoonmaakSoort.Text = "Soort";
-            this.clmSchoonmaakSoort.Width = 59;
+            this.columnHeader3.Text = "Spoor";
+            this.columnHeader3.Width = 79;
             // 
-            // clmSchoonmaakSpoor
+            // columnHeader4
             // 
-            this.clmSchoonmaakSpoor.Text = "Spoor";
-            this.clmSchoonmaakSpoor.Width = 79;
+            this.columnHeader4.Text = "Sector";
             // 
-            // clmSchoonmaakSchoonmaak
+            // columnHeader5
             // 
-            this.clmSchoonmaakSchoonmaak.Text = "Schoonmaak";
-            this.clmSchoonmaakSchoonmaak.Width = 105;
+            this.columnHeader5.Text = "Vervuild";
+            this.columnHeader5.Width = 105;
             // 
             // tabReparatie
             // 
@@ -335,45 +342,49 @@
             // lvwReparatie
             // 
             this.lvwReparatie.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmReparatieTramnummer,
-            this.clmReparatieLijn,
-            this.clmReparatieSoort,
-            this.clmReparatieSpoor,
-            this.clmReparatieReparatie});
+            this.clmTramId,
+            this.clmTramnummer,
+            this.clmTramType,
+            this.clmSpoor,
+            this.clmSector,
+            this.clmDefect});
+            this.lvwReparatie.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lvwReparatie.FullRowSelect = true;
+            this.lvwReparatie.HideSelection = false;
             this.lvwReparatie.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem2});
-            this.lvwReparatie.Location = new System.Drawing.Point(5, 11);
+            this.lvwReparatie.Location = new System.Drawing.Point(9, 11);
             this.lvwReparatie.Margin = new System.Windows.Forms.Padding(4);
+            this.lvwReparatie.MultiSelect = false;
             this.lvwReparatie.Name = "lvwReparatie";
             this.lvwReparatie.Size = new System.Drawing.Size(656, 292);
-            this.lvwReparatie.TabIndex = 4;
+            this.lvwReparatie.TabIndex = 8;
             this.lvwReparatie.UseCompatibleStateImageBehavior = false;
             this.lvwReparatie.View = System.Windows.Forms.View.Details;
             // 
-            // clmReparatieTramnummer
+            // clmTramnummer
             // 
-            this.clmReparatieTramnummer.Text = "Tramnummer";
-            this.clmReparatieTramnummer.Width = 105;
+            this.clmTramnummer.Text = "Tramnummer";
+            this.clmTramnummer.Width = 105;
             // 
-            // clmReparatieLijn
+            // clmTramType
             // 
-            this.clmReparatieLijn.Text = "Lijn";
-            this.clmReparatieLijn.Width = 58;
+            this.clmTramType.Text = "TramType";
+            this.clmTramType.Width = 100;
             // 
-            // clmReparatieSoort
+            // clmSpoor
             // 
-            this.clmReparatieSoort.Text = "Soort";
-            this.clmReparatieSoort.Width = 59;
+            this.clmSpoor.Text = "Spoor";
+            this.clmSpoor.Width = 79;
             // 
-            // clmReparatieSpoor
+            // clmSector
             // 
-            this.clmReparatieSpoor.Text = "Spoor";
-            this.clmReparatieSpoor.Width = 79;
+            this.clmSector.Text = "Sector";
             // 
-            // clmReparatieReparatie
+            // clmDefect
             // 
-            this.clmReparatieReparatie.Text = "Reparatie";
-            this.clmReparatieReparatie.Width = 105;
+            this.clmDefect.Text = "Defect";
+            this.clmDefect.Width = 105;
             // 
             // tabPage2
             // 
@@ -423,20 +434,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label lblSchoonmaak;
         private System.Windows.Forms.Panel pnlSchoonmaak;
-        private System.Windows.Forms.ListView lvwSchoonmaak;
-        private System.Windows.Forms.ColumnHeader clmSchoonmaakTramnummer;
-        private System.Windows.Forms.ColumnHeader clmSchoonmaakLijn;
-        private System.Windows.Forms.ColumnHeader clmSchoonmaakSoort;
-        private System.Windows.Forms.ColumnHeader clmSchoonmaakSpoor;
-        private System.Windows.Forms.ColumnHeader clmSchoonmaakSchoonmaak;
         private System.Windows.Forms.Label lblReparatie;
         private System.Windows.Forms.Panel pnlReparatie;
-        private System.Windows.Forms.ListView lvwReparatie;
-        private System.Windows.Forms.ColumnHeader clmReparatieTramnummer;
-        private System.Windows.Forms.ColumnHeader clmReparatieLijn;
-        private System.Windows.Forms.ColumnHeader clmReparatieSoort;
-        private System.Windows.Forms.ColumnHeader clmReparatieSpoor;
-        private System.Windows.Forms.ColumnHeader clmReparatieReparatie;
         private System.Windows.Forms.Label lblSchoonmaakBevestiging;
         private System.Windows.Forms.TextBox tbxSchoonmaakBevestiging;
         private System.Windows.Forms.Button btnSchoonmaakBevestiging;
@@ -451,5 +450,19 @@
         private System.Windows.Forms.DateTimePicker dtpReparatie;
         private System.Windows.Forms.ComboBox cbSchoonmaakMedewerker;
         private System.Windows.Forms.ComboBox cbReparatieMedewerker;
+        private System.Windows.Forms.ListView lvwSchoonmaak;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ListView lvwReparatie;
+        private System.Windows.Forms.ColumnHeader clmTramnummer;
+        private System.Windows.Forms.ColumnHeader clmTramType;
+        private System.Windows.Forms.ColumnHeader clmSpoor;
+        private System.Windows.Forms.ColumnHeader clmSector;
+        private System.Windows.Forms.ColumnHeader clmDefect;
+        private System.Windows.Forms.ColumnHeader clmSchoonmaakInfoTramId;
+        private System.Windows.Forms.ColumnHeader clmTramId;
     }
 }

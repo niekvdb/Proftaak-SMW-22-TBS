@@ -15,10 +15,31 @@ namespace TramBeheerSysteem
         public OnderhoudApplicatie()
         {
             InitializeComponent();
+            //voegt alle medewerkersnamen toe in de comboboxes
             foreach (Medewerker medewerker in RemiseManager.Medewerkers)
             {
                 cbReparatieMedewerker.Items.Add(medewerker.Naam);
                 cbSchoonmaakMedewerker.Items.Add(medewerker.Naam);
+            }
+            string spoornummer;
+            string sectornummer;
+            //voegt alle trams+info toe in de listview
+            foreach (Tram tram in TramManager.Trams)
+            {
+                    if (RemiseManager.sectorViaTram(tram) == null)
+                    {
+                        spoornummer = "geen";
+                        sectornummer = "geen";
+                    }
+                    else
+                    {
+                        spoornummer = Convert.ToString(RemiseManager.sectorViaTram(tram).SpoorNummer);
+                        sectornummer = Convert.ToString(RemiseManager.sectorViaTram(tram).Nummer);
+                    }
+                    var tram1 = new ListViewItem(new[] {Convert.ToString(tram.Id), Convert.ToString(tram.nummer), Convert.ToString(tram.tramtype), spoornummer, sectornummer, Convert.ToString(tram.vervuild), Convert.ToString(tram.vervuild), Convert.ToString(tram.defect), Convert.ToString(tram.vervuild) });
+                    var tram2 = new ListViewItem(new[] {Convert.ToString(tram.Id), Convert.ToString(tram.nummer), Convert.ToString(tram.tramtype), spoornummer, sectornummer, Convert.ToString(tram.vervuild), Convert.ToString(tram.vervuild), Convert.ToString(tram.defect), Convert.ToString(tram.defect) });
+                    lvwSchoonmaak.Items.Add(tram1);
+                    lvwReparatie.Items.Add(tram2);
             }
         }
 
