@@ -35,6 +35,7 @@ namespace TramBeheerSysteem
             {
                 cbTrams.Items.Add(Convert.ToString(t.nummer));
             }
+            cbTrams.Sorted = true;
             foreach (Medewerker medewerker in RemiseManager.Medewerkers)
             {
                 gebruikerToolStripMenuItem.DropDownItems.Add(Convert.ToString(medewerker.Functie));
