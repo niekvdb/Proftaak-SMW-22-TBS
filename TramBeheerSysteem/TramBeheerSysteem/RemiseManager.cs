@@ -108,7 +108,7 @@ namespace TramBeheerSysteem
                     }
                 }
             }
-            System.Console.WriteLine("Spoornummer: "+id+" Sectoren: "+sectorenVanSpoor.Count());
+            System.Console.WriteLine("Spoor Id: "+id+" Sectoren: "+sectorenVanSpoor.Count());
             return sectorenVanSpoor;
         }
     }
