@@ -152,12 +152,21 @@ namespace TramBeheerSysteem
                 return;
             }           
             int TramNr = Convert.ToInt32(cbTrams.Text);
-            foreach (Tram t in TramManager.Trams)
+            foreach (Tram tram in TramManager.Trams)
             {
-                if (t.Id == TramNr)
+                if (tram.nummer == TramNr)
                 {
-                    //TramManager.VerwijderTram(NR);
-                    MessageBox.Show("Tram is succesvol verwijderd");
+                    Sector sectorCheck = RemiseManager.sectorViaTram(tram);
+                    if (sectorCheck != null)
+                    {
+                        sectorCheck.ClearSector();
+                        DatabaseManager.registreerSectorStatus(sectorCheck);
+                        MessageBox.Show("Tram is succesvol verwijderd");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tram staat niet op een sector!");
+                    }
                 }
             }
         }

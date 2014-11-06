@@ -43,8 +43,9 @@ namespace TramBeheerSysteem
                     }
                     else
                     {
-                        spoornummer = Convert.ToString(RemiseManager.sectorViaTram(tram).SpoorNummer);
                         sectornummer = Convert.ToString(RemiseManager.sectorViaTram(tram).Nummer);
+                        Spoor spoor = RemiseManager.spoorViaId(RemiseManager.sectorViaTram(tram).SpoorNummer);
+                        spoornummer = Convert.ToString(spoor.Nummer);
                     }
                     var tram1 = new ListViewItem(new[] { Convert.ToString(tram.nummer), Convert.ToString(tram.tramtype), spoornummer, sectornummer, Convert.ToString(tram.vervuild), Convert.ToString(tram.vervuild), Convert.ToString(tram.defect), Convert.ToString(tram.beschikbaar) });
                     lvwTrams.Items.Add(tram1);

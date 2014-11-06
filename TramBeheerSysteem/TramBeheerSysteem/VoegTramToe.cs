@@ -38,10 +38,16 @@ namespace TramBeheerSysteem
                         if (sector.Nummer == sectorNr)
                         {
                             Tram trammetje = TramManager.tramViaNummer(tramNr);
-                            sector.VoegTramToe(trammetje);
-                            DatabaseManager.registreerSectorStatus(sector);
-                            MessageBox.Show("Tram is toegevoegd");
-                            return;
+                            Sector sectorCheck = RemiseManager.sectorViaTram(trammetje);
+                            if (sectorCheck != null)
+                            {
+                                sectorCheck.ClearSector();
+                                DatabaseManager.registreerSectorStatus(sectorCheck);
+                            }
+                                sector.VoegTramToe(trammetje);
+                                DatabaseManager.registreerSectorStatus(sector);
+                                MessageBox.Show("Tram is toegevoegd");
+                                return;                            
                         }
                     }
                 }

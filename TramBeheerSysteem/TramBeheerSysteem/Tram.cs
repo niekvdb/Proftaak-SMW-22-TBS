@@ -44,6 +44,7 @@ namespace TramBeheerSysteem
                 this.IsNietDefect();
             }
             Tramonderhoud onderhoud = new Tramonderhoud(medewerker, this, beschikbaar, DateTime.Now, typeOnderhoud, opmerking);
+            TramManager.voegOnderhoudToe(onderhoud);
             DatabaseManager.registreerOnderhoud(onderhoud);
         }
 
