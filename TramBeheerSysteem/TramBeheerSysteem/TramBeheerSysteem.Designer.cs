@@ -227,6 +227,7 @@
             this.reparatieToolStripMenuItem.Name = "reparatieToolStripMenuItem";
             this.reparatieToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.reparatieToolStripMenuItem.Text = "Reparatie";
+            this.reparatieToolStripMenuItem.Click += new System.EventHandler(this.reparatieToolStripMenuItem_Click);
             // 
             // TramBeheerSysteem
             // 

@@ -126,6 +126,7 @@ namespace TramBeheerSysteem
 
         private void schoonmaakToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
         }
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -241,6 +242,10 @@ namespace TramBeheerSysteem
         private void btnReset_Click(object sender, EventArgs e)
         {
             RefreshSporen();
+        }
+
+        private void reparatieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
         }
     }
 }
