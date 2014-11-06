@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.cbTrams = new System.Windows.Forms.ComboBox();
             this.lvwTrams = new System.Windows.Forms.ListView();
             this.clmTramInfoTramnummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,6 +39,7 @@
             this.clmTramInfoBeschikbaar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblTram = new System.Windows.Forms.Label();
             this.btnBevestig = new System.Windows.Forms.Button();
+            this.clmTramInfoSector = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // cbTrams
@@ -56,11 +57,12 @@
             this.clmTramInfoTramnummer,
             this.clmTramInfoTramType,
             this.clmSchoonmaakSpoor,
+            this.clmTramInfoSector,
             this.clmTramInfoVervuild,
             this.clmTramInfoDefect,
             this.clmTramInfoBeschikbaar});
             this.lvwTrams.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem1});
             this.lvwTrams.Location = new System.Drawing.Point(210, 49);
             this.lvwTrams.Margin = new System.Windows.Forms.Padding(4);
             this.lvwTrams.Name = "lvwTrams";
@@ -118,6 +120,10 @@
             this.btnBevestig.UseVisualStyleBackColor = true;
             this.btnBevestig.Click += new System.EventHandler(this.button1_Click);
             // 
+            // clmTramInfoSector
+            // 
+            this.clmTramInfoSector.Text = "Sector";
+            // 
             // TramInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -146,5 +152,6 @@
         private System.Windows.Forms.ColumnHeader clmTramInfoDefect;
         private System.Windows.Forms.ColumnHeader clmTramInfoBeschikbaar;
         private System.Windows.Forms.Button btnBevestig;
+        private System.Windows.Forms.ColumnHeader clmTramInfoSector;
     }
 }
