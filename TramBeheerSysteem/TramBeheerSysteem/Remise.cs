@@ -24,5 +24,10 @@ namespace TramBeheerSysteem
             KleineSchoonmaakbeurtenPerDag = kleineSchoonmaakbeurtenPerDag;
             GroteSchoonmaakbeurtenPerDag = groteSchoonmaakbeurtenPerDag;
         }
+
+       public override string ToString()
+       {
+           return this.Naam + " ";
+       }
     }
 }

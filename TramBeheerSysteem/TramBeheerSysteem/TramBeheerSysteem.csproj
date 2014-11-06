@@ -108,6 +108,12 @@
     <Compile Include="SpoorBediening.Designer.cs">
       <DependentUpon>SpoorBediening.cs</DependentUpon>
     </Compile>
+    <Compile Include="SpoorInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpoorInfo.Designer.cs">
+      <DependentUpon>SpoorInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="TramBeheerSysteem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,12 @@
     <Compile Include="Spoor.cs" />
     <Compile Include="Tram.cs" />
     <Compile Include="TramIndeling.cs" />
+    <Compile Include="TramInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TramInfo.Designer.cs">
+      <DependentUpon>TramInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="TramManager.cs" />
     <Compile Include="Tramonderhoud.cs" />
     <Compile Include="Tramtype.cs" />
@@ -150,6 +162,9 @@
     <EmbeddedResource Include="SpoorBediening.resx">
       <DependentUpon>SpoorBediening.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SpoorInfo.resx">
+      <DependentUpon>SpoorInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TramBeheerSysteem.resx">
       <DependentUpon>TramBeheerSysteem.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +179,9 @@
     </Compile>
     <EmbeddedResource Include="TramBediening.resx">
       <DependentUpon>TramBediening.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TramInfo.resx">
+      <DependentUpon>TramInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VoegTramToe.resx">
       <DependentUpon>VoegTramToe.cs</DependentUpon>
