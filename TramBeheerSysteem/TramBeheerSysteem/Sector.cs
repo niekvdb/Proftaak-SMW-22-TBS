@@ -39,5 +39,10 @@ namespace TramBeheerSysteem
         {
             this.Tram = null;
         }
+
+        public void VoegTramToe(Tram tram)
+        {
+            this.Tram = tram;
+        }
     }
 }

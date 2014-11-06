@@ -75,10 +75,6 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Documents\Oplevering\Oplevering\ICT4Events P2\ICT4Events P2(4)\ICT4Events P2\bin\Oracle.DataAccess.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
@@ -98,6 +94,12 @@
     </Compile>
     <Compile Include="OnderhoudApplicatie.Designer.cs">
       <DependentUpon>OnderhoudApplicatie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnderhoudLijsten.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OnderhoudLijsten.Designer.cs">
+      <DependentUpon>OnderhoudLijsten.cs</DependentUpon>
     </Compile>
     <Compile Include="RemiseManager.cs" />
     <Compile Include="SpoorBediening.cs">
