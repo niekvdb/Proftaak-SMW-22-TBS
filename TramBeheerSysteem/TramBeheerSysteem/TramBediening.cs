@@ -17,7 +17,7 @@ namespace TramBeheerSysteem
             InitializeComponent();
             foreach (Tram t in TramManager.Trams)
             {
-                cbTramnummer.Items.Add(Convert.ToString(t.Id));
+                cbTramnummer.Items.Add(Convert.ToString(t.nummer));
             }
         }
 
@@ -39,17 +39,18 @@ namespace TramBeheerSysteem
                 return;
             } 
             string Status = cbStatus.Text;
-            int NR = Convert.ToInt32(cbTramnummer.Text);
+            int tramnummer = Convert.ToInt32(cbTramnummer.Text);
             foreach (Tram t in TramManager.Trams)
-            {
-                if (t.Id == NR)
+            {               
+                if (t.nummer == tramnummer)
                 {
                     if (t.status == cbStatus.Text)
                     {
                         MessageBox.Show("Tram heeft deze status al!");
                     }
-                    else 
+                    else
                     {
+                        t.VeranderTramstatus(cbTramnummer.Text);
                         MessageBox.Show("Tramstatus is gewijzigd");
                         //ToDo DatabaseManager.WijzigTramStatus(NR,Status);
                     }

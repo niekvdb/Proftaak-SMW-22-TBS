@@ -280,7 +280,7 @@ namespace TramBeheerSysteem
             {
                 connection.Open();
 
-                OracleCommand command = new OracleCommand("UPDATE SECTOR SET Tram_ID = :tram_ID, Beschikbaar = :beschikbaar, Blokkade = :blokkade");
+                OracleCommand command = new OracleCommand("UPDATE SECTOR SET Tram_ID = :tram_ID, Beschikbaar = :beschikbaar, Blokkade = :blokkade WHERE ID = :sectorid");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
@@ -291,6 +291,7 @@ namespace TramBeheerSysteem
                 command.Parameters.Add(":tram_ID", tramId);
                 command.Parameters.Add(":beschikbaar", convertBool(sector.Beschikbaar));
                 command.Parameters.Add(":blokkade", convertBool(sector.Blokkade));
+                command.Parameters.Add(":sectorid", sector.Id);
 
                 command.ExecuteNonQuery();
             }
