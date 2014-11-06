@@ -171,7 +171,7 @@ namespace TramBeheerSysteem
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
-                        Tramtype tramtype = (Tramtype) Convert.ToInt32(reader["Tramtype_ID"]);
+                        Tramtype tramtype = (Tramtype) Convert.ToInt32(reader["Tramtype_ID"]) -1;
                         int nummer = Convert.ToInt32(reader["Nummer"]);
                         int lengte = Convert.ToInt32(reader["Lengte"]);
                         string status = Convert.ToString(reader["Status"]);
@@ -256,7 +256,7 @@ namespace TramBeheerSysteem
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
-                        Functie functie = (Functie) Convert.ToInt32(reader["Functie_ID"]);
+                        Functie functie = (Functie) Convert.ToInt32(reader["Functie_ID"]) -1;
                         string naam = Convert.ToString(reader["Naam"]);
 
                         medewerkers.Add(new Medewerker(id, functie, naam));
