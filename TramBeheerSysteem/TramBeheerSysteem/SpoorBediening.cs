@@ -49,6 +49,7 @@ namespace TramBeheerSysteem
                 {
                     MessageBox.Show("Sector is Geblokkeerd");
                     sector.Blokkeer();
+                    DatabaseManager.registreerSectorStatus(sector);
                     foreach (Sector sector1 in spoor.SectorList)
                     {
                         if (sector1.Nummer > SectorNR)
