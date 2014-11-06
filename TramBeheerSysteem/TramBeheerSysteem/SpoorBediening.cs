@@ -40,12 +40,12 @@ namespace TramBeheerSysteem
                         if (sector1.Nummer > SectorNR && sector1.Blokkade == true)
                         {
                             sector1.Deblokkeer();
-                            //RemiseManager.UpdateSectorStatus(sec.Id);
+                            DatabaseManager.registreerSectorStatus(sector1);
                         }
                         else if (sector1.Nummer > SectorNR && sector1.Blokkade == false)
                         {
                             sector1.Blokkeer();
-                            //RemiseManager.UpdateSectorStatus(sec.Id);
+                            DatabaseManager.registreerSectorStatus(sector1);
                         }
                     }
                 }
@@ -58,12 +58,13 @@ namespace TramBeheerSysteem
                         if (sector1.Nummer > SectorNR)
                         {
                             sector1.Blokkeer();
-                            //RemiseManager.UpdateSectorStatus(sec.Id);
+                            DatabaseManager.registreerSectorStatus(sector1);
                         }
                     }
                 }
             }
-            //RemiseManager.UpdateSectorStatus(SectorNR);
+            DatabaseManager.registreerSectorStatus(RemiseManager.sectorViaNummer(SectorNR));
+            
         }
 
         private void SpoorBediening_Load(object sender, EventArgs e)
