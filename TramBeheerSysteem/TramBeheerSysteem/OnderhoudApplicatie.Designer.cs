@@ -63,10 +63,10 @@
             this.clmSpoor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSector = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDefect = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.clmSchoonmaakInfoTramId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTramId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabOnderhoud.SuspendLayout();
             this.tabSchoonmaak.SuspendLayout();
             this.pnlSchoonmaak.SuspendLayout();
@@ -191,14 +191,15 @@
             // lvwSchoonmaak
             // 
             this.lvwSchoonmaak.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmSchoonmaakInfoTramId,
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.lvwSchoonmaak.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lvwSchoonmaak.FullRowSelect = true;
             this.lvwSchoonmaak.HideSelection = false;
+            listViewItem1.StateImageIndex = 0;
             this.lvwSchoonmaak.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.lvwSchoonmaak.Location = new System.Drawing.Point(10, 11);
@@ -347,6 +348,7 @@
             this.clmSpoor,
             this.clmSector,
             this.clmDefect});
+            this.lvwReparatie.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lvwReparatie.FullRowSelect = true;
             this.lvwReparatie.HideSelection = false;
             this.lvwReparatie.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
@@ -403,14 +405,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // clmSchoonmaakInfoTramId
-            // 
-            this.clmSchoonmaakInfoTramId.Text = "Tram Id";
-            // 
-            // clmTramId
-            // 
-            this.clmTramId.Text = "Tram Id";
             // 
             // OnderhoudApplicatie
             // 

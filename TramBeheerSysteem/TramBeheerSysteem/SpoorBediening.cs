@@ -63,7 +63,7 @@ namespace TramBeheerSysteem
                     }
                 }
             }
-            DatabaseManager.registreerSectorStatus(RemiseManager.sectorViaNummer(SectorNR));
+            DatabaseManager.registreerSectorStatus(RemiseManager.sectorViaNummer(SectorNR, spoor));
             
         }
 
