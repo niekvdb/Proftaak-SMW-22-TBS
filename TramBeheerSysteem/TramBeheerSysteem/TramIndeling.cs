@@ -29,7 +29,7 @@ namespace TramBeheerSysteem
                         if (isSpoorLangGenoeg(ingedeeldSpoor, tram.lengte))
                         {
                             ingedeeldeSectors = vrijeSectoren(ingedeeldSpoor, tram);
-                            if (ingedeeldeSectors != null)
+                            if (ingedeeldeSectors != null && ingedeeldeSectors.Any())
                             {
                                 sectorFound = true;
                                 voegTramAanSectorsToe(ingedeeldeSectors,tram);
@@ -73,12 +73,18 @@ namespace TramBeheerSysteem
         {
             List<Sector> spoorSectors = RemiseManager.sectorenVanSpoor(spoor.Id);
             List<Sector> sectors = new List<Sector>();
+            int huidigSpoor = 0;
             foreach (Sector s in spoorSectors)
             {
                 if (sectors.Count <= tram.lengte)
                 {
                     if (s.Beschikbaar && !s.Blokkade && s.Tram == null)
                     {
+                        if (s.SpoorNummer != huidigSpoor)
+                        {
+                            huidigSpoor = s.SpoorNummer;
+                            sectors.Clear();
+                        }
                         sectors.Add(s);
                     }
                     else

@@ -58,8 +58,8 @@ namespace TramBeheerSysteem
             horizontalRows = 1;
             verticalRows = 1;
             maxSectors = 0;
-            RemiseManager.LaadRemises();
-            RemiseManager.LaadSporen();
+           // RemiseManager.LaadRemises();
+            //RemiseManager.LaadSporen();
             List<Spoor> spoorList = new List<Spoor>();
             spoorList = RemiseManager.Sporen;
             AddTextBoxes((spoorList));
@@ -224,7 +224,7 @@ namespace TramBeheerSysteem
         private void btnStop_Click(object sender, EventArgs e)
         {
             TramIndeling indeling = new TramIndeling();
-            Tram tram = new Tram(1, Tramtype.Combino, 4, string.Empty, null, false, false, true, true);
+            Tram tram = new Tram(1, Tramtype.Combino, 5, string.Empty, null, false, false, true, true);
             List<Sector> ingedeeldeSectors = indeling.DeelTramIn(tram);
             if (ingedeeldeSectors != null)
             {
