@@ -41,6 +41,12 @@
             this.btnSchoonmaakBevestiging = new System.Windows.Forms.Button();
             this.lblSchoonmaak = new System.Windows.Forms.Label();
             this.pnlSchoonmaak = new System.Windows.Forms.Panel();
+            this.lvwSchoonmaak = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabReparatie = new System.Windows.Forms.TabPage();
             this.cbReparatieMedewerker = new System.Windows.Forms.ComboBox();
             this.dtpReparatie = new System.Windows.Forms.DateTimePicker();
@@ -51,20 +57,14 @@
             this.btnReparatieBevestiging = new System.Windows.Forms.Button();
             this.lblReparatie = new System.Windows.Forms.Label();
             this.pnlReparatie = new System.Windows.Forms.Panel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lvwSchoonmaak = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvwReparatie = new System.Windows.Forms.ListView();
             this.clmTramnummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTramType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSpoor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSector = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDefect = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabOnderhoud.SuspendLayout();
             this.tabSchoonmaak.SuspendLayout();
             this.pnlSchoonmaak.SuspendLayout();
@@ -186,6 +186,53 @@
             this.pnlSchoonmaak.Size = new System.Drawing.Size(667, 326);
             this.pnlSchoonmaak.TabIndex = 9;
             // 
+            // lvwSchoonmaak
+            // 
+            this.lvwSchoonmaak.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.lvwSchoonmaak.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lvwSchoonmaak.FullRowSelect = true;
+            this.lvwSchoonmaak.HideSelection = false;
+            listViewItem1.StateImageIndex = 0;
+            this.lvwSchoonmaak.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.lvwSchoonmaak.Location = new System.Drawing.Point(10, 11);
+            this.lvwSchoonmaak.Margin = new System.Windows.Forms.Padding(4);
+            this.lvwSchoonmaak.MultiSelect = false;
+            this.lvwSchoonmaak.Name = "lvwSchoonmaak";
+            this.lvwSchoonmaak.Size = new System.Drawing.Size(656, 292);
+            this.lvwSchoonmaak.TabIndex = 7;
+            this.lvwSchoonmaak.UseCompatibleStateImageBehavior = false;
+            this.lvwSchoonmaak.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tramnummer";
+            this.columnHeader1.Width = 105;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "TramType";
+            this.columnHeader2.Width = 100;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Spoor";
+            this.columnHeader3.Width = 79;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Sector";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Vervuild";
+            this.columnHeader5.Width = 105;
+            // 
             // tabReparatie
             // 
             this.tabReparatie.Controls.Add(this.cbReparatieMedewerker);
@@ -290,71 +337,6 @@
             this.pnlReparatie.Size = new System.Drawing.Size(667, 326);
             this.pnlReparatie.TabIndex = 9;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(631, 432);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(631, 432);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // lvwSchoonmaak
-            // 
-            this.lvwSchoonmaak.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.lvwSchoonmaak.FullRowSelect = true;
-            this.lvwSchoonmaak.HideSelection = false;
-            this.lvwSchoonmaak.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.lvwSchoonmaak.Location = new System.Drawing.Point(10, 11);
-            this.lvwSchoonmaak.Margin = new System.Windows.Forms.Padding(4);
-            this.lvwSchoonmaak.MultiSelect = false;
-            this.lvwSchoonmaak.Name = "lvwSchoonmaak";
-            this.lvwSchoonmaak.Size = new System.Drawing.Size(656, 292);
-            this.lvwSchoonmaak.TabIndex = 7;
-            this.lvwSchoonmaak.UseCompatibleStateImageBehavior = false;
-            this.lvwSchoonmaak.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Tramnummer";
-            this.columnHeader1.Width = 105;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "TramType";
-            this.columnHeader2.Width = 100;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Spoor";
-            this.columnHeader3.Width = 79;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Sector";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Vervuild";
-            this.columnHeader5.Width = 105;
-            // 
             // lvwReparatie
             // 
             this.lvwReparatie.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -363,6 +345,7 @@
             this.clmSpoor,
             this.clmSector,
             this.clmDefect});
+            this.lvwReparatie.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lvwReparatie.FullRowSelect = true;
             this.lvwReparatie.HideSelection = false;
             this.lvwReparatie.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
@@ -399,6 +382,26 @@
             // 
             this.clmDefect.Text = "Defect";
             this.clmDefect.Width = 105;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(631, 432);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(631, 432);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // OnderhoudApplicatie
             // 
