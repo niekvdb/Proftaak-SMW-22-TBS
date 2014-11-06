@@ -125,7 +125,10 @@ namespace TramBeheerSysteem
                     sectors.Clear();
                     if (!blockedSector)
                     {
-                        spoorTeller++;
+                        if (s.Nummer == 1)
+                        {
+                            spoorTeller++;
+                        }
                         blockedSector = true;
                     }
                 }
