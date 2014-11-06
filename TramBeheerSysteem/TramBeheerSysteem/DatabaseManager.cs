@@ -219,7 +219,7 @@ namespace TramBeheerSysteem
                         Tram tram = TramManager.tramViaId(Convert.ToInt32(reader["Tram_ID"]));
                         DateTime beschikbaarDatum = Convert.ToDateTime(reader["DatumBeschikbaar"]);
                         DateTime datumTijd = Convert.ToDateTime(reader["DatumTijdStip"]);
-                        TypeOnderhoud typeOnderhoud = (TypeOnderhoud) Convert.ToInt32(reader["TypeOnderhoud"]);
+                        TypeOnderhoud typeOnderhoud = (TypeOnderhoud) Convert.ToInt32(reader["TypeOnderhoud"]) - 1;
                         string opmerking = Convert.ToString(reader["Notitie"]);
 
                         onderhoudsBeurten.Add(new Tramonderhoud(id, medewerker, tram, beschikbaarDatum, datumTijd, typeOnderhoud, opmerking));
