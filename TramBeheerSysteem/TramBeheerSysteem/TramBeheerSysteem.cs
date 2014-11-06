@@ -89,10 +89,6 @@ namespace TramBeheerSysteem
                         TextAlign = HorizontalAlignment.Center,
                         Tag = Convert.ToString(se.Id)
                     };
-                    if (se.SpoorNummer == 13)
-                    {
-                        //breakpoint
-                    }
                     if (se.Tram != null)
                     {
                         sectorTb.Text = se.Tram.Id.ToString();
@@ -227,7 +223,8 @@ namespace TramBeheerSysteem
         private void btnStop_Click(object sender, EventArgs e)
         {
             TramIndeling indeling = new TramIndeling();
-            Tram tram = new Tram(1, Tramtype.Combino, 9999, 4, string.Empty, null, false, false, true, true);
+            /*
+             * Tram tram = new Tram(1, Tramtype.Combino, 9999, 2, string.Empty, null, false, false, true, true);
             List<Sector> ingedeeldeSectors = indeling.DeelTramIn(tram);
             if (ingedeeldeSectors != null)
             {
@@ -240,7 +237,14 @@ namespace TramBeheerSysteem
             {
                 MessageBox.Show("Geen vrije sectoren gevonden.");
             }
-    }
+             * */
+            List<Tram> tramList = TramManager.Trams;
+            foreach (Tram t in tramList)
+            {
+                List<Sector> ingedeeldeSectors = indeling.DeelTramIn(t);
+                if (ingedeeldeSectors == null) System.Console.WriteLine("Niet ingedeeld: " + t.Id);
+            }
+        }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
