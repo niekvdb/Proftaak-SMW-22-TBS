@@ -68,6 +68,15 @@ namespace TramBeheerSysteem
             return null;
         }
 
+        public static Sector sectorViaTram(Tram tram)
+        {
+            foreach (Sector sector in Sectors)
+            {
+                if (sector.Tram == tram) return sector;
+            }
+            return null;
+        }
+
         public static Medewerker medewerkerViaId(int id)
         {
             foreach (Medewerker medewerker in Medewerkers)
