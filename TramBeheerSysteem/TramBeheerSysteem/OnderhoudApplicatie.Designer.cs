@@ -58,15 +58,16 @@
             this.lblReparatie = new System.Windows.Forms.Label();
             this.pnlReparatie = new System.Windows.Forms.Panel();
             this.lvwReparatie = new System.Windows.Forms.ListView();
+            this.clmTramId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTramnummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmTramType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSpoor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSector = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDefect = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmSchoonmaakInfoTramId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmTramId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.clmTramIdschoonmaak = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabOnderhoud.SuspendLayout();
             this.tabSchoonmaak.SuspendLayout();
             this.pnlSchoonmaak.SuspendLayout();
@@ -191,6 +192,7 @@
             // lvwSchoonmaak
             // 
             this.lvwSchoonmaak.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmTramIdschoonmaak,
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -202,7 +204,7 @@
             listViewItem1.StateImageIndex = 0;
             this.lvwSchoonmaak.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
-            this.lvwSchoonmaak.Location = new System.Drawing.Point(10, 11);
+            this.lvwSchoonmaak.Location = new System.Drawing.Point(9, 11);
             this.lvwSchoonmaak.Margin = new System.Windows.Forms.Padding(4);
             this.lvwSchoonmaak.MultiSelect = false;
             this.lvwSchoonmaak.Name = "lvwSchoonmaak";
@@ -362,6 +364,10 @@
             this.lvwReparatie.UseCompatibleStateImageBehavior = false;
             this.lvwReparatie.View = System.Windows.Forms.View.Details;
             // 
+            // clmTramId
+            // 
+            this.clmTramId.Text = "Tram Id";
+            // 
             // clmTramnummer
             // 
             this.clmTramnummer.Text = "Tramnummer";
@@ -405,6 +411,10 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // clmTramIdschoonmaak
+            // 
+            this.clmTramIdschoonmaak.Text = "Tram Id";
             // 
             // OnderhoudApplicatie
             // 
@@ -464,5 +474,6 @@
         private System.Windows.Forms.ColumnHeader clmDefect;
         private System.Windows.Forms.ColumnHeader clmSchoonmaakInfoTramId;
         private System.Windows.Forms.ColumnHeader clmTramId;
+        private System.Windows.Forms.ColumnHeader clmTramIdschoonmaak;
     }
 }

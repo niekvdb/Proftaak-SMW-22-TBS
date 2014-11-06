@@ -310,7 +310,7 @@ namespace TramBeheerSysteem
             {
                 connection.Open();
 
-                OracleCommand command = new OracleCommand("INSERT INTO TRAM_ONDERHOUD(Medewerker_ID, Tram_ID, DatumTijdStip, DatumBeschikbaar, TypeOnderhoud, Notitie)" +
+                OracleCommand command = new OracleCommand("INSERT INTO TRAM_ONDERHOUD(Medewerker_ID, Tram_ID, DatumTijdStip, BeschikbaarDatum, TypeOnderhoud, Notitie)" +
                                                             "VALUES (:medewerker_ID, :tram_ID, :datumTijdstip, :datumBeschikbaar, :typeOnderhoud, :notitie)");
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
