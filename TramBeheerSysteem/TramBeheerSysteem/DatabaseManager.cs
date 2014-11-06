@@ -304,6 +304,29 @@ namespace TramBeheerSysteem
                 connection.Close();
             }
         }
+        public static void registreerTramStatus(Tram tram)
+        {
+            try
+            {
+                connection.Open();
+
+                OracleCommand command = new OracleCommand("UPDATE TRAM SET Status = :status, Beschikbaar = :beschikbaar WHERE ID = :tram_ID");
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+                command.Parameters.Add(":tram_ID", tram.Id);
+                command.Parameters.Add(":status", tram.status);
+                command.Parameters.Add(":beschikbaar", convertBool(tram.beschikbaar));
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
         public static void registreerOnderhoud(Tramonderhoud onderhoud)
         {
             try
