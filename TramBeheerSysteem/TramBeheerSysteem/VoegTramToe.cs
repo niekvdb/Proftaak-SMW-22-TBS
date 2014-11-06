@@ -32,7 +32,8 @@ namespace TramBeheerSysteem
             {
                 if (RemiseManager.spoorViaNummer(spoorNr) != null)
                 {
-                    foreach (Sector sector in RemiseManager.sectorenVanSpoor(spoorNr))
+                    Spoor spoor = RemiseManager.spoorViaNummer(spoorNr);
+                    foreach (Sector sector in spoor.SectorList)
                     {
                         if (sector.Nummer == sectorNr)
                         {
@@ -40,6 +41,7 @@ namespace TramBeheerSysteem
                             sector.VoegTramToe(trammetje);
                             DatabaseManager.registreerSectorStatus(sector);
                             MessageBox.Show("Tram is toegevoegd");
+                            return;
                         }
                     }
                 }
