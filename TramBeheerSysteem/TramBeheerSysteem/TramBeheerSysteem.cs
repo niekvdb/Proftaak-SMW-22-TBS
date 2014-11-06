@@ -148,7 +148,7 @@ namespace TramBeheerSysteem
             foreach (Tram t in TramManager.Trams)
             {
                 if (t.Id == TramNr)
-                {
+                {                    
                     //TramManager.VerwijderTram(NR);
                     MessageBox.Show("Tram is succesvol verwijderd");
                 }
