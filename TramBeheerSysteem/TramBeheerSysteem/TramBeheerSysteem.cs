@@ -251,5 +251,17 @@ namespace TramBeheerSysteem
         private void reparatieToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
+
+        private void tramInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TramInfo traminfo=new TramInfo();
+            traminfo.Show();
+        }
+
+        private void spoorInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SpoorInfo spoorinfo = new SpoorInfo();
+            spoorinfo.Show();
+        }
     }
 }
