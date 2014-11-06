@@ -7,14 +7,18 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Security.AccessControl;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
 namespace TramBeheerSysteem
 {
+    
+    
     public partial class TramBeheerSysteem : Form
     {
+
         public event EventHandler BlockSector;
 
         int xPosTb = 5;
@@ -181,14 +185,29 @@ namespace TramBeheerSysteem
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
-            // Snel voorbeeld van controls zoeken d.m.v. Tag
-            Control.ControlCollection controls = PanelTBS.Controls;
-            foreach (Control c in controls)
+            TramIndeling indeling = new TramIndeling();
+            List<Tram> tramList = TramManager.Trams;
+            foreach (Tram t in tramList)
             {
-
-                if ((String)c.Tag == "Spoor34_3")
+                List<Sector> ingedeeldeSectors = indeling.DeelTramIn(t);
+                if (ingedeeldeSectors == null)
                 {
-                    c.Text = "found";
+                    System.Console.WriteLine("Niet ingedeeld: " + t.Id);
+                }
+                else
+                {
+                    Control.ControlCollection controls = PanelTBS.Controls;
+                    foreach (Control c in controls)
+                    {
+                        foreach (Sector s in ingedeeldeSectors)
+                        {
+                            if ((String)c.Tag == s.Id.ToString())
+                            {
+                                c.Text = t.Id.ToString();
+                                this.Refresh();
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -223,28 +242,7 @@ namespace TramBeheerSysteem
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            TramIndeling indeling = new TramIndeling();
-            /*
-             * Tram tram = new Tram(1, Tramtype.Combino, 9999, 2, string.Empty, null, false, false, true, true);
-            List<Sector> ingedeeldeSectors = indeling.DeelTramIn(tram);
-            if (ingedeeldeSectors != null)
-            {
-                foreach (Sector s in ingedeeldeSectors)
-                {
-                    MessageBox.Show(s.Id.ToString());
-                }
-            }
-            else
-            {
-                MessageBox.Show("Geen vrije sectoren gevonden.");
-            }
-             * */
-            List<Tram> tramList = TramManager.Trams;
-            foreach (Tram t in tramList)
-            {
-                List<Sector> ingedeeldeSectors = indeling.DeelTramIn(t);
-                if (ingedeeldeSectors == null) System.Console.WriteLine("Niet ingedeeld: " + t.Id);
-            }
+            // Mogelijk?
         }
 
         private void btnReset_Click(object sender, EventArgs e)
