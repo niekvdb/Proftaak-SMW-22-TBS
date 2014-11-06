@@ -11,29 +11,24 @@ namespace TramBeheerSysteem
         public static List<Remise> Remises;
         public static List<Sector> Sectors; 
         public static List<Spoor> Sporen;
-
         public static List<Medewerker> Medewerkers; 
 
         static RemiseManager()
         {
-            //LaadRemises();
-            //LaadSporen();
+            Sectors = new List<Sector>();
+            Sporen = new List<Spoor>();
+            Remises = new List<Remise>();
+            Medewerkers = new List<Medewerker>();
         }
 
         public static void LaadRemises()
         {
-            Remises = new List<Remise>();
-            Medewerkers = new List<Medewerker>();
-
             Remises = DatabaseManager.LaadRemises();
             Medewerkers = DatabaseManager.LaadMedewerkers();
         }
 
         public static void LaadSporen()
         {
-            Sectors = new List<Sector>();
-            Sporen = new List<Spoor>();
-
             Sectors = DatabaseManager.LaadSectoren();
             Sporen = DatabaseManager.LaadSporen();
         }
@@ -52,6 +47,14 @@ namespace TramBeheerSysteem
             foreach (Spoor spoor in Sporen)
             {
                 if (spoor.Id == id) return spoor;
+            }
+            return null;
+        }
+        public static Spoor spoorViaNummer(int nummer)
+        {
+            foreach (Spoor spoor in Sporen)
+            {
+                if (spoor.Nummer == nummer) return spoor;
             }
             return null;
         }
@@ -86,22 +89,11 @@ namespace TramBeheerSysteem
         public static List<Sector> sectorenVanSpoor(int id)
         {
             List<Sector> sectorenVanSpoor = new List<Sector>();
-            if (id >= 44)
-            {
-                //breakpoint
-            }
             foreach (Sector sector in Sectors)
             {
-                if (sector.SpoorNummer == id)
-                {
-                    sectorenVanSpoor.Add(sector);
-                    if (sector.SpoorNummer == 45)
-                    {
-                        //breakpoint
-                    }
-                }
+                if (sector.SpoorNummer == id) sectorenVanSpoor.Add(sector);
             }
-            System.Console.WriteLine("Spoornummer: "+id+" Sectoren: "+sectorenVanSpoor.Count());
+            System.Console.WriteLine("Spoor Id: "+id+" Sectoren: "+sectorenVanSpoor.Count());
             return sectorenVanSpoor;
         }
     }
