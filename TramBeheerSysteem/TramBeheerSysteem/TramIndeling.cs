@@ -32,6 +32,7 @@ namespace TramBeheerSysteem
                             if (ingedeeldeSectors != null)
                             {
                                 sectorFound = true;
+                                voegTramAanSectorsToe(ingedeeldeSectors,tram);
                             }
                         
                         }
@@ -76,7 +77,7 @@ namespace TramBeheerSysteem
             {
                 if (sectors.Count <= tram.lengte)
                 {
-                    if (s.Beschikbaar && !s.Blokkade)
+                    if (s.Beschikbaar && !s.Blokkade && s.Tram == null)
                     {
                         sectors.Add(s);
                     }
@@ -88,6 +89,20 @@ namespace TramBeheerSysteem
             }
             
             return sectors;
+        }
+
+        private void voegTramAanSectorsToe(List<Sector> sectorlist, Tram tram)
+        {
+            foreach (Sector s in RemiseManager.Sectors)
+            {
+                foreach (Sector se in sectorlist)
+                {
+                    if (s.Id == se.Id)
+                    {
+                        s.VoegTramToe(tram);
+                    }
+                }
+            }
         }
     }
 }

@@ -50,6 +50,20 @@ namespace TramBeheerSysteem
             return SctrList;
         }
 
+        private void RefreshSporen()
+        {
+            PanelTBS.Controls.Clear();
+            xPosTb = 5;
+            yPosTb = 5;
+            horizontalRows = 1;
+            verticalRows = 1;
+            maxSectors = 0;
+            RemiseManager.LaadRemises();
+            RemiseManager.LaadSporen();
+            List<Spoor> spoorList = new List<Spoor>();
+            spoorList = RemiseManager.Sporen;
+            AddTextBoxes((spoorList));
+        }
         private void AddTextBoxes(List<Spoor> SpoorList)
         {
             foreach (Spoor sp in SpoorList)
@@ -64,7 +78,6 @@ namespace TramBeheerSysteem
                     Location = new System.Drawing.Point(xPosTb, yPosTb)
                 };
                 PanelTBS.Controls.Add(spoorTb);
-                //for (int i = 1; i <= spoor.Lengte; i++)
                 foreach(Sector se in sp.SectorList)
                 {
                     TextBox sectorTb = new TextBox
@@ -72,8 +85,16 @@ namespace TramBeheerSysteem
                         Size = tbSize,
                         Location = new System.Drawing.Point(xPosTb, yPosTb + (5*se.Nummer) + (tbSize.Height*se.Nummer)),
                         TextAlign = HorizontalAlignment.Center,
-                        Tag = /* "Spoor" + sp.Nummer + "_" + se.Nummer+"_"+*/ Convert.ToString(se.Id)
+                        Tag = Convert.ToString(se.Id)
                     };
+                    if (se.SpoorNummer == 13)
+                    {
+                        //breakpoint
+                    }
+                    if (se.Tram != null)
+                    {
+                        sectorTb.Text = se.Tram.Id.ToString();
+                    }
                     sectorTb.Click += this.HandleBlockSector;
                     PanelTBS.Controls.Add(sectorTb);
                 }
@@ -217,13 +238,9 @@ namespace TramBeheerSysteem
             }
     }
 
-        private void RefreshSporen()
+        private void btnReset_Click(object sender, EventArgs e)
         {
-            PanelTBS.Controls.Clear();
-            //Deze lijst wordt uit de database gehaald
-            List<Spoor> spoorList = new List<Spoor>();
-            spoorList = RemiseManager.Sporen;
-            AddTextBoxes((spoorList));
+            RefreshSporen();
         }
     }
 }
