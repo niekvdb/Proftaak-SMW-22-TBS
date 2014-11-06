@@ -26,7 +26,7 @@ namespace TramBeheerSysteem
 
         public static List<Remise> LaadRemises()
         {
-            List<Remise> remises = null;
+            List<Remise> remises = new List<Remise>();
             try
             {
                 connection.Open();
@@ -39,7 +39,6 @@ namespace TramBeheerSysteem
                 if (!reader.HasRows) return null;
                 else
                 {
-                    remises = new List<Remise>();
                     while (reader.Read())
                     {
                         int id = Convert.ToInt32(reader["ID"]);
