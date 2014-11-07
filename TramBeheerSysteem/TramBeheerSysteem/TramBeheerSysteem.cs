@@ -94,7 +94,11 @@ namespace TramBeheerSysteem
                         TextAlign = HorizontalAlignment.Center,
                         Tag = Convert.ToString(se.Id)+"_"+Convert.ToString(se.SpoorNummer)+"-"+Convert.ToString(se.Nummer)
                     };
-                    if (se.Blokkade || tramopspoor) sectorTb.Enabled = false;
+                    if (se.Blokkade || tramopspoor)
+                    {
+                        sectorTb.Enabled = false; 
+                        BlokkeerSporen((sectorTb));
+                    }
                     if (se.Tram != null)
                     {
                         sectorTb.Text = se.Tram.nummer.ToString();
@@ -258,7 +262,7 @@ namespace TramBeheerSysteem
         {
             //TextBox clickedTextBox = (TextBox)sender;
             string tag = clickedTextBox.Tag.ToString();
-            MessageBox.Show("Sector id: " + tag);
+            //MessageBox.Show("Sector id: " + tag);
             List<Sector> sectorList = new List<Sector>();
             sectorList = RemiseManager.Sectors;
             int aantal = 99;
@@ -404,7 +408,7 @@ namespace TramBeheerSysteem
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
-                    if (i.Text != "Tram" && i.Text != "Gebruiker")
+                    if (i.Text != "Tram" && i.Text != "Gebruiker" && i.Text != "Onderhoud")
                     {
                         i.Enabled = false;
                         i.Visible = false;
