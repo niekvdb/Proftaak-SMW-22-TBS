@@ -332,44 +332,56 @@ namespace TramBeheerSysteem
             if (gebruiker == "Beheerder")
             {
                 PanelTBS.Enabled = true;
+                PanelTBS.Visible = true;
                 foreach (Control c in gbBediening.Controls)
                 {
                     c.Enabled = true;
+                    c.Visible = true;
                     if (c.Name == "gbSimulatie")
                     {
                         foreach (Control con in c.Controls)
                         {
                             con.Enabled = true;
+                            con.Visible = true;
                         }
                     }
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
                      i.Enabled = true;
+                     i.Visible = true;
                 }
             }
             else if (gebruiker == "Wagenparkbeheerder")
             {
                 PanelTBS.Enabled = true;
+                PanelTBS.Visible = true;
                 foreach (Control c in gbBediening.Controls)
                 {
                     c.Enabled = true;
+                    c.Visible = true;
                     if (c.Name == "gbSimulatie")
                     {
                         foreach (Control con in c.Controls)
                         {
                             con.Enabled = true;
+                            con.Visible = true;
                         }
                     }
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
-                    if (i.Text != "Tram" && i.Text != "Gebruiker" && i.Text != "Spoor") i.Enabled = false;
+                    if (i.Text != "Tram" && i.Text != "Gebruiker" && i.Text != "Spoor")
+                    {
+                        i.Enabled = false;
+                        i.Visible = false;
+                    }
                 }
             }
             else if (gebruiker == "Bestuurder")
             {
                 PanelTBS.Enabled = false;
+                PanelTBS.Visible = false;
                 //gbBediening.Enabled = false;
                 foreach (Control c in gbBediening.Controls)
                 {
@@ -380,12 +392,14 @@ namespace TramBeheerSysteem
                             if (con.Name != "btnReset")
                             {
                                 con.Enabled = false;
+                                con.Visible = false;
                             }
                         }
                     }
                     else
                     {
                         c.Enabled = false;
+                        c.Visible = false;
                     }
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
@@ -393,16 +407,19 @@ namespace TramBeheerSysteem
                     if (i.Text != "Tram" && i.Text != "Gebruiker")
                     {
                         i.Enabled = false;
+                        i.Visible = false;
                     }
                     else
                     {
                         i.Enabled = true;
+                        i.Visible = true;
                     }
                 }
             }
             else if (gebruiker == "Schoonmaker")
             {
                 PanelTBS.Enabled = false;
+                PanelTBS.Visible = false;
                 //gbBediening.Enabled = false;
                 foreach (Control c in gbBediening.Controls)
                 {
@@ -413,12 +430,14 @@ namespace TramBeheerSysteem
                             if (con.Name != "btnReset")
                             {
                                 con.Enabled = false;
+                                con.Visible = true;
                             }
                         }
                     }
                     else
                     {
                         c.Enabled = false;
+                        c.Visible = false;
                     }
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
@@ -426,16 +445,19 @@ namespace TramBeheerSysteem
                     if ( i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
                     {
                         i.Enabled = false;
+                        i.Visible = false;
                     }
                     else
                     {
                         i.Enabled = true;
+                        i.Visible = true;
                     }
                 }
             }
             else if (gebruiker == "Technicus")
             {
                 PanelTBS.Enabled = false;
+                PanelTBS.Visible = false;
                 //gbBediening.Enabled = false;
                 foreach (Control c in gbBediening.Controls)
                 {
@@ -446,12 +468,14 @@ namespace TramBeheerSysteem
                             if (con.Name != "btnReset")
                             {
                                 con.Enabled = false;
+                                con.Visible = false;
                             }
                         }
                     }
                     else
                     {
                         c.Enabled = false;
+                        c.Visible = false;
                     }
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
@@ -459,10 +483,12 @@ namespace TramBeheerSysteem
                     if (i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
                     {
                         i.Enabled = false;
+                        i.Visible = false;
                     }
                     else
                     {
                         i.Enabled = true;
+                        i.Visible = true;
                     }
                     Console.WriteLine(i.Text);
                 }
