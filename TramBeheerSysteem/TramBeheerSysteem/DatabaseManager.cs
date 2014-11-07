@@ -345,5 +345,30 @@ namespace TramBeheerSysteem
             if (value) return "Y";
             return "N";
         }
+
+        public static void VoltooiOnderhoud(Tramonderhoud onderhoud)
+        {
+            try
+            {
+                connection.Open();
+
+                OracleCommand command = new OracleCommand("UPDATE TRAM_ONDERHOUD SET Voltooid = 1 WHERE ID = :mID");
+
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+
+                command.Parameters.Add(":ID", onderhoud.Id);
+
+                command.ExecuteNonQuery();
+            }
+            catch (OracleException)
+            {
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

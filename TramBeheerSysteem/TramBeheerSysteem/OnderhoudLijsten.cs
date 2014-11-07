@@ -59,19 +59,23 @@ namespace TramBeheerSysteem
             if (RemiseManager.sectorViaTram(selectedOnderhoud.Tram) != null)
             {
                 tbxSchoonmaakSpoor.Text =
-                    Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).SpoorNummer);
+                Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).SpoorNummer);
             }
             else tbxSchoonmaakSpoor.Text = "--";
         }
 
         private void btnSchoonmaak_Click(object sender, EventArgs e)
         {
-            //todo
+            string onderhoudString = Convert.ToString(cbSchoonmaak.SelectedItem);
+            Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
+            DatabaseManager.VoltooiOnderhoud(selectedOnderhoud);
         }
 
         private void btnReparatie_Click(object sender, EventArgs e)
         {
-            //todo
+            string onderhoudString = Convert.ToString(cbSchoonmaak.SelectedItem);
+            Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
+            DatabaseManager.VoltooiOnderhoud(selectedOnderhoud);
         }
     }
 }
