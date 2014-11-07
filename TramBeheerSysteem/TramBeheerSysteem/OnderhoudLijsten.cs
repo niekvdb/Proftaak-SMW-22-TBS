@@ -99,11 +99,18 @@ namespace TramBeheerSysteem
 
         private void reloadForm()
         {
-            MessageBox.Show("LOOOL");
             cbReparatie.Items.Clear();
             cbSchoonmaak.Items.Clear();
             Schoonmaken.Clear();
             Reparaties.Clear();
+            cbReparatie.Text = "";
+            cbSchoonmaak.Text = "";
+            tbxSchoonmaak.Text = "";
+            tbxReparatie.Text = "";
+            tbxReparatieSector.Text = "";
+            tbxReparatieSpoor.Text = "";
+            tbxSchoonmaakSector.Text = "";
+            tbxSchoonmaakSpoor.Text = "";
 
             foreach (Tramonderhoud onderhoud in TramManager.onderhoudsBeurten)
             {
