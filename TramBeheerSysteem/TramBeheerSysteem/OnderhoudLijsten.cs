@@ -52,6 +52,12 @@ namespace TramBeheerSysteem
 
         private void reloadForm()
         {
+            MessageBox.Show("LOOOL");
+            cbReparatie.Items.Clear();
+            cbSchoonmaak.Items.Clear();
+            Schoonmaken.Clear();
+            Reparaties.Clear();
+
             foreach (Tramonderhoud onderhoud in TramManager.onderhoudsBeurten)
             {
                 if (onderhoud.TypeOnderhoud == TypeOnderhoud.GroteSchoonmaak ||
@@ -67,8 +73,6 @@ namespace TramBeheerSysteem
                     cbReparatie.Items.Add(onderhoud.ToString());
                 }
             }
-            cbReparatie.SelectedIndex = 0;
-            cbSchoonmaak.SelectedIndex = 0;
         }
 
         private void btnSchoonmaak_Click(object sender, EventArgs e)
@@ -77,7 +81,7 @@ namespace TramBeheerSysteem
             Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
             DatabaseManager.VoltooiOnderhoud(selectedOnderhoud);
             MessageBox.Show("Opgeslagen!");
-            DatabaseManager.LaadTramonderhoud();
+            TramManager.onderhoudsBeurten = DatabaseManager.LaadTramonderhoud();
             reloadForm();
         }
 
@@ -87,7 +91,7 @@ namespace TramBeheerSysteem
             Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
             DatabaseManager.VoltooiOnderhoud(selectedOnderhoud);
             MessageBox.Show("Opgeslagen!");
-            DatabaseManager.LaadTramonderhoud();
+            TramManager.onderhoudsBeurten = DatabaseManager.LaadTramonderhoud();
             reloadForm();
         }
     }
