@@ -84,5 +84,17 @@ namespace TramBeheerSysteem
         {
 
         }
+
+        private void tbTramnummer_Leave(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test");
+            int tramnummer = 0;
+            Int32.TryParse(tbTramnummer.Text, out tramnummer);
+            Tram tram = TramManager.tramViaNummer(tramnummer);
+            if (tram.lengte > 1)
+            {
+                lbSectornummer.Text = "Eerste sectornummer";
+            }
+        }
     }
 }
