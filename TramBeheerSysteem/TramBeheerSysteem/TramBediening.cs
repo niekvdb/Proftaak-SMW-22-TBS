@@ -40,19 +40,19 @@ namespace TramBeheerSysteem
             } 
             string Status = cbStatus.Text;
             int tramnummer = Convert.ToInt32(cbTramnummer.Text);
-            foreach (Tram t in TramManager.Trams)
+            foreach (Tram tram in TramManager.Trams)
             {               
-                if (t.nummer == tramnummer)
+                if (tram.nummer == tramnummer)
                 {
-                    if (t.status == cbStatus.Text)
+                    if (tram.status == cbStatus.Text)
                     {
                         MessageBox.Show("Tram heeft deze status al!");
                     }
                     else
                     {
-                        t.VeranderTramstatus(cbTramnummer.Text);
+                        tram.VeranderTramstatus(cbStatus.Text);
+                        DatabaseManager.registreerTramStatus(tram);
                         MessageBox.Show("Tramstatus is gewijzigd");
-                        //ToDo DatabaseManager.WijzigTramStatus(NR,Status);
                     }
                 }
             }
