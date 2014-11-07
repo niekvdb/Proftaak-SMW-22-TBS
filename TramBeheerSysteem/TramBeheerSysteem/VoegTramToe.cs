@@ -84,11 +84,6 @@ namespace TramBeheerSysteem
                 }
         }       
 
-        private void btnAnnuleer_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void VoegTramToe_Load(object sender, EventArgs e)
         {
 

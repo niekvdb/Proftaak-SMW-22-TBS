@@ -42,6 +42,7 @@
             this.lblSchoonmaak = new System.Windows.Forms.Label();
             this.pnlSchoonmaak = new System.Windows.Forms.Panel();
             this.lvwSchoonmaak = new System.Windows.Forms.ListView();
+            this.clmTramIdschoonmaak = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -67,7 +68,6 @@
             this.clmSchoonmaakInfoTramId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.clmTramIdschoonmaak = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabOnderhoud.SuspendLayout();
             this.tabSchoonmaak.SuspendLayout();
             this.pnlSchoonmaak.SuspendLayout();
@@ -213,6 +213,10 @@
             this.lvwSchoonmaak.UseCompatibleStateImageBehavior = false;
             this.lvwSchoonmaak.View = System.Windows.Forms.View.Details;
             // 
+            // clmTramIdschoonmaak
+            // 
+            this.clmTramIdschoonmaak.Text = "Tram Id";
+            // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Tramnummer";
@@ -257,6 +261,7 @@
             // 
             // cbReparatieMedewerker
             // 
+            this.cbReparatieMedewerker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbReparatieMedewerker.FormattingEnabled = true;
             this.cbReparatieMedewerker.Location = new System.Drawing.Point(724, 269);
             this.cbReparatieMedewerker.Name = "cbReparatieMedewerker";
@@ -411,10 +416,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // clmTramIdschoonmaak
-            // 
-            this.clmTramIdschoonmaak.Text = "Tram Id";
             // 
             // OnderhoudApplicatie
             // 

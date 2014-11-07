@@ -333,20 +333,9 @@ namespace TramBeheerSysteem
             }
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            Spoor sp = new Spoor(15,null,34,0,false,false,null);
-            refreshEenSpoor(sp);
-            // Mogelijk?
-        }
-
         private void btnReset_Click(object sender, EventArgs e)
         {
             RefreshSporen();
-        }
-
-        private void reparatieToolStripMenuItem_Click(object sender, EventArgs e)
-        {
         }
 
         private void tramInfoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -472,7 +461,7 @@ namespace TramBeheerSysteem
                             if (con.Name != "btnReset")
                             {
                                 con.Enabled = false;
-                                con.Visible = true;
+                                con.Visible = false;
                             }
                         }
                     }
@@ -542,12 +531,5 @@ namespace TramBeheerSysteem
             string functie = e.ClickedItem.Text;
             FunctiesPerGebruiker(functie);
         }
-
-        private void btnDebug_Click(object sender, EventArgs e)
-        {
-            VoegTramToe vTt = new VoegTramToe("2001");
-            vTt.Show();
-        }
-
     }
 }

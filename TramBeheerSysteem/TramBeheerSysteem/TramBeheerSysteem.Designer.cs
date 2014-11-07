@@ -47,7 +47,6 @@
             this.spoorInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onderhoudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onderhoudlijstenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDebug = new System.Windows.Forms.Button();
             this.lblGebruiker = new System.Windows.Forms.Label();
             this.gbBediening.SuspendLayout();
             this.gbTram.SuspendLayout();
@@ -60,7 +59,7 @@
             this.PanelTBS.AutoScroll = true;
             this.PanelTBS.AutoSize = true;
             this.PanelTBS.Location = new System.Drawing.Point(300, 59);
-            this.PanelTBS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelTBS.Margin = new System.Windows.Forms.Padding(4);
             this.PanelTBS.Name = "PanelTBS";
             this.PanelTBS.Size = new System.Drawing.Size(1093, 444);
             this.PanelTBS.TabIndex = 21;
@@ -70,9 +69,9 @@
             this.gbBediening.Controls.Add(this.gbTram);
             this.gbBediening.Controls.Add(this.gbSimulatie);
             this.gbBediening.Location = new System.Drawing.Point(13, 146);
-            this.gbBediening.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbBediening.Margin = new System.Windows.Forms.Padding(4);
             this.gbBediening.Name = "gbBediening";
-            this.gbBediening.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbBediening.Padding = new System.Windows.Forms.Padding(4);
             this.gbBediening.Size = new System.Drawing.Size(206, 357);
             this.gbBediening.TabIndex = 18;
             this.gbBediening.TabStop = false;
@@ -84,10 +83,10 @@
             this.gbTram.Controls.Add(this.cbTrams);
             this.gbTram.Controls.Add(this.btnVerwijder);
             this.gbTram.Location = new System.Drawing.Point(8, 201);
-            this.gbTram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbTram.Margin = new System.Windows.Forms.Padding(4);
             this.gbTram.Name = "gbTram";
-            this.gbTram.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbTram.Size = new System.Drawing.Size(191, 126);
+            this.gbTram.Padding = new System.Windows.Forms.Padding(4);
+            this.gbTram.Size = new System.Drawing.Size(191, 117);
             this.gbTram.TabIndex = 3;
             this.gbTram.TabStop = false;
             this.gbTram.Text = "Tram";
@@ -105,7 +104,7 @@
             // btnVerwijder
             // 
             this.btnVerwijder.Location = new System.Drawing.Point(7, 68);
-            this.btnVerwijder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVerwijder.Margin = new System.Windows.Forms.Padding(4);
             this.btnVerwijder.Name = "btnVerwijder";
             this.btnVerwijder.Size = new System.Drawing.Size(161, 28);
             this.btnVerwijder.TabIndex = 2;
@@ -115,22 +114,21 @@
             // 
             // gbSimulatie
             // 
-            this.gbSimulatie.Controls.Add(this.btnDebug);
             this.gbSimulatie.Controls.Add(this.btnReset);
             this.gbSimulatie.Controls.Add(this.btnStart);
             this.gbSimulatie.Location = new System.Drawing.Point(8, 42);
-            this.gbSimulatie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSimulatie.Margin = new System.Windows.Forms.Padding(4);
             this.gbSimulatie.Name = "gbSimulatie";
-            this.gbSimulatie.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbSimulatie.Size = new System.Drawing.Size(191, 126);
+            this.gbSimulatie.Padding = new System.Windows.Forms.Padding(4);
+            this.gbSimulatie.Size = new System.Drawing.Size(191, 108);
             this.gbSimulatie.TabIndex = 2;
             this.gbSimulatie.TabStop = false;
             this.gbSimulatie.Text = "Simulatie";
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(7, 97);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset.Location = new System.Drawing.Point(7, 59);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(161, 28);
             this.btnReset.TabIndex = 2;
@@ -138,11 +136,10 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // 
             // btnStart
             // 
             this.btnStart.Location = new System.Drawing.Point(8, 23);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(161, 28);
             this.btnStart.TabIndex = 0;
@@ -186,21 +183,21 @@
             // voegToeToolStripMenuItem
             // 
             this.voegToeToolStripMenuItem.Name = "voegToeToolStripMenuItem";
-            this.voegToeToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.voegToeToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.voegToeToolStripMenuItem.Text = "Voeg Toe";
             this.voegToeToolStripMenuItem.Click += new System.EventHandler(this.voegToeToolStripMenuItem_Click);
             // 
             // wijzigStatusToolStripMenuItem
             // 
             this.wijzigStatusToolStripMenuItem.Name = "wijzigStatusToolStripMenuItem";
-            this.wijzigStatusToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.wijzigStatusToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.wijzigStatusToolStripMenuItem.Text = "Wijzig status";
             this.wijzigStatusToolStripMenuItem.Click += new System.EventHandler(this.wijzigStatusToolStripMenuItem_Click);
             // 
             // tramInfoToolStripMenuItem
             // 
             this.tramInfoToolStripMenuItem.Name = "tramInfoToolStripMenuItem";
-            this.tramInfoToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.tramInfoToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.tramInfoToolStripMenuItem.Text = "Tram Info";
             this.tramInfoToolStripMenuItem.Click += new System.EventHandler(this.tramInfoToolStripMenuItem_Click);
             // 
@@ -242,16 +239,6 @@
             this.onderhoudlijstenToolStripMenuItem.Text = "Onderhoudlijsten";
             this.onderhoudlijstenToolStripMenuItem.Click += new System.EventHandler(this.onderhoudlijstenToolStripMenuItem_Click);
             // 
-            // btnDebug
-            // 
-            this.btnDebug.Location = new System.Drawing.Point(7, 49);
-            this.btnDebug.Name = "btnDebug";
-            this.btnDebug.Size = new System.Drawing.Size(120, 23);
-            this.btnDebug.TabIndex = 3;
-            this.btnDebug.Text = "Debug";
-            this.btnDebug.UseVisualStyleBackColor = true;
-            this.btnDebug.Click += new System.EventHandler(this.btnDebug_Click);
-            // 
             // lblGebruiker
             // 
             this.lblGebruiker.AutoSize = true;
@@ -273,7 +260,7 @@
             this.Controls.Add(this.gbBediening);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TramBeheerSysteem";
             this.Text = "TramBeheerSysteem";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -309,7 +296,6 @@
         private System.Windows.Forms.Button btnVerwijder;
         private System.Windows.Forms.ToolStripMenuItem gebruikerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem onderhoudlijstenToolStripMenuItem;
-        private System.Windows.Forms.Button btnDebug;
         private System.Windows.Forms.Label lblGebruiker;
 
     }

@@ -14,7 +14,7 @@ namespace TramBeheerSysteem
     public partial class OnderhoudLijsten : Form
     {
         private List<Tramonderhoud> Schoonmaken = new List<Tramonderhoud>();
-        private List<Tramonderhoud> Reparaties = new List<Tramonderhoud>();
+        private List<Tramonderhoud> Reparaties = new List<Tramonderhoud>(); 
 
         public OnderhoudLijsten(string gebruiker)
         {
@@ -112,6 +112,8 @@ namespace TramBeheerSysteem
             tbxSchoonmaakSector.Text = "";
             tbxSchoonmaakSpoor.Text = "";
 
+            TramManager.onderhoudsBeurten = DatabaseManager.LaadTramonderhoud();
+
             foreach (Tramonderhoud onderhoud in TramManager.onderhoudsBeurten)
             {
                 if (onderhoud.TypeOnderhoud == TypeOnderhoud.GroteSchoonmaak ||
@@ -146,6 +148,16 @@ namespace TramBeheerSysteem
             DatabaseManager.VoltooiOnderhoud(selectedOnderhoud);
             MessageBox.Show("Opgeslagen!");
             TramManager.onderhoudsBeurten = DatabaseManager.LaadTramonderhoud();
+            reloadForm();
+        }
+
+        private void btnRefreshReparatie_Click(object sender, EventArgs e)
+        {
+            reloadForm();
+        }
+
+        private void btnRefreshSchoonmaak_Click(object sender, EventArgs e)
+        {
             reloadForm();
         }
     }
