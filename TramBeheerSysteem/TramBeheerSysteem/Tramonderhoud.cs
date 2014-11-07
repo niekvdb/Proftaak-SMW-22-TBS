@@ -45,7 +45,7 @@ namespace TramBeheerSysteem
 
         public override string ToString()
         {
-            string onderhoud = Convert.ToString(Id) + ":" +" Naam= "+ Medewerker.Naam +" Tram= " + Convert.ToString(Tram.nummer) +" Onderhoud= "+Convert.ToString(TypeOnderhoud);
+            string onderhoud = Convert.ToString(Id) + ":" +" Naam= "+ Medewerker.Naam +", Tram= " + Convert.ToString(Tram.nummer) +", Onderhoud= "+Convert.ToString(TypeOnderhoud);
             return onderhoud;
         }        
     }
