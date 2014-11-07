@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace TramBeheerSysteem
 {
@@ -15,12 +16,58 @@ namespace TramBeheerSysteem
         private List<Tramonderhoud> Schoonmaken = new List<Tramonderhoud>();
         private List<Tramonderhoud> Reparaties = new List<Tramonderhoud>();
 
-        public OnderhoudLijsten()
+        public OnderhoudLijsten(string gebruiker)
         {
             InitializeComponent();
-
-            reloadForm();
+            if (gebruiker == "Beheerder")
+            {
+                foreach (Tramonderhoud onderhoud in TramManager.onderhoudsBeurten)
+                {
+                    if (onderhoud.TypeOnderhoud == TypeOnderhoud.GroteSchoonmaak ||
+                        onderhoud.TypeOnderhoud == TypeOnderhoud.KleineSchoonmaak)
+                    {
+                        Schoonmaken.Add(onderhoud);
+                        cbSchoonmaak.Items.Add(onderhoud.ToString());
+                }
+                    else if (onderhoud.TypeOnderhoud == TypeOnderhoud.GroteReparatie ||
+                             onderhoud.TypeOnderhoud == TypeOnderhoud.KleineReparatie)
+                    {
+                        Reparaties.Add(onderhoud);
+                        cbReparatie.Items.Add(onderhoud.ToString());
+                    }
+                }
+            }
+            else if (gebruiker == "Schoonmaker")
+            {
+                tabReparatie.Visible = false;
+                tabReparatie.Enabled = false;
+                foreach (Tramonderhoud onderhoud in TramManager.onderhoudsBeurten)
+                {
+                    if (onderhoud.TypeOnderhoud == TypeOnderhoud.GroteSchoonmaak ||
+                        onderhoud.TypeOnderhoud == TypeOnderhoud.KleineSchoonmaak)
+                    {
+                        Schoonmaken.Add(onderhoud);
+                        cbSchoonmaak.Items.Add(onderhoud.ToString());
+                    }
+                }
+            }
+            else if (gebruiker == "Technicus")
+            {
+                tbcLijsten.SelectedTab = tabReparatie;
+                tabSchoonmaak.Visible = false;
+                tabSchoonmaak.Enabled = false;
+                foreach (Tramonderhoud onderhoud in TramManager.onderhoudsBeurten)
+                {
+                     if (onderhoud.TypeOnderhoud == TypeOnderhoud.GroteReparatie ||
+                             onderhoud.TypeOnderhoud == TypeOnderhoud.KleineReparatie)
+                    {
+                        Reparaties.Add(onderhoud);
+                        cbReparatie.Items.Add(onderhoud.ToString());
+                    }
+                }
+            }
         }
+
 
         private void cbReparatie_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -52,11 +99,18 @@ namespace TramBeheerSysteem
 
         private void reloadForm()
         {
-            MessageBox.Show("LOOOL");
             cbReparatie.Items.Clear();
             cbSchoonmaak.Items.Clear();
             Schoonmaken.Clear();
             Reparaties.Clear();
+            cbReparatie.Text = "";
+            cbSchoonmaak.Text = "";
+            tbxSchoonmaak.Text = "";
+            tbxReparatie.Text = "";
+            tbxReparatieSector.Text = "";
+            tbxReparatieSpoor.Text = "";
+            tbxSchoonmaakSector.Text = "";
+            tbxSchoonmaakSpoor.Text = "";
 
             foreach (Tramonderhoud onderhoud in TramManager.onderhoudsBeurten)
             {
