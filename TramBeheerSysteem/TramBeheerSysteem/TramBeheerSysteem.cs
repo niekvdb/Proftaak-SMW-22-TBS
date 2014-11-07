@@ -67,6 +67,38 @@ namespace TramBeheerSysteem
             spoorList = RemiseManager.Sporen;
             AddTextBoxes((spoorList));
         }
+
+        public void refreshEenSpoor(Spoor spoor)
+        {
+            Control.ControlCollection panelCollection = PanelTBS.Controls;
+            bool tramopSpoor = false;
+            //SeId_SeSpNo_SeNo
+            foreach (Control c in panelCollection)
+            {
+                string tag = string.Empty;
+                string spoorid = string.Empty;
+                string sectorid = string.Empty;
+                int sectoridint = 0;
+                if (c.Tag != null && c.Tag != "")
+                {
+                    tag = (String) c.Tag;
+                    spoorid = tag.Substring(tag.IndexOf("_")+1, tag.IndexOf("-") - tag.IndexOf("_")-1);
+                }
+                if (spoorid == spoor.Id.ToString())
+                {
+                    sectorid = tag.Substring(0, tag.IndexOf("_"));
+                    Int32.TryParse(sectorid, out sectoridint);
+                    Sector sector = RemiseManager.sectorViaId(sectoridint);
+                    TextBox sectortb = (TextBox) c;
+                    if ((sector.Blokkade || tramopSpoor)&&sector.Tram == null) sectortb.Enabled = false;
+                    if (sector.Tram != null)
+                    {
+                        sectortb.Text = sector.Tram.nummer.ToString();
+                        tramopSpoor = true;
+                    }
+                }
+            }
+        }
         /// <summary>
         /// Functie om op dynamische wijze textboxen die de sporen en sectoren voorstellen toe te voegen.
         /// </summary>
@@ -94,10 +126,10 @@ namespace TramBeheerSysteem
                         TextAlign = HorizontalAlignment.Center,
                         Tag = Convert.ToString(se.Id)+"_"+Convert.ToString(se.SpoorNummer)+"-"+Convert.ToString(se.Nummer)
                     };
-                    if (se.Blokkade || tramopspoor)
+                    if ((se.Blokkade || tramopspoor)&&se.Tram == null)
                     {
-                        sectorTb.Enabled = false; 
-                        BlokkeerSporen((sectorTb));
+                        sectorTb.Enabled = false;
+                            BlokkeerSporen((sectorTb));
                     }
                     if (se.Tram != null)
                     {
@@ -301,6 +333,8 @@ namespace TramBeheerSysteem
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            Spoor sp = new Spoor(15,null,34,0,false,false,null);
+            refreshEenSpoor(sp);
             // Mogelijk?
         }
 
@@ -385,8 +419,7 @@ namespace TramBeheerSysteem
             else if (gebruiker == "Bestuurder")
             {
                 PanelTBS.Enabled = false;
-                PanelTBS.Visible = false;
-                //gbBediening.Enabled = false;
+                //PanelTBS.Visible = false;
                 foreach (Control c in gbBediening.Controls)
                 {
                     if (c.Name == "gbSimulatie")
@@ -423,8 +456,7 @@ namespace TramBeheerSysteem
             else if (gebruiker == "Schoonmaker")
             {
                 PanelTBS.Enabled = false;
-                PanelTBS.Visible = false;
-                //gbBediening.Enabled = false;
+                //PanelTBS.Visible = false;
                 foreach (Control c in gbBediening.Controls)
                 {
                     if (c.Name == "gbSimulatie")
@@ -461,8 +493,7 @@ namespace TramBeheerSysteem
             else if (gebruiker == "Technicus")
             {
                 PanelTBS.Enabled = false;
-                PanelTBS.Visible = false;
-                //gbBediening.Enabled = false;
+                //PanelTBS.Visible = false;
                 foreach (Control c in gbBediening.Controls)
                 {
                     if (c.Name == "gbSimulatie")
