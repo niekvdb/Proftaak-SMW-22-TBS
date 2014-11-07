@@ -35,92 +35,76 @@
             this.lbSpoornummer = new System.Windows.Forms.Label();
             this.lbSectornummer = new System.Windows.Forms.Label();
             this.btnBevestig = new System.Windows.Forms.Button();
-            this.btnAnnuleer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbTramnummer
             // 
-            this.tbTramnummer.Location = new System.Drawing.Point(25, 86);
-            this.tbTramnummer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbTramnummer.Location = new System.Drawing.Point(33, 106);
+            this.tbTramnummer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbTramnummer.Name = "tbTramnummer";
-            this.tbTramnummer.Size = new System.Drawing.Size(59, 20);
+            this.tbTramnummer.Size = new System.Drawing.Size(77, 22);
             this.tbTramnummer.TabIndex = 0;
             this.tbTramnummer.Leave += new System.EventHandler(this.tbTramnummer_Leave);
             // 
             // tbSpoornummer
             // 
-            this.tbSpoornummer.Location = new System.Drawing.Point(106, 86);
-            this.tbSpoornummer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSpoornummer.Location = new System.Drawing.Point(141, 106);
+            this.tbSpoornummer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSpoornummer.Name = "tbSpoornummer";
-            this.tbSpoornummer.Size = new System.Drawing.Size(59, 20);
+            this.tbSpoornummer.Size = new System.Drawing.Size(77, 22);
             this.tbSpoornummer.TabIndex = 1;
             // 
             // tbSectornummer
             // 
-            this.tbSectornummer.Location = new System.Drawing.Point(205, 86);
-            this.tbSectornummer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSectornummer.Location = new System.Drawing.Point(273, 106);
+            this.tbSectornummer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbSectornummer.Name = "tbSectornummer";
-            this.tbSectornummer.Size = new System.Drawing.Size(59, 20);
+            this.tbSectornummer.Size = new System.Drawing.Size(77, 22);
             this.tbSectornummer.TabIndex = 2;
             // 
             // lbTramnummer
             // 
             this.lbTramnummer.AutoSize = true;
-            this.lbTramnummer.Location = new System.Drawing.Point(22, 55);
-            this.lbTramnummer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTramnummer.Location = new System.Drawing.Point(29, 68);
             this.lbTramnummer.Name = "lbTramnummer";
-            this.lbTramnummer.Size = new System.Drawing.Size(68, 13);
+            this.lbTramnummer.Size = new System.Drawing.Size(92, 17);
             this.lbTramnummer.TabIndex = 3;
             this.lbTramnummer.Text = "Tramnummer";
             // 
             // lbSpoornummer
             // 
             this.lbSpoornummer.AutoSize = true;
-            this.lbSpoornummer.Location = new System.Drawing.Point(104, 55);
-            this.lbSpoornummer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbSpoornummer.Location = new System.Drawing.Point(139, 68);
             this.lbSpoornummer.Name = "lbSpoornummer";
-            this.lbSpoornummer.Size = new System.Drawing.Size(72, 13);
+            this.lbSpoornummer.Size = new System.Drawing.Size(97, 17);
             this.lbSpoornummer.TabIndex = 4;
             this.lbSpoornummer.Text = "Spoornummer";
             // 
             // lbSectornummer
             // 
             this.lbSectornummer.AutoSize = true;
-            this.lbSectornummer.Location = new System.Drawing.Point(202, 55);
-            this.lbSectornummer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbSectornummer.Location = new System.Drawing.Point(269, 68);
             this.lbSectornummer.Name = "lbSectornummer";
-            this.lbSectornummer.Size = new System.Drawing.Size(75, 13);
+            this.lbSectornummer.Size = new System.Drawing.Size(100, 17);
             this.lbSectornummer.TabIndex = 5;
             this.lbSectornummer.Text = "Sectornummer";
             // 
             // btnBevestig
             // 
-            this.btnBevestig.Location = new System.Drawing.Point(36, 134);
-            this.btnBevestig.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBevestig.Location = new System.Drawing.Point(48, 165);
+            this.btnBevestig.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBevestig.Name = "btnBevestig";
-            this.btnBevestig.Size = new System.Drawing.Size(74, 38);
+            this.btnBevestig.Size = new System.Drawing.Size(99, 47);
             this.btnBevestig.TabIndex = 6;
             this.btnBevestig.Text = "Bevestig";
             this.btnBevestig.UseVisualStyleBackColor = true;
             this.btnBevestig.Click += new System.EventHandler(this.btnBevestig_Click);
             // 
-            // btnAnnuleer
-            // 
-            this.btnAnnuleer.Location = new System.Drawing.Point(189, 134);
-            this.btnAnnuleer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnAnnuleer.Name = "btnAnnuleer";
-            this.btnAnnuleer.Size = new System.Drawing.Size(74, 37);
-            this.btnAnnuleer.TabIndex = 7;
-            this.btnAnnuleer.Text = "Annuleer";
-            this.btnAnnuleer.UseVisualStyleBackColor = true;
-            this.btnAnnuleer.Click += new System.EventHandler(this.btnAnnuleer_Click);
-            // 
             // VoegTramToe
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 202);
-            this.Controls.Add(this.btnAnnuleer);
+            this.ClientSize = new System.Drawing.Size(396, 249);
             this.Controls.Add(this.btnBevestig);
             this.Controls.Add(this.lbSectornummer);
             this.Controls.Add(this.lbSpoornummer);
@@ -128,7 +112,7 @@
             this.Controls.Add(this.tbSectornummer);
             this.Controls.Add(this.tbSpoornummer);
             this.Controls.Add(this.tbTramnummer);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "VoegTramToe";
             this.Text = "VoegTramToe";
             this.Load += new System.EventHandler(this.VoegTramToe_Load);
@@ -146,6 +130,5 @@
         private System.Windows.Forms.Label lbSpoornummer;
         private System.Windows.Forms.Label lbSectornummer;
         private System.Windows.Forms.Button btnBevestig;
-        private System.Windows.Forms.Button btnAnnuleer;
     }
 }

@@ -34,7 +34,6 @@
             this.cbTrams = new System.Windows.Forms.ComboBox();
             this.btnVerwijder = new System.Windows.Forms.Button();
             this.gbSimulatie = new System.Windows.Forms.GroupBox();
-            this.btnDebug = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -87,7 +86,7 @@
             this.gbTram.Margin = new System.Windows.Forms.Padding(4);
             this.gbTram.Name = "gbTram";
             this.gbTram.Padding = new System.Windows.Forms.Padding(4);
-            this.gbTram.Size = new System.Drawing.Size(191, 126);
+            this.gbTram.Size = new System.Drawing.Size(191, 117);
             this.gbTram.TabIndex = 3;
             this.gbTram.TabStop = false;
             this.gbTram.Text = "Tram";
@@ -115,31 +114,20 @@
             // 
             // gbSimulatie
             // 
-            this.gbSimulatie.Controls.Add(this.btnDebug);
             this.gbSimulatie.Controls.Add(this.btnReset);
             this.gbSimulatie.Controls.Add(this.btnStart);
             this.gbSimulatie.Location = new System.Drawing.Point(8, 42);
             this.gbSimulatie.Margin = new System.Windows.Forms.Padding(4);
             this.gbSimulatie.Name = "gbSimulatie";
             this.gbSimulatie.Padding = new System.Windows.Forms.Padding(4);
-            this.gbSimulatie.Size = new System.Drawing.Size(191, 126);
+            this.gbSimulatie.Size = new System.Drawing.Size(191, 108);
             this.gbSimulatie.TabIndex = 2;
             this.gbSimulatie.TabStop = false;
             this.gbSimulatie.Text = "Simulatie";
             // 
-            // btnDebug
-            // 
-            this.btnDebug.Location = new System.Drawing.Point(8, 58);
-            this.btnDebug.Name = "btnDebug";
-            this.btnDebug.Size = new System.Drawing.Size(160, 32);
-            this.btnDebug.TabIndex = 3;
-            this.btnDebug.Text = "Debug";
-            this.btnDebug.UseVisualStyleBackColor = true;
-            this.btnDebug.Click += new System.EventHandler(this.btnDebug_Click);
-            // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(7, 97);
+            this.btnReset.Location = new System.Drawing.Point(7, 59);
             this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(161, 28);
@@ -308,7 +296,6 @@
         private System.Windows.Forms.Button btnVerwijder;
         private System.Windows.Forms.ToolStripMenuItem gebruikerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem onderhoudlijstenToolStripMenuItem;
-        private System.Windows.Forms.Button btnDebug;
         private System.Windows.Forms.Label lblGebruiker;
 
     }
