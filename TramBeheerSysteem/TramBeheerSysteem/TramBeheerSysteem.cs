@@ -335,6 +335,29 @@ namespace TramBeheerSysteem
                         }
                     }
                 }
+                foreach (ToolStripItem i in this.menuStrip1.Items)
+                {
+                     i.Enabled = true;
+                }
+            }
+            else if (gebruiker == "Wagenparkbeheerder")
+            {
+                PanelTBS.Enabled = true;
+                foreach (Control c in gbBediening.Controls)
+                {
+                    c.Enabled = true;
+                    if (c.Name == "gbSimulatie")
+                    {
+                        foreach (Control con in c.Controls)
+                        {
+                            con.Enabled = true;
+                        }
+                    }
+                }
+                foreach (ToolStripItem i in this.menuStrip1.Items)
+                {
+                    if (i.Text != "Tram" && i.Text != "Gebruiker" && i.Text != "Spoor") i.Enabled = false;
+                }
             }
             else if (gebruiker == "Bestuurder")
             {
@@ -359,7 +382,80 @@ namespace TramBeheerSysteem
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
-                    if (  i.Text != "Tram" && i.Text != "Gebruiker") i.Enabled = false;
+                    if (i.Text != "Tram" && i.Text != "Gebruiker")
+                    {
+                        i.Enabled = false;
+                    }
+                    else
+                    {
+                        i.Enabled = true;
+                    }
+                }
+            }
+            else if (gebruiker == "Schoonmaker")
+            {
+                PanelTBS.Enabled = false;
+                //gbBediening.Enabled = false;
+                foreach (Control c in gbBediening.Controls)
+                {
+                    if (c.Name == "gbSimulatie")
+                    {
+                        foreach (Control con in c.Controls)
+                        {
+                            if (con.Name != "btnReset")
+                            {
+                                con.Enabled = false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        c.Enabled = false;
+                    }
+                }
+                foreach (ToolStripItem i in this.menuStrip1.Items)
+                {
+                    if (i.Text != "Onderhoud" && i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
+                    {
+                        i.Enabled = false;
+                    }
+                    else
+                    {
+                        i.Enabled = true;
+                    }
+                }
+            }
+            else if (gebruiker == "Technicus")
+            {
+                PanelTBS.Enabled = false;
+                //gbBediening.Enabled = false;
+                foreach (Control c in gbBediening.Controls)
+                {
+                    if (c.Name == "gbSimulatie")
+                    {
+                        foreach (Control con in c.Controls)
+                        {
+                            if (con.Name != "btnReset")
+                            {
+                                con.Enabled = false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        c.Enabled = false;
+                    }
+                }
+                foreach (ToolStripItem i in this.menuStrip1.Items)
+                {
+                    if (i.Text != "Onderhoud" && i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
+                    {
+                        i.Enabled = false;
+                    }
+                    else
+                    {
+                        i.Enabled = true;
+                    }
                     Console.WriteLine(i.Text);
                 }
             }
