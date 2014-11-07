@@ -48,6 +48,7 @@
             this.spoorInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onderhoudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onderhoudlijstenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblGebruiker = new System.Windows.Forms.Label();
             this.gbBediening.SuspendLayout();
             this.gbTram.SuspendLayout();
             this.gbSimulatie.SuspendLayout();
@@ -58,18 +59,21 @@
             // 
             this.PanelTBS.AutoScroll = true;
             this.PanelTBS.AutoSize = true;
-            this.PanelTBS.Location = new System.Drawing.Point(225, 48);
+            this.PanelTBS.Location = new System.Drawing.Point(300, 59);
+            this.PanelTBS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelTBS.Name = "PanelTBS";
-            this.PanelTBS.Size = new System.Drawing.Size(820, 361);
+            this.PanelTBS.Size = new System.Drawing.Size(1093, 444);
             this.PanelTBS.TabIndex = 21;
             // 
             // gbBediening
             // 
             this.gbBediening.Controls.Add(this.gbTram);
             this.gbBediening.Controls.Add(this.gbSimulatie);
-            this.gbBediening.Location = new System.Drawing.Point(32, 48);
+            this.gbBediening.Location = new System.Drawing.Point(13, 146);
+            this.gbBediening.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbBediening.Name = "gbBediening";
-            this.gbBediening.Size = new System.Drawing.Size(166, 361);
+            this.gbBediening.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbBediening.Size = new System.Drawing.Size(206, 357);
             this.gbBediening.TabIndex = 18;
             this.gbBediening.TabStop = false;
             this.gbBediening.Text = "Bediening";
@@ -79,9 +83,11 @@
             // 
             this.gbTram.Controls.Add(this.cbTrams);
             this.gbTram.Controls.Add(this.btnVerwijder);
-            this.gbTram.Location = new System.Drawing.Point(6, 163);
+            this.gbTram.Location = new System.Drawing.Point(8, 201);
+            this.gbTram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbTram.Name = "gbTram";
-            this.gbTram.Size = new System.Drawing.Size(143, 102);
+            this.gbTram.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbTram.Size = new System.Drawing.Size(191, 126);
             this.gbTram.TabIndex = 3;
             this.gbTram.TabStop = false;
             this.gbTram.Text = "Tram";
@@ -90,17 +96,18 @@
             // 
             this.cbTrams.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTrams.FormattingEnabled = true;
-            this.cbTrams.Location = new System.Drawing.Point(6, 30);
-            this.cbTrams.Margin = new System.Windows.Forms.Padding(2);
+            this.cbTrams.Location = new System.Drawing.Point(8, 37);
+            this.cbTrams.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbTrams.Name = "cbTrams";
-            this.cbTrams.Size = new System.Drawing.Size(121, 21);
+            this.cbTrams.Size = new System.Drawing.Size(160, 24);
             this.cbTrams.TabIndex = 3;
             // 
             // btnVerwijder
             // 
-            this.btnVerwijder.Location = new System.Drawing.Point(5, 55);
+            this.btnVerwijder.Location = new System.Drawing.Point(7, 68);
+            this.btnVerwijder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVerwijder.Name = "btnVerwijder";
-            this.btnVerwijder.Size = new System.Drawing.Size(121, 23);
+            this.btnVerwijder.Size = new System.Drawing.Size(161, 28);
             this.btnVerwijder.TabIndex = 2;
             this.btnVerwijder.Text = "Verwijder";
             this.btnVerwijder.UseVisualStyleBackColor = true;
@@ -111,18 +118,21 @@
             this.gbSimulatie.Controls.Add(this.btnReset);
             this.gbSimulatie.Controls.Add(this.btnStop);
             this.gbSimulatie.Controls.Add(this.btnStart);
-            this.gbSimulatie.Location = new System.Drawing.Point(6, 34);
+            this.gbSimulatie.Location = new System.Drawing.Point(8, 42);
+            this.gbSimulatie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbSimulatie.Name = "gbSimulatie";
-            this.gbSimulatie.Size = new System.Drawing.Size(143, 102);
+            this.gbSimulatie.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbSimulatie.Size = new System.Drawing.Size(191, 126);
             this.gbSimulatie.TabIndex = 2;
             this.gbSimulatie.TabStop = false;
             this.gbSimulatie.Text = "Simulatie";
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(5, 79);
+            this.btnReset.Location = new System.Drawing.Point(7, 97);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(121, 23);
+            this.btnReset.Size = new System.Drawing.Size(161, 28);
             this.btnReset.TabIndex = 2;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -130,9 +140,10 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(6, 48);
+            this.btnStop.Location = new System.Drawing.Point(8, 59);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(121, 23);
+            this.btnStop.Size = new System.Drawing.Size(161, 28);
             this.btnStop.TabIndex = 1;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -140,9 +151,10 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(6, 19);
+            this.btnStart.Location = new System.Drawing.Point(8, 23);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(121, 23);
+            this.btnStart.Size = new System.Drawing.Size(161, 28);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -158,8 +170,8 @@
             this.onderhoudlijstenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1098, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1464, 28);
             this.menuStrip1.TabIndex = 22;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -167,7 +179,7 @@
             // gebruikerToolStripMenuItem
             // 
             this.gebruikerToolStripMenuItem.Name = "gebruikerToolStripMenuItem";
-            this.gebruikerToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.gebruikerToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.gebruikerToolStripMenuItem.Text = "Gebruiker";
             this.gebruikerToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.gebruikerToolStripMenuItem_DropDownItemClicked);
             // 
@@ -178,27 +190,27 @@
             this.wijzigStatusToolStripMenuItem,
             this.tramInfoToolStripMenuItem});
             this.TramToolStripMenuItem.Name = "TramToolStripMenuItem";
-            this.TramToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.TramToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.TramToolStripMenuItem.Text = "Tram";
             // 
             // voegToeToolStripMenuItem
             // 
             this.voegToeToolStripMenuItem.Name = "voegToeToolStripMenuItem";
-            this.voegToeToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.voegToeToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.voegToeToolStripMenuItem.Text = "Voeg Toe";
             this.voegToeToolStripMenuItem.Click += new System.EventHandler(this.voegToeToolStripMenuItem_Click);
             // 
             // wijzigStatusToolStripMenuItem
             // 
             this.wijzigStatusToolStripMenuItem.Name = "wijzigStatusToolStripMenuItem";
-            this.wijzigStatusToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.wijzigStatusToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.wijzigStatusToolStripMenuItem.Text = "Wijzig status";
             this.wijzigStatusToolStripMenuItem.Click += new System.EventHandler(this.wijzigStatusToolStripMenuItem_Click);
             // 
             // tramInfoToolStripMenuItem
             // 
             this.tramInfoToolStripMenuItem.Name = "tramInfoToolStripMenuItem";
-            this.tramInfoToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.tramInfoToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.tramInfoToolStripMenuItem.Text = "Tram Info";
             this.tramInfoToolStripMenuItem.Click += new System.EventHandler(this.tramInfoToolStripMenuItem_Click);
             // 
@@ -208,47 +220,61 @@
             this.statusVeranderenToolStripMenuItem,
             this.spoorInfoToolStripMenuItem});
             this.SpoorToolStripMenuItem.Name = "SpoorToolStripMenuItem";
-            this.SpoorToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.SpoorToolStripMenuItem.Size = new System.Drawing.Size(61, 24);
             this.SpoorToolStripMenuItem.Text = "Spoor";
             this.SpoorToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // statusVeranderenToolStripMenuItem
             // 
             this.statusVeranderenToolStripMenuItem.Name = "statusVeranderenToolStripMenuItem";
-            this.statusVeranderenToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.statusVeranderenToolStripMenuItem.Size = new System.Drawing.Size(198, 24);
             this.statusVeranderenToolStripMenuItem.Text = "Status Veranderen";
             this.statusVeranderenToolStripMenuItem.Click += new System.EventHandler(this.statusVeranderenToolStripMenuItem_Click);
             // 
             // spoorInfoToolStripMenuItem
             // 
             this.spoorInfoToolStripMenuItem.Name = "spoorInfoToolStripMenuItem";
-            this.spoorInfoToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.spoorInfoToolStripMenuItem.Size = new System.Drawing.Size(198, 24);
             this.spoorInfoToolStripMenuItem.Text = "Spoor Info";
             this.spoorInfoToolStripMenuItem.Click += new System.EventHandler(this.spoorInfoToolStripMenuItem_Click);
             // 
             // onderhoudToolStripMenuItem
             // 
             this.onderhoudToolStripMenuItem.Name = "onderhoudToolStripMenuItem";
-            this.onderhoudToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.onderhoudToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.onderhoudToolStripMenuItem.Text = "Onderhoud";
             this.onderhoudToolStripMenuItem.Click += new System.EventHandler(this.schoonmaakToolStripMenuItem_Click);
             // 
             // onderhoudlijstenToolStripMenuItem
             // 
             this.onderhoudlijstenToolStripMenuItem.Name = "onderhoudlijstenToolStripMenuItem";
-            this.onderhoudlijstenToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
+            this.onderhoudlijstenToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
             this.onderhoudlijstenToolStripMenuItem.Text = "Onderhoudlijsten";
             this.onderhoudlijstenToolStripMenuItem.Click += new System.EventHandler(this.onderhoudlijstenToolStripMenuItem_Click);
             // 
+            // lblGebruiker
+            // 
+            this.lblGebruiker.AutoSize = true;
+            this.lblGebruiker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGebruiker.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblGebruiker.Location = new System.Drawing.Point(35, 74);
+            this.lblGebruiker.Name = "lblGebruiker";
+            this.lblGebruiker.Size = new System.Drawing.Size(109, 24);
+            this.lblGebruiker.TabIndex = 4;
+            this.lblGebruiker.Text = "Beheerder";
+            this.lblGebruiker.Click += new System.EventHandler(this.lblGebruiker_Click);
+            // 
             // TramBeheerSysteem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1098, 449);
+            this.ClientSize = new System.Drawing.Size(1464, 553);
+            this.Controls.Add(this.lblGebruiker);
             this.Controls.Add(this.PanelTBS);
             this.Controls.Add(this.gbBediening);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TramBeheerSysteem";
             this.Text = "TramBeheerSysteem";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -285,6 +311,7 @@
         private System.Windows.Forms.Button btnVerwijder;
         private System.Windows.Forms.ToolStripMenuItem gebruikerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem onderhoudlijstenToolStripMenuItem;
+        private System.Windows.Forms.Label lblGebruiker;
 
     }
 }

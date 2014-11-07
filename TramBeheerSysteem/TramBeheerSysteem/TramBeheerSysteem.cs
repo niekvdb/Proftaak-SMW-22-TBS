@@ -328,7 +328,7 @@ namespace TramBeheerSysteem
 
         private void onderhoudlijstenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OnderhoudLijsten o = new OnderhoudLijsten();
+            OnderhoudLijsten o = new OnderhoudLijsten(lblGebruiker.Text);
             o.Show();
         }
 
@@ -336,6 +336,7 @@ namespace TramBeheerSysteem
         {
             if (gebruiker == "Beheerder")
             {
+                lblGebruiker.Text = "Beheerder";
                 PanelTBS.Enabled = true;
                 PanelTBS.Visible = true;
                 foreach (Control c in gbBediening.Controls)
@@ -359,6 +360,7 @@ namespace TramBeheerSysteem
             }
             else if (gebruiker == "Wagenparkbeheerder")
             {
+                lblGebruiker.Text = "Wagenparkbeheerder";
                 PanelTBS.Enabled = true;
                 PanelTBS.Visible = true;
                 foreach (Control c in gbBediening.Controls)
@@ -385,6 +387,7 @@ namespace TramBeheerSysteem
             }
             else if (gebruiker == "Bestuurder")
             {
+                lblGebruiker.Text = "Bestuurder";
                 PanelTBS.Enabled = false;
                 PanelTBS.Visible = false;
                 //gbBediening.Enabled = false;
@@ -423,6 +426,7 @@ namespace TramBeheerSysteem
             }
             else if (gebruiker == "Schoonmaker")
             {
+                lblGebruiker.Text = "Schoonmaker";
                 PanelTBS.Enabled = false;
                 PanelTBS.Visible = false;
                 //gbBediening.Enabled = false;
@@ -461,6 +465,7 @@ namespace TramBeheerSysteem
             }
             else if (gebruiker == "Technicus")
             {
+                lblGebruiker.Text = "Technicus";
                 PanelTBS.Enabled = false;
                 PanelTBS.Visible = false;
                 //gbBediening.Enabled = false;
@@ -504,6 +509,11 @@ namespace TramBeheerSysteem
         {
             string functie = e.ClickedItem.Text;
             FunctiesPerGebruiker(functie);
+        }
+
+        private void lblGebruiker_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
