@@ -67,10 +67,10 @@ namespace TramBeheerSysteem
 
         private void btnReparatieBevestiging_Click(object sender, EventArgs e)
         {
-            Tram selectedTram = TramManager.tramViaId(Convert.ToInt32(lvwReparatie.Items[lvwSchoonmaak.FocusedItem.Index].SubItems[0].Text));
+            Tram selectedTram = TramManager.tramViaId(Convert.ToInt32(lvwReparatie.Items[lvwReparatie.FocusedItem.Index].SubItems[0].Text));
             string opmerking = tbxReparatieBevestiging.Text;
             TypeOnderhoud reparatie;
-            Medewerker medewerker = RemiseManager.medewerkerViaNaam(Convert.ToString(cbSchoonmaakMedewerker.SelectedItem));
+            Medewerker medewerker = RemiseManager.medewerkerViaNaam(Convert.ToString(cbReparatieMedewerker.SelectedItem));
             DateTime beschikbaarDatum = dtpReparatie.Value;
             if (rbtReparatieGroot.Checked)
             {

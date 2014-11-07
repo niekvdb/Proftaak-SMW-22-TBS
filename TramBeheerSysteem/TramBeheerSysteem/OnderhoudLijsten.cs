@@ -71,11 +71,21 @@ namespace TramBeheerSysteem
 
         private void cbReparatie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string onderhoudString = cbReparatie.SelectedText;
+            string onderhoudString = Convert.ToString(cbReparatie.SelectedItem);
             Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
             tbxReparatie.Text = selectedOnderhoud.Opmerking;
-            tbxReparatieSector.Text = Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).Nummer);
-            tbxReparatieSpoor.Text = Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).SpoorNummer);
+            if (RemiseManager.sectorViaTram(selectedOnderhoud.Tram) != null)
+            {
+                tbxReparatieSector.Text = Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).Nummer);
+            }
+            else tbxReparatieSector.Text = "geen";
+
+            if (RemiseManager.sectorViaTram(selectedOnderhoud.Tram) != null)
+            {
+                tbxReparatieSpoor.Text =
+                Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).SpoorNummer);
+            }
+            else tbxReparatieSpoor.Text = "geen";
         }
 
         private void cbSchoonmaak_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,7 +153,7 @@ namespace TramBeheerSysteem
 
         private void btnReparatie_Click(object sender, EventArgs e)
         {
-            string onderhoudString = Convert.ToString(cbSchoonmaak.SelectedItem);
+            string onderhoudString = Convert.ToString(cbReparatie.SelectedItem);
             Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
             DatabaseManager.VoltooiOnderhoud(selectedOnderhoud);
             MessageBox.Show("Opgeslagen!");
