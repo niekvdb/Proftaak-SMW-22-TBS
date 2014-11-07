@@ -54,14 +54,14 @@ namespace TramBeheerSysteem
             {
                 tbxSchoonmaakSector.Text = Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).Nummer);
             }
-            else tbxSchoonmaakSector.Text = "--";
+            else tbxSchoonmaakSector.Text = "geen";
 
             if (RemiseManager.sectorViaTram(selectedOnderhoud.Tram) != null)
             {
                 tbxSchoonmaakSpoor.Text =
                 Convert.ToString(RemiseManager.sectorViaTram(selectedOnderhoud.Tram).SpoorNummer);
             }
-            else tbxSchoonmaakSpoor.Text = "--";
+            else tbxSchoonmaakSpoor.Text = "geen";
         }
 
         private void btnSchoonmaak_Click(object sender, EventArgs e)
@@ -69,6 +69,7 @@ namespace TramBeheerSysteem
             string onderhoudString = Convert.ToString(cbSchoonmaak.SelectedItem);
             Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
             DatabaseManager.VoltooiOnderhoud(selectedOnderhoud);
+            MessageBox.Show("Opgeslagen!");
         }
 
         private void btnReparatie_Click(object sender, EventArgs e)
@@ -76,6 +77,7 @@ namespace TramBeheerSysteem
             string onderhoudString = Convert.ToString(cbSchoonmaak.SelectedItem);
             Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
             DatabaseManager.VoltooiOnderhoud(selectedOnderhoud);
+            MessageBox.Show("Opgeslagen!");
         }
     }
 }
