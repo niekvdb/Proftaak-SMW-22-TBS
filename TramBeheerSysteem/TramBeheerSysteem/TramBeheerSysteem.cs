@@ -25,6 +25,7 @@ namespace TramBeheerSysteem
         int horizontalRows = 1;
         int verticalRows = 1;
         private int maxSectors = 0;
+        private bool tramopspoor = false;
 
         public TramBeheerSysteem()
         {
@@ -93,14 +94,20 @@ namespace TramBeheerSysteem
                         TextAlign = HorizontalAlignment.Center,
                         Tag = Convert.ToString(se.Id)+"_"+Convert.ToString(se.SpoorNummer)+"-"+Convert.ToString(se.Nummer)
                     };
+                    if (se.Blokkade || tramopspoor)
+                    {
+                        sectorTb.Enabled = false; 
+                        BlokkeerSporen((sectorTb));
+                    }
                     if (se.Tram != null)
                     {
                         sectorTb.Text = se.Tram.nummer.ToString();
+                        tramopspoor = true;
                     }
-                    if (se.Blokkade) sectorTb.Enabled = false;
                     sectorTb.Click += this.HandleBlockSector;
                     PanelTBS.Controls.Add(sectorTb);
                 }
+                tramopspoor = false;
                 xPosTb = xPosTb + tbSize.Width + 5;
                 horizontalRows++;
                 if (sp.SectorList.Count() > maxSectors)
@@ -248,16 +255,21 @@ namespace TramBeheerSysteem
             {
                 handler(this, e);
             }
-            TextBox clickedTextBox = (TextBox) sender;
+            BlokkeerSporen((TextBox)sender);
+        }
+
+        private void BlokkeerSporen(TextBox clickedTextBox)
+        {
+            //TextBox clickedTextBox = (TextBox)sender;
             string tag = clickedTextBox.Tag.ToString();
-            MessageBox.Show("Sector id: " + tag); 
+            //MessageBox.Show("Sector id: " + tag);
             List<Sector> sectorList = new List<Sector>();
             sectorList = RemiseManager.Sectors;
             int aantal = 99;
-            string sAantal = tag.Substring(tag.IndexOf("-")+1);
-            string spId = tag.Substring(tag.IndexOf("_")+1, tag.IndexOf("-")-tag.IndexOf("_")-1);
-            string secId = tag.Substring(0,tag.IndexOf("-")+1);
-            Int32.TryParse(sAantal,out aantal);
+            string sAantal = tag.Substring(tag.IndexOf("-") + 1);
+            string spId = tag.Substring(tag.IndexOf("_") + 1, tag.IndexOf("-") - tag.IndexOf("_") - 1);
+            string secId = tag.Substring(0, tag.IndexOf("-") + 1);
+            Int32.TryParse(sAantal, out aantal);
             //id_spoornummer-aantal
             if (clickedTextBox.Text == string.Empty)
             {
@@ -324,44 +336,56 @@ namespace TramBeheerSysteem
             if (gebruiker == "Beheerder")
             {
                 PanelTBS.Enabled = true;
+                PanelTBS.Visible = true;
                 foreach (Control c in gbBediening.Controls)
                 {
                     c.Enabled = true;
+                    c.Visible = true;
                     if (c.Name == "gbSimulatie")
                     {
                         foreach (Control con in c.Controls)
                         {
                             con.Enabled = true;
+                            con.Visible = true;
                         }
                     }
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
                      i.Enabled = true;
+                     i.Visible = true;
                 }
             }
             else if (gebruiker == "Wagenparkbeheerder")
             {
                 PanelTBS.Enabled = true;
+                PanelTBS.Visible = true;
                 foreach (Control c in gbBediening.Controls)
                 {
                     c.Enabled = true;
+                    c.Visible = true;
                     if (c.Name == "gbSimulatie")
                     {
                         foreach (Control con in c.Controls)
                         {
                             con.Enabled = true;
+                            con.Visible = true;
                         }
                     }
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
-                    if (i.Text != "Tram" && i.Text != "Gebruiker" && i.Text != "Spoor") i.Enabled = false;
+                    if (i.Text != "Tram" && i.Text != "Gebruiker" && i.Text != "Spoor")
+                    {
+                        i.Enabled = false;
+                        i.Visible = false;
+                    }
                 }
             }
             else if (gebruiker == "Bestuurder")
             {
                 PanelTBS.Enabled = false;
+                PanelTBS.Visible = false;
                 //gbBediening.Enabled = false;
                 foreach (Control c in gbBediening.Controls)
                 {
@@ -372,29 +396,34 @@ namespace TramBeheerSysteem
                             if (con.Name != "btnReset")
                             {
                                 con.Enabled = false;
+                                con.Visible = false;
                             }
                         }
                     }
                     else
                     {
                         c.Enabled = false;
+                        c.Visible = false;
                     }
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
-                    if (i.Text != "Tram" && i.Text != "Gebruiker")
+                    if (i.Text != "Tram" && i.Text != "Gebruiker" && i.Text != "Onderhoud")
                     {
                         i.Enabled = false;
+                        i.Visible = false;
                     }
                     else
                     {
                         i.Enabled = true;
+                        i.Visible = true;
                     }
                 }
             }
             else if (gebruiker == "Schoonmaker")
             {
                 PanelTBS.Enabled = false;
+                PanelTBS.Visible = false;
                 //gbBediening.Enabled = false;
                 foreach (Control c in gbBediening.Controls)
                 {
@@ -405,29 +434,34 @@ namespace TramBeheerSysteem
                             if (con.Name != "btnReset")
                             {
                                 con.Enabled = false;
+                                con.Visible = true;
                             }
                         }
                     }
                     else
                     {
                         c.Enabled = false;
+                        c.Visible = false;
                     }
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
-                    if (i.Text != "Onderhoud" && i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
+                    if ( i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
                     {
                         i.Enabled = false;
+                        i.Visible = false;
                     }
                     else
                     {
                         i.Enabled = true;
+                        i.Visible = true;
                     }
                 }
             }
             else if (gebruiker == "Technicus")
             {
                 PanelTBS.Enabled = false;
+                PanelTBS.Visible = false;
                 //gbBediening.Enabled = false;
                 foreach (Control c in gbBediening.Controls)
                 {
@@ -438,23 +472,27 @@ namespace TramBeheerSysteem
                             if (con.Name != "btnReset")
                             {
                                 con.Enabled = false;
+                                con.Visible = false;
                             }
                         }
                     }
                     else
                     {
                         c.Enabled = false;
+                        c.Visible = false;
                     }
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
-                    if (i.Text != "Onderhoud" && i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
+                    if (i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
                     {
                         i.Enabled = false;
+                        i.Visible = false;
                     }
                     else
                     {
                         i.Enabled = true;
+                        i.Visible = true;
                     }
                     Console.WriteLine(i.Text);
                 }
