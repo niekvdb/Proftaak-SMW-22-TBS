@@ -25,6 +25,7 @@ namespace TramBeheerSysteem
         int horizontalRows = 1;
         int verticalRows = 1;
         private int maxSectors = 0;
+        private bool tramopspoor = false;
 
         public TramBeheerSysteem()
         {
@@ -93,14 +94,16 @@ namespace TramBeheerSysteem
                         TextAlign = HorizontalAlignment.Center,
                         Tag = Convert.ToString(se.Id)+"_"+Convert.ToString(se.SpoorNummer)+"-"+Convert.ToString(se.Nummer)
                     };
+                    if (se.Blokkade || tramopspoor) sectorTb.Enabled = false;
                     if (se.Tram != null)
                     {
                         sectorTb.Text = se.Tram.nummer.ToString();
+                        tramopspoor = true;
                     }
-                    if (se.Blokkade) sectorTb.Enabled = false;
                     sectorTb.Click += this.HandleBlockSector;
                     PanelTBS.Controls.Add(sectorTb);
                 }
+                tramopspoor = false;
                 xPosTb = xPosTb + tbSize.Width + 5;
                 horizontalRows++;
                 if (sp.SectorList.Count() > maxSectors)
@@ -248,16 +251,21 @@ namespace TramBeheerSysteem
             {
                 handler(this, e);
             }
-            TextBox clickedTextBox = (TextBox) sender;
+            BlokkeerSporen((TextBox)sender);
+        }
+
+        private void BlokkeerSporen(TextBox clickedTextBox)
+        {
+            //TextBox clickedTextBox = (TextBox)sender;
             string tag = clickedTextBox.Tag.ToString();
-            MessageBox.Show("Sector id: " + tag); 
+            MessageBox.Show("Sector id: " + tag);
             List<Sector> sectorList = new List<Sector>();
             sectorList = RemiseManager.Sectors;
             int aantal = 99;
-            string sAantal = tag.Substring(tag.IndexOf("-")+1);
-            string spId = tag.Substring(tag.IndexOf("_")+1, tag.IndexOf("-")-tag.IndexOf("_")-1);
-            string secId = tag.Substring(0,tag.IndexOf("-")+1);
-            Int32.TryParse(sAantal,out aantal);
+            string sAantal = tag.Substring(tag.IndexOf("-") + 1);
+            string spId = tag.Substring(tag.IndexOf("_") + 1, tag.IndexOf("-") - tag.IndexOf("_") - 1);
+            string secId = tag.Substring(0, tag.IndexOf("-") + 1);
+            Int32.TryParse(sAantal, out aantal);
             //id_spoornummer-aantal
             if (clickedTextBox.Text == string.Empty)
             {
@@ -415,7 +423,7 @@ namespace TramBeheerSysteem
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
-                    if (i.Text != "Onderhoud" && i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
+                    if ( i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
                     {
                         i.Enabled = false;
                     }
@@ -448,7 +456,7 @@ namespace TramBeheerSysteem
                 }
                 foreach (ToolStripItem i in this.menuStrip1.Items)
                 {
-                    if (i.Text != "Onderhoud" && i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
+                    if (i.Text != "Gebruiker" && i.Text != "Onderhoudlijsten")
                     {
                         i.Enabled = false;
                     }
