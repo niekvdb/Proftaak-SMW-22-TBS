@@ -135,6 +135,7 @@ namespace TramBeheerSysteem
                     {
                         sectorTb.Text = se.Tram.nummer.ToString();
                         tramopspoor = true;
+                        sectorTb.Enabled = true;
                     }
                     sectorTb.Click += this.HandleBlockSector;
                     PanelTBS.Controls.Add(sectorTb);
@@ -535,6 +536,12 @@ namespace TramBeheerSysteem
         {
             string functie = e.ClickedItem.Text;
             FunctiesPerGebruiker(functie);
+        }
+
+        private void btnDebug_Click(object sender, EventArgs e)
+        {
+            VoegTramToe vTt = new VoegTramToe("2001");
+            vTt.Show();
         }
 
     }

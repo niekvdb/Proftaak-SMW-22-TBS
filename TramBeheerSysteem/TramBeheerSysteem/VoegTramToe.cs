@@ -17,6 +17,12 @@ namespace TramBeheerSysteem
             InitializeComponent();
         }
 
+        public VoegTramToe(string tramnummer)
+        {
+            InitializeComponent();
+            tbTramnummer.Text = tramnummer;
+        }
+
         private void btnBevestig_Click(object sender, EventArgs e)
         {
             int tramNr;
