@@ -138,15 +138,6 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // btnStop
-            // 
-            this.btnStop.Location = new System.Drawing.Point(6, 48);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(121, 23);
-            this.btnStop.TabIndex = 1;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnStart
             // 
@@ -271,7 +262,6 @@
             this.lblGebruiker.Size = new System.Drawing.Size(109, 24);
             this.lblGebruiker.TabIndex = 4;
             this.lblGebruiker.Text = "Beheerder";
-            this.lblGebruiker.Click += new System.EventHandler(this.lblGebruiker_Click);
             // 
             // TramBeheerSysteem
             // 
