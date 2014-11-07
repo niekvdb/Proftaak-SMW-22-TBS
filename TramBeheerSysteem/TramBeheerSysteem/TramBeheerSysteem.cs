@@ -186,6 +186,7 @@ namespace TramBeheerSysteem
 
         private void btnVerwijder_Click(object sender, EventArgs e)
         {
+            bool tramgevonden = false;
             if (cbTrams.SelectedItem == null)
             {
                 MessageBox.Show("Selecteer een tram");
@@ -196,20 +197,27 @@ namespace TramBeheerSysteem
             {
                 if (tram.nummer == TramNr)
                 {
-                    Sector sectorCheck = RemiseManager.sectorViaTram(tram);
-                    if (sectorCheck != null)
+                    foreach (Sector s in RemiseManager.Sectors)
                     {
-                        sectorCheck.ClearSector();
-                        DatabaseManager.registreerSectorStatus(sectorCheck);
-                        MessageBox.Show("Tram is succesvol verwijderd");
-                        RefreshSporen();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Tram staat niet op een sector!");
+                        Sector sectorCheck = RemiseManager.sectorViaTram(tram);
+                        if (sectorCheck != null)
+                        {
+                            sectorCheck.ClearSector();
+                            tramgevonden = true;
+                            DatabaseManager.registreerSectorStatus(sectorCheck);
+                        }
                     }
                 }
             }
+            if (tramgevonden)
+            {
+                MessageBox.Show("Tram is succesvol verwijderd");
+                RefreshSporen();
+            }
+            else
+             {
+                 MessageBox.Show("Tram staat niet op een sector!");
+             } 
         }
 
         private void TramBeheerSysteem_Load(object sender, EventArgs e)
