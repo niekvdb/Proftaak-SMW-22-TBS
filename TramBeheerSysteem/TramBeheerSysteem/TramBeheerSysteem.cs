@@ -169,6 +169,7 @@ namespace TramBeheerSysteem
                         sectorCheck.ClearSector();
                         DatabaseManager.registreerSectorStatus(sectorCheck);
                         MessageBox.Show("Tram is succesvol verwijderd");
+                        RefreshSporen();
                     }
                     else
                     {

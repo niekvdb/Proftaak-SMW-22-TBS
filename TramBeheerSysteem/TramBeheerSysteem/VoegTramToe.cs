@@ -35,7 +35,7 @@ namespace TramBeheerSysteem
                     Spoor spoor = RemiseManager.spoorViaNummer(spoorNr);
                     foreach (Sector sector in spoor.SectorList)
                     {
-                        if (sector.Nummer == sectorNr && sector.Blokkade == false)
+                        if (sector.Nummer == sectorNr)
                         {
                             Tram trammetje = TramManager.tramViaNummer(tramNr);
                             Sector sectorCheck = RemiseManager.sectorViaTram(trammetje);
@@ -44,14 +44,14 @@ namespace TramBeheerSysteem
                                 sectorCheck.ClearSector();
                                 DatabaseManager.registreerSectorStatus(sectorCheck);
                             }
+                            if (sector.Blokkade == true)
+                            {
+                                MessageBox.Show("Sector is geblokkeerd");
+                                return;
+                            }
                             sector.VoegTramToe(trammetje);
                             DatabaseManager.registreerSectorStatus(sector);
                             MessageBox.Show("Tram is toegevoegd");
-                            return;
-                        }
-                        else
-                        {
-                            MessageBox.Show("sector is geblokkeerd");
                             return;
                         }
                     }
