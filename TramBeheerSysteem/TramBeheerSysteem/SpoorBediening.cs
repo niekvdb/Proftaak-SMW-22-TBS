@@ -42,9 +42,10 @@ namespace TramBeheerSysteem
                         {
                             sector1.Deblokkeer();
                             DatabaseManager.registreerSectorStatus(sector1);
-                        }
+                            
                         }
                     }
+                }
                 else if (sector.Nummer == SectorNR && sector.Blokkade == false)
                 {
                     MessageBox.Show("Sector is Geblokkeerd");

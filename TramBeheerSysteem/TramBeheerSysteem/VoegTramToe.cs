@@ -44,10 +44,15 @@ namespace TramBeheerSysteem
                                 sectorCheck.ClearSector();
                                 DatabaseManager.registreerSectorStatus(sectorCheck);
                             }
-                                sector.VoegTramToe(trammetje);
-                                DatabaseManager.registreerSectorStatus(sector);
-                                MessageBox.Show("Tram is toegevoegd");
-                                return;                            
+                            if (sector.Blokkade == true)
+                            {
+                                MessageBox.Show("Sector is geblokkeerd");
+                                return;
+                            }
+                            sector.VoegTramToe(trammetje);
+                            DatabaseManager.registreerSectorStatus(sector);
+                            MessageBox.Show("Tram is toegevoegd");
+                            return;
                         }
                     }
                 }
