@@ -33,47 +33,56 @@ namespace TramBeheerSysteem
                 MessageBox.Show("Voer geldige nummers in");
                 return;
             }
-
-           if (TramManager.tramViaNummer(tramNr) != null)
-            {
-                if (RemiseManager.spoorViaNummer(spoorNr) != null)
+           
+                if (TramManager.tramViaNummer(tramNr) != null)
                 {
-                    Spoor spoor = RemiseManager.spoorViaNummer(spoorNr);
-                    foreach (Sector sector in spoor.SectorList)
+                    if (RemiseManager.spoorViaNummer(spoorNr) != null)
                     {
-                        if (sector.Nummer == sectorNr)
+                        Spoor spoor = RemiseManager.spoorViaNummer(spoorNr);
+                        if (lbSectornummer.Text != "Sectornummer")
                         {
-                            Tram trammetje = TramManager.tramViaNummer(tramNr);
-                            Sector sectorCheck = RemiseManager.sectorViaTram(trammetje);
-                            if (sectorCheck != null)
-                            {
-                                sectorCheck.ClearSector();
-                                DatabaseManager.registreerSectorStatus(sectorCheck);
-                            }
-                            if (sector.Blokkade == true)
-                            {
-                                MessageBox.Show("Sector is geblokkeerd");
-                                return;
-                            }
-                            sector.VoegTramToe(trammetje);
-                            DatabaseManager.registreerSectorStatus(sector);
-                            MessageBox.Show("Tram is toegevoegd");
-                            return;
+                            TramIndeling tI = new TramIndeling();
+                            Tram tram = TramManager.tramViaNummer(tramNr);
+                            Sector sector = RemiseManager.sectorViaNummer(sectorNr, spoor);
+                            string message = tI.DeelTramInOpSector(tram, sector);
+                            MessageBox.Show(message);
                         }
+                        else
+                        {
+                            foreach (Sector sector in spoor.SectorList)
+                            {
+                                if (sector.Nummer == sectorNr)
+                                {
+                                    Tram trammetje = TramManager.tramViaNummer(tramNr);
+                                    Sector sectorCheck = RemiseManager.sectorViaTram(trammetje);
+                                    if (sectorCheck != null)
+                                    {
+                                        sectorCheck.ClearSector();
+                                        DatabaseManager.registreerSectorStatus(sectorCheck);
+                                    }
+                                    if (sector.Blokkade == true)
+                                    {
+                                        MessageBox.Show("Sector is geblokkeerd");
+                                        return;
+                                    }
+                                    sector.VoegTramToe(trammetje);
+                                    DatabaseManager.registreerSectorStatus(sector);
+                                    MessageBox.Show("Tram is toegevoegd");
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Spoor bestaat niet");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Spoor bestaat niet");
+                    MessageBox.Show("Tram bestaat niet");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Tram bestaat niet");
-            }
-             
-
-        }
+        }       
 
         private void btnAnnuleer_Click(object sender, EventArgs e)
         {
@@ -87,7 +96,6 @@ namespace TramBeheerSysteem
 
         private void tbTramnummer_Leave(object sender, EventArgs e)
         {
-            MessageBox.Show("Test");
             int tramnummer = 0;
             Int32.TryParse(tbTramnummer.Text, out tramnummer);
             Tram tram = TramManager.tramViaNummer(tramnummer);

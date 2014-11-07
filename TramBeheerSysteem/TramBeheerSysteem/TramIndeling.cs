@@ -37,7 +37,7 @@ namespace TramBeheerSysteem
                     {
                         if (isSpoorLangGenoeg(ingedeeldSpoor, tram.lengte))
                         {
-                            ingedeeldeSectors = vrijeSectoren(ingedeeldSpoor, tram);
+                            ingedeeldeSectors = vrijeSectoren(ingedeeldSpoor, tram,1,true);
                             if (ingedeeldeSectors.Count() < tram.lengte)
                             {
                                 ingedeeldeSectors = null;
@@ -45,7 +45,7 @@ namespace TramBeheerSysteem
                             if (ingedeeldeSectors != null && ingedeeldeSectors.Any())
                             {
                                 sectorFound = true;
-                                voegTramAanSectorsToe(ingedeeldeSectors,tram);
+                                voegTramAanSectorsToe(ingedeeldeSectors,tram,false);
                             }
                         
                         }
@@ -59,6 +59,56 @@ namespace TramBeheerSysteem
             }
             if (increaseTeller) spoorTeller = 0;
             return ingedeeldeSectors;
+        }
+
+        public string DeelTramInOpSector(Tram tram,Sector sector)
+        {
+            List<Sector> vrijeSpoorSectors = null;
+                List<Sector> ingedeeldeSectors = new List<Sector>();
+
+            Sector beginSector = sector;
+            Spoor spoorvanSector = RemiseManager.spoorViaId(sector.SpoorNummer);
+            if (beginSector != null)
+            {
+                if (!beginSector.Blokkade)
+                {
+                    if (beginSector.Beschikbaar)
+                    {
+                        if (spoorvanSector.SectorList.Count() - beginSector.Nummer >= tram.lengte)
+                        {
+                            //Ok up to here
+                            vrijeSpoorSectors = vrijeSectoren(spoorvanSector, tram,beginSector.Nummer,false);
+                            foreach (Sector s in vrijeSpoorSectors)
+                            {
+                                if (s.Nummer >= sector.Nummer)
+                                {
+                                    ingedeeldeSectors.Add(s);
+                                }
+                            }
+
+                            if (ingedeeldeSectors.Count() < tram.lengte)
+                            {
+                                ingedeeldeSectors = null;
+                                return "niet genoeg vrije sectoren";
+                            }
+                            if (ingedeeldeSectors != null && ingedeeldeSectors.Any())
+                            {
+                                voegTramAanSectorsToe(ingedeeldeSectors, tram, true);
+                                return "Tram toegevoegd.";
+                            }
+                        }
+                        else
+                        {
+                            return "niet genoeg sectoren op spoor.";
+                        }
+                    }
+                }
+                else
+                {
+                    return "Sector geblokkeerd";
+                }
+            }
+            return "Sector niet gevonden";
         }
         /// <summary>
         /// Functie om het (eerst)volgende spoor te krijgen.
@@ -122,26 +172,20 @@ namespace TramBeheerSysteem
         /// <param name="spoor">spoor waarin sectoren gezocht moeten worden</param>
         /// <param name="tram">tram die geplaatst moet worden</param>
         /// <returns></returns>
-        private List<Sector> vrijeSectoren(Spoor spoor, Tram tram)
+        private List<Sector> vrijeSectoren(Spoor spoor, Tram tram, int beginsectornummer, bool reverse)
         {
             List<Sector> spoorSectors = RemiseManager.sectorenVanSpoor(spoor.Id);
             List<Sector> sectors = new List<Sector>();
-            spoorSectors.Reverse(); // Reverse list, zodat de tram eerst op de achterste sectoren v/h spoor komt te staan
+            if (reverse) spoorSectors.Reverse(); // Reverse list, zodat de tram eerst op de achterste sectoren v/h spoor komt te staan
             foreach (Sector s in spoorSectors)
             {
                 if (s.Blokkade)
                 {
                     sectors.Clear();
-                    /*if (!blockedSector)
-                    {
-                            spoorTeller++;
-                            blockedSector = true;
-                            increaseTeller = true;
-                    }*/
                 }
                 if (sectors.Count < tram.lengte)
                 {
-                    if (s.Beschikbaar && !s.Blokkade && s.Tram == null)
+                    if (s.Beschikbaar && !s.Blokkade && s.Tram == null&& s.Nummer >=beginsectornummer)
                     {
                         sectors.Add(s);
                     }
@@ -159,7 +203,7 @@ namespace TramBeheerSysteem
         /// </summary>
         /// <param name="sectorlist">lijst met sectoren waarop de tram komt te staan</param>
         /// <param name="tram">tram die aan de sectoren wordt toegevoegd</param>
-        private void voegTramAanSectorsToe(List<Sector> sectorlist, Tram tram)
+        private void voegTramAanSectorsToe(List<Sector> sectorlist, Tram tram, bool opslaan)
         {
             foreach (Sector s in RemiseManager.Sectors)
             {
@@ -168,6 +212,10 @@ namespace TramBeheerSysteem
                     if (s.Id == se.Id)
                     {
                         s.VoegTramToe(tram);
+                        if (opslaan)
+                        {
+                                DatabaseManager.registreerSectorStatus(se);
+                        }
                     }
                 }
             }
