@@ -19,21 +19,7 @@ namespace TramBeheerSysteem
         {
             InitializeComponent();
 
-            foreach (Tramonderhoud onderhoud in TramManager.onderhoudsBeurten)
-            {
-                if (onderhoud.TypeOnderhoud == TypeOnderhoud.GroteSchoonmaak ||
-                    onderhoud.TypeOnderhoud == TypeOnderhoud.KleineSchoonmaak)
-                {
-                    Schoonmaken.Add(onderhoud);
-                    cbSchoonmaak.Items.Add(onderhoud.ToString());
-                }
-                else if (onderhoud.TypeOnderhoud == TypeOnderhoud.GroteReparatie ||
-                         onderhoud.TypeOnderhoud == TypeOnderhoud.KleineReparatie)
-                {
-                    Reparaties.Add(onderhoud);
-                    cbReparatie.Items.Add(onderhoud.ToString());
-                }
-            }
+            reloadForm();
         }
 
         private void cbReparatie_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,12 +50,35 @@ namespace TramBeheerSysteem
             else tbxSchoonmaakSpoor.Text = "geen";
         }
 
+        private void reloadForm()
+        {
+            foreach (Tramonderhoud onderhoud in TramManager.onderhoudsBeurten)
+            {
+                if (onderhoud.TypeOnderhoud == TypeOnderhoud.GroteSchoonmaak ||
+                    onderhoud.TypeOnderhoud == TypeOnderhoud.KleineSchoonmaak)
+                {
+                    Schoonmaken.Add(onderhoud);
+                    cbSchoonmaak.Items.Add(onderhoud.ToString());
+                }
+                else if (onderhoud.TypeOnderhoud == TypeOnderhoud.GroteReparatie ||
+                         onderhoud.TypeOnderhoud == TypeOnderhoud.KleineReparatie)
+                {
+                    Reparaties.Add(onderhoud);
+                    cbReparatie.Items.Add(onderhoud.ToString());
+                }
+            }
+            cbReparatie.SelectedIndex = 0;
+            cbSchoonmaak.SelectedIndex = 0;
+        }
+
         private void btnSchoonmaak_Click(object sender, EventArgs e)
         {
             string onderhoudString = Convert.ToString(cbSchoonmaak.SelectedItem);
             Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
             DatabaseManager.VoltooiOnderhoud(selectedOnderhoud);
             MessageBox.Show("Opgeslagen!");
+            DatabaseManager.LaadTramonderhoud();
+            reloadForm();
         }
 
         private void btnReparatie_Click(object sender, EventArgs e)
@@ -78,6 +87,8 @@ namespace TramBeheerSysteem
             Tramonderhoud selectedOnderhoud = TramManager.OnderhoudFromString(onderhoudString);
             DatabaseManager.VoltooiOnderhoud(selectedOnderhoud);
             MessageBox.Show("Opgeslagen!");
+            DatabaseManager.LaadTramonderhoud();
+            reloadForm();
         }
     }
 }
