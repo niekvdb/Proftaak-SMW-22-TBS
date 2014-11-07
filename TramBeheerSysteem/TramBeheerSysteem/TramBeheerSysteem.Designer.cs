@@ -35,7 +35,6 @@
             this.btnVerwijder = new System.Windows.Forms.Button();
             this.gbSimulatie = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gebruikerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +47,7 @@
             this.spoorInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onderhoudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onderhoudlijstenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDebug = new System.Windows.Forms.Button();
             this.lblGebruiker = new System.Windows.Forms.Label();
             this.gbBediening.SuspendLayout();
             this.gbTram.SuspendLayout();
@@ -115,8 +115,8 @@
             // 
             // gbSimulatie
             // 
+            this.gbSimulatie.Controls.Add(this.btnDebug);
             this.gbSimulatie.Controls.Add(this.btnReset);
-            this.gbSimulatie.Controls.Add(this.btnStop);
             this.gbSimulatie.Controls.Add(this.btnStart);
             this.gbSimulatie.Location = new System.Drawing.Point(8, 42);
             this.gbSimulatie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -140,10 +140,9 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(8, 59);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStop.Location = new System.Drawing.Point(6, 48);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(161, 28);
+            this.btnStop.Size = new System.Drawing.Size(121, 23);
             this.btnStop.TabIndex = 1;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -252,6 +251,16 @@
             this.onderhoudlijstenToolStripMenuItem.Text = "Onderhoudlijsten";
             this.onderhoudlijstenToolStripMenuItem.Click += new System.EventHandler(this.onderhoudlijstenToolStripMenuItem_Click);
             // 
+            // btnDebug
+            // 
+            this.btnDebug.Location = new System.Drawing.Point(7, 49);
+            this.btnDebug.Name = "btnDebug";
+            this.btnDebug.Size = new System.Drawing.Size(120, 23);
+            this.btnDebug.TabIndex = 3;
+            this.btnDebug.Text = "Debug";
+            this.btnDebug.UseVisualStyleBackColor = true;
+            this.btnDebug.Click += new System.EventHandler(this.btnDebug_Click);
+            // 
             // lblGebruiker
             // 
             this.lblGebruiker.AutoSize = true;
@@ -294,7 +303,6 @@
         private System.Windows.Forms.Panel PanelTBS;
         private System.Windows.Forms.GroupBox gbBediening;
         private System.Windows.Forms.GroupBox gbSimulatie;
-        private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -311,6 +319,7 @@
         private System.Windows.Forms.Button btnVerwijder;
         private System.Windows.Forms.ToolStripMenuItem gebruikerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem onderhoudlijstenToolStripMenuItem;
+        private System.Windows.Forms.Button btnDebug;
         private System.Windows.Forms.Label lblGebruiker;
 
     }
