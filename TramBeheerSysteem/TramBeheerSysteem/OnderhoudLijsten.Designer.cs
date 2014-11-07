@@ -56,6 +56,7 @@
             // 
             // cbSchoonmaak
             // 
+            this.cbSchoonmaak.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSchoonmaak.FormattingEnabled = true;
             this.cbSchoonmaak.Location = new System.Drawing.Point(6, 54);
             this.cbSchoonmaak.Name = "cbSchoonmaak";
@@ -222,6 +223,7 @@
             // 
             // cbReparatie
             // 
+            this.cbReparatie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbReparatie.FormattingEnabled = true;
             this.cbReparatie.Location = new System.Drawing.Point(6, 54);
             this.cbReparatie.Name = "cbReparatie";

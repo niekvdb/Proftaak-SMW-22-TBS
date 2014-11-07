@@ -472,7 +472,7 @@ namespace TramBeheerSysteem
                             if (con.Name != "btnReset")
                             {
                                 con.Enabled = false;
-                                con.Visible = true;
+                                con.Visible = false;
                             }
                         }
                     }
