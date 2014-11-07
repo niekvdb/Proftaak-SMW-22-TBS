@@ -14,7 +14,7 @@ namespace TramBeheerSysteem
     public partial class OnderhoudLijsten : Form
     {
         private List<Tramonderhoud> Schoonmaken = new List<Tramonderhoud>();
-        private List<Tramonderhoud> Reparaties = new List<Tramonderhoud>();
+        private List<Tramonderhoud> Reparaties = new List<Tramonderhoud>(); 
 
         public OnderhoudLijsten(string gebruiker)
         {
