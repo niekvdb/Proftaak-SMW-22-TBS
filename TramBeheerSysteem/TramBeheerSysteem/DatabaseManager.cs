@@ -353,7 +353,7 @@ namespace TramBeheerSysteem
                 command.CommandType = CommandType.Text;
                 command.Connection = connection;
 
-                command.Parameters.Add(":ID", onderhoud.Id);
+                command.Parameters.Add(":mID", onderhoud.Id);
 
                 command.ExecuteNonQuery();
             }
