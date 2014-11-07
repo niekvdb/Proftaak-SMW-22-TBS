@@ -538,5 +538,11 @@ namespace TramBeheerSysteem
             FunctiesPerGebruiker(functie);
         }
 
+        private void btnDebug_Click(object sender, EventArgs e)
+        {
+            VoegTramToe vTt = new VoegTramToe("2001");
+            vTt.Show();
+        }
+
     }
 }

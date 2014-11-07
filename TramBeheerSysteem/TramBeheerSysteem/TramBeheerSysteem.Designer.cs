@@ -47,6 +47,7 @@
             this.spoorInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onderhoudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onderhoudlijstenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDebug = new System.Windows.Forms.Button();
             this.gbBediening.SuspendLayout();
             this.gbTram.SuspendLayout();
             this.gbSimulatie.SuspendLayout();
@@ -107,6 +108,7 @@
             // 
             // gbSimulatie
             // 
+            this.gbSimulatie.Controls.Add(this.btnDebug);
             this.gbSimulatie.Controls.Add(this.btnReset);
             this.gbSimulatie.Controls.Add(this.btnStart);
             this.gbSimulatie.Location = new System.Drawing.Point(6, 34);
@@ -228,6 +230,16 @@
             this.onderhoudlijstenToolStripMenuItem.Text = "Onderhoudlijsten";
             this.onderhoudlijstenToolStripMenuItem.Click += new System.EventHandler(this.onderhoudlijstenToolStripMenuItem_Click);
             // 
+            // btnDebug
+            // 
+            this.btnDebug.Location = new System.Drawing.Point(7, 49);
+            this.btnDebug.Name = "btnDebug";
+            this.btnDebug.Size = new System.Drawing.Size(120, 23);
+            this.btnDebug.TabIndex = 3;
+            this.btnDebug.Text = "Debug";
+            this.btnDebug.UseVisualStyleBackColor = true;
+            this.btnDebug.Click += new System.EventHandler(this.btnDebug_Click);
+            // 
             // TramBeheerSysteem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,6 +284,7 @@
         private System.Windows.Forms.Button btnVerwijder;
         private System.Windows.Forms.ToolStripMenuItem gebruikerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem onderhoudlijstenToolStripMenuItem;
+        private System.Windows.Forms.Button btnDebug;
 
     }
 }
