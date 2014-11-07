@@ -135,6 +135,7 @@ namespace TramBeheerSysteem
                     {
                         sectorTb.Text = se.Tram.nummer.ToString();
                         tramopspoor = true;
+                        sectorTb.Enabled = true;
                     }
                     sectorTb.Click += this.HandleBlockSector;
                     PanelTBS.Controls.Add(sectorTb);
