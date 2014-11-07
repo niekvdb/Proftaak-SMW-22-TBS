@@ -48,6 +48,8 @@
             this.onderhoudToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.onderhoudlijstenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblGebruiker = new System.Windows.Forms.Label();
+            this.lblTagInfo = new System.Windows.Forms.Label();
+            this.lblScannerInfo = new System.Windows.Forms.Label();
             this.gbBediening.SuspendLayout();
             this.gbTram.SuspendLayout();
             this.gbSimulatie.SuspendLayout();
@@ -250,11 +252,35 @@
             this.lblGebruiker.TabIndex = 4;
             this.lblGebruiker.Text = "Beheerder";
             // 
+            // lblTagInfo
+            // 
+            this.lblTagInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTagInfo.AutoSize = true;
+            this.lblTagInfo.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.lblTagInfo.Location = new System.Drawing.Point(12, 507);
+            this.lblTagInfo.Name = "lblTagInfo";
+            this.lblTagInfo.Size = new System.Drawing.Size(95, 17);
+            this.lblTagInfo.TabIndex = 23;
+            this.lblTagInfo.Text = "RFID Tag Info";
+            // 
+            // lblScannerInfo
+            // 
+            this.lblScannerInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblScannerInfo.AutoSize = true;
+            this.lblScannerInfo.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.lblScannerInfo.Location = new System.Drawing.Point(12, 527);
+            this.lblScannerInfo.Name = "lblScannerInfo";
+            this.lblScannerInfo.Size = new System.Drawing.Size(123, 17);
+            this.lblScannerInfo.TabIndex = 23;
+            this.lblScannerInfo.Text = "RFID Scanner Info";
+            // 
             // TramBeheerSysteem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1464, 553);
+            this.Controls.Add(this.lblScannerInfo);
+            this.Controls.Add(this.lblTagInfo);
             this.Controls.Add(this.lblGebruiker);
             this.Controls.Add(this.PanelTBS);
             this.Controls.Add(this.gbBediening);
@@ -297,6 +323,8 @@
         private System.Windows.Forms.ToolStripMenuItem gebruikerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem onderhoudlijstenToolStripMenuItem;
         private System.Windows.Forms.Label lblGebruiker;
+        private System.Windows.Forms.Label lblTagInfo;
+        private System.Windows.Forms.Label lblScannerInfo;
 
     }
 }

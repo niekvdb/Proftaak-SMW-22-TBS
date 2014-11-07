@@ -11,7 +11,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using System.Threading;
+using Phidgets;
+using Phidgets.Events;
 
 namespace TramBeheerSysteem
 {
@@ -19,6 +20,12 @@ namespace TramBeheerSysteem
     
     public partial class TramBeheerSysteem : Form
     {
+        Dictionary<string, int> rfidTramDictionary = new Dictionary<string, int>()
+	    {
+	        {"28002b2dd4", 2045},
+	        {"2800366f27", 909},
+	        {"2800c1b4bf", 2204}
+	    };
         public event EventHandler BlockSector;
         int xPosTb = 5;
         int yPosTb = 5;
@@ -26,6 +33,8 @@ namespace TramBeheerSysteem
         int verticalRows = 1;
         private int maxSectors = 0;
         private bool tramopspoor = false;
+
+        private RFID rfid;
 
         public TramBeheerSysteem()
         {
@@ -44,7 +53,172 @@ namespace TramBeheerSysteem
             {
                 gebruikerToolStripMenuItem.DropDownItems.Add(Convert.ToString(medewerker.Functie));
             }
+
+            laadRFID();
         }
+
+        public void laadRFID()
+        {
+            lblTagInfo.Text = "";
+            lblScannerInfo.Text = "Phidget RFID not connected";
+
+            rfid = new RFID();
+
+            rfid.Attach += new AttachEventHandler(rfid_Attach);
+            rfid.Detach += new DetachEventHandler(rfid_Detach);
+
+            rfid.Tag += new TagEventHandler(rfid_Tag);
+            rfid.TagLost += new TagEventHandler(rfid_TagLost);
+
+            openCmdLine(rfid);
+        }
+
+        #region Command line open functions
+        private void openCmdLine(Phidget p)
+        {
+            openCmdLine(p, null);
+        }
+        private void openCmdLine(Phidget p, String pass)
+        {
+            int serial = -1;
+            String logFile = null;
+            int port = 5001;
+            String host = null;
+            bool remote = false, remoteIP = false;
+            string[] args = Environment.GetCommandLineArgs();
+            String appName = args[0];
+
+            try
+            { //Parse the flags
+                for (int i = 1; i < args.Length; i++)
+                {
+                    if (args[i].StartsWith("-"))
+                        switch (args[i].Remove(0, 1).ToLower())
+                        {
+                            case "l":
+                                logFile = (args[++i]);
+                                break;
+                            case "n":
+                                serial = int.Parse(args[++i]);
+                                break;
+                            case "r":
+                                remote = true;
+                                break;
+                            case "s":
+                                remote = true;
+                                host = args[++i];
+                                break;
+                            case "p":
+                                pass = args[++i];
+                                break;
+                            case "i":
+                                remoteIP = true;
+                                host = args[++i];
+                                if (host.Contains(":"))
+                                {
+                                    port = int.Parse(host.Split(':')[1]);
+                                    host = host.Split(':')[0];
+                                }
+                                break;
+                            default:
+                                goto usage;
+                        }
+                    else
+                        goto usage;
+                }
+                if (logFile != null)
+                    Phidget.enableLogging(Phidget.LogLevel.PHIDGET_LOG_INFO, logFile);
+                if (remoteIP)
+                    p.open(serial, host, port, pass);
+                else if (remote)
+                    p.open(serial, host, pass);
+                else
+                    p.open(serial);
+                return; //success
+            }
+            catch { }
+        usage:
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Invalid Command line arguments." + Environment.NewLine);
+            sb.AppendLine("Usage: " + appName + " [Flags...]");
+            sb.AppendLine("Flags:\t-n   serialNumber\tSerial Number, omit for any serial");
+            sb.AppendLine("\t-l   logFile\tEnable phidget21 logging to logFile.");
+            sb.AppendLine("\t-r\t\tOpen remotely");
+            sb.AppendLine("\t-s   serverID\tServer ID, omit for any server");
+            sb.AppendLine("\t-i   ipAddress:port\tIp Address and Port. Port is optional, defaults to 5001");
+            sb.AppendLine("\t-p   password\tPassword, omit for no password" + Environment.NewLine);
+            sb.AppendLine("Examples: ");
+            sb.AppendLine(appName + " -n 50098");
+            sb.AppendLine(appName + " -r");
+            sb.AppendLine(appName + " -s myphidgetserver");
+            sb.AppendLine(appName + " -n 45670 -i 127.0.0.1:5001 -p paswrd");
+            MessageBox.Show(sb.ToString(), "Argument Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            Application.Exit();
+        }
+        #endregion
+
+        #region RFID Methods
+        void rfid_Tag(object sender, TagEventArgs e)
+        {
+            TramIndeling indeling = new TramIndeling();
+            List<Sector> toegewezenSectors = new List<Sector>();
+            Tram tram;
+            Spoor spoor;
+            Sector sector;            
+            int tramId;
+            
+
+            lblTagInfo.Text = e.Tag;
+            rfid.LED = true;
+
+            tramId = rfidTramDictionary[e.Tag];
+            tram = TramManager.tramViaNummer(tramId);
+            sector = RemiseManager.sectorViaTram(tram);
+            toegewezenSectors = indeling.DeelTramIn(tram);
+            spoor = RemiseManager.spoorViaId(toegewezenSectors[0].SpoorNummer);
+            refreshEenSpoor(spoor);
+
+
+            foreach (Sector toegewezenSector in toegewezenSectors)
+            {
+                DatabaseManager.registreerSectorStatus(toegewezenSector);
+            }
+
+            if (sector != null)
+            {
+                sector.ClearSector();
+                refreshEenSpoor(RemiseManager.spoorViaId(sector.SpoorNummer));
+                DatabaseManager.registreerSectorStatus(sector);
+            }
+        }
+
+        void rfid_TagLost(object sender, TagEventArgs e)
+        {
+            lblTagInfo.Text = "";
+            rfid.LED = false;
+        }
+        void rfid_Attach(object sender, AttachEventArgs e)
+        {
+            RFID attached = (RFID)sender;
+
+            lblScannerInfo.Text = "Phidget RFID Connected ("+attached.SerialNumber+")";
+
+            if (rfid.outputs.Count > 0)
+            {
+                rfid.Antenna = true;
+            }
+        }
+
+        void rfid_Detach(object sender, DetachEventArgs e)
+        {
+            RFID detached = (RFID)sender;
+
+            lblTagInfo.Text = "";
+            lblScannerInfo.Text = "Phidget RFID not connected";
+        }
+        #endregion
+
         /// <summary>
         /// methode om de interface te refreshen.
         /// </summary>
@@ -96,6 +270,7 @@ namespace TramBeheerSysteem
                         sectortb.Text = sector.Tram.nummer.ToString();
                         tramopSpoor = true;
                     }
+                    else sectortb.Text = "";
                 }
             }
         }
@@ -175,7 +350,7 @@ namespace TramBeheerSysteem
 
         private void voegToeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VoegTramToe v = new VoegTramToe();
+            VoegTramToe v = new VoegTramToe(this);
             v.Show();         
         }
 
@@ -203,21 +378,17 @@ namespace TramBeheerSysteem
                         if (sectorCheck != null)
                         {
                             sectorCheck.ClearSector();
+                            refreshEenSpoor(RemiseManager.spoorViaId(sectorCheck.SpoorNummer));
                             tramgevonden = true;
                             DatabaseManager.registreerSectorStatus(sectorCheck);
+
                         }
                     }
                 }
             }
-            if (tramgevonden)
-            {
-                MessageBox.Show("Tram is succesvol verwijderd");
-                RefreshSporen();
-            }
-            else
-             {
-                 MessageBox.Show("Tram staat niet op een sector!");
-             } 
+
+            if (tramgevonden) MessageBox.Show("Tram is succesvol verwijderd");
+            else MessageBox.Show("Tram staat niet op een sector!");
         }
 
         private void TramBeheerSysteem_Load(object sender, EventArgs e)

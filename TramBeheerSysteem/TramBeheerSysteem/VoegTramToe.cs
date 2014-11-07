@@ -12,9 +12,12 @@ namespace TramBeheerSysteem
 {
     public partial class VoegTramToe : Form
     {
-        public VoegTramToe()
+        private readonly TramBeheerSysteem mainForm;
+        public VoegTramToe(TramBeheerSysteem form)
         {
             InitializeComponent();
+
+            mainForm = form;
         }
 
         public VoegTramToe(string tramnummer)
@@ -66,8 +69,10 @@ namespace TramBeheerSysteem
                                         return;
                                     }
                                     sector.VoegTramToe(trammetje);
+                                    mainForm.refreshEenSpoor(RemiseManager.spoorViaId(sector.SpoorNummer));
                                     DatabaseManager.registreerSectorStatus(sector);
                                     MessageBox.Show("Tram is toegevoegd");
+                                    this.Close();
                                     return;
                                 }
                             }
@@ -91,13 +96,14 @@ namespace TramBeheerSysteem
 
         private void tbTramnummer_Leave(object sender, EventArgs e)
         {
-            int tramnummer = 0;
+            int tramnummer = -1;
             Int32.TryParse(tbTramnummer.Text, out tramnummer);
             Tram tram = TramManager.tramViaNummer(tramnummer);
-            if (tram.lengte > 1)
+            if (tram != null)
             {
-                lbSectornummer.Text = "Eerste sectornummer";
+                if (tram.lengte > 1)lbSectornummer.Text = "Eerste sectornummer";
             }
+            else MessageBox.Show("Tram bestaat niet");
         }
     }
 }
