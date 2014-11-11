@@ -175,21 +175,24 @@ namespace TramBeheerSysteem
             tramId = rfidTramDictionary[e.Tag];
             tram = TramManager.tramViaNummer(tramId);
             sector = RemiseManager.sectorViaTram(tram);
-            toegewezenSectors = indeling.DeelTramIn(tram);
-            spoor = RemiseManager.spoorViaId(toegewezenSectors[0].SpoorNummer);
-            refreshEenSpoor(spoor);
-
-
-            foreach (Sector toegewezenSector in toegewezenSectors)
-            {
-                DatabaseManager.registreerSectorStatus(toegewezenSector);
-            }
 
             if (sector != null)
             {
                 sector.ClearSector();
                 refreshEenSpoor(RemiseManager.spoorViaId(sector.SpoorNummer));
                 DatabaseManager.registreerSectorStatus(sector);
+            }
+
+            else
+            {
+                toegewezenSectors = indeling.DeelTramIn(tram);
+                spoor = RemiseManager.spoorViaId(toegewezenSectors[0].SpoorNummer);
+                refreshEenSpoor(spoor);
+
+                foreach (Sector toegewezenSector in toegewezenSectors)
+                {
+                    DatabaseManager.registreerSectorStatus(toegewezenSector);
+                }
             }
         }
 
@@ -264,7 +267,8 @@ namespace TramBeheerSysteem
                     Int32.TryParse(sectorid, out sectoridint);
                     Sector sector = RemiseManager.sectorViaId(sectoridint);
                     TextBox sectortb = (TextBox) c;
-                    if ((sector.Blokkade || tramopSpoor)&&sector.Tram == null) sectortb.Enabled = false;
+                    if ((sector.Blokkade || tramopSpoor) && sector.Tram == null) sectortb.Enabled = false;
+                    else sectortb.Enabled = true;
                     if (sector.Tram != null)
                     {
                         sectortb.Text = sector.Tram.nummer.ToString();
@@ -404,7 +408,7 @@ namespace TramBeheerSysteem
 
         private void statusVeranderenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SpoorBediening s = new SpoorBediening();
+            SpoorBediening s = new SpoorBediening(this);
             s.Show();
         }
         /// <summary>
