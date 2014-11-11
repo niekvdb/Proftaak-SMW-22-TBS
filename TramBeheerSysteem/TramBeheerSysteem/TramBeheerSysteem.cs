@@ -27,6 +27,7 @@ namespace TramBeheerSysteem
 	        {"2800c1b4bf", 2204}
 	    };
         public event EventHandler BlockSector;
+        private List<Sector> simulatieSectors = new List<Sector>(); 
         int xPosTb = 5;
         int yPosTb = 5;
         int horizontalRows = 1;
@@ -227,22 +228,30 @@ namespace TramBeheerSysteem
         /// </summary>
         private void RefreshSporen()
         {
-            PanelTBS.Controls.Clear();
-            xPosTb = 5;
-            yPosTb = 5;
-            horizontalRows = 1;
-            verticalRows = 1;
-            maxSectors = 0;
-            List<Spoor> spoorList = new List<Spoor>();
-            RemiseManager.Sectors = null;
-            RemiseManager.Medewerkers = null;
-            RemiseManager.Remises = null;
-            RemiseManager.Sporen = null;
-            RemiseManager.LaadRemises();
-            RemiseManager.LaadSporen();
-            // Memoryleak opgelost?
-            spoorList = RemiseManager.Sporen;
-            AddTextBoxes((spoorList));
+            if (PanelTBS.Controls.Count == 0)
+            {
+                xPosTb = 5;
+                yPosTb = 5;
+                horizontalRows = 1;
+                verticalRows = 1;
+                maxSectors = 0;
+                AddTextBoxes(RemiseManager.Sporen);
+            }
+
+            else
+            {
+                foreach (Sector simulatieSector in simulatieSectors)
+                {
+                    simulatieSector.ClearSector();
+                }
+
+                foreach (Spoor spoor in RemiseManager.Sporen)
+                {
+                    refreshEenSpoor(spoor);
+                }
+
+                simulatieSectors.Clear();
+            }
         }
 
         public void refreshEenSpoor(Spoor spoor)
@@ -429,13 +438,12 @@ namespace TramBeheerSysteem
             List<Tram> tramList = TramManager.Trams;
             foreach (Tram t in tramList)
             {
-                    List<Sector> ingedeeldeSectors = indeling.DeelTramIn(t);
-                if (ingedeeldeSectors == null)
-                {
-                    System.Console.WriteLine("Niet ingedeeld: " + t.Id);
-                }
+                List<Sector> ingedeeldeSectors = indeling.DeelTramIn(t);
+                
+                if (ingedeeldeSectors == null) Console.WriteLine("Niet ingedeeld: " + t.Id);
                 else
                 {
+                    simulatieSectors.AddRange(ingedeeldeSectors);
                     Control.ControlCollection controls = PanelTBS.Controls;
                     foreach (Control c in controls)
                     {

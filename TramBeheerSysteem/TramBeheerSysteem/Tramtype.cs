@@ -9,7 +9,11 @@ namespace TramBeheerSysteem
     public enum Tramtype
     {
         Combino,
-        DkCombino,
-        Opleidingstram 
+        G11,
+        DKCombino,
+        G12,
+        Opleidingstram,
+        G9,
+        G10
     }
 }
