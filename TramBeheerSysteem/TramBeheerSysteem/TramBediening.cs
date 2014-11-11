@@ -52,6 +52,7 @@ namespace TramBeheerSysteem
                     {
                         tram.VeranderTramstatus(cbStatus.Text);
                         DatabaseManager.registreerTramStatus(tram);
+                        if (cbStatus.Text == "Defect" || cbStatus.Text == "Schoonmaak")
                         MessageBox.Show("Tramstatus is gewijzigd");
                     }
                 }

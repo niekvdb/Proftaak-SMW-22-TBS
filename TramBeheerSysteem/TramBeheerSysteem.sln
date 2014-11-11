@@ -10,29 +10,35 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|ugyfutfuyi = Debug|ugyfutfuyi
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|ugyfutfuyi = Release|ugyfutfuyi
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{21D63020-6E4D-472C-901E-CDD710A943E1}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{21D63020-6E4D-472C-901E-CDD710A943E1}.Debug|Any CPU.Build.0 = Debug|x64
+		{21D63020-6E4D-472C-901E-CDD710A943E1}.Debug|ugyfutfuyi.ActiveCfg = Debug|x64
 		{21D63020-6E4D-472C-901E-CDD710A943E1}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{21D63020-6E4D-472C-901E-CDD710A943E1}.Debug|x86.ActiveCfg = Debug|x86
 		{21D63020-6E4D-472C-901E-CDD710A943E1}.Debug|x86.Build.0 = Debug|x86
 		{21D63020-6E4D-472C-901E-CDD710A943E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21D63020-6E4D-472C-901E-CDD710A943E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D63020-6E4D-472C-901E-CDD710A943E1}.Release|ugyfutfuyi.ActiveCfg = Release|Any CPU
 		{21D63020-6E4D-472C-901E-CDD710A943E1}.Release|x64.ActiveCfg = Release|Any CPU
 		{21D63020-6E4D-472C-901E-CDD710A943E1}.Release|x86.ActiveCfg = Release|x86
 		{21D63020-6E4D-472C-901E-CDD710A943E1}.Release|x86.Build.0 = Release|x86
 		{3BEBA9BB-4DA8-425B-904F-2F27783DAD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3BEBA9BB-4DA8-425B-904F-2F27783DAD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BEBA9BB-4DA8-425B-904F-2F27783DAD9E}.Debug|ugyfutfuyi.ActiveCfg = Debug|Any CPU
 		{3BEBA9BB-4DA8-425B-904F-2F27783DAD9E}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{3BEBA9BB-4DA8-425B-904F-2F27783DAD9E}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{3BEBA9BB-4DA8-425B-904F-2F27783DAD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BEBA9BB-4DA8-425B-904F-2F27783DAD9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BEBA9BB-4DA8-425B-904F-2F27783DAD9E}.Release|ugyfutfuyi.ActiveCfg = Release|Any CPU
 		{3BEBA9BB-4DA8-425B-904F-2F27783DAD9E}.Release|x64.ActiveCfg = Release|Any CPU
 		{3BEBA9BB-4DA8-425B-904F-2F27783DAD9E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
