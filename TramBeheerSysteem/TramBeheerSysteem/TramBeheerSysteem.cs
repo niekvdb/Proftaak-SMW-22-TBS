@@ -361,13 +361,18 @@ namespace TramBeheerSysteem
 
         private void btnVerwijder_Click(object sender, EventArgs e)
         {
+            VerwijderTram(cbTrams.Text);
+        }
+
+        private void VerwijderTram(string tramnummer)
+        {
             bool tramgevonden = false;
-            if (cbTrams.SelectedItem == null)
+            if (tramnummer == string.Empty)
             {
                 MessageBox.Show("Selecteer een tram");
                 return;
-            }           
-            int TramNr = Convert.ToInt32(cbTrams.Text);
+            }
+            int TramNr = Convert.ToInt32(tramnummer);
             foreach (Tram tram in TramManager.Trams)
             {
                 if (tram.nummer == TramNr)
@@ -413,6 +418,7 @@ namespace TramBeheerSysteem
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
+        
         {
             Simulatie();
         }

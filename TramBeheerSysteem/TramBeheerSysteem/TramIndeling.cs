@@ -42,6 +42,13 @@ namespace TramBeheerSysteem
                             {
                                 ingedeeldeSectors = null;
                             }
+                            foreach (Sector s in ingedeeldeSectors)
+                            {
+                                if (s.Nummer < 30)
+                                {
+                                    ingedeeldeSectors = null;
+                                }
+                            }
                             if (ingedeeldeSectors != null && ingedeeldeSectors.Any())
                             {
                                 sectorFound = true;
@@ -77,7 +84,7 @@ namespace TramBeheerSysteem
                         if (spoorvanSector.SectorList.Count() - beginSector.Nummer >= tram.lengte)
                         {
                             //Ok up to here
-                            vrijeSpoorSectors = vrijeSectoren(spoorvanSector, tram,beginSector.Nummer,false);
+                            vrijeSpoorSectors = vrijeSectoren(spoorvanSector, tram,beginSector.Nummer,true);
                             foreach (Sector s in vrijeSpoorSectors)
                             {
                                 if (s.Nummer >= sector.Nummer)
