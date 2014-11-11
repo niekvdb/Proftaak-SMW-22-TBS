@@ -25,6 +25,7 @@ namespace TramBeheerSysteem
             {
                 //breakpoint
             } */
+            VerwijderSchoonmaakReparatieSporen();
             List<Sector> ingedeeldeSectors = null;
             bool sectorFound = false;
             while (!sectorFound)
@@ -41,13 +42,6 @@ namespace TramBeheerSysteem
                             if (ingedeeldeSectors.Count() < tram.lengte)
                             {
                                 ingedeeldeSectors = null;
-                            }
-                            foreach (Sector s in ingedeeldeSectors)
-                            {
-                                if (s.Nummer < 30)
-                                {
-                                    ingedeeldeSectors = null;
-                                }
                             }
                             if (ingedeeldeSectors != null && ingedeeldeSectors.Any())
                             {
@@ -68,6 +62,21 @@ namespace TramBeheerSysteem
             return ingedeeldeSectors;
         }
 
+        private void VerwijderSchoonmaakReparatieSporen()
+        {
+            List<Spoor> verwijderlijst = new List<Spoor>();
+            foreach(Spoor s in RemiseManager.Sporen)
+            {
+                if (s.Nummer < 30)
+                {
+                    verwijderlijst.Add(s);
+                }
+            }
+            foreach (Spoor s in verwijderlijst)
+            {
+                alleSporen.Remove(s);
+            }
+        }
         public string DeelTramInOpSector(Tram tram,Sector sector)
         {
             List<Sector> vrijeSpoorSectors = null;
@@ -92,7 +101,14 @@ namespace TramBeheerSysteem
                                     ingedeeldeSectors.Add(s);
                                 }
                             }
-
+                            foreach (Sector s in ingedeeldeSectors)
+                            {
+                                if (s.Nummer < 30)
+                                {
+                                    ingedeeldeSectors = null;
+                                    return "Sector is schoonmaak of reparatie-sector.";
+                                }
+                            }
                             if (ingedeeldeSectors.Count() < tram.lengte)
                             {
                                 ingedeeldeSectors = null;
@@ -192,7 +208,7 @@ namespace TramBeheerSysteem
                 }
                 if (sectors.Count < tram.lengte)
                 {
-                    if (s.Beschikbaar && !s.Blokkade && s.Tram == null&& s.Nummer >=beginsectornummer)
+                    if (s.Beschikbaar && !s.Blokkade && s.Tram == null && s.Nummer >=beginsectornummer)
                     {
                         sectors.Add(s);
                     }
