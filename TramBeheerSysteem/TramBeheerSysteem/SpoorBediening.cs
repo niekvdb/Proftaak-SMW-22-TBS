@@ -12,11 +12,13 @@ namespace TramBeheerSysteem
 {
     public partial class SpoorBediening : Form
     {
-        public SpoorBediening()
+        private readonly TramBeheerSysteem mainForm;
+        public SpoorBediening(TramBeheerSysteem form)
         {
             InitializeComponent();
             foreach(Spoor s in RemiseManager.Sporen)
             cbSpoor.Items.Add(Convert.ToString(s.Nummer));
+            mainForm = form;
         }
 
         private void btnSpoorstatus_Click(object sender, EventArgs e)
@@ -42,7 +44,6 @@ namespace TramBeheerSysteem
                         {
                             sector1.Deblokkeer();
                             DatabaseManager.registreerSectorStatus(sector1);
-                            
                         }
                     }
                 }
@@ -61,6 +62,8 @@ namespace TramBeheerSysteem
                     }
                 }
             }
+
+            mainForm.refreshEenSpoor(spoor);
             
         }
 

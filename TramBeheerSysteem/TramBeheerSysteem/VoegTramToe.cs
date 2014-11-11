@@ -62,6 +62,7 @@ namespace TramBeheerSysteem
                                     {
                                         sectorCheck.ClearSector();
                                         DatabaseManager.registreerSectorStatus(sectorCheck);
+                                        mainForm.refreshEenSpoor(RemiseManager.spoorViaId(sectorCheck.SpoorNummer));
                                     }
                                     if (sector.Blokkade == true)
                                     {
